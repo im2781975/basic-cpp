@@ -1,0 +1,67 @@
+/*4 1 3 5 2 3 1 7 
+After four number is: 5
+7 5 4 3 3 2 1 1 
+2
+7 5 4 3 2 1 
+Factorial of 10 is : 3628800
+Square of 5 is : 25 */
+#include <bits/stdc++.h>
+using namespace std;
+//print vector
+void printVector(vector<int> v)
+{
+    for_each(v.begin(),v.end(),[](int i){cout<<i<<" ";});
+    cout << endl;
+}
+int main()
+{
+    vector<int>v{4,1,3,5,2,3,1,7};
+    printVector(v);
+//---------------------------------
+    //  find first number greater than 4
+auto p=find_if(v.begin(),v.end(),[](int i){return i>4;});
+   cout<<"After four number is: "<<*p<<"\n";
+   
+ //-------------------------------
+    // function to sort vector, lambda expression is for sorting in
+ sort(v.begin(),v.end(),[](const int &a,const int &b)->bool
+    {
+        return a>b;
+    });
+    printVector(v);
+    
+//---------------------------------
+    // function to count numbers greater than or equal to 5
+    int count_5 = count_if(v.begin(), v.end(), [](int a)
+    {
+        return (a >= 5);
+    });
+    cout << count_5 << endl;
+    
+//---------------------------------
+    // function for removing duplicate element (after sorting all
+    p = unique(v.begin(), v.end(), [](int a, int b)
+    {
+        return a == b;
+    });
+    
+//---------------------------------
+    // resizing vector to make size equal to total different number
+    v.resize(distance(v.begin(), p));
+    printVector(v);
+    
+//---------------------------------
+/* accumulate function accumulate;the container on the basis of
+    function provided as third argument*/
+    int arr[]{1,2,3,4,5,6,7,8,9,10};
+    int f = accumulate(arr,arr+10, 1,[](int i,int j)
+    { return i * j; });
+    cout << "Factorial of 10 is : " << f << endl;
+//---------------------------------
+    //find square
+    auto square = [](int i)
+    {
+        return i * i;
+    };
+    cout << "Square of 5 is : " << square(5) << endl;
+}
