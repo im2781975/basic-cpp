@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+// Template function to print the elements of an array
+template <size_t N>
+void print(int (&a)[N])
+{
+    for (int e : a) {
+        cout << e << " ";
+    }
+}
+
+int main()
+{
+    int a[]{1, 2, 3, 4, 5};
+    print(a); // Call the print function to print the array elements
+    return 0;
+}
+
