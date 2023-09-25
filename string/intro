@@ -1,0 +1,14 @@
+/*Aslam
+Talukder
+Manna */
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    vector<string>vect{"Aslam","Talukder","Manna"};
+    for (auto &x : vect) {
+        cout << x << '\n';
+    }
+ 
+    return 0;
+}
