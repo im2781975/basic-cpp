@@ -1,0 +1,20 @@
+/*p =0x7ffd35c0d1c0, ptr = 0x7ffd35c0d1c0
+p =0x7ffd35c0d1c4, ptr = 0x7ffd35c0d1d4 */
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int *p; 
+    int (*ptr)[5]; 
+    int arr[5];
+    p = arr;
+    
+    ptr = &arr; 
+      
+    cout << "p =" << p <<", ptr = "<< ptr<< endl;
+    p++; 
+    ptr++;
+    cout << "p =" << p <<", ptr = "<< ptr<< endl;
+      
+    return 0;
+}
