@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+void findSize_1(int arr[])
+{
+    cout << sizeof(arr) << endl;
+}
+
+void findSize_2(int (&arr)[10])
+{
+    cout << sizeof(arr) << endl;
+}
+
+void findSize_3(int arr[], int n)
+{
+    cout << sizeof(int) * n << endl;
+}
+
+int main()
+{
+    int a[10];
+    int n = sizeof(a) / sizeof(a[0]);
+    cout << sizeof(a) << " ";
+    findSize_1(a);
+    findSize_2(a);
+    findSize_3(a, n);
+    return 0;
+}
+
