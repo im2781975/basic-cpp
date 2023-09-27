@@ -1,0 +1,38 @@
+/* Ibrahim
+GeeksforGeeks
+ggggg
+s1 = gfg
+s2 = gfg
+s3 = gfg
+s4 = gfg
+Enter string: ibrahim
+String is: ibrahim */
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    char s[] = "Ibrahim";
+    cout << s <<"\n";
+//----------------------------------
+    string str("GeeksforGeeks");
+    cout << str<<"\n";
+//----------------------------------
+    string str_(5, 'g');
+    cout << str_<<"\n";
+//----------------------------------
+    char s1[] = { 'g', 'f', 'g', '\0' };
+    char s2[4] = { 'g', 'f', 'g', '\0' };
+    char s3[4] = "gfg";
+    char s4[] = "gfg";
+ 
+    cout << "s1 = " << s1 << "\n";
+    cout << "s2 = " << s2 <<"\n";
+    cout << "s3 = " << s3 << "\n";
+    cout << "s4 = " << s4 << "\n";
+//----------------------------------
+    string st;
+    cout<<"Enter string: ";
+    getline(cin, st);
+    cout << "String is: " << st<< "\n";
+}
