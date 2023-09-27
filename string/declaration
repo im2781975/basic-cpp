@@ -1,18 +1,8 @@
-/* Ibrahim
-GeeksforGeeks
-ggggg
-s1 = gfg
-s2 = gfg
-s3 = gfg
-s4 = gfg
-Enter string: ibrahim
-String is: ibrahim */
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
- 
 int main()
 {
-    char s[] = "Ibrahim";
+   char s[] = "Ibrahim";
     cout << s <<"\n";
 //----------------------------------
     string str("GeeksforGeeks");
@@ -35,4 +25,23 @@ int main()
     cout<<"Enter string: ";
     getline(cin, st);
     cout << "String is: " << st<< "\n";
+//---------------------------------
+//string obj is used for take multiple string.
+    string a = " GeeksforGeeks to the Moon ";
+    stringstream obj(a);
+    // string to store words individually.
+    string temp;
+    while (obj >> temp) {
+        cout << temp << "\n";
+    }
+//---------------------------------
+//print string using pointer
+string x = "Geeksforgeeks";
+    char* p = &x[0];
+
+    while (*p != '\0') {
+        cout << *p;
+        p++;
+    }
+    cout <<"\n";
 }
