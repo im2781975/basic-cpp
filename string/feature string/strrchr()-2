@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+ 
+int main()
+{
+ 
+    // creating some string
+    char str[] = "GeeksforGeeks";
+    char* ptr;
+ 
+    // The character to be searched
+    char chr = 'z';
+ 
+    // pointer returned by strrchr()
+    ptr = strrchr(str, chr);
+ 
+    // ptr-string gives the index location
+    if (ptr) {
+        printf("Last occurrence of %c in %s is at %d", chr,
+               str, ptr - str);
+    }
+    // If the character we're searching is not present in
+    // the array
+    else {
+        printf("%c is not present in %s ", chr, str);
+    }
+    return 0;
+}
