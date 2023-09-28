@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+   char src[50] = "forgeeks";
+   char dest1[50] = "geeks";
+   char dest2[50] = "geeks";
+   
+   cout<<"Before strcat() function execution, "<<"\n";
+   cout<<"destination string :"<<dest1<<"\n";
+   
+   strcat(dest1, src);
+   cout<<"After strcat() function execution, "<<"\n";
+   cout<<"destination string :"<< dest1<<"\n";
+  
+   cout<<"Before strncat() function execution, "<<"\n";
+   cout<<"destination string :"<< dest2<<"\n";
+ // Appends 3 characters from src to dest2
+   strncat(dest2, src, 3);
+   cout<<"After strncat() function execution, "<<"\n";
+   cout<<"destination string :"<<dest2<<"\n";
+   return 0;
+}
