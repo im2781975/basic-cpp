@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+void resizeDemo(string str)
+{
+    cout<<"Using resize :"<<"\n";
+    //15 & fill the space with '$'
+    str.resize(15, '$');
+    cout << str <<"\n";
+    cout << "If num < size() : ";
+    str.resize(5, '$');
+    cout << str;
+}
+int main()
+{
+    string str("geekforgeeks");
+    cout << "Original String :"<< str<<"\n";
+    resizeDemo(str);
+    return 0;
+}
