@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    string s ="fox jumps over the lazy dog";
+    cout << "The length of the string is: "<< s.length() <<"\n";
+    
+    cout << "The capacity of string is: "<< s.capacity()<<"\n";
+//---------------------------------
+      s.resize(10);
+    cout << "The string after using resize function is: "<<s<< "\n";
+//---------------------------------
+      s.resize(20);
+    cout<<"The capacity of string before using shrink_to_fit function is: "<<s.capacity() <<"\n";
+      // shrink to fit function is used to reduce the capacity of the container
+
+    s.shrink_to_fit();
+    cout << "The capacity of string after using shrink_to_fit function is "<< s.capacity() <<"\n";
+    return 0;
+}
