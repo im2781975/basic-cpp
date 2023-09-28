@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+void findLastOccurrence(string str, string s)
+{
+ // To store the index of the result
+    size_t found;
+ // Function to find the first index of last occurrence of string s in str
+    found = str.rfind(s);
+  // If string doesn't have
+    if (found == string::npos)
+    {
+        cout << "String '"<< s
+         << "' is not present in the given string.";
+    }
+    else 
+    {
+        cout <<"The first index of last occurrence of '" << s << "' is found at index: "<<found<<"\n";
+    }
+}
+int main()
+{
+    string str("Welcome to GeeksforGeeks!");
+    
+    string s = "to";
+    findLastOccurrence(str, s);
+}
