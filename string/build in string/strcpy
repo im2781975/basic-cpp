@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    char src[] = "geeksforgeeks";
+    char dest[2];
+    strcpy(dest, src);
+    cout << "Copied string: " << dest <<"\n";
+//---------------------------------
+    char sr[] = "geeksforgeeks";
+    char dst[8];
+    strncpy(dst, sr, 8);
+    int len = strlen(dst);
+    cout << "Copied string: " << dst <<"\n";
+    cout << "Length of destination string: " << len << "\n";
+     
+    return 0;
+}
