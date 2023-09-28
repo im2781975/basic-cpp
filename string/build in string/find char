@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+void findLastOccurrence(
+    string str, char ch, size_t position)
+{
+    // To store the index of the result
+    size_t found;
+    
+    found = str.rfind(ch, position);
+ //If string doesn't have character ch present in it
+    if (found == string::npos)
+    {
+        cout <<"Character '"<< ch
+        <<"' is not present in the given string";
+    }
+    else 
+    {
+        cout <<"The last occurrence of '" <<ch<<"' before position " <<position << " is found at index: " << found <<"\n";
+    }
+}
+int main()
+{
+    string str("Welcome to GeeksforGeeks!");
+    char ch = 'e';
+//Position till where the search is to be done
+    size_t position =5;
+ 
+    findLastOccurrence(str, ch, position);
+}
