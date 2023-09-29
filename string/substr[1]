@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string s = "dog:cat";
+ // Copy two characters of s1 (starting from position 3)
+    string r = s.substr(3, 2);
+    cout << "String is: " << r<<"\n";
+//---------------------------------
+    int pos = s.find(":");
+
+   // string sub = s.substr(pos + 1);
+// Copy substring before pos Extract everything before the ":" in the string "dog:cat".
+    string sub = s.substr(0, pos);
+    cout << "String is: " << sub;
+    return 0;
+}
