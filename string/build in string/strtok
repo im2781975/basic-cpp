@@ -49,6 +49,15 @@ int main()
         token = strtok_r(NULL, outer_delimiters,
                          &outer_saveptr);
     }
- 
+    char str2[] ="Geeks,for.Geeks";
+    //Delimiters: space, comma, dot, exclamation mark
+    const char delimiters[] = ",.";
+    char* toen = strtok(str, delimiters);
+    while (toen != NULL) {
+    cout<<"Token: "<<toen<<" ";
+    
+        toen = strtok(NULL, delimiters);
+    }
+    cout<<"\n";
     return 0;
 }
