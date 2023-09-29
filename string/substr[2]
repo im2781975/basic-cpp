@@ -16,7 +16,8 @@ void subString1(string s, int n)
              v.push_back(x);
             }
      }
-     cout<<*max_element(v.begin(),v.end())<<endl;
+     cout<<*min_element(v.begin(),v.end())<<"\n";
+     cout<<*max_element(v.begin(),v.end())<<"\n";
 }
 int main()
 {
@@ -25,3 +26,4 @@ int main()
     subString1(s, s.length());
     return 0;
 }
+
