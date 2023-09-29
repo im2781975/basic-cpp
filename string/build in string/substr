@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    char s1[] = "GeeksforGeeks";
+    
+    char s2[] = "for";
+    char* result;
+ 
+    result = strstr(s1, s2);
+  
+    if (result != NULL) 
+    {
+        cout<<"Substring found :"<<
+        result;
+    }
+    else {
+        printf("Substring not found.\n");
+    }
+    return 0;
+}
