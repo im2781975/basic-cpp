@@ -1,0 +1,20 @@
+//union is a type of structure that can be used where the amount of memory used is a key factor. 
+#include <iostream>
+using namespace std;
+union GFG {
+    int Geek1;
+    char Geek2;
+    float Geek3;
+};
+int main()
+{
+    union GFG G1;
+    G1.Geek1 = 34;
+    cout <<"The first value at the allocated memory : "<<G1.Geek1<<"\n";
+ 
+    G1.Geek2 = 'G';
+    cout << "The next value stored after removing the previous value : "<<G1.Geek2<<"\n";
+    G1.Geek3 = 34.34;
+    cout << "The Final value at the same allocated memory space : " << G1.Geek3 <<"\n";
+    return 0;
+}
