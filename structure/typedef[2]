@@ -19,6 +19,18 @@ int main()
 //---------------------------------
     typedef unsigned long long int ulli;
     ulli a{ 1232133 };
-    cout <<"after typedef element is: "<< a;
+    cout <<"after typedef element is: "<< a<<"\n";
+//---------------------------------
+//typedef ptr
+    int x = 10;
+    int y = 20;
+    typedef int* iPtr;
+  
+    iPtr pointer_to_a = &x;
+    iPtr pointer_to_b = &y;
+  
+    cout << "x is: " << *pointer_to_a << "\n";
+    cout << "y is: " << *pointer_to_b << "\n";
+  
     return 0;
 }
