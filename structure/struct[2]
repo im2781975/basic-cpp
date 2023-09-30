@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct Point {
+    int x, y;
+};
+int main()
+{
+    struct Point p1 = { 0, 1 };
+    p1.x = 20;
+    cout<<"After using struct: ";
+    cout<<"x : "<<p1.x<< ",y : "<< p1.y<<"\n";
+//-----------------------;---------
+//structure pointer--
+struct Point* p2 = &p1;
+    cout<<"After using pointer: ";
+    cout<<"x : "<<p2->x<< ", y : "<< p2->y<<"\n";
+//---------------------------------
+//array structure--
+struct Point arr[10];
+    arr[0].x = 10;
+    arr[0].y = 20;
+    cout<<"after using array struct: ";
+    cout<<"x : "<<arr[0].x<< ",y : "<< arr[0].y<<"\n";
+    return 0;
+}
