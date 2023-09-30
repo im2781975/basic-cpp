@@ -1,0 +1,19 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+  
+// Define a structure with bit fields
+struct values {
+    int num : 520;
+};
+  
+int main()
+{
+    values val1;
+    // Assigning value to num variable
+    val1.num = 1;
+    // Print the size of struct
+    cout << sizeof(val1) << endl;
+  
+    return 0;
+}
