@@ -1,29 +1,48 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-
 void findSize_1(int arr[])
 {
-    cout << sizeof(arr) << endl;
+    // prints the size of a pointer
+    cout << sizeof(arr) <<"\n";
 }
-
 void findSize_2(int (&arr)[10])
 {
-    cout << sizeof(arr) << endl;
+    // prints the size of the array
+    cout << sizeof(arr) <<"\n";
 }
-
 void findSize_3(int arr[], int n)
 {
-    cout << sizeof(int) * n << endl;
+    cout << sizeof(int) * n <<"\n";
 }
-
+void aDecay(int *p)
+{
+    // prints the size of a pointer
+    cout << "size of array is by passing by value: ";
+    cout << sizeof(p) <<"\n";
+}
+void pDecay(int (*p)[10])
+{
+    // prints the size of the array
+    cout << "Modified size of array by passing by pointer: ";
+    cout << sizeof(*p) <<"\n";
+}
+void mDecay(int *p)
+{
+    // prints the size of the array
+    cout << "Modified size of array by passing by pointer: ";
+    cout << sizeof(*p) <<"\n";
+    
+}
 int main()
 {
-    int a[10];
+    int a[10]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     int n = sizeof(a) / sizeof(a[0]);
-    cout << sizeof(a) << " ";
+    cout << "size of array is: "<< sizeof(a) << "\n";
     findSize_1(a);
     findSize_2(a);
     findSize_3(a, n);
+    aDecay(a);
+    pDecay(&a);
+    mDecay(a);
     return 0;
 }
-
