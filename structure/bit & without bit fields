@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+// Define a struct without bit fields
+struct Loan1 {
+    unsigned int principal;
+    unsigned int interestRate;
+    unsigned int period;
+};
+// Define a struct with bit-fields
+struct Loan2 {
+// principal variable can store maximum value of 1,048,575
+    unsigned int principal : 20;
+    // Maximum interest rate of 63
+    unsigned int interestRate : 6;
+    // Maximum period of 63 months
+    unsigned int period : 6;
+};
+int main()
+{
+    Loan2 loan;
+    loan.principal = 500000;
+    loan.interestRate = 15;
+    loan.period = 36;
+  
+    // Print the size of loan1
+    // (20+6+6)/8 = 4 Bytes
+    // 1 Byte = 8 Bits
+    cout << sizeof(Loan2) << " Bytes" <<"\n";
+  
+    cout << "Size of Structure without Bit Fields: ";
+    cout << sizeof(Loan1) << " Bytes" <<"\n";
+    cout << "Size of Structure with Bit Fields: ";
+    cout << sizeof(Loan2) << " Bytes" <<"\n";
+    return 0;
+}
