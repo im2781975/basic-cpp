@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct candidate {
+    int roll_no;
+    char grade;
+    float marks[4];
+};
+void display(struct candidate a1)
+{
+ 
+    cout << "Roll number : " << a1.roll_no <<"\n";
+    cout << "Grade : " << a1.grade <<"\n";
+    cout << "Marks secured:\n";
+    int i;
+    int len = sizeof(a1.marks) / sizeof(float);
+ 
+    // Accessing the contents of the
+    // array within the structure
+    for (i = 0; i < len; i++) {
+        cout << "Subject " << i + 1 << " : " << a1.marks[i]
+             <<"\n";
+    }
+}
+int main()
+{
+    struct candidate A = { 1, 'A', { 98.5, 77, 89, 78.5 } };
+    display(A);
+    return 0;
+}
