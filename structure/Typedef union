@@ -1,0 +1,25 @@
+//union is a type of structure that can be used where the amount of memory used is a key factor. 
+#include <iostream>
+using namespace std;
+typedef union geek {
+    int age;
+    float GPA;
+    float marks;
+}ug;
+int main()
+{
+    // Defining a union variable.
+    ug student;
+    student.age=24;
+    cout <<"age is: "<<student.age<<" & Memory address of age: " << &student.age<<"\n";
+    
+    student.GPA=4.50;
+    cout <<"GPA is: "<<student.GPA<<" & Memory address of GPA: " << &student.GPA<<"\n";
+    
+    student.marks=78.90;
+    cout <<"marks is: "<<student.marks<<" & Memory address of marks: " << &student.marks<<"\n";
+  
+    cout << "Size of a union: " << sizeof(student) <<"\n";
+  
+    return 0;
+}
