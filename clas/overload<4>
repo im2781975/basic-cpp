@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+class cantover {
+public:
+    void fun() {
+        cout << "cantover::fun()" << endl;
+    }
+};
+
+class X {
+public:
+    void g() {
+        cantover obj;
+        obj.fun(); // Call cantover's fun() function
+    }
+};
+
+int main() {
+    X x;
+    x.g(); // Call X's g() function, which in turn calls cantover's fun() function
+    return 0;
+}
+
