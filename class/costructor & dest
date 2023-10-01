@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Geeks
+{
+    public:
+    int id;
+    //Default Constructor
+    Geeks()
+    {
+        cout << "Default Constructor called" << endl; 
+        id=-1;
+    }
+    //Parameterized Constructor
+    Geeks(int x)
+    {
+        cout <<"Parameterized Constructor called "<< endl;
+        id=x;
+    }
+    ~Geeks()
+    {
+        cout<<"Destructor called here-"<<id<<"\n";
+    }
+};
+int main()
+{
+    Geeks obj1;
+    cout <<"Geek id is: "<<obj1.id <<"\n";
+
+    Geeks obj2(21);
+    cout <<"Geek id is: " <<obj2.id <<"\n";
+    Geeks obj3(7);
+    //obj3.id=7;
+    int i = 0;
+    while ( i < 5 )
+    {
+        Geeks obj4(i);
+        //obj4.id=i;
+        i++;        
+    } // Scope for obj4 ends here
+    return 0;
+}
