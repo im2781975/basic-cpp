@@ -1,0 +1,84 @@
+#include <iostream>
+using namespace std;
+
+class Test {
+private:
+    int x;
+
+public:
+    void setX(int value) {
+        x = value;
+    }
+
+    int getX() {
+        return x;
+    }
+};
+
+int main() {
+    Test t;
+    t.setX(20);
+
+    // Now you can access the private member using the public member function
+    cout << t.getX() << endl;
+
+    return 0;
+}
+#include <iostream>
+ 
+using namespace std;
+ 
+// Base class
+class Parent {
+public:
+    int x;
+};
+ 
+// Subclass inheriting from
+// base class (Parent).
+class Child : public Parent {
+public:
+    int y;
+};
+ 
+int main()
+{
+    Child obj1;
+ 
+    // An object of class Child has
+    // all data members and member
+    // functions of class Parent.
+    obj1.y = 7;
+    obj1.x = 91;
+    cout << obj1.y << endl;
+    cout << obj1.x << endl;
+ 
+    return 0;
+}
+#include <iostream>
+ 
+using namespace std;
+ 
+struct Base {
+public:
+    int x;
+};
+ 
+// is equivalent to
+// struct Derived : public Base {}
+struct Derived : Base {
+public:
+    int y;
+};
+ 
+int main()
+{
+    Derived d;
+ 
+    // Works fine because inheritance
+    // is public.
+    d.x = 20;
+    cout << d.x;
+    cin.get();
+    return 0;
+}
