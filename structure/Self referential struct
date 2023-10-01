@@ -22,9 +22,11 @@ int main()
     ob3.prev_link = NULL;
     ob3.next_link = NULL;
     ob3.data = 30;
+
     // Forward links
     ob1.next_link = &ob2;
     ob2.next_link = &ob3;
+
     // Backward links
     ob2.prev_link = &ob1;
     ob3.prev_link = &ob2;
