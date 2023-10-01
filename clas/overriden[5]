@@ -1,0 +1,42 @@
+/ C++ Program Demonstrating
+// Accessing of Overridden Function
+#include <iostream>
+using namespace std;
+ 
+// defining of the Parent class
+class Parent
+ 
+{
+ 
+public:
+    // defining the overridden function
+    void GeeksforGeeks_Print()
+    {
+        cout << "I am the Parent class function" << endl;
+    }
+};
+ 
+// defining of the derived class
+class Child : public Parent
+ 
+{
+public:
+    // defining of the overriding function
+    void GeeksforGeeks_Print()
+    {
+        cout << "I am the Child class function" << endl;
+    }
+};
+ 
+int main()
+{
+    // create instances of the derived class
+    Child GFG1, GFG2;
+ 
+    // call the overriding function
+    GFG1.GeeksforGeeks_Print();
+ 
+    // call the overridden function of the Base class
+    GFG2.Parent::GeeksforGeeks_Print();
+    return 0;
+}
