@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    // Defining enum Gender
+    enum Gender { Male, Female };
+
+    // Defining enum Gender2 with distinct values
+    enum Gender2 { Other, NonBinary };
+
+    // Creating Gender type variable
+    Gender gender = Male;
+    Gender2 gender2 = NonBinary;
+
+    cout << gender << endl << gender2;
+
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    // Defining enum Gender
+    enum Gender { Male, Female };
+
+    // Creating Gender type variable
+    Gender gender = Male;
+
+    // Creating a variable named something else
+    int otherVariable = 10;
+
+    cout << gender << endl;
+
+    return 0;
+}
+
