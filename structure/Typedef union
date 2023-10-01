@@ -1,4 +1,5 @@
 //union is a type of structure that can be used where the amount of memory used is a key factor. 
+//When you assign values to student.age, student.GPA, and student.marks, the previous values get overwritten because unions can only store one value at a time. So, the value of marks will overwrite age and GPA.
 #include <iostream>
 using namespace std;
 typedef union geek {
