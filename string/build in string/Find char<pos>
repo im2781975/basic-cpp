@@ -7,7 +7,7 @@ void findLastOccurrence(
     size_t found;
     
     found = str.rfind(ch, position);
- //If string doesn't have character ch present in it
+ 
     if (found == string::npos)
     {
         cout <<"Character '"<< ch
