@@ -9,8 +9,9 @@ public:
     // Local parameter 'a' hides object's member
     // 'a', but we can access it using this.
     void func(int a)
-    { cout << this->a; 
-      cout<<a;
+    { //cout << this->a; 
+      //cout<<a;
+      cout<<Test::a;
 }
 };
   
