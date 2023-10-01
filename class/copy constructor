@@ -1,0 +1,23 @@
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+  
+class storeVal {
+public:
+    // Constructor
+    storeVal() {}
+    // Copy Constructor
+    storeVal(const storeVal& s)
+    {
+        cout << "Copy constructor has been called " << endl;
+    }
+};
+  
+// Driver code
+int main()
+{
+    storeVal obj1;
+    storeVal obj2 = obj1;
+    getchar();
+    return 0;
+}
