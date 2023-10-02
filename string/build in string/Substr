@@ -11,10 +11,15 @@ int main()
     if (result != NULL) 
     {
         cout<<"Substring found :"<<
-        result;
+        result<<"\n";
     }
     else {
         printf("Substring not found.\n");
     }
+//--------------------------------
+    string str = "Geeks";
+//Copy two characters of s1 (starting from position 3)
+    string r = str.substr(3, 2);
+    cout << "String is: "<< r;
     return 0;
 }
