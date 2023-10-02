@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  string str = "geeksforgeeks a computer science";
+  string str1 = "geeks";
+   
+  size_t found = str.find(str1);
+  if (found != string::npos)
+    cout << "First occurrence is " << found <<"\n";
+//---------------------------------
+  char arr[] = "geeks";
+  found = str.find(arr);
+  
+  if (found != string::npos) 
+  {
+    found =str.find(arr,found + 1); 
+    // Find the next occurrence
+    if (found != string::npos) {
+      cout << "Next occurrence is " << found << "\n";
+    } else {
+      cout << "No more occurrences found.\n";
+    }
+  } else {
+    cout << "String not found.\n";
+  }
+//---------------------------------
+ size_t find = str.find("geeks.practice",0, 5);
+  if (find != string::npos)
+    cout << find << endl;
+  return 0;
+}
