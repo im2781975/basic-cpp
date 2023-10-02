@@ -1,23 +1,35 @@
 #include<bits/stdc++.h>
 using namespace std;
+void string_concatenation()
+{
+    string str1("Geeksfor");
+    string str2("Geeks");
+ 
+    cout<<"Original String : "<< str1 <<"\n";
+    
+    for(int i =0;str2[i]!='\0';i++)
+    {
+        str1.push_back(str2[i]);
+    }
+    cout << "After push_back : ";
+    cout << str1;
+}
 int main()
 {
    char src[50] = "forgeeks";
    char dest1[50] = "geeks";
    char dest2[50] = "geeks";
    
-   cout<<"Before strcat() function execution, "<<"\n";
-   cout<<"destination string :"<<dest1<<"\n";
-   
+   cout<<"Before strcat() func execution,string :"<<dest1<<"\n";
    strcat(dest1, src);
-   cout<<"After strcat() function execution, "<<"\n";
-   cout<<"destination string :"<< dest1<<"\n";
+   cout<<"After strcat() func execution,string :"<<dest1<<"\n";
   
-   cout<<"Before strncat() function execution, "<<"\n";
-   cout<<"destination string :"<< dest2<<"\n";
+   cout<<"Before strcat() func execution,string :"<<dest2<<"\n";
  // Appends 3 characters from src to dest2
    strncat(dest2, src, 3);
-   cout<<"After strncat() function execution, "<<"\n";
-   cout<<"destination string :"<<dest2<<"\n";
-   return 0;
+   cout<<"After append char strcat() func execution,string :"<<dest2<<"\n";
+ 
+   string_concatenation();
+    return 0;
 }
+   
