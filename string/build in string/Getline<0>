@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string name;
+    int id;
+    cout<<"Enter your id: ";
+    cin >> id;
+    //clear the input buffer
+    cin.ignore();
+    cout << "Enter your name: ";
+    getline(cin, name);
+    //getline(cin,name,'*');
+    //delimeter is used to finished the linr.
+    cout <<"Your id : "<<id<< "\n";
+    cout << "Hello, " << name
+         << " welcome here!\n";
+    cout<<"Enter your name :";
+    getline(cin, name);
+  
+    cout << "Hello, " << name
+         << " welcome to GfG !\n";
+    return 0;
+}
