@@ -20,6 +20,14 @@ int main()
     string str = "Geeks";
 //Copy two characters of s1 (starting from position 3)
     string r = str.substr(3, 2);
-    cout << "String is: "<< r;
+    cout << "String is: "<<r<<"\n";
+    // Take any string
+//---------------------------------
+    string s = "dog:cat";
+    int pos = s.find(":");
+    // Copy substring after pos
+    string sub = s.substr(pos + 1);
+ 
+    cout<<"String is: "<<sub<<"\n";
     return 0;
 }
