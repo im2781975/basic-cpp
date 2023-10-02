@@ -3,7 +3,6 @@ using namespace std;
 int main()
 {
     char s1[] = "GeeksforGeeks";
-    
     char s2[] = "for";
     char* result;
  
