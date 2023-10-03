@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+class Test {
+    // private member variable
+    int x;
+
+public:
+    // pure virtual function
+    virtual void show() = 0;
+
+    // getter function to access x
+    int getX() { return x; }
+};
+
+class Derived : public Test {
+public:
+    // Implement the pure virtual function
+    void show() {
+        cout << "This is the implementation of the pure virtual function in the Derived class." << endl;
+    }
+};
+
+int main(void)
+{
+    // Create an instance of the Derived class
+    Derived d;
+
+    // You can now call functions on d
+    d.show();
+
+    return 0;
+}
+
