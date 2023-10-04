@@ -1,0 +1,15 @@
+// multiply args
+#include <iostream>
+using namespace std;
+
+template <typename t> t multiply(t first, t second)
+{
+    return first * second;
+}
+int main()
+{
+    auto result = multiply(10, 20);
+    cout << "Multiplication is: " << result <<"\n";
+    
+    return 0;
+}
