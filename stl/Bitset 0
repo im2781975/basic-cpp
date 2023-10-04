@@ -1,0 +1,51 @@
+// C++ program to demonstrate the
+// use of std::bitset member
+// functions
+#include <bitset>
+#include <iostream>
+ 
+using namespace std;
+ 
+int main()
+{
+    // declaring index variable
+    int index = 0;
+ 
+    // declaring few bitset objects
+    bitset<4> allSet("1111"), allUnset;
+ 
+    cout << "any() value: " << boolalpha << allSet.any()
+         << endl;
+ 
+    cout << "all() value: " << allSet.all() << endl;
+ 
+    cout << "none() value: " << allSet.none() << endl;
+ 
+    cout << "test() at index 0: " << noboolalpha
+         << allSet.test(index) << endl;
+ 
+    cout << "size() value: " << allSet.size() << endl;
+ 
+    cout << "Value of allUnset on before using set(): "
+         << allUnset << endl;
+    allUnset.set(index);
+    cout << "Value of allUnset on after using set(): "
+         << allUnset << endl;
+ 
+    cout << "Value of allSet on before using reset(): "
+         << allSet << endl;
+    allSet.reset(index);
+    cout << "Value of allSet on after using reset(): "
+         << allSet << endl;
+ 
+    // declaring an empty string
+    string bitString;
+    // using to_string() method to assign value to empty
+    // string
+    bitString = allSet.to_string();
+    cout << "bitString: " << bitString << endl;
+ 
+    cout << "Unsigned Long value: " << allSet.to_ulong();
+ 
+    return 0;
+}
