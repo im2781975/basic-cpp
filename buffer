@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+ 
+int main()
+{
+    char buffer[256];
+    while (cin >> buffer)
+    {
+    }
+    return 0;
+}
+int main()
+{
+    char buffer[256];
+    while (scanf("%s", buffer) != EOF)
+    {
+    }
+    return 0;
+}
+int main()
+{
+    char buffer[256];
+    ios_base::sync_with_stdio(false);
+ 
+    while (cin >> buffer)
+    {
+ 
+    }
+    return 0;
+}
+
