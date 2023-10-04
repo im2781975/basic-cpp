@@ -1,0 +1,214 @@
+// C++ program to show that use of 1ll
+// fixes the problem in above code.
+#include <iostream>
+using namespace std;
+int main()
+{
+    int x = 1000000;
+    int y = 1000000;
+  
+    long long int z = 1LL*x*y;
+  
+    cout << z;
+    return 0;
+}
+// Another problematic code that doesn't 
+// use 1LL or 1ll
+#include <iostream>
+using namespace std;
+  
+int main()
+{
+    // we should use 1LL or 1ll here
+    // instead of 1. The correct statement
+    // is "long long int z = 1LL << 40;"
+    long long int z = 1 << 40;
+    cout << z;
+    return 0;
+}
+// A program that shows problem if we
+// don't use cin.ignore()
+#include <iostream>
+using namespace std;
+  
+int main()
+{
+    int n;
+    cin >> n;
+    string s;
+    for(int i = 0; i<n; ++i)
+    {
+        getline(cin, s);
+        cout << s.length() << " ";
+        cout << s << endl;
+    }
+    return 0;
+}
+// A program that shows problem if we
+// don't use cin.ignore()
+#include <iostream>
+using namespace std;
+  
+int main()
+{
+    int n;
+    cin >> n;
+    string s;
+    for(int i = 0; i<n; ++i)
+    {
+        getline(cin, s);
+        cout << s.length() << " ";
+        cout << s << endl;
+    }
+    return 0;
+}
+// C++ program to show that use of cin.ignore()
+// fixes the problem in above code.
+#include <iostream>
+using namespace std;
+  
+int main()
+{
+    int n;
+    cin >> n;
+    string s;
+    cin.ignore(1, '\n');
+    for (int i = 0; i<n; ++i)
+    {
+        getline(cin, s);
+        cout << s.length() << " ";
+        cout << s << endl;
+    }
+    return 0;
+}
+// C++ program to handle cases when we
+// don't know how many lines of input 
+// are going to be there
+#include <iostream>
+using namespace std;
+int main()
+{
+    string s;
+    while (getline(cin, s))
+    {
+        if (s.empty())
+            break;
+        cout << s << endl;
+    }
+    return 0;
+}
+Input:
+a b
+c d
+e f
+g h
+// Below program shows problem if we
+// don't use don't take remainders
+// properly.
+#include <iostream>
+#define mod 1000000007
+using namespace std;
+  
+int main()
+{
+    long long int x, y, z;
+    cin >> x >> y >> z;
+    z = (z + x*y)%mod; // not good practice
+    cout << z;
+    return 0;
+}
+// Program to demonstrate proper
+// ways of taking remainders.
+#include <iostream>
+#define mod 1000000007
+using namespace std;
+  
+int main()
+{
+    long long int x, y, z;
+    cin >> x >> y >> z;
+  
+    // good practice
+    z = ((z%mod) + ((x%mod)*(y%mod))%mod) % mod;
+    cout << z;
+    return 0;
+}
+// Program to demonstrate proper
+// ways of taking remainders.
+#include <iostream>
+#define mod 1000000007
+using namespace std;
+  
+int main()
+{
+    long long int x, y, z;
+    cin >> x >> y >> z;
+  
+    // good practice
+    z = ((z%mod) + ((x%mod)*(y%mod))%mod) % mod;
+    cout << z;
+    return 0;
+}
+/ C++ program to demonstrate fast input and output
+  
+// use long long x = fast_input(); to read in x
+inline long long int fast_input(void)
+{
+    char t;
+    long long int x=0;
+    long long int neg=0;
+    t = getchar();
+    while ((t<48 || t>57) && t!='-')
+        t = getchar();
+    if (t == '-') //handle negative input
+    {
+        neg = 1;
+        t = getchar();
+    }
+    while (t>=48 && t<=57)
+    {
+        x = (x<<3) + (x<<1) + t - 48;
+  
+        // x<<3 means 8*x and x<<1 means 2*x so we
+        // have x = 10*x+(t - 48)
+        t = getchar();
+    }
+  
+    if (neg)
+        x = -x;
+    return x;
+}
+  
+  
+// use fast_output(x, 0); to print x and a newline
+// use fast_output(x, 1); to print x and a ' ' after
+// the x
+inline void fast_output(long long int x, int mode)
+{
+    char a[20];
+    long long int i=0, j;
+    a[0] = '0';
+    if (x < 0)
+    {
+        putchar('-');
+        x = -x;
+    }
+    if (x==0)
+       putchar('0');
+    while (x)
+    {
+        // convert each digit to character and
+        // store in char array
+        a[i++] = x%10 + 48;
+        x /= 10;
+    }
+  
+    // print each character from the array
+    for (j=i-1; j>=0; j--)
+        putchar(a[j]);
+  
+    if (mode == 0)
+       putchar('\n');
+    else putchar(' ');
+}
+
