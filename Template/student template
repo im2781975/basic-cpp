@@ -1,0 +1,35 @@
+// student template
+#include <bits/stdc++.h>
+using namespace std;
+ 
+template <typename t>
+class student {
+private:
+    string student_name;
+    t total_marks;
+ 
+public:
+    student();
+    // parameterized constructor
+    student(string n, t m)
+    {
+        student_name = n;
+        total_marks = m;
+    }
+    void getinfo()
+    {
+        cout << "STUDENT NAME: "<< student_name <<"\n";
+        cout << "TOTAL MARKS: " << total_marks <<"\n";
+        cout << "Type ID: " << typeid(total_marks).name() <<"\n";
+    }
+};
+int main()
+{
+    student<int> s1("vipul", 100);
+    student<int> s2("yash", 100.0);
+ 
+    s1.getinfo();
+    s2.getinfo();
+ 
+    return 0;
+}
