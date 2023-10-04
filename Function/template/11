@@ -1,0 +1,16 @@
+#include<iostream>
+  
+template<typename T>
+void printList(std::initializer_list<T> text)
+{
+    for (const auto & value: text)
+        std::cout << value << " ";
+}
+  
+// Driver program
+int main()
+{
+    // Initialization list
+    printList( {"One", "Two", "Three"} );
+    return 0;
+}
