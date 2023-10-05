@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std; 
+template <typename T>
+void fun(const T& x) 
+{ 
+  static int i = 10; 
+  cout << ++i<<"\n";
+  return; 
+} 
+int main() 
+{     
+  //prints 11
+  fun<int>(1);
+  
+  //prints 12
+  fun<int>(2);
+  
+  //prints 11
+  fun<int>(10);
+  
+  //prints 11
+  fun<double>(1.1);
+
+  return 0; 
+} 
