@@ -1,0 +1,110 @@
+/ C++ program to demonstrate 
+// not1 function template 
+
+  
+#include <bits/stdc++.h> 
+
+using namespace std; 
+
+  
+
+struct pred { 
+
+    bool operator()(const int i) const
+
+    { 
+
+        return (i % 2 == 0); 
+
+    } 
+
+  
+
+    // defines argument_type for unary functor 
+
+    // it is begin used by not1 
+
+    // as argument_type 
+
+    typedef int argument_type; 
+}; 
+
+  
+// Driver code 
+
+int main() 
+{ 
+
+    vector<int> odd{ 1, 2, 3, 4, 5, 
+
+                     6, 7, 8, 9, 10 }; 
+
+  
+
+    // simple pred functor use 
+
+    // it removes even numbers 
+
+    auto end 
+
+        = remove_if(odd.begin(), 
+
+                    odd.end(), 
+
+                    pred()); 
+
+  
+
+    odd.resize(distance(odd.begin(), end)); 
+
+  
+
+    cout << "removal of even elements: "; 
+
+    for (int i = 0; i < odd.size(); i++) { 
+
+        cout << odd[i] << " "; 
+
+    } 
+
+    cout << "\n"; 
+
+  
+
+    vector<int> even{ 1, 2, 3, 4, 5, 
+
+                      6, 7, 8, 9, 10 }; 
+
+  
+
+    // complement of pred using not1 
+
+    // which removes odd numbers 
+
+    end 
+
+        = remove_if(even.begin(), 
+
+                    even.end(), 
+
+                    not1(pred())); 
+
+  
+
+    even.resize(distance(even.begin(), end)); 
+
+  
+
+    cout << "removal of odd elements: "; 
+
+    for (int i = 0; i < even.size(); i++) { 
+
+        cout << even[i] << " "; 
+
+    } 
+
+  
+
+    return 0; 
+} 
+ 
