@@ -3,7 +3,7 @@ using namespace std;
 int main ()
 {
     int* p = NULL;
- //Request memory for the variable using new operator
+//you can use "new (nothrow)" when allocating memory to prevent an exception from being thrown if the allocation fails for shortes memory in heap for continue the code.
     p = new(nothrow) int;
     if (!p)
         cout << "allocation of memory failed\n";
@@ -12,7 +12,6 @@ int main ()
         *p = 29;
         cout << "Value of p: " << *p <<"\n";
     }
-//Request block of memory using new operator
     float *r = new float(75.25);
     cout << "Value of r: " << *r << "\n";
 //Request block of memory of size n
