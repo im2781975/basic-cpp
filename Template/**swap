@@ -1,0 +1,32 @@
+// create a function template that prints the swap of two numbers.
+ 
+#include<iostream>
+using namespace std;
+ 
+template<class T>
+void swap(T &a,T &b)
+{
+    T temp;
+    temp=a;
+    a=b;
+    b=temp;
+}
+ 
+main()
+{
+  int a=10,b=20;
+  double x=20.3,y=55.3;
+  
+  cout<<endl<<"Before Swap"<<endl;
+  cout<<endl<<"A="<<a<<"\t"<<"B="<<b;
+  cout<<endl<<"X="<<x<<"\t"<<"B="<<y;
+   
+   swap(a,b);
+   swap(x,y);
+    
+  cout<<endl<<endl<<"After Swap"<<endl;
+  cout<<endl<<"A="<<a<<"\t"<<"B="<<b;
+  cout<<endl<<"X="<<x<<"\t"<<"B="<<y;
+   
+    return 0;
+}
