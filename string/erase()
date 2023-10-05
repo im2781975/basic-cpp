@@ -1,0 +1,55 @@
+
+// CPP program to illustrate the
+// unordered_set::erase() function
+ 
+#include <iostream>
+#include <string>
+#include <unordered_set>
+ 
+
+using namespace std;
+ 
+
+int main()
+{
+ 
+
+    unordered_set<string> sampleSet = { "geeks1", "for", "geeks2" };
+ 
+
+    // erases a particular element
+
+    sampleSet.erase("geeks1");
+ 
+
+    // displaying the set after removal
+
+    cout << "Elements: ";
+
+    for (auto it = sampleSet.begin(); it != sampleSet.end(); it++) {
+
+        cout << *it << " ";
+
+    }
+ 
+
+    sampleSet.insert("geeks1");
+
+    // erases from where for is
+
+    sampleSet.erase(sampleSet.find("for"), sampleSet.end());
+ 
+
+    // displaying the set after removal
+
+    cout << "\nAfter second removal set : ";
+
+    for (auto it = sampleSet.begin(); it != sampleSet.end(); it++) {
+
+        cout << *it << " ";
+
+    }
+ 
+
+    return 0;
+}
