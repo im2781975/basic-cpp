@@ -4,11 +4,11 @@ using namespace std;
 int main()
 {
     try  {
-       throw 10;
+       throw 'a';
     }
-    catch (char *excp)  {
-        cout << "Caught " << excp;
-    }
+   catch (char *excp)  {cout << "Caught " << excp;}
+    //catch (int excp) {
+        //cout << "Caught " << excp << endl;
     catch (...)  {
         cout << "Default Exception\n";
     }
