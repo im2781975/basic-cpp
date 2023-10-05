@@ -1,0 +1,106 @@
+// C++ program to illustrate the
+// unordered_set::rehash()
+#include <iostream>
+#include <string>
+#include <unordered_set>
+ 
+
+using namespace std;
+ 
+
+int main()
+{
+
+    // declaration
+
+    unordered_set<string> us;
+ 
+
+    // rehashed
+
+    us.rehash(9);
+ 
+
+    // insert elements
+
+    us.insert("geeks");
+
+    us.insert("for");
+
+    us.insert("geeks");
+
+    us.insert("users");
+ 
+
+    for (auto it = us.begin(); it != us.end(); it++) {
+
+        cout << *it << " ";
+
+    }
+ 
+
+    cout << "\nThe bucket count is "
+
+         << us.bucket_count();
+ 
+
+    return 0;
+}
+// C++ program to illustrate the
+// unordered_set::rehash()
+#include <iostream>
+#include <string>
+#include <unordered_set>
+ 
+
+using namespace std;
+ 
+
+int main()
+{
+
+    // declaration
+
+    unordered_set<string> us;
+ 
+
+    // rehash the unordered_set
+
+    us.rehash(20);
+ 
+
+    // insert strings
+
+    us.insert("geeks");
+
+    us.insert("for");
+
+    us.insert("geeks");
+
+    us.insert("users");
+
+    us.insert("are");
+
+    us.insert("experts");
+
+    us.insert("in");
+
+    us.insert("DS");
+ 
+
+    // prints the elements
+
+    for (auto it = us.begin(); it != us.end(); it++) {
+
+        cout << *it << " ";
+
+    }
+ 
+
+    cout << "\nThe bucket count is "
+
+         << us.bucket_count();
+ 
+
+    return 0;
+}
