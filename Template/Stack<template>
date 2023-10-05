@@ -1,0 +1,99 @@
+// Implement stack using Class Templates.
+#include <bits/stdc++.h>
+using namespace std;
+#define SIZE 5
+// Class is To represent stack using template
+template <class T> class Stack {
+    public:
+    Stack();
+    void push(T k);
+//To remove top element from stack using pop() operatio
+    T pop();
+    
+// To print top element in stack using peek() method
+    T topElement();
+    
+//To check whether stack is full using isFull() method
+    bool isFull();
+ 
+//To check whether stack is empty using isEmpty() method
+    bool isEmpty();
+ 
+    private:
+    int top;
+    T st[SIZE];
+};
+//To initialise top to -1(default constructor)
+
+template <class T> Stack<T>::Stack() { top = -1; }
+
+template <class T> void Stack<T>::push(T k)
+{
+    if (isFull()) {
+        cout << "Stack is full\n";
+    }
+    cout << "Inserted element " << k <<"\n";
+
+    top = top + 1;
+    
+    // Now, adding element to stack
+    st[top] = k;
+}
+// To check if the stack is empty
+template <class T> bool Stack<T>::isEmpty()
+{
+    if (top == -1)
+        return 1;
+
+    else
+        return 0;
+}
+// To check if the stack is full or not
+template <class T> bool Stack<T>::isFull()
+{
+    // Till top in inside the stack
+    if (top == (SIZE - 1))
+        return 1;
+
+    else
+ // As top can not exceeds the sz;
+        return 0;
+}
+template <class T> T Stack<T>::pop()
+{
+    T popped_element = st[top];
+    
+    top--;
+    
+    return popped_element;
+}
+template <class T> T Stack<T>::topElement()
+{
+    T top_element = st[top];
+    return top_element;
+}
+int main()
+{// Creating object of Stack class in main() method
+    Stack<int> integer_stack;
+    Stack<string> string_stack;
+ 
+    integer_stack.push(2);
+    integer_stack.push(54);
+    integer_stack.push(255);
+ 
+    string_stack.push("Welcome");
+    string_stack.push("to");
+    string_stack.push("GeeksforGeeks");
+ 
+    cout<<integer_stack.pop()<<" is removed from stack"<<"\n";
+ 
+    cout << string_stack.pop() << " is removed from stack "
+    <<"\n";
+ 
+    cout << "Top element is " << integer_stack.topElement()
+    <<"\n";
+ 
+    cout << "Top element is " << string_stack.topElement()
+    <<"\n";
+    return 0;
+}
