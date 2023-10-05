@@ -1,0 +1,63 @@
+// CPP program to illustrate 
+// unordered_set::emplace_hint() function 
+#include <iostream> 
+#include <unordered_set> 
+
+using namespace std; 
+ 
+// main program 
+
+int main() 
+{ 
+ 
+
+    // Initialize an unordered_set 
+
+    unordered_set<int> uset = { 20, 40, 50, 60 }; 
+ 
+
+    // Insert an element that is not present 
+
+    uset.emplace_hint(uset.begin(), 80); 
+ 
+
+    // Display uset 
+
+    cout << "uset: "; 
+
+    for (auto it = uset.begin(); it != uset.end(); it++) 
+
+        cout << *it << " "; 
+} 
+// CPP program to illustrate 
+// unordered_set::emplace_hint() function 
+#include <iostream> 
+#include <unordered_set> 
+
+using namespace std; 
+ 
+// main program 
+
+int main() 
+{ 
+ 
+
+    // Initialize an unordered_set 
+
+    unordered_set<int> uset = { 20, 40, 50, 60 }; 
+ 
+
+    // Try to Insert an element that is not present 
+
+    uset.emplace_hint(uset.begin(), 50); 
+ 
+
+    // Display uset 
+
+    cout << "uset: "; 
+
+    for (auto it = uset.begin(); it != uset.end(); it++) 
+
+        cout << *it << " "; 
+} 
+
