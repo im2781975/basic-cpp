@@ -3,9 +3,8 @@ using namespace std;
  
 int main()
 {
-   int x = -1;
- 
-   // Some code
+   int x = -7;
+
    cout << "Before try \n";
    try {
       cout << "Inside try \n";
@@ -18,7 +17,6 @@ int main()
    catch (int x ) {
       cout << "Exception Caught \n";
    }
- 
    cout << "After catch (Will be executed) \n";
    return 0;
 }
