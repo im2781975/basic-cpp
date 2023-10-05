@@ -1,0 +1,35 @@
+
+// C++ program to demonstrate 
+// not2 function template 
+
+  
+#include <bits/stdc++.h> 
+
+using namespace std; 
+
+  
+
+int main() 
+{ 
+
+    vector<int> vec{ 4, 2, 7, 9, 3, 5, 10, 6 }; 
+
+  
+
+    // simple use of not2 just provide binary 
+
+    // functor and it will return it complement 
+
+    sort(vec.begin(), vec.end(), not2(less<int>())); 
+
+  
+
+    for (int i = 0; i < vec.size(); i++) { 
+
+        cout << vec[i] << " "; 
+
+    } 
+
+    return 0; 
+} 
+ 
