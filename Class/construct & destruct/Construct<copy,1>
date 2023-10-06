@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+class student {
+    int rno;
+    string name;
+    double fee;
+ 
+public:
+    student(int, string, double);
+    
+    // copy constructor
+    student(student& t) 
+    {
+        rno = t.rno;
+        name = t.name;
+        fee = t.fee;
+    }
+    void display();
+};
+student::student(int no, string n, double f)
+{
+    rno = no;
+    name = n;
+    fee = f;
+}
+void student::display()
+{
+    cout <<"\n"<< rno << "\t" << name << "\t" << fee;
+}
+int main()
+{
+    student s(1001, "MOLLA", 10000);
+    s.display();
+    // copy constructor called
+    student Molla(s);
+    Molla.display();
+    return 0;
+}
