@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+class student
+{
+    int rno;
+    char name[50];
+    double fee;
+ 
+    public:
+    student(int,char[],double);
+    void display();
+     
+};
+student::student(int no,char n[],double f)
+{
+    rno=no;
+    strcpy(name,n);
+    fee=f;
+}   
+void student::display()
+{
+    cout<<"\n"<<rno<<" "<<name<<" "<<fee;
+}
+int main()
+{
+    student s(1001,"MOLLA",10000);
+    s.display();
+    return 0;
+}
