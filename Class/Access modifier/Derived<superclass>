@@ -1,0 +1,33 @@
+// A class that is derived from another class is called a subclass (also a derived class, extended class, or child class). The class from which the subclass is derived is called a superclass (also a base class or a parent class).
+#include <iostream>
+using namespace std;
+// Superclass
+class Base {
+public:
+//In c++, non-virtual by default Method of superclass
+    void show()
+    {
+        cout << "Base::show() called";
+    }
+};
+
+class Derived : public Base {
+public:
+    // Method of subclass
+    void show()
+    {
+        cout << "Derived::show() called";
+    }
+};
+
+int main()
+{
+    // Creating object of subclass with different reference
+    Derived d;
+    Base& b = d;
+    b.show();
+ 
+    getchar();
+    return 0;
+}
+
