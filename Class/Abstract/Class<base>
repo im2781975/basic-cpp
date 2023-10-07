@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    // pure virtual function
+    virtual void show() = 0;
+};
+
+class Derived : public Base {
+};
+
+int main(void)
+{
+    // Error: Cannot instantiate an object of an abstract class
+    Derived d;
+
+    return 0;
+}
+
