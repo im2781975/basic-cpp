@@ -1,0 +1,21 @@
+//Run Time Type Identification(RTTI).but without virtual function
+#include <iostream>
+using namespace std;
+
+class B {};
+
+class D : public B {};
+
+int main()
+{
+    B* b = new D;  pointer
+    D* d = dynamic_cast<D*>(b);
+    // Derived class pointer
+    if (d != NULL)
+        cout << "works";
+    else
+        cout << "cannot cast B* to D*";
+    getchar(); 
+    // to get the next character
+    return 0;
+}
