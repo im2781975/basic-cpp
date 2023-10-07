@@ -1,0 +1,11 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    //we should use 1LL or 1ll here
+    // instead of 1. The correct statement
+    // is "long long int z = 1LL << 40;"
+    long long int z = 1 << 40;
+    cout << z;
+    return 0;
+}
