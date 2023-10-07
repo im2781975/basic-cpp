@@ -1,0 +1,13 @@
+#include <iostream>
+#define mod 1000000007
+using namespace std;
+  
+int main()
+{
+    long long int x, y, z;
+    cin >> x >> y >> z;
+    z = (z + x*y)%mod; 
+    // not good practice
+    cout << z;
+    return 0;
+}
