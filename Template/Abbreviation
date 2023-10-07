@@ -1,19 +1,22 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-//integral means integers.
-template <typename T
-concept C = is_integral_v<T>;
+
+// Integral concept for integers.
+template <typename T>
+concept Integral = is_integral_v<T>;
 
 // Function template with constrained auto
-auto getsum(C auto value1, C auto value2)
+template <Integral T>
+T getsum(T value1, T value2)
 {
     return value1 + value2;
 }
+
 int main()
 {
     int result = getsum(3, 6);
 
-    cout << "The sum is: " << result <<"\n";
+    cout << "The sum is: " << result << "\n";
 
     return 0;
 }
