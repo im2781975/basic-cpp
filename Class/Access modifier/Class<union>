@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+class student {
+    public:
+    string name;
+    union {
+        int standard;
+        char section;
+    };
+};
+  
+int main()
+{
+    student s1;
+    s1.name = "geek";
+  
+    cout<<"Name : "<<s1.name<<"\n";
+  
+    s1.standard = 9;
+    cout << "Standard : "<< s1.standard <<"\n";
+    s1.section = 'D';
+    cout << "Section : " << s1.section <<"\n";
+  
+    return 0;
+}
