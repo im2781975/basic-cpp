@@ -1,0 +1,13 @@
+#include <iostream>
+#define lli long long int
+using namespace std;
+int main()
+{
+    lli x = 1000000;
+    lli y = 1000000;
+  
+    lli z = 1LL*x*y;
+  
+    cout << z;
+    return 0;
+}
