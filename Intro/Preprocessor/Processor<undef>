@@ -1,6 +1,6 @@
 #include<iostream>
  
-#define gfg 7
+#define gfg 50
   
 #if gfg > 200
    #undef gfg
