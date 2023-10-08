@@ -1,8 +1,7 @@
-// C++ program to demonstrate nesting of namespaces
+// nesting of namespaces
 #include <iostream>
 using namespace std;
- 
-// Nested namespace
+
 namespace out
 {
   int val = 5;
@@ -11,10 +10,9 @@ namespace out
       int val2 = val;   
   }
 }
- 
-// Driver code
+
 int main()
 {
-  cout << out::in::val2;   // prints 5
+  cout << out::in::val2;
   return 0;
 }
