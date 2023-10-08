@@ -1,7 +1,6 @@
 // C Program to illustrate function like macros
 #include <stdio.h>
  
-// macro with parameter
 #define AREA(l, b) (l * b)
  
 int main()
@@ -14,3 +13,4 @@ int main()
  
     return 0;
 }
+
