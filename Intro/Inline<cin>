@@ -1,4 +1,6 @@
-// Fast input function
+#include<bits/stdc++.h>
+using namespace std;
+//Fast input function
 inline long long int fast_input(void)
 {
     char t;
