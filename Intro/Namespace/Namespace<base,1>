@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+namespace first
+{
+  void func()
+  {
+     cout<< "Inside first_space"<<"\n";
+  }
+  namespace second
+  {
+     void func()
+     {
+        cout << "Inside second_space" <<"\n";
+     }
+  }
+}
+int main ()
+{
+      first::second::func();
+      
+}
