@@ -1,5 +1,3 @@
-// C++ program to demonstrate working
-// of "using" to get the same effect as
 // inline.
 #include <iostream>
 using namespace std;
@@ -10,10 +8,10 @@ namespace ns2 {
         int var = 10;
     }
     using namespace ns3;
-} // namespace ns2
+} 
   
 using namespace ns2;
-} // namespace ns1
+} 
   
 int main()
 {
