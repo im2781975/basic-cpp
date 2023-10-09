@@ -1,18 +1,12 @@
-// C++ program to demonstrate range based for
-// loops for accessing vector and array elements
+// range based for loops 
 #include<iostream>
 #include <vector>
 using namespace std;
   
 int main()
 {
-    // Create a vector object that
-    // contains 5 elements
     vector<int> vec = {0, 1, 2, 3, 4};
-  
-    // Type inference by reference using auto.
-    // Range based loops are preferred when no
-    // modification is needed in value
+ 
     for (const auto &value : vec)
         cout << value << ' ';
   
@@ -24,4 +18,4 @@ int main()
         cout << value << " ";
   
     return 0;
-}
+} 
