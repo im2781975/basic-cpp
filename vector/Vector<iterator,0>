@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main()
+{
+    vector<int>v{ 1, 2, 3, 4, 5 };
+ 
+    vector<int>::iterator i1;
+    vector<int>::iterator i2;
+
+    i1 = v.begin();
+    i2 = v.end();
+ 
+    if (i1 < i2) {
+        cout << "Yes";
+    }
+ 
+    int count = i2 - i1;
+ 
+    cout << "\ncount = " << count;
+    return 0;
+}
