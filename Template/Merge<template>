@@ -1,0 +1,43 @@
+// unordered_set::operator=() 
+#include <iostream> 
+#include <unordered_set> 
+
+using namespace std; 
+template <class T>T merge(T a, T b)
+{ 
+    T t(a); 
+    t.insert(b.begin(), b.end()); 
+    return t; 
+} 
+
+int main() 
+{ 
+
+    unordered_set<int> sample1, sample2, sample3; 
+
+    sample1 = { 7, 8, 9 }; 
+    sample2 = { 9, 10, 11, 12 }; 
+
+    sample3 = merge(sample1, sample2); 
+ //copy
+    sample1 = sample3; 
+ 
+    for (auto it = sample1.begin(); it != sample1.end(); ++it) 
+
+        cout << *it << " "; 
+
+    cout << "\n"; 
+ 
+
+    for (auto it = sample2.begin(); it != sample2.end(); ++it) 
+
+        cout << *it << " "; 
+
+    cout << "\n"; 
+ 
+    for (auto it = sample3.begin(); it != sample3.end(); ++it) 
+
+        cout << *it << " "; 
+
+    cout <<"\n"; 
+} 
