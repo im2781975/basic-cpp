@@ -1,19 +1,15 @@
-// C++ program to demonstrate Random Access iterator
 #include <iostream>
 #include <vector>
 using namespace std;
 int main()
 {
-    vector<int> v1 = { 1, 2, 3, 4, 5 };
- 
-    // Declaring an iterator
+    vector<int> v1{1, 2, 3, 4, 5 };
     vector<int>::iterator i1;
  
-    // Accessing the elements from end using decrement
-    // operator
     for (i1 = v1.end() - 1; i1 != v1.begin() - 1; --i1) {
  
         cout << (*i1) << " ";
     }
     return 0;
 }
+
