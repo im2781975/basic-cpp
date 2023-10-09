@@ -1,0 +1,27 @@
+/*not2: This function takes binary functor as argument and returns complement functor of it.
+Syntax:
+template <class Predicate> 
+  binary_negate<Predicate> 
+    not2 (const Predicate& pred)
+{
+  return binary_negate<Predicate>(pred);
+}
+Parameters: The function accepts one mandatory parameter pred which specifies the binary function object to be negated.
+
+Return Value: The function returns the negated binary object.
+
+// not2 function template */
+#include <bits/stdc++.h> 
+using namespace std; 
+
+int main() 
+{ 
+    vector<int> vec{ 4, 2, 7, 9, 3, 5, 10, 6 }; 
+
+    sort(vec.begin(), vec.end(), not2(less<int>())); 
+
+    for (int i = 0; i < vec.size(); i++) { 
+        cout << vec[i] << " "; 
+    } 
+    return 0;
+} 
