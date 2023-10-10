@@ -1,0 +1,18 @@
+// unordered_set::max_load_factor() function 
+#include <iostream> 
+#include <unordered_set> 
+ 
+using namespace std; 
+int main() 
+{ 
+    unordered_set<int>uset{1,5,4,7 }; 
+    
+    cout << "Maximum load factor of uset: "<<uset.max_load_factor()<<"\n";
+ 
+    cout << "Current load factor of uset: "<< uset.load_factor()<<"\n";
+    
+    uset.max_load_factor(0.5); 
+    cout << "New Maximum load factor of uset: "<<uset.max_load_factor() <<"\n";
+    
+       cout << "Current load factor of uset: "<< uset.load_factor()<<"\n";
+} 
