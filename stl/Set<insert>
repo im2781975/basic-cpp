@@ -1,0 +1,28 @@
+// unordered_set::insert()
+#include <array>
+#include <iostream>
+#include <string>
+#include <unordered_set>
+
+using namespace std;
+int main()
+{
+    unordered_set<std::string> mySet{"first","third", "second" };
+
+    array<std::string,2> myArray = { "tenth", "seventh"};
+
+    string myString = "ninth";
+ 
+    mySet.insert(myString);
+    
+    mySet.insert(myArray.begin(), myArray.end());
+ 
+    mySet.insert({"fourth","sixth" });
+    cout<<"myset contains:"<<"\n";
+
+    for (const string& x : mySet) {
+        cout << x<<" ";
+    }
+    cout << "\n";
+    return 0;
+}
