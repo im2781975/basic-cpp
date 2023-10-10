@@ -1,0 +1,18 @@
+// unordered_set::find() function
+#include <iostream> 
+#include <string> 
+#include <unordered_set> 
+ 
+using namespace std; 
+int main() 
+{ 
+    unordered_set<string>sampleSet={"geeks1","for","geeks2"}; 
+    if (sampleSet.find("geeks1") != sampleSet.end()) 
+    { 
+        cout<<"element found"<<"\n";
+    } 
+    else { 
+        cout << "element not found" << "\n";
+    } 
+    return 0; 
+} 
