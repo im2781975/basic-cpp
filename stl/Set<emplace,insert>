@@ -1,0 +1,23 @@
+// unordered_set::emplace() function
+#include <iostream>
+#include <unordered_set>
+ 
+using namespace std;
+int main()
+{
+    unordered_set<int> sampleSet;
+ 
+    sampleSet.emplace(5);
+    sampleSet.emplace(10);
+    sampleSet.emplace(15);
+    sampleSet.emplace(20);
+    sampleSet.emplace(25);
+ 
+    cout <<"sampleSet contains: ";
+
+    for (auto itr = sampleSet.begin(); itr != sampleSet.end(); itr++) {
+        cout << *itr << " ";
+
+    }
+    return 0;
+}
