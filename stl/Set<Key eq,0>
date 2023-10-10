@@ -1,0 +1,22 @@
+#include <iostream> 
+#include <string> 
+#include <unordered_set> 
+
+using namespace std; 
+int main() 
+{ 
+    unordered_set<string> mp; 
+    
+    bool r =mp.key_eq()("10","10");
+    cout << "strings are "; 
+
+    if (r == 1) 
+    { 
+        cout << "same"; 
+    } 
+    else { 
+        cout << "not same"; 
+    } 
+    cout << "\n"; 
+    return 0; 
+} 
