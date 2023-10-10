@@ -1,0 +1,26 @@
+//unordered_set::bucket_size() function
+#include <iostream>
+#include <unordered_set>
+
+using namespace std;
+int main()
+{
+    unordered_set<int> sampleSet;
+    
+    int bucketCount;
+    
+    sampleSet.insert(5);
+    sampleSet.insert(10);
+    sampleSet.insert(15);
+    sampleSet.insert(20);
+    sampleSet.insert(25);
+    
+    bucketCount = sampleSet.bucket_count();
+
+    cout <<"sampleSet has "<< bucketCount <<" buckets\n";
+ 
+    cout <<"Bucket number 3 contains "<<sampleSet.bucket_size(3) <<" elements";
+ 
+
+    return 0;
+}
