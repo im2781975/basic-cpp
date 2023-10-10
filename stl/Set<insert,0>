@@ -1,0 +1,40 @@
+// unordered_set::insert() return values
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void display_elements(unordered_set<int> &u_set) 
+{
+
+  cout<<"the elements int the unordered set are: ";
+  for(auto it:u_set)
+  {
+    cout<<it <<" ";
+  }
+  cout<< "\n";
+}
+int main() {
+    unordered_set<int> u_set;
+      cout<<"u_set.insert(1).second: "<<u_set.insert(1).second<<"\n"; 
+      //on successful insertion it's true else false.
+
+      cout<<"*(u_set.insert(1).first): "<<*(u_set.insert(1).first)<< "\n"; 
+
+      //first is the iterator to the inseted element, if the element not present in the u_set, 
+
+    //if the element already in the u_set, then it points to that element
+    cout<<"u_set.insert(1).second: "<<u_set.insert(1).second<<"\n" ;
+
+      cout<<"*(u_set.insert(1).first): "<<*(u_set.insert(1).first)<<"\n" ;
+
+       
+
+    cout<<"u_set.insert(2).second: "<<u_set.insert(2).second<<"\n"; //on successful insertion it's true else false.
+
+      cout<<"*(u_set.insert(2).first): "<<*(u_set.insert(2).first)<<"\n"; 
+
+      display_elements(u_set);
+
+      return 0;
+}
