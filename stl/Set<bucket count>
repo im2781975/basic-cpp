@@ -1,0 +1,39 @@
+// unordered_set::load_factor() function 
+#include <iostream> 
+#include <unordered_set> 
+using namespace std; 
+
+int main() 
+{ 
+    unordered_set<int> sample; 
+ 
+    sample.insert(1); 
+    sample.insert(11); 
+    sample.insert(111); 
+    sample.insert(12); 
+    sample.insert(13); 
+    
+    cout << "The size is: " << sample.size()<<"\n";
+
+    cout <<"The bucket_count is: "
+         <<sample.bucket_count()<<"\n";
+ 
+    cout<<"The load factor is: "<<sample.load_factor()<<"\n";
+ 
+    sample.insert(2); 
+    sample.insert(22); 
+    cout<<"After insertion size is The size is: "<<sample.size()<<"\n";
+ 
+    cout <<"After insertion bucket count is: " << sample.bucket_count()<<"\n";
+    
+    cout <<"After insertion load factor is: " <<sample.load_factor()<<"\n" ;
+ 
+    sample.insert(33); 
+ 
+    cout<<"After insertion size is The size is: "<<sample.size()<<"\n";
+
+    cout <<"After insertion bucket count is: " << sample.bucket_count()<<"\n";
+ 
+    cout <<"After insertion load factor is: " <<sample.load_factor()<<"\n" ;
+    return 0; 
+} 
