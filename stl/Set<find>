@@ -1,0 +1,27 @@
+//unordered_set
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main()
+{
+    unordered_set<string>stringSet;
+
+    stringSet.insert("code");
+    stringSet.insert("in");
+    stringSet.insert("c++");
+    stringSet.insert("is");
+    stringSet.insert("fast");
+ 
+    string key = "slow";
+
+    if (stringSet.find(key) == stringSet.end())
+        cout<<"'"<<key<<"' isn't found"<<"\n";
+    else
+        cout<<"Found '"<< key<<"'\n";
+
+    cout << "Elements are : ";
+    unordered_set<string>::iterator itr;
+    for (itr = stringSet.begin(); itr != stringSet.end();
+         itr++)
+        cout << (*itr) <<" ";
+}
