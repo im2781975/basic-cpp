@@ -1,0 +1,27 @@
+// working of erase
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main()
+{
+    int arr[] = { 5, 10, 15, 20, 20, 23, 42, 45 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    vector<int> vect(arr, arr + n);
+ 
+    cout << "Vector is: ";
+    for (int i = 0; i < n; i++)
+        cout << vect[i] << " ";
+ 
+    vect.erase(find(vect.begin(),vect.end(),10));
+    cout << "\nVector after erasing element: ";
+    for (int i = 0; i < vect.size(); i++)
+        cout << vect[i] << " ";
+ 
+    vect.erase(unique(vect.begin(), vect.end()),
+               vect.end());
+    cout << "\nVector after removing duplicates: ";
+    for (int i = 0; i < vect.size(); i++)
+        cout << vect[i] << " ";
+ 
+    return 0;
+}
