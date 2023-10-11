@@ -1,10 +1,8 @@
-// CPP Program to demonstrate make_pair()
 // function in pair
 #include <iostream>
 #include <utility>
 using namespace std;
  
-// Driver Code
 int main()
 {
     pair<int, char> PAIR1;
@@ -17,13 +15,13 @@ int main()
     PAIR3 = make_pair("GeeksForGeeks is Best", 4.56);
  
     cout << PAIR1.first << " ";
-    cout << PAIR1.second << endl;
+    cout << PAIR1.second << "\n";
  
     cout << PAIR2.first << " ";
-    cout << PAIR2.second << endl;
- 
+    cout << PAIR2.second << "\n";
+
     cout << PAIR3.first << " ";
-    cout << PAIR3.second << endl;
+    cout << PAIR3.second << "\n";
  
     return 0;
 }
