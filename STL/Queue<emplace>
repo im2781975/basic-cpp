@@ -1,6 +1,4 @@
-/ CPP program to illustrate
-// Implementation of emplace() function
-  
+//emplace() function
 #include <bits/stdc++.h>
 using namespace std;
   
@@ -13,14 +11,11 @@ int main()
     pq.emplace(4);
     pq.emplace(5);
     pq.emplace(6);
-    // Priority queue becomes 1, 2, 3, 4, 5, 6
-  
-    // Printing the priority queue
-    cout << "Priority Queue = ";
+    
+    cout << "Priority Queue : ";
     while (!pq.empty()) {
         cout << pq.top() << " ";
         pq.pop();
     }
-  
     return 0;
 }
