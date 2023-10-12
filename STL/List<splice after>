@@ -5,19 +5,19 @@ using namespace std;
  
 int main()
 {
-    forward_list<int> flist1 = { 10, 20, 30 };
+    forward_list<int>list1={10,20, 30 };
  
-    forward_list<int> flist2 = { 40, 50, 60 };
+    forward_list<int>list2 = { 40, 50, 60 };
  
     // Shifting elements from first to second
     // forward list after 1st position
-    flist2.splice_after(flist2.begin(), flist1);
+    list2.splice_after(list2.begin(), list1);
  
-    cout << "The forward list after splice_after operation "
-            ": ";
-    for (int& c : flist2)
+    cout << "The forward list after splice_after operation : ";
+    for (int& c : list2)
         cout << c << " ";
-    cout << endl;
+    cout << "\n";
  
     return 0;
 }
+
