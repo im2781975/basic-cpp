@@ -12,13 +12,12 @@ int main()
  
     sort(vect.begin(), vect.end());
  
-    //Returns the first occurrence of 20
+    //Returns the first & last occurance
     auto q = lower_bound(vect.begin(), vect.end(), 20);
     
-    cout << "The lower bound is at position: "<< q-vect.begin() <<" \n";
- 
-    // Returns the last occurrence of 20
     auto p = upper_bound(vect.begin(), vect.end(), 20);
+    
+    cout << "The lower bound is at position: "<< q-vect.begin() <<" \n";
  
     cout << "The upper bound is at position: " <<p-vect.begin() << "\n";
  
