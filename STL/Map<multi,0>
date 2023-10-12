@@ -13,81 +13,60 @@ int main()
     gquiz1.insert(pair<int, int>(6, 50));
     gquiz1.insert(pair<int, int>(6, 10));
  
-    // printing multimap gquiz1
     multimap<int, int>::iterator itr;
-    cout << "The multimap gquiz1 is : \n";
-    cout << "\tKEY\tELEMENT\n";
+    cout << "The multimap gquiz1 is : ";
     for (itr = gquiz1.begin(); itr != gquiz1.end(); ++itr) {
-        cout << '\t' << itr->first << '\t' << itr->second
-             << '\n';
+        cout << itr->first << "->" << itr->second <<"\n";
     }
-    cout << endl;
+    cout << "\n";
  
     // adding elements randomly,
     // to check the sorted keys property
     gquiz1.insert(pair<int, int>(4, 50));
     gquiz1.insert(pair<int, int>(5, 10));
  
-    // printing multimap gquiz1 again
- 
-    cout << "\nThe multimap gquiz1 after adding extra "
-            "elements is : \n";
-    cout << "\tKEY\tELEMENT\n";
+    cout << "The multimap gquiz1 after adding extra elements is : \n";
     for (itr = gquiz1.begin(); itr != gquiz1.end(); ++itr) {
-        cout << '\t' << itr->first << '\t' << itr->second
-             << '\n';
+        cout << itr->first <<"->" << itr->second
+             << "\n";
     }
-    cout << endl;
+    cout << "\n";
  
     // assigning the elements from gquiz1 to gquiz2
     multimap<int, int> gquiz2(gquiz1.begin(), gquiz1.end());
  
-    // print all elements of the multimap gquiz2
-    cout << "\nThe multimap gquiz2 after assign from "
+    cout << "The multimap gquiz2 after assign from "
             "gquiz1 is : \n";
-    cout << "\tKEY\tELEMENT\n";
     for (itr = gquiz2.begin(); itr != gquiz2.end(); ++itr) {
-        cout << '\t' << itr->first << '\t' << itr->second
-             << '\n';
+        cout << itr->first <<"->" << itr->second
+             << "\n";
     }
-    cout << endl;
+    cout << "\n";
  
     // remove all elements up to
     // key with value 3 in gquiz2
-    cout << "\ngquiz2 after removal of elements less than "
-            "key=3 : \n";
-    cout << "\tKEY\tELEMENT\n";
+    cout << "gquiz2 after removal of elements less than key=3 : ";
     gquiz2.erase(gquiz2.begin(), gquiz2.find(3));
     for (itr = gquiz2.begin(); itr != gquiz2.end(); ++itr) {
-        cout << '\t' << itr->first << '\t' << itr->second
-             << '\n';
-    }
+        cout <<itr->first << "->" << itr->second
+             << "\n";
+    }cout<< "\n" ;
  
     // remove all elements with key = 4
     int num;
     num = gquiz2.erase(4);
-    cout << "\ngquiz2.erase(4) : ";
+    cout << "gquiz2.erase(4) : ";
     cout << num << " removed \n";
-    cout << "\tKEY\tELEMENT\n";
     for (itr = gquiz2.begin(); itr != gquiz2.end(); ++itr) {
-        cout << '\t' << itr->first << '\t' << itr->second
-             << '\n';
-    }
+        cout << itr->first <<"->" << itr->second <<"\n";
+    }cout << " \n";
  
-    cout << endl;
- 
-    // lower bound and upper bound for multimap gquiz1 key =
-    // 5
-    cout << "gquiz1.lower_bound(5) : "
-         << "\tKEY = ";
-    cout << gquiz1.lower_bound(5)->first << '\t';
-    cout << "\tELEMENT = " << gquiz1.lower_bound(5)->second
-         << endl;
-    cout << "gquiz1.upper_bound(5) : "
-         << "\tKEY = ";
-    cout << gquiz1.upper_bound(5)->first << '\t';
-    cout << "\tELEMENT = " << gquiz1.upper_bound(5)->second
-         << endl;
+    // lower bound and upper bound
+    cout<<"gquiz1.lower_bound(5): "<< gquiz1.lower_bound(5)->first <<"->"<< gquiz1.lower_bound(5)->second
+         << "\n";
+         
+    cout <<"gquiz1.upper_bound(5) : "<< gquiz1.upper_bound(5)->first  << gquiz1.upper_bound(5)->second
+         << "\n";
  
     return 0;
 }
