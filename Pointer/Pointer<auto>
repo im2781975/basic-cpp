@@ -1,0 +1,27 @@
+//use of auto_ptr
+#include <iostream>
+#include <memory>
+using namespace std;
+  
+class A {
+public:
+    void show() { cout << "A::show()" << "\n"; }
+};
+  
+int main()
+{
+    auto_ptr<A> p1(new A);
+    p1->show();
+  
+    cout <<"memory address is: "<<p1.get() << "\n";
+  
+    // copy constructor called, this makes p1 empty.
+    auto_ptr<A> p2(p1);
+    p2->show();
+  
+    cout <<"After copy memory address is :" <<p1.get() << "\n";
+  
+    cout << "Memory address of p2 is: "<<p2.get() << "\n";
+  
+    return 0;
+}
