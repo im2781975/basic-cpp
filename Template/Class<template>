@@ -1,0 +1,51 @@
+/* The array before sorting is : 1 5 8 9 6 7 3 4 2 0 
+The array after sorting is(asc) :0 1 2 3 4 5 6 7 8 9 
+The array after sorting is(desc) :9 8 7 6 5 4 3 2 1 0 
+The array after sorting is(asc but our comparator class) :0 1 2 3 4 5 6 7 8 9 
+The array after sorting is(asc but our comparator function) :0 1 2 3 4 5 6 7 8 9 */
+#include<bits/stdc++.h>
+using namespace std;
+template <class T>
+class Comparator 
+{
+    public:
+    bool operator()(T x1, T x2)
+    {
+        return x1 < x2;
+    }
+};
+template <class T> bool funComparator(T x1, T x2)
+{ 
+    return x1 <= x2;
+}
+void show(int a[], int array_size)
+{
+    for (int i = 0; i < array_size; i++) {
+        cout << a[i] << " ";
+    }
+}
+int main()
+{
+    int a[] = { 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
+    int asize = sizeof(a) / sizeof(int);
+    cout << "The array before sorting is : ";
+    show(a, asize);
+    cout << endl << "The array after sorting is(asc) :";
+    sort(a, a + asize);
+    show(a, asize);
+    cout << endl << "The array after sorting is(desc) :";
+    sort(a, a + asize, greater<int>());
+    show(a, asize);
+    cout << endl
+         << "The array after sorting is(asc but our "
+            "comparator class) :";
+    sort(a, a + asize, Comparator<int>());
+    show(a, asize);
+    cout << endl
+         << "The array after sorting is(asc but our "
+            "comparator function) :";
+    sort(a, a + asize, funComparator<int>);
+    show(a, asize);
+  
+    return 0;
+}
