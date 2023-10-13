@@ -1,0 +1,26 @@
+#include<iostream>
+#include<algorithm> 
+using namespace std;
+int main()
+{
+    int ar[6] = {1, 2, 3, 4, 5,-6};
+    cout<<"implementing using <all_of>: ";
+    all_of(ar, ar+6, [](int x) { return x>0; })?
+        cout << "All are positive elements\n" :
+        cout << "All are not positive elements\n";
+    
+    
+    cout<<"implementing using<any_of>: ";
+    any_of(ar, ar+6, [](int x){ return x<0; })?
+          cout << "There exists a negative element\n" :
+          cout << "All are positive elements\n";
+         
+         
+    int ar1[6];
+    copy_n(ar, 6, ar1);
+    cout << "implemention after using <copy_n>: ";
+    for (int i=0; i<6 ; i++)
+      { cout << ar1[i] << " ";}
+    cout<<"\n";
+    return 0;
+}
