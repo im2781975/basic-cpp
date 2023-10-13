@@ -1,21 +1,35 @@
-//emplace() function
-#include <bits/stdc++.h>
+//emplace()
+#include <iostream>
+#include <queue>
 using namespace std;
-  
+void print(priority_queue<int>&pq)
+{
+    cout << "Priority Queue: ";
+    while (!pq.empty()) {
+        cout << pq.top() << ' ';
+        pq.pop();
+    }
+    cout<<"\n";
+}
+
 int main()
 {
+    int arr[6]={10, 2, 4, 8, 6, 9};
     priority_queue<int> pq;
+    
+    for (int i = 0; i < 6; i++) {
+        pq.push(arr[i]);
+    }
+    print(pq);
+    pq = priority_queue<int>(); 
+    
+    // Clear the priority queue by 
     pq.emplace(1);
     pq.emplace(2);
     pq.emplace(3);
     pq.emplace(4);
     pq.emplace(5);
     pq.emplace(6);
-    
-    cout << "Priority Queue : ";
-    while (!pq.empty()) {
-        cout << pq.top() << " ";
-        pq.pop();
-    }
-    return 0;
+    print(pq);
+
 }
