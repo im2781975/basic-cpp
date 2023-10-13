@@ -13,9 +13,7 @@ void printUmm(unordered_multimap<string, int>& umm)
  
 int main()
 {
-    //Initialization by initializer list
-    unordered_multimap<string, int> umm
-    {{"apple", 1},{ "ball",2},{ "apple", 10},{ "cat", 7 },   { "dog", 9 },{ "cat", 6 },{ "apple", 1 }};
+    unordered_multimap<string, int> umm{{"apple", 1},{ "ball",2},{ "apple", 10},{ "cat", 7 },{ "dog", 9 },{ "cat", 6 },{ "apple", 1 }};
  
     auto it = umm.begin();
  
