@@ -1,0 +1,37 @@
+// unordered_set::insert() return values
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+//set didn't contain duplicates...
+void display_elements(unordered_set<int> &uset) 
+{
+  cout<<"the elements int the unordered set are: ";
+  for(auto it:uset)
+  {
+    cout<<it <<" ";
+  }
+  cout<< "\n";
+}
+int main() 
+{
+    unordered_set<int>uset;
+    cout<<"uset.insert(1).second: "<<uset.insert(1).second<<"\n"; 
+    
+      cout<<"*(uset.insert(1).first):"<<*(uset.insert()  .first)<< "\n"; 
+
+      //first is the iterator to the inseted element, if the element not present in the uset, 
+
+    //if the element already in the uset, then it points to that element
+    cout<<"uset.insert(1).second: "<<uset.insert(1).second<<"\n" ;
+
+      cout<<"*(uset.insert(1).first): "<<*(uset.insert(1).first)<<"\n" ;
+
+    cout<<"uset.insert(2).second: "<<uset.insert(2).second<<"\n"; //on successful insertion it's true else false.
+
+      cout<<"*(uset.insert(2).first): "<<*(uset.insert(2).first)<<"\n"; 
+
+      display_elements(uset);
+
+      return 0;
+}
