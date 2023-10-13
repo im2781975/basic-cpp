@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+struct student {
+    int stud_id;
+    int name_len;
+    int struct_size;
+    char stud_name[1]; 
+    // Variable length array must be last
+};
+
+// Memory allocation and initialization of structure
+student* createStudent(int id, const char* a) {
+    int nameLength = strlen(a);
+    student* s = (student*)malloc(sizeof(student) + nameLength);
+    
+    s->stud_id = id;
+    s->name_len = nameLength;
+    strcpy(s->stud_name, a);
+
+    s->struct_size = sizeof(student) + nameLength;
+
+    return s;
+}
+
+void printStudent(student* s) {
+    cout << "Student_id: "<< s->stud_id << "\n"<< "Stud_Name: " << s->stud_name << "\n"<< "Name_Length: " <<s->name_len << "\n"
+        << "Allocated_Struct_size: " << s->struct_size << "\n\n";
+}
+
+int main() {
+    student* s1;
+    student* s2;
+
+    s1 = createStudent(523, "Molla ");
+    s2 = createStudent(535, "Aslam");
+
+    printStudent(s1);
+    printStudent(s2);
+
+    // Size in bytes
+    std::cout << "Size of Struct student: " << sizeof(student) << "\n";
+    // Size in bytes (size of a pointer)
+    cout << "Size of Struct pointer: " << sizeof(s1) << "\n";
+
+    return 0;
+}
