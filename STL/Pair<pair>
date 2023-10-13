@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    /*pair<string,int>p;
+    p.first="abx";p.second=25;
+    pair<pair<string,string>,int>a;
+    a.first.first="ibrahim ";
+    a.first.second="Molla";
+    a.second=24;
+    cout<<a.first.first<<" "<<a.first.second<<" "<<a.second;*/
+    int i, n;
+    cin>>n;
+    vector<pair<pair<string,string>,int> >a;
+    for(i=1;i<=n;i++)
+    {
+        string f_name,l_name;
+        int age;
+        cin>>f_name>>l_name;
+        cin>>age;
+        a.push_back({{f_name,l_name},age});
+    }
+    for(i=0;i<n;i++)
+    cout<<a[i].first.first<<" "<<a[i].first.second<<" "<<a[i].second;
+}
