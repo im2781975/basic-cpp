@@ -7,9 +7,9 @@
 using namespace std;
 int main()
 {
-    unordered_set<std::string> mySet{"first","third", "second" };
+    unordered_set<string> mySet{"first","third", "second" };
 
-    array<std::string,2> myArray = { "tenth", "seventh"};
+    array<string,2> myArray = { "tenth", "seventh"};
 
     string myString = "ninth";
  
