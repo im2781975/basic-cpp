@@ -1,0 +1,45 @@
+#include <cstdlib>
+#include <iostream>
+#include <pthread.h>
+
+using namespace std;
+#define NUM_THREADS 5
+
+struct ThreadData {
+    int threadId;
+};
+
+void* PrintHello(void* data)
+{
+    ThreadData* threadData = (ThreadData*)data;
+
+    cout << "Hello World! Thread ID, " << threadData->threadId << "\n";
+
+    pthread_exit(NULL);
+}
+
+int main()
+{
+    pthread_t threads[NUM_THREADS];
+    int rc;
+    ThreadData threadData[NUM_THREADS]; // Create an array to hold thread-specific data
+    int i;
+
+    for (i = 0; i < NUM_THREADS; i++) {
+
+        threadData[i].threadId = i; // Assign a unique thread ID to each thread
+
+        cout << "main() : creating thread, " << i << "\n";
+
+        rc = pthread_create(&threads[i], NULL,
+            PrintHello, &threadData[i]);
+
+        if (rc) {
+            cout << "Error: unable to create thread, " << rc << "\n";
+            exit(-1);
+        }
+    }
+
+    pthread_exit(NULL);
+}
+
