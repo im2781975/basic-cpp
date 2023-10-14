@@ -1,0 +1,23 @@
+// count_if()
+#include <bits/stdc++.h>
+using namespace std;
+bool isEven(int i)
+{
+    if (i % 2 == 0)
+        return true;
+    else
+        return false;
+}
+
+int main()
+{
+    vector<int> v;
+    for (int i = 0; i < 10; i++) {
+        v.push_back(i);
+    }
+    int noEven = count_if(v.begin(), v.end(),isEven);
+ 
+    cout << "Total no of even numbers is: "<< noEven;
+ 
+    return 0;
+}
