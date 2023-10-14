@@ -1,0 +1,26 @@
+// std::find for vectors
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    vector<int>vec{10, 20, 30, 40};
+ 
+    vector<int>::iterator it;
+    cout << "vector is:";
+   
+  for (int i = 0;i<vec.size(); i++)
+       {cout << " " << vec[i];}
+        cout << "\n";
+ 
+  int ser = 30;
+ 
+  it = find(vec.begin(), vec.end(), ser);
+  if (it != vec.end()) 
+  {
+    cout <<"Element "<<ser<<" found at position : "<< it - vec.begin() << "\n";
+  }
+  else
+    cout << "Element not found.\n";
+ 
+  return 0;
+}
