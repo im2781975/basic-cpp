@@ -1,4 +1,5 @@
 //std::move and std::move_backward 
+//std::move and std::move_backward 
 #include<bits/stdc++.h> 
 using namespace std;
 
@@ -25,5 +26,12 @@ int main()
     for(unsigned int i = 0; i < vec2.size(); i++) 
      {cout << " " << vec2[i];}
        cout << "\n"; 
-    return 0; 
+    
+     // std :: move_backward function 
+    move_backward (vec2.begin(), vec2.begin() + 3, vec1.begin() + 3); 
+  
+    cout << "Vector1 contains after std::move_backward function:"; 
+    for(unsigned int i = 0; i < vec1.size(); i++) 
+        {cout << " " << vec1[i]; }
+            cout << "\n"; 
 } 
