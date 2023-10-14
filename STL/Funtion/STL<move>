@@ -1,0 +1,29 @@
+//std::move and std::move_backward 
+#include<bits/stdc++.h> 
+using namespace std;
+
+int main() 
+{ 
+    vector <int> vec1{ 1,2,3,4,5 }; 
+    vector <int> vec2 {7,7,7,7,7}; 
+  
+    cout << "Vector1 contains :"; 
+    for(int i = 0; i < vec1.size(); i++) 
+       { cout << " " << vec1[i]; }
+         cout << "\n"; 
+      
+    cout << "Vector2 contains :"; 
+    for(unsigned int i = 0; i < vec2.size(); i++) 
+    {cout << " " << vec2[i]; }
+        cout << "\n"; 
+      
+    // std :: move function 
+    // move first 4 element from vec1 to starting position of vec2 
+    move (vec1.begin(), vec1.begin() + 4, vec2.begin() + 1); 
+      
+    cout << "Vector2 contains after std::move function:"; 
+    for(unsigned int i = 0; i < vec2.size(); i++) 
+     {cout << " " << vec2[i];}
+       cout << "\n"; 
+    return 0; 
+} 
