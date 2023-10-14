@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+ 
+    vector<int>vec{1, 2, 3, 4, 5 };
+ 
+    // this increases all the values in the vector by 1;
+    for_each(vec.begin(), vec.end(), [](int& a) { a++; });
+ 
+    for_each(vec.begin(), vec.end(),[](int a) { cout << a << " " << " "; });
+ 
+    return 0;
+}
