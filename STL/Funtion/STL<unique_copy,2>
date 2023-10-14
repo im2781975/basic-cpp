@@ -1,0 +1,39 @@
+// C++ program to demonstrate the use of std::unique_copy
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    vector<int> v = { 1, 2, 3, 3, 3, 10, 1, 2, 3, 7, 7, 8 };
+ 
+    vector<int>::iterator ip;
+ 
+    // Sorting the array to make duplicate elements
+    // consecutive
+    std::sort(v.begin(), v.end());
+    // Now v becomes 1 1 2 2 3 3 3 3 7 7 8 10
+ 
+    // Declaring a container to store the unique elements
+    vector<int> v1(6);
+ 
+    // Using std::unique_copy
+    ip = std::unique_copy(v.begin(), v.begin() + 12, v1.begin());
+    // Now v1 becomes {1 2 3 7 8 10}
+ 
+    // Displaying the vector v and v1 after applying std::unique
+    cout << "v = ";
+ 
+    for (ip = v.begin(); ip != v.end(); ++ip) 
+    {
+        cout << *ip << " ";
+    }
+ 
+    cout << "\nv1 = ";
+    for (ip = v1.begin(); ip != v1.end(); ++ip) 
+    {
+        cout << *ip << " ";
+    }
+ 
+    return 0;
+}
