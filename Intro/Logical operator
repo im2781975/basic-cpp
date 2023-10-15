@@ -1,0 +1,64 @@
+// C++ Program to illustrate the logical AND Operator 
+#include <iostream> 
+using namespace std; 
+  
+int main() 
+{ 
+  
+    // initialize variables 
+    int age = 25; 
+    bool isStudent = true; 
+  
+    // Using AND operator in if condition 
+    if (age > 18 && isStudent) { 
+        cout << "You are eligible for a student discount."
+             << endl; 
+    } 
+    else { 
+        cout << "You are not eligible for a student "
+                "discount."
+             << endl; 
+  
+        return 0; 
+    }
+// C++ program to demonstrate the logical or operator 
+#include <iostream> 
+using namespace std; 
+  
+int main() 
+{ 
+  
+    int num = 7; 
+  
+    // using logical or for conditional statement 
+    if (num <= 0 || num >= 10) { 
+        cout 
+            << "The number is outside the range of 0 to 10."
+            << endl; 
+    } 
+    else { 
+        cout << "The number is between 0 to 10." << endl; 
+    } 
+  
+    return 0; 
+}
+// C++ program to illustrate the logical not operator 
+#include <iostream> 
+using namespace std; 
+  
+int main() 
+{ 
+  
+    bool isLoggedIn = false; 
+  
+    // using logical not operator 
+    if (!isLoggedIn) { 
+        cout << "Please log in to access this feature."
+             << endl; 
+    } 
+    else { 
+        cout << "Welcome to GeeksforGeeks!" << endl; 
+    } 
+  
+    return 0; 
+}
