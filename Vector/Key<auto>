@@ -2,7 +2,6 @@
 using namespace std;
 int main()
 {
-    //create a obj without specifying type
     vector v1 {2.3, 8.7, 4.5, 9.7};
     cout<<"Elements are(float): ";
     for(auto i: v1)
