@@ -1,0 +1,34 @@
+//sorting of 2D vector in descending order
+#include<iostream>
+#include<vector> 
+#include<algorithm> 
+using namespace std;
+  
+int main()
+{
+    vector< vector<int> > vect{{3, 5, 1},{4, 8, 6},{7, 2, 9}};
+
+    int m = vect.size();
+  
+    // Number of columns (Assuming all rows are of same size).
+    int n = vect[0].size();
+  
+    cout << "Before sorting 1st row is: ";
+    for (int i=0; i<m; i++)
+    {
+        cout<< "\n" ;
+        for (int j=0; j<n ;j++)
+           cout<< vect[i][j]<< " ";
+    }
+  
+    sort(vect[0].rbegin(), vect[0].rend());
+ 
+    cout << "\nAfter sorting 1st row is: ";
+    for (int i=0; i<m; i++)
+    {
+        cout<< "\n" ;
+        for (int j=0; j<n ;j++)
+            cout <<vect[i][j]<<" ";
+    }
+    return 0;
+}
