@@ -1,4 +1,3 @@
-//capacity function in vector
 #include <iostream>
 #include <vector>
 using namespace std;
