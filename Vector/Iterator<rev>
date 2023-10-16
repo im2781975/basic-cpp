@@ -4,11 +4,11 @@ using namespace std;
 int main()
 {
     vector<int> v1{1, 2, 3, 4, 5 };
-    vector<int>::iterator i1;
+    vector<int>::iterator i;
  
-    for (i1 = v1.end() - 1; i1 != v1.begin() - 1; --i1) {
+    for (i = v1.end() - 1; i != v1.begin() - 1; --i) {
  
-        cout << (*i1) << " ";
+        cout << (*i) << " ";
     }
     return 0;
 }
