@@ -1,4 +1,3 @@
-// reverse()
 #include <algorithm>
 #include <iostream>
 #include <vector>
@@ -17,33 +16,30 @@ int main()
         cout << vect[i] << " ";
  
     sort(vect.begin(), vect.end());
-    cout<<"Vector after sorting: ";
+    cout<<"\nVector after sorting: ";
     for (int i=0; i<n; i++)
-       {cout << vect[i] <<" ";}
-       cout<<"\n";
+       cout << vect[i] <<" ";
        
       sort(vect.begin(),vect.end(), greater<int>());
-    cout << "Vector after sorting in Descending order is: ";
+    cout << "\nVector after sorting in Descending order is: ";
     for (int i=0; i<n; i++)
-       {cout << vect[i] << " ";}
-       cout<<"\n";
+       cout << vect[i] << " ";
    
     // Reversing the Vector (descending to ascending , ascending to descending)
     reverse(vect.begin(), vect.end());
  
-    cout << "Vector after reversing is: ";
+    cout <<"\nAfter reversing vect is: ";
     for (int i=0; i<n; i++)
-      {  cout << vect[i] << " ";}
-      cout<<"\n";
+       cout << vect[i] << " ";
  
-    cout << "Maximum element of vector is: ";
+    cout << "\nMaximum element of vector is: ";
     cout << *max_element(vect.begin(), vect.end());
  
     cout << "\nMinimum element of vector is: ";
-    cout << *min_element(vect.begin(), vect.end()) <<"\n";
+    cout << *min_element(vect.begin(), vect.end()) ;
  
     //Starting the summation from 0
-    cout << "The summation of vector elements is: ";
+    cout << "\nSummation of vector elements is: ";
     cout << accumulate(vect.begin(), vect.end(), 0);
  
     return 0;
