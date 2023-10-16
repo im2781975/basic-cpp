@@ -1,5 +1,4 @@
-// working of next_permutation() &  prev_permutation()
-//working of distance()
+
 #include <algorithm>
 #include <iostream>
 #include <vector>
@@ -19,7 +18,6 @@ int main()
     cout << distance(vect.begin(),
         max_element(vect.begin(), vect.end()));
     
-    // modifies vector to its next permutation order
     next_permutation(vect.begin(), vect.end());
     cout<<"\nVector after performe next permutation: ";
     for (int i=0; i<n; i++)
