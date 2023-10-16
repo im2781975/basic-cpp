@@ -6,13 +6,16 @@ int main()
     cout<<"Elements are(float): ";
     for(auto i: v1)
         cout<< i << " ";
-        
-    cout<< "\n";
-    
+
     vector v2 {2, 6, 9, 7, 6, 9};
-    cout<<"Elements are(int): ";
+    cout<<"\nElements are(int): ";
     for(auto i: v2 )
         cout<< i <<" ";
         
-    cout<< "\n";
+    vector<string> value{ "This","is","foreach","example", "using", "vector." };
+ 
+    cout<<"\nElements are(string) : ";
+    for (auto v : value)
+        cout << v << " ";
+ 
 }
