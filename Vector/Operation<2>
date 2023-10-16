@@ -4,28 +4,42 @@ using namespace std;
  
 int main()
 {
-    vector<int> g1;
+    vector<int> v;
  
     for (int i = 1; i <= 5; i++)
-        g1.push_back(i);
+        v.push_back(i);
  
-    cout << "Size : " << g1.size();
-    cout << "\nCapacity : " << g1.capacity();
-    cout << "\nMax_Size : " << g1.max_size();
+    cout << "Size: " << v.size();
+    cout << "\nCapacity: " <<v.capacity();
+    cout << "\nMax_Size: " <<v.max_size();
  
-    g1.resize(4);
-    cout << "\nAfter resize Size is : "<< g1.size();
+    v.resize(4);
+    cout << "\nAfter resize,Size is : "<< v.size();
  
-    if (g1.empty() == false)
+    if (v.empty() == false)
     cout<<"\nVector isn't empty";
     else
-        cout <<"\nVector is empty";
+    cout <<"\nVector is empty";
  
-    // Shrinks the vector
-    g1.shrink_to_fit();
+    v.shrink_to_fit();
     cout<<"\nAfter shrink Vector elements are: ";
-    for (auto it = g1.begin(); it != g1.end(); it++)
+    for (auto it = v.begin(); it != v.end(); it++)
         cout << *it << " ";
  
+    cout << "Output of begin and end: ";
+    for (auto i =v.begin(); i !=v.end(); ++i)
+        cout << *i << " ";
+ 
+    cout << "\nOutput of cbegin and cend: ";
+    for (auto i =v.cbegin(); i != v.cend(); ++i)
+        cout << *i << " ";
+ 
+    cout << "\nOutput of rbegin and rend: ";
+    for (auto i = v.rbegin(); i != v.rend(); ++i)
+        cout << *i << " ";
+ 
+    cout << "\nOutput of crbegin and crend : ";
+    for (auto i =v.crbegin(); i != v.crend(); ++i)
+        cout << *i << " ";
     return 0;
 }
