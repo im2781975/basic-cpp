@@ -1,22 +1,20 @@
 // use of  bool equal
-
 #include <bits/stdc++.h>
 using namespace std;
 int main()
 {
-    int v1[] = {10, 20, 30, 40, 50};
-    vector<int> vector_1 (v1, v1 + sizeof(v1) / sizeof(int) );
+    int v[]{10, 20, 30, 40, 50};
+    vector<int> vect(v, v+sizeof(v) / sizeof(int) );
  
-    cout <<"Vector contains : ";
-    for (unsigned int i = 0; i < vector_1.size(); i++)
-        cout << " " << vector_1[i];
-    cout << "\n";
+    cout <<"Elements of vect is: ";
+    for (unsigned int i = 0; i < vect.size(); i++)
+        cout << " " << vect[i];
  
     // using std::equal()
     // Comparison within default constructor
-    if ( equal (vector_1.begin(), vector_1.end(), v1) )
-        cout << "The contents of both sequences are equal.\n";
+    if (equal (vect.begin(), vect.end(), v) )
+        cout << "\nContents of both sequences are equal";
     else
-        printf("The contents of both sequences differ.");
+        printf("\nContents of both sequences differ.");
  
 }
