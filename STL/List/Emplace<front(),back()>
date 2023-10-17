@@ -1,0 +1,37 @@
+//emplace(), emplace_front() and emplace_back()
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main()
+{
+    list<int> qlist;
+    list<int>::iterator it = qlist.begin();
+ 
+    // Entering list element
+    for (int i = 1; i <= 5; i++)
+        qlist.emplace_back(i);
+ 
+    cout<<"\nList after emplace_ back operation is : ";
+    for (int& x : qlist)
+        cout << x << " ";
+ 
+    for (int i = 10; i <= 50; i += 10)
+        qlist.emplace_front(i);
+ 
+    cout << "\nList after emplace _front operation is : ";
+    for (int& x : qlist)
+        cout << x << " ";
+ 
+    // using advance() to advance iterator position
+    advance(it, 2);
+ 
+    // inserting element at 2nd position using emplace()
+    qlist.emplace(it, 100);
+    
+    cout << "\nList after emplace operation is : ";
+    for (int& x : qlist)
+        cout << x << " ";
+ 
+    return 0;
+}
