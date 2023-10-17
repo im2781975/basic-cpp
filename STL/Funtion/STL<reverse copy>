@@ -1,41 +1,28 @@
-// C++ program to copy from array to vector 
-// using reverse_copy() in STL. 
-#include <bits/stdc++.h> 
-using namespace std; 
-  
-int main() 
-{ 
-    int src[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; 
-    int n = sizeof(src) / sizeof(src[0]); 
-  
-    vector<int> dest(n); 
-  
-    reverse_copy(src, src + n, dest.begin()); 
-  
-    cout << "The vector is: \n"; 
-    for (int x : dest) { 
-        cout << x << " "; 
-    } 
-  
-    return 0; 
-} 
-// C++ program to copy from array to vector 
-// using reverse_copy() in STL. 
-#include <bits/stdc++.h> 
-using namespace std; 
-  
-int main() 
-{ 
-    vector<int> src { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; 
-  
-    vector<int> dest(src.size()); 
-  
-    reverse_copy(src.begin(), src.end(), dest.begin()); 
-  
-    cout << "The vector is: \n"; 
-    for (int x : dest) { 
-        cout << x << " "; 
-    } 
-  
-    return 0; 
-} 
+std::reverse copy()
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    vector<int> src { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    vector<int> dest(src.size());
+
+    reverse_copy(src.begin(), src.end(), dest.begin());
+
+    cout << "Elements of vector (src to dest): ";
+    for (int x : dest)
+        cout << x << " ";
+
+    int n = sizeof(src) / sizeof(src[0]);
+
+    vector<int> must(n);
+
+    reverse_copy(src.begin(), src.end(), must.begin());
+
+    cout << "\nElements of vector (src to must):";
+    for (int x : must)
+        cout << x << " ";
+
+    return 0;
+}
