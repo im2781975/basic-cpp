@@ -2,7 +2,6 @@
 #include <bits/stdc++.h> 
 using namespace std; 
 
-// Prints frequencies 
 void printFrequencies(const string &str) 
 { 
   unordered_map<string, int> wordFreq; 
@@ -15,7 +14,6 @@ void printFrequencies(const string &str)
   while (ss >> word) 
     wordFreq[word]++; 
   
-  // now iterating over word, freq pair and printing them in <, > format 
   unordered_map<string, int>:: iterator p; 
   for (p = wordFreq.begin();  
        p != wordFreq.end(); p++) 
