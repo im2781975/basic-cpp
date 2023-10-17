@@ -5,8 +5,6 @@ int main()
 {
     unordered_set<string>stringSet;
  
-    //inserting various string, same string will be stored
-
     stringSet.insert("code");
     stringSet.insert("in");
     stringSet.insert("c++");
@@ -15,22 +13,16 @@ int main()
  
     string key = "slow";
  
-
-    //find returns end iterator if key is not found,else it returns iterator to that key
-    
-//finding key
     if (stringSet.find(key) == stringSet.end())
-
-        cout<<key<<" not found"<<"\n";
+        cout<<key<<" not found";
 
     else
-        cout <<"Found "<<key<<"\n";
+        cout <<"Found "<<key;
 
+    cout<<"\nAfter iteration string is: ";
     unordered_set<string>::iterator itr;
-
     for (itr = stringSet.begin(); itr != stringSet.end();
-
          itr++)
 
-        cout << (*itr) << endl;
+        cout << (*itr)<<" ";
 }
