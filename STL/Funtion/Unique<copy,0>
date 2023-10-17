@@ -23,5 +23,10 @@ int main()
     for (ip = v1.begin(); ip != v1.end(); ++ip) 
         cout << *ip << " ";
 
+    if (v == v1) 
+        cout << "\nv1 contains only unique elements";
+    else
+        cout << "\nv1 contains duplicate elements";
+
     return 0;
 }
