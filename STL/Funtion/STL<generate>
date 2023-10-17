@@ -1,8 +1,8 @@
-// C++ program to demonstrate the use of std::generate 
+// use of std::generate 
 #include <iostream> 
 #include <vector> 
 #include <algorithm> 
-  
+using namespace std;
 // Defining the generator function 
 int gen() 
 { 
@@ -15,11 +15,9 @@ int main()
 { 
     int i; 
   
-    // Declaring a vector of size 10 
     vector<int> v1(10); 
   
-    // using std::generate 
-    std::generate(v1.begin(), v1.end(), gen); 
+    generate(v1.begin(), v1.end(), gen); 
   
     vector<int>::iterator i1; 
     for (i1 = v1.begin(); i1 != v1.end(); ++i1) { 
