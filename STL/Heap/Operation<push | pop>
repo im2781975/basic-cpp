@@ -33,5 +33,9 @@ int main()
     vc.pop_back();
     cout <<"\nHeap after pop_back(): ";
     print(vc);
+    
+    sort_heap(vc.begin(), vc.end());
+    cout << "\nHeap elements after sorting are: ";
+    print(vc);
     return 0;
 }
