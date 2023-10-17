@@ -13,10 +13,13 @@ int main()
     ip =unique(v.begin(), v.begin() + 12);
     
     v.resize(distance(v.begin(), ip));
- 
+    cout<<"\nAfter resize : ";
     for (ip = v.begin(); ip != v.end(); ++ip) {
         cout << *ip << " ";
     }
- 
+    
+    int count =distance(v.begin(), unique(v.begin(), v.begin() + 12));
+    cout << "\nTotal no. of unique elements = " << count;
+    
     return 0;
 }
