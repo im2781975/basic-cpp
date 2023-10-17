@@ -1,11 +1,9 @@
-
-// C++ program to demonstrate the use of std::unique
+// std::unique
 #include <algorithm>
 #include <iostream>
 #include <string>
 using namespace std;
- 
-// Defining the BinaryFunction
+
 bool Pred(char a, char b)
 {
     // Checking if both the arguments are same and equal
@@ -20,14 +18,11 @@ bool Pred(char a, char b)
 }
 int main()
 {
-    // Declaring a string
     string s = "You arre vvvisiting GGGGFGGGG";
  
-    // Using std::unique to remove the consecutive
-    // G in the word
-    auto ip = std::unique(s.begin(), s.end(), Pred);
+    //unique to remove the consecutive G in the word
+    auto ip = unique(s.begin(), s.end(), Pred);
  
-    // Displaying the corrected string
     cout << string(s.begin(), ip);
     return 0;
 }
