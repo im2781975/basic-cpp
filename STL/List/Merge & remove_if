@@ -1,0 +1,24 @@
+// merge() and remove_if()
+#include <iostream>
+#include <list> 
+using namespace std;
+ 
+int main()
+{
+    list<int> qlist1 = { 1, 2, 3 };
+    list<int> qlist2 = { 2, 4, 6 };
+ 
+    qlist1.merge(qlist2);
+ 
+    cout<<"After merge list1 is: ";
+    for (int& x : qlist1)
+        cout << x << " ";
+ 
+    qlist1.remove_if([](int x) { return x % 2 != 0; });
+ 
+    cout << "\nAfter remove_if list1 is : ";
+    for (int& x : qlist1)
+        cout << x << " ";
+ 
+    return 0;
+}
