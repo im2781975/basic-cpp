@@ -1,4 +1,3 @@
-// C++ code to demonstrate the application of 
 // lexicographical_compare()
  
 #include<bits/stdc++.h>
@@ -6,7 +5,6 @@ using namespace std;
  
 int main()
 {
-    // initializing char arrays
     char list[][100]={
         {'a','b','a','c','u','s'},
         {'a','p','p','l','e'},
@@ -16,8 +14,7 @@ int main()
      
     char min[100] = "zzzzzz";
      
-    // using lexicographical_compare for checking 
-    // the smallest
+    //lexicographical_compare for checking the smallest
     for (int i=0; i<4; i++)
     { 
         if( lexicographical_compare(list[i], list[i] 
@@ -26,13 +23,10 @@ int main()
         strcpy(min,list[i]);
     }
     }
-     
-    // prints "abacus"
+
     cout << "The smallest string is : ";
-    for(int i = 0; min[i]!='&#092;&#048;'; i++)
+    for(int i = 0; min[i]!='\0'; i++)
     {
         cout<<min[i];
     }
-     
-     
 }
