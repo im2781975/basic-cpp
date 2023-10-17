@@ -1,36 +1,31 @@
 //std::move and std::move_backward 
-//std::move and std::move_backward 
 #include<bits/stdc++.h> 
 using namespace std;
 
 int main() 
 { 
-    vector <int> vec1{ 1,2,3,4,5 }; 
+    vector <int> vec1{ 1,2,3,4,5 };
     vector <int> vec2 {7,7,7,7,7}; 
   
-    cout << "Vector1 contains :"; 
+    cout <<"Elements of vect1[] :";
     for(int i = 0; i < vec1.size(); i++) 
-       { cout << " " << vec1[i]; }
-         cout << "\n"; 
+         cout << " " << vec1[i]; 
       
-    cout << "Vector2 contains :"; 
+    cout<<"\nElements of vect2[]:";
     for(unsigned int i = 0; i < vec2.size(); i++) 
-    {cout << " " << vec2[i]; }
-        cout << "\n"; 
+        cout << " " << vec2[i];
       
     // std :: move function 
-    // move first 4 element from vec1 to starting position of vec2 
     move (vec1.begin(), vec1.begin() + 4, vec2.begin() + 1); 
       
-    cout << "Vector2 contains after std::move function:"; 
+    cout << "\nVect2 contains after std:move() :"; 
     for(unsigned int i = 0; i < vec2.size(); i++) 
-     {cout << " " << vec2[i];}
-       cout << "\n"; 
+       cout << " " << vec2[i];
     
      // std :: move_backward function 
     move_backward (vec2.begin(), vec2.begin() + 3, vec1.begin() + 3); 
   
-    cout << "Vector1 contains after std::move_backward function:"; 
+    cout<<"\nVect1 contains after std::move_backward () : "; 
     for(unsigned int i = 0; i < vec1.size(); i++) 
         {cout << " " << vec1[i]; }
             cout << "\n"; 
