@@ -1,0 +1,28 @@
+// stable_partition 
+#include <iostream> 
+#include <algorithm>
+#include <vector> 
+using namespace std;
+bool odd(int i)
+  { return (i % 2) == 1; } 
+  
+int main() 
+{ 
+    vector<int> vct; 
+  
+    for (int i = 1; i < 10; ++i) 
+        vct.push_back(i); 
+  
+    vector<int>::iterator bound; 
+    bound = stable_partition(vct.begin(), vct.end(), odd); 
+  
+    cout << "\nodd numbers:"; 
+    for (vector<int>::iterator it = vct.begin(); it != bound; ++it) 
+        cout << ' ' << *it; 
+  
+    cout << "\nEven numbers:"; 
+    for (vector<int>::iterator it = bound; it != vct.end(); ++it) 
+        cout << ' ' << *it; 
+  
+    return 0; 
+} 
