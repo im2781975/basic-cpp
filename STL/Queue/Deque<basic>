@@ -8,7 +8,6 @@ void showdq(deque<int>&g)
     deque<int>::iterator it;
     for (it = g.begin(); it != g.end(); ++it)
         cout <<" "<< *it;
-    cout << "\n";
 }
  
 int main()
@@ -21,18 +20,18 @@ int main()
     cout << "The deque  is : ";
     showdq(dq);
  
-    cout << "deque.size() : " << dq.size()<<"\n";
-    cout << "deque.max_size() : " << dq.max_size()<<"\n";
+    cout << "deque.size() : "<< dq.size();
+    cout << "\ndeque.max_size() : " << dq.max_size() ;
  
-    cout << "deque.at(2) : " << dq.at(2)<<"\n";
-    cout << "deque.front() : " << dq.front()<<"\n";
-    cout << "deque.back() : " << dq.back()<<"\n";
+    cout << "\ndeque.at(2) : " << dq.at(2) ;
+    cout << "\ndeque.front() : " << dq.front() ;
+    cout << "\ndeque.back() : " << dq.back();
  
-    cout << "deque.pop_front() : ";
+    cout << "\ndeque.pop_front() : ";
     dq.pop_front();
     showdq(dq);
  
-    cout << "deque.pop_back() : ";
+    cout << "\ndeque.pop_back() : ";
     dq.pop_back();
     showdq(dq);
  
