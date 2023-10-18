@@ -1,21 +1,21 @@
-// C++ program to illustrate the reinterpret_cast 
+// reinterpret_cast 
 #include <iostream> 
 using namespace std; 
   
 int main() 
 { 
-    int number = 10; 
-    // Store the address of number in numberPointer 
+    int number = 10;
     int* numberPointer = &number; 
   
     // Reinterpreting the pointer as a char pointer 
     char* charPointer 
         = reinterpret_cast<char*>(numberPointer); 
-  
-    // Printing the memory addresses and values 
+    double* doublePointer=reinterpret_cast<double*>(doublePointer);
+    
     cout << "Integer Address: " << numberPointer << endl; 
     cout << "Char Address: "
          << reinterpret_cast<void*>(charPointer) << endl; 
+    cout<<"Double pointer: "<<doublePointer<<endl;
   
     return 0; 
 }
