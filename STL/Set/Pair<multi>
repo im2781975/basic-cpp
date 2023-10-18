@@ -1,0 +1,55 @@
+// implementation of multiset
+#include <iostream>
+#include <iterator>
+#include <set>
+using namespace std;
+ 
+int main()
+{
+    multiset<int, greater<int> > quiz1;
+    
+    quiz1.insert(40);
+    quiz1.insert(30);
+    quiz1.insert(60);
+    quiz1.insert(20);
+    quiz1.insert(50);
+    quiz1.insert(50);
+    quiz1.insert(10);
+
+    multiset<int, greater<int> >::iterator itr;
+    cout <<"Multiset quiz1 is : ";
+    for (itr = quiz1.begin(); itr != quiz1.end(); ++itr) 
+        cout << *itr << " ";
+ 
+    // assigning the elements from quiz1 to quiz2
+    multiset<int> quiz2(quiz1.begin(), quiz1.end());
+ 
+    cout << "\nMultiset quiz2 after assign from quiz1 is : ";
+    for (itr = quiz2.begin(); itr != quiz2.end(); ++itr) 
+        cout << *itr << " ";
+ 
+    // remove all elements up to element with value 30 in gquiz2
+    cout << "\nquiz2 after removal of  less than 30 : ";
+    quiz2.erase(quiz2.begin(), quiz2.find(30));
+    for (itr = quiz2.begin(); itr != quiz2.end(); ++itr) 
+        cout << *itr << " ";
+ 
+    // remove all elements with value 50 in quiz2
+    int num;
+    num = quiz2.erase(50);
+    cout << "quiz2.erase(50) : ";
+    cout << num << " removed \n";
+    for (itr = quiz2.begin(); itr != quiz2.end(); ++itr) 
+        cout << *itr << " ";
+ 
+    // lower bound and upper bound 
+    cout <<"\nquiz1.lower_bound(40) :"<<*quiz1.lower_bound(40);
+    
+    cout <<"\nquiz1.upper_bound(40) :"<<*quiz1.upper_bound(40);
+ 
+    cout <<"\nquiz2.lower_bound(40) :"<<*quiz2.lower_bound(40);
+    
+    cout <<"\nquiz2.upper_bound(40) :"<<*quiz2.upper_bound(40);
+ 
+    return 0;
+}
