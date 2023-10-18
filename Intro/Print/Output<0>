@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char ch[25];
+    cout<<"Enter char: ";
+    cin.get(ch, 25);
+    
+    cout << ch<<"\n";
+//For only read
+    char gfg[20]; 
+  
+    cin.read(gfg, 10); 
+
+    cout << gfg << endl; 
+}
+
