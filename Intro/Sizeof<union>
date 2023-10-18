@@ -1,0 +1,16 @@
+// size of the union 
+#include <bits/stdc++.h> 
+using namespace std; 
+union gfg 
+{ 
+    int z; 
+    double d; 
+}g; 
+int main()  
+{ 
+  cout << "size of union is " << 
+           sizeof(g) << "\n" ;
+  return 0; 
+}
+
+
