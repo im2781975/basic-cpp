@@ -1,17 +1,19 @@
 #include <iostream>
 using namespace std;
 
-namespace first {
-int val = 500;
+namespace first
+{
+    int val = 500;
 }
-
 int val = 100;
  
 int main()
 {
     int val = 200;
     
-    cout <<"in namespace value: "<< first::val << '\n';
+    cout <<"first::val ->"<< first::val;
+    cout<<"\nValue ->"<<val;
  
     return 0;
 }
+
