@@ -1,0 +1,14 @@
+// reinterpret_cast
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    int* p = new int(65);
+    char* ch = reinterpret_cast<char*>(p);
+    cout << *p << "\n";
+    cout << *ch << "\n";
+    cout << p << "\n";
+    cout << ch << "\n";
+    return 0;
+}
