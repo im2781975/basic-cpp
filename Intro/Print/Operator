@@ -1,0 +1,81 @@
+// Binary Operators
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    int a = 8, b = 3;
+ 
+    // Addition operator
+    cout <<"\na + b : " << (a + b);
+   
+    // Subtraction operator
+    cout <<"\na - b : " << (a - b);
+   
+    // Multiplication operator
+    cout <<"\na * b : " << (a * b);
+   
+    // Division operator
+    cout <<"\na / b : " << (a / b);
+   
+    // Modulo operator
+    cout <<"\na % b : " << (a % b);
+ 
+    // compare operator
+    cout<<"\na == b is :" << (a == b);
+   
+    // Greater than operator
+    cout <<"\na > b is :"<<(a > b);
+   
+    // Greater than or Equal to operator
+    cout << "\na >= b is : " << (a >= b) ;
+   
+    //  Lesser than operator
+    cout<< "\na < b is : " <<(a < b) ;
+   
+    // Lesser than or Equal to operator
+    cout << "\na <= b is : " << (a <= b) ;
+    
+    // true
+    cout << "\na != b is : " << (a != b) ;
+ 
+    cout << "\na && b is : " << (a && b) ;
+   
+    // Logical OR operator
+    cout << "\na ! b is : " << (a > b) ;
+   
+    // Logical NOT operator
+    cout << "\n!b is : " << (!b) ;
+    
+    // Binary AND operator
+    cout << "\na & b is : " << (a & b) ;
+ 
+    // Binary OR operator
+    cout << "\na | b is : " << (a | b) ;
+ 
+    // Binary XOR operator
+    cout << "\na ^ b is : " << (a ^ b) ;
+ 
+    // Left Shift operator
+    cout << "\na<<1 is : " << (a << 1) ;
+ 
+    // Right Shift operator
+    cout << "\na>>1 is : " << (a >> 1) ;
+ 
+    // One’s Complement operator
+    cout << "\n~(a) is : " <<~(a) ;
+    
+    cout << "\na : " << a ;
+   
+    //  Add and Assignment Operator
+    cout << "\na += b is : " << (a += b) ;
+   
+    // Subtract and Assignment Operator
+    cout << "\na -= b is : " << (a -= b) ;
+   
+    //  Multiply and Assignment Operator
+    cout << "\na *= b is : " << (a *= b) ;
+   
+    //  Divide and Assignment Operator
+    cout << "\na /= b is : " << (a /= b) ;
+}
