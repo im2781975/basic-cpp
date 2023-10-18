@@ -1,0 +1,59 @@
+// function in pair
+#include <iostream>
+#include <utility>
+using namespace std;
+ 
+int main()
+{
+    pair<int, char> PAIR1;
+    pair<string, double> PAIR2("GeeksForGeeks", 1.23);
+    pair<string, double> PAIR3;
+ 
+    PAIR1.first = 100;
+    PAIR1.second = 'G';
+ 
+    PAIR3 = make_pair("GeeksForGeeks is Best", 4.56);
+ 
+    cout <<"\nPAIR1.first: "<<PAIR1.first << "__"<< "PAIR1.second: "<<PAIR1.second ;
+ 
+    cout <<"\nPAIR2.first: "<<PAIR2.first << "__"<< "PAIR2.second: "<<PAIR2.second ;
+ 
+    cout <<"\nPAIR3.first: "<<PAIR3.first << "__"<< "PAIR3.second: "<<PAIR3.second ;
+ 
+    pair<string, double> PAIR5("GeeksForGeeks", 1.23);
+ 
+    cout <<"\nPAIR5.first: "<<PAIR5.first << "__"<< "PAIR5.second: "<<PAIR5.second ;
+    
+    pair<string, int> g1;
+    g1 = make_pair(string("Geeks"), 1);
+    pair<string, int> g2("Quiz",3);
+    pair<string, int> g3(g2);
+    pair<int, int> g4(5, 10);
+ 
+    
+    g2.first = ".com";
+    g2.second = 2;
+ 
+    cout <<"\ng1.first: "<<g1.first << "__"<< "g1.second: "<<g1.second ;
+ 
+    cout <<"\ng2.first: "<<g2.first << "__"<< "g2.second: "<<g2.second <<"This pair was initialized as a copy of pair g2";
+ 
+    cout <<"\ng3.first: "<<g3.first << "__"<< "g3.second: "<<g3.second <<"The values of this pair were changed after initialization." ;
+         
+    cout <<"\ng4.first: "<<g4.first << "__"<< "g4.second: "<<g4.second <<"made for showing addition. The sum of the values in this pair is "
+         << g4.first + g4.second ;
+ 
+    cout << "\nConcatenation of the value first value of g1, g2 & g3 is: "<< g1.first + g3.first + g2.first ;
+    
+    cout << "\nBefore swapping, "
+         << "g1 has " << g1.first << " and g2 has "
+         << g2.first << "\n";
+         
+    cout << "\nWe can also swap pairs (but type of pairs should be same) : " ;
+    
+    swap(g1, g2);
+    cout << "After swapping, "
+         << "g1 has " << g1.first << " and g2 has "
+         << g2.first;
+    
+}
