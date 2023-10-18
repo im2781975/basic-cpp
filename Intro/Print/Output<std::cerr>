@@ -1,11 +1,9 @@
-// illustrate std::cerr 
 #include <iostream> 
 using namespace std; 
-  
 int main() 
 { 
-    cerr << "Welcome to GfG! :: cerr"; 
-    
-    cout << "\nWelcome to GfG! :: cout"; 
+    cerr << "An error occurred";
+    clog << "\nAn error occurred"; 
     return 0; 
 } 
+
