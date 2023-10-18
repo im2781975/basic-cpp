@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct mystruct {
+    int x;
+    int y;
+    char c;
+    bool b;
+};
+
+int main()
+{
+    mystruct s;
+    
+    s.x = 5;
+    s.y = 10;
+    s.c = 'a';
+    s.b = true;
+ 
+    // data type must be same during casting as that of original
+ // converting the pointer of 's' to,pointer of int type in 'p'.
+    int* p = reinterpret_cast<int*>(&s);
+ 
+    cout << sizeof(s) << "\n";
+ 
+    cout << *p << "\n";
+    
+    p++;
+    cout << *p << endl;
+    p++;
+ 
+    char* ch = reinterpret_cast<char*>(p);
+ 
+    cout << *ch << " " ;
+    ch++;
+ 
+    /* since, (*ch) now points to boolean value,
+    so it is required to access the value using 
+    same type conversion.so, we have used 
+    data type of *n to be bool. */
+ 
+    bool* n = reinterpret_cast<bool*>(ch);
+    cout << *n << " ";
+ 
+    // we can also use this line of code to
+    // print the value pointed by (*ch).
+    cout << *(reinterpret_cast<bool*>(ch));
+ 
+    return 0;
+}
