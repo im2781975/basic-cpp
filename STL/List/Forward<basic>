@@ -1,5 +1,5 @@
 // insert_after(), emplace_after()
-// and erase_after()
+// and erase_after() clear()
 #include <forward_list>
 #include <iostream>
 using namespace std;
@@ -9,36 +9,36 @@ int main()
     forward_list<int> flist = { 10, 20, 30 };
  
     forward_list<int>::iterator ptr;
- 
     //Inserting value using insert_after() starts insertion from second position
     ptr = flist.insert_after(flist.begin(), { 1, 2, 3 });
  
-    cout << "The forward list after insert_after operation : ";
+    cout << "Forward list after insert_after operation : ";
     for (int& c : flist)
         cout << c << " ";
-    cout << "\n";
  
     // Inserting value using emplace_after() inserts 2 after ptr
     ptr = flist.emplace_after(ptr, 2);
-    cout <<"The forward list after emplace_after operation :";
+    cout <<"\nForward list after emplace_after :";
     for (int& c : flist)
         cout << c << " ";
-    cout << "\n";
  
-    // Deleting value using erase.after Deleted 2
-    // after ptr
+    // Deleting value using erase.after Deleted 2 after ptr
     ptr = flist.erase_after(ptr);
-      cout << "The forward list erase_after operation :";
+      cout << "\nForward list erase_after operation :";
       for (int& c : flist)
         cout << c << " ";
-    cout << "\n";
    
    // Deleting value in a range
       ptr=flist.erase_after(flist.begin(), flist.end());
-    cout << "The forward list after erase_after (range) operation : ";
+    cout << "\nForward list after erase_after (range) operation : ";
       for (int& c : flist)
         cout << c << " ";
-    cout << "\n"; 
  
+    flist.clear();
+    
+      cout<<"\nForward list after using clear() : ";
+    for (auto it = flist.begin(); it != flist.end(); ++it)
+        cout << ' ' << *it;
+        
     return 0;
 }
