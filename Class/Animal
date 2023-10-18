@@ -1,8 +1,7 @@
-// C++ program to illustrate the dynamic_cast 
+// dynamic_cast 
 #include <iostream> 
 using namespace std; 
   
-// Base Class 
 class Animal { 
 public: 
     virtual void speak() const
@@ -11,7 +10,6 @@ public:
     } 
 }; 
   
-// Derived Class 
 class Dog : public Animal { 
 public: 
     void speak() const override 
@@ -19,8 +17,7 @@ public:
         cout << "Dog barks." << endl; 
     } 
 }; 
-  
-// Derived Class 
+ 
 class Cat : public Animal { 
 public: 
     void speak() const override 
