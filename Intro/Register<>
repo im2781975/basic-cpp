@@ -1,4 +1,4 @@
-//Registers are faster than memory to access, so the variables which are most frequently used in a C program can be put in registers using the register keyword
+//Registers are faster than memory to access, so the variables which are most frequently used in a program can be put in registers using the register keyword
 #include <iostream>
 #include <cstdio>
 
@@ -6,7 +6,6 @@ using namespace std;
 
 void fastscan(int &number)
 {
-    // Variable to indicate sign of input number
     bool negative = false;
     register int c;
 
