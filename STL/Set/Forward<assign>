@@ -13,23 +13,19 @@ int main()
     
     forward_list<int> list3;
     list3.assign(list1.begin(), list1.end());
-    
-    
-    cout << "The elements of first forward list are : ";
+
+    cout << "\nElements of first forward list are : ";
     for (int& a : list1)
         cout << a << " ";
-    cout << "\n";
  
-    cout << "The elements of second forward list are : ";
+    cout << "\nElements of second forward list are : ";
     for (int& b : list2)
         cout << b << " ";
-    cout << "\n";
 
-       
-      cout << "elements of third forward list are :";
+      cout << "\nElements of third forward list are :";
     for (int& c : list3)
         cout << c << " ";
-    cout << "\n";
  
     return 0;
 }
+
