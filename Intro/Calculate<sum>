@@ -1,20 +1,17 @@
-// C++ program to illustrate the identifiers 
+//identifiers 
 #include <iostream> 
 using namespace std; 
   
-// here Car_24 identifier is used to refer the below class 
 class Car_24 { 
     string Brand; 
     string model; 
     int year; 
 }; 
-  
-// calculateSum identifier is used to call the below 
-// function 
+ 
 void calculateSum(int a, int b) 
 { 
     int _sum = a + b; 
-    cout << "The sum is: " << _sum << endl; 
+    cout << "The sum is: " << _sum; 
 } 
   
 int main() 
