@@ -1,0 +1,15 @@
+// to find the size of the class 
+#include <bits/stdc++.h> 
+using namespace std; 
+
+class GFG 
+{   
+    int x;   
+}; 
+
+int main()   
+{   
+    GFG g;   
+    cout <<"Size of class gfg is in bytes  : " << sizeof(g);
+  return 0;   
+}
