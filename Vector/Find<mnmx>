@@ -1,0 +1,33 @@
+//working of minmax_element()
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+ 
+int main()
+{
+    vector<int> vi = { 5,3, 4, 4, 3, 5, 3 };
+         
+    // declaring pair pointer to catch the return value
+    pair<vector<int>::iterator, vector<int>::iterator> mnmx;
+         
+    //find min & max element between 0th and 3rd numb
+    mnmx = minmax_element(vi.begin(), vi.begin() + 4);
+         
+
+    cout << "Minimum value idx is : ";
+    cout << mnmx.first -vi.begin();
+         
+    cout << "\nMaximum value idx is : ";
+    cout <<mnmx.second-vi.begin();
+
+    mnmx = minmax_element(vi.begin(), vi.end());
+    
+    // using duplicated
+    // prints 1 and 5 respectively
+    cout << "\nAfter sort() minimum value idx is : ";
+    cout << mnmx.first - vi.begin();
+    cout << "\nAfter sort() maximum value idx is : ";
+    cout << mnmx.second - vi.begin();
+}
+
