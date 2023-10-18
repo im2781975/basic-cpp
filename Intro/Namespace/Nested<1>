@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 namespace name1
 {
     namespace name2
@@ -9,9 +10,9 @@ namespace name1
          }
     }
 }
-namespace base= name1::name2::name3;
+namespace base=name1::name2::name3;
   
 int main()
 {
-    std::cout << base::var << '\n';
+    cout << base::var << '\n';
 }
