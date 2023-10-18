@@ -1,9 +1,0 @@
-#include<bits/stdc++.h>
-using namespace std;
-int main()
-{
-    //shifting 3 byte.
-    long long int z = 1LL << 3;
-    cout << z;
-    return 0;
-}
