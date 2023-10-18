@@ -2,20 +2,18 @@
 using namespace std;
 
 typedef unordered_multimap<string, int>::iterator unit;
- 
-// Utility function to print unordered_multimap
+
 void printUmm(unordered_multimap<string, int> umm) {
     unit it = umm.begin();
  
     for (; it != umm.end(); it++) {
         cout << "<" << it->first << ", " << it->second << ">  ";
-        cout << endl;
     }
 }
 
 int main() {
     unordered_multimap<string, int> umm1;
- 
+    
     unordered_multimap<string, int> umm2 = {
         { "apple", 1 }, { "ball", 2 },
         { "apple", 10 }, { "cat", 7 },
@@ -28,43 +26,42 @@ int main() {
     printUmm(umm1);
  
     if (umm2.empty())
-        cout << "unordered multimap 2 is empty\n";
+        cout << "unordered multimap 2 is empty";
     else
-        cout << "unordered multimap 2 is not empty\n";
+        cout << "unordered multimap 2 is not empty";
  
-    cout << "Size of unordered multimap 1 is "
-         << umm1.size() << "\n";
+    cout << "\nSize of unordered multimap 1 is "
+         << umm1.size() ;
  
     string key = "apple";
     unit it = umm1.find(key);
     if (it != umm1.end()) {
-        cout << "key '" << key << "' is there in unordered multimap 1\n";
+        cout << "\nkey '" << key << "' is there in unordered multimap 1";
     } else {
-        cout << "key '" << key << "' isn't there in unordered multimap 1\n";
+        cout << "\nkey '" << key << "' isn't there in unordered multimap 1";
     }
  
     // count returns the count of the total number of pairs
     int cnt = umm1.count(key);
-    cout << "total values associated with '" << key
-         << "' are " << cnt << "\n";
+    cout << "\ntotal values associated with '" << key
+         << "' are " << cnt ;
  
     printUmm(umm2);
-    // one insertion by making a pair explicitly
     umm2.insert(make_pair("dog", 11));
     
     umm2.insert({ { "alpha", 12 }, { "beta", 33 } });
-    cout << "After insertion :";
+    cout << "\nAfter insertion :";
     printUmm(umm2);
  
     umm2.erase("apple");
-    cout << "After deletion of apple\n";
+    cout << "\nAfter deletion of apple";
     printUmm(umm2);
 
     umm1.clear();
     umm2.clear();
  
     if (umm2.empty())
-        cout << "unordered multimap 2 is empty\n";
+        cout << "\nunordered multimap 2 is empty";
     else
-        cout << "unordered multimap 2 is not empty\n";
+        cout << "\nunordered multimap 2 is not empty";
 }
