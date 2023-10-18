@@ -1,0 +1,16 @@
+// size of structure 
+#include <bits/stdc++.h> 
+using namespace std; 
+  
+struct gfg 
+{ 
+  int z; 
+  float d; 
+  char s[20]; 
+}g; 
+ 
+int main()  
+{ 
+  cout << "size of structure is :" <<  sizeof(g) << "\n";
+  return 0; 
+}
