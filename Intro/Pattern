@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    //O(n*log(n))
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=1;j<=n;j=j+i)
+        {
+            cout<<i<<" "<<j<<"\n";
+        }
+    }
+
+    return 0;
+}
+#include <bits/stdc++.h>
+using namespace std;
+
+// O(2^n)
+int fib(int n)
+{
+    if(n<=1)
+        return n;
+    return fib(n-1) + fib(n-2);
+}
+int main()
+{
+    int n;
+    cin>>n;
+    cout<<fib(n)<<"\n";
+
+    return 0;
+}
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    // Time O(n + q)
+    int n,q;
+    cin>>n>>q;
+    for(int i=0;i<n;i++)
+    {
+        cout<<i<<"\n";
+    }
+    for(int i=0;i<q;i++)
+    {
+        cout<<i<<"\n";
+    }
+    return 0;
+}
+
+
