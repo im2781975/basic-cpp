@@ -17,6 +17,14 @@ int main()
     cout << "\nArray elements are (using get()) : ";
     cout << get<0>(ar) << " " << get<1>(ar) << " " << get<2>(ar) << " " << get<3>(ar) << " " << get<4>(ar) << " " << get<5>(ar) << " ";
  
+    // Printing number of array elements
+    cout << "\nThe number of array elements is : ";
+    cout << ar.size();
+ 
+    // Printing maximum elements array can hold
+    cout << "\nMaximum elements array can hold is : ";
+    cout << ar.max_size() ;
+ 
     // Printing array elements using operator[]
     cout << "\nArray elements are (using operator[]) : ";
     for ( int i=0; i<n; i++)
@@ -24,4 +32,3 @@ int main()
  
     return 0;
 }
-
