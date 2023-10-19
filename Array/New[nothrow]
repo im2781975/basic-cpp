@@ -3,7 +3,8 @@ using namespace std;
 int main ()
 {
     int* p = NULL;
-//you can use "new (nothrow)" when allocating memory to prevent an exception from being thrown if the allocation fails for shortes memory in heap for continue the code.
+    
+    //you can use "new (nothrow)" when allocating memory to prevent an exception from being thrown if the allocation fails for shortes memory in heap for continue the code.
     p = new(nothrow) int;
     if (!p)
         cout << "allocation of memory failed\n";
@@ -12,9 +13,9 @@ int main ()
         *p = 29;
         cout << "Value of p: " << *p <<"\n";
     }
-    float *r = new float(75.25);
+    float *r = new(nothrow) float(75.25);
     cout << "Value of r: " << *r << "\n";
-//Request block of memory of size n
+    //Request block of memory of size n
     int n = 5;
     int *q = new(nothrow) int[n];
     if (!q)
