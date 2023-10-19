@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+void array_sized(int arr[3], int n)
+{
+    cout << "Array as Sized Array Argument: ";
+    for (int i = 0; i < n; i++) 
+        cout << arr[i] << " ";
+}
+void array_unsized(int arr[],int n)
+{
+    cout << "\nArray as Unsized Array Argument: ";
+    for (int i = 0; i < n; i++) 
+        cout << *(arr + i) << " ";
+
+}
+void array_pointer(int* ptr, int n)
+{
+    cout << "\nArray as Pointer Argument: ";
+    for (int i = 0; i < n; i++) 
+        cout << ptr[i] << " ";
+
+}
+int main()
+{
+  
+    int a[] = { 10, 20, 30 };
+    
+    int n= sizeof(a)/ sizeof(a[0]);
+    
+    array_sized (a, n);
+    array_unsized (a, n);
+    array_pointer (a, n);
+  
+    return 0;
+}
