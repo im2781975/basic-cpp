@@ -1,17 +1,16 @@
-//A program that shows problem if we don't use cin.ignore()
 #include <iostream>
 using namespace std;
-  
+
 int main()
 {
     int n;
-    cout<<"Enter range: ";
+    cout << "Enter range: ";
     cin >> n;
-    cin.ignore();
-    //cin.ignore(1, '\n');
+    cin.ignore(); // This line is important to clear the newline character in the input buffer.
+
     string s;
-    cout<<"Enter string: ";
-    for(int i = 0; i<n; ++i)
+    cout << "Enter string: ";
+    for (int i = 0; i < n; ++i)
     {
         getline(cin, s);
         cout << s.length() << " ";
@@ -19,3 +18,4 @@ int main()
     }
     return 0;
 }
+
