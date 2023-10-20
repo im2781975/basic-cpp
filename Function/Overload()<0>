@@ -13,11 +13,21 @@ void print(char const* c)
 {
     cout << " Here is char* " << c << "\n";
 }
+void print(float s,float t)
+{
+    cout << "Function with float called ";
+}
+void print(int s,int t)
+{
+    cout << "Function with int called ";
+}
 int main()
 {
     print(10);
     print(10.10);
     print("ten");
+    print (3.7f,9.8f);
+    // Added suffix "f" to both values to tell compiler, it's a float value
   
     return 0;
 }
