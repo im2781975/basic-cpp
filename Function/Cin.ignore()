@@ -6,7 +6,7 @@ int main()
     int n;
     cout << "Enter range: ";
     cin >> n;
-    cin.ignore(); // This line is important to clear the newline character in the input buffer.
+    cin.ignore(1,'\n'); // This line is important to clear the newline character in the input buffer.
 
     string s;
     cout << "Enter string: ";
