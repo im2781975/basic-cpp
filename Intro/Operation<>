@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string erase_first_last(string s)
+{
+    s.erase(s.begin());
+    s.pop_back();
+
+    return s;
+}
+
+void erase_first_last2(string &s)
+{
+    s.erase(s.begin());
+    s.pop_back();
+    cout << "In function s=" << s << "\n";
+}
+
+void Swap(int &x, int &y)
+{
+    int z = x;
+    x = y;
+    y = z;
+}
+
+int main()
+{
+    string s;
+    cout << "Enter string: ";
+    cin >> s;
+    cout << "\nString is: " << s;
+    string ans = erase_first_last(s);
+    cout << "\nAfter erase first_last string is: " << ans;
+
+    erase_first_last2(s);
+    cout << "\nAfter erase first_last (using address) string is: " << s;
+
+    int a, b;
+    cout << "\nEnter integers: ";
+    cin >> a >> b;
+    Swap(a, b);
+    cout << "\nAfter swap() integers are: " << a << " " << b;
+
+    return 0;
+}
+
