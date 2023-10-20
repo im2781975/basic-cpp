@@ -1,0 +1,11 @@
+Bucket count
+"bucket count" refers to the number of separate storage areas (buckets) used internally by certain containers like `std::unordered_map` and `std::unordered_set`.
+
+The purpose of dividing the elements into buckets is to provide a more efficient way to access and manage elements, especially in cases where there might be hash collisions (two or more elements mapping to the same bucket). Each element is assigned to a bucket based on its hash value.
+
+The `bucket_count` function returns the current number of buckets in an unordered associative container. By knowing the number of buckets and understanding how elements are distributed among them, you can gain insights into the performance and efficiency of your data structure.
+
+For example, if you have a large number of elements and you observe that they are concentrated in only a few buckets, it may indicate that your hash function is not distributing elements evenly, potentially causing performance issues. You can also use `bucket_size(bucket_index)` to get the number of elements in a specific bucket.
+
+By adjusting the number of buckets and optimizing your hash function, you can improve the performance of operations like insertions and lookups in unordered associative containers.
+
