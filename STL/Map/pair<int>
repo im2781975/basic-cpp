@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    map<int, vector<int>> mp;
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+        mp[arr[i]].push_back(i);
+    }
+
+    for (auto x : mp) {
+        cout << x.first << " ";
+        for (int position : x.second) {
+            cout << position << " ";
+        }
+        cout << "\n";
+    }
+    return 0;
+}
