@@ -1,0 +1,58 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    //vector<int> v;
+    for(int i=0;i<n;i++)
+    {
+        //int input;
+        cin>>v[i];
+        //cin>>input;
+        //v.push_back(input);
+    }
+    int sz=v.size();
+    for(int i=0;i<sz;i++)
+    {
+        cout<<v[i]<<" ";
+    }
+    cout<<"\n";
+    //for printing first element
+    int first_element=v.front();
+    cout<<first_element<<"\n";
+    //for printing last element
+    int last_element=v.back();
+    cout<<last_element<<"\n";
+    //for deleting last element.
+    v.pop_back();
+    sz=v.size();
+    for(int i=0;i<sz;i++)
+        cout<<v[i]<<" ";
+        
+        cout<<"\n";
+    cout<<sz<<"\n";
+    while(!v.empty())
+    {
+        cout<<v.back()<<" ";
+        v.pop_back();
+    }
+    cout<<"\n";
+    //for upgrade size:
+    v.resize(10,1);
+    for(int i=0;i<v.size();i++)
+    {
+        cout<<v[i]<<" ";
+    }
+    cout<<"\n";
+    //for cleaning the 
+    v.clear();
+    sz=v.size();
+    cout<<sz<<"\n";
+    //is empty?
+    int emp=v.empty();
+    cout<<emp<<"\n";
+    
+}
