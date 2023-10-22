@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+class user
+{
+    protected:
+    string name;
+    int age;
+};
+class Admin: user
+{
+    private:
+    string designation;
+    public:
+    void set(string s,string dg,int ag)
+    {
+        name=s;
+        designation=dg;
+        age=ag;
+    }
+    void print()
+    {
+        cout<<name<<" "<<designation<<" "<<age<<"\n";
+    }
+};
+int main()
+{
+    Admin ad;
+    ad.set("A","B",26);
+    ad.print();
+}
