@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Cuboid {
+
+private:
+    int length;
+    int width;
+    int height;
+
+public:
+    int getVolume() {
+        return length * height * width;
+    }
+
+    int getSurfaceArea() {
+        return 2*(height*length + length*width + height*width);
+    }
+
+    Cuboid()
+    {
+        length = 0;
+        width = 0;
+        height = 0;
+    }
+
+    Cuboid(int len, int wid, int hei)
+    {
+        length = len;
+        width = wid;
+        height = hei;
+    }
+};
+
+bool cmpVlm(Cuboid A, Cuboid B)
+{
+    return A.getVolume() < B.getVolume();
+}
+
+bool cmpSur(Cuboid A, Cuboid B)
+{
+    return A.getSurfaceArea() > B.getSurfaceArea();
+}
+
+int main()
+{
+    Cuboid cub[11];
+    int n = 5;
+    for(int i = n-1; i >= 0; i--) {
+        cub[i] = Cuboid(i+10, i+5, i+2);
+        cout << cub[i].getVolume() << " " << cub[i].getSurfaceArea() << endl;
+    }
+
+    cout <<  "Volume" << endl;
+    sort(cub, cub+n, cmpVlm);
+    for(int i = 0; i < n; i++) {
+        cout << cub[i].getVolume() << " " << cub[i].getSurfaceArea() << endl;
+    }
+
+    cout <<  "Surface" << endl;
+    sort(cub, cub+n, cmpSur);
+    for(int i = 0; i < n; i++) {
+        cout << cub[i].getVolume() << " " << cub[i].getSurfaceArea() << endl;
+    }
+}
