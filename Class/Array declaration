@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+class student
+{
+    public:
+    string name;
+    int std_id;
+    int age;
+    student()
+    {
+        
+    }
+    student(string name,int std_id,int age)
+    {
+        this->name=name;
+        this->std_id=std_id;
+        this->age=age;
+    }
+    void print()
+    {
+        cout<<name<<" "<<std_id<<" "<<age<<"\n";
+    }
+};
+int main()
+{
+    int i,arr[10];
+    student s[10];
+    for(i=0;i<10;i++)
+    {
+        s[i]=student("A",i,8);
+    }
+    for(i=0;i<10;i++)
+    {
+        s[i].print();
+    }
+}
