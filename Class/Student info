@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+class student
+{
+    private:
+    string name;
+    string father_name;
+    string mother_name;
+    int std_id;
+    int age;
+    public:
+    void set_info(string s,string father,string mother)
+    {
+        name=s;
+        father_name=father;
+        mother_name=mother;
+    }
+    void print()
+    {
+        cout<<name<<" "<<father_name<<" "<<mother_name<<" "<<std_id<<" "<<age<<"\n";
+    }
+};
+int main()
+{
+    student s,s2,s3;
+    /*s.name="X";
+    s.father_name="Y";
+    s.mother_name="Z";
+    s.age=26;
+    s.std_id=11026;
+    s.print
+    s2.name="A";
+    s2.father_name="B";
+    s2.mother_name="C";
+    s2.age=25;
+    s2.std_id=11096;
+    s2.print();*/
+    s3.set_info("A","B","C");
+    s3.print();
+    //set info will be used when objects of a class will be private
+}
