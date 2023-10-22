@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+class student
+{
+    private:
+    string name;
+    string father_name;
+    string mother_name;
+    int std_id;
+    int age;
+    public:
+    student(string name,string father_name,string mother_name)
+    {
+        this->name=name;
+        this->father_name=father_name;
+        this->mother_name=mother_name;
+    }
+    void print()
+    {
+        cout<<name<<" "<<father_name<<" "<<mother_name<<" ";
+    }
+};
+int main()
+{
+    student* s3=new student("A","B","C");
+    s3->print();
+    (*s3).print();
+}
