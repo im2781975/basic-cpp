@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+class rectangle
+{
+    public:
+    int height,width;
+    int calculate_area()
+    {
+        return height*width;
+    }
+    int calculate_perimetre()
+    {
+        return 2*(height+width);
+    }
+};
+int main()
+{
+    rectangle r;
+    r.height=4;
+    r.width=8;
+    cout<<r.calculate_area()<<"\n";
+    cout<<r.calculate_perimetre()<<"\n";
+}
