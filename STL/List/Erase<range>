@@ -1,0 +1,25 @@
+#include <list>
+#include <iostream>
+
+void deleteValue(std::list<int> &l, int value) {
+    for (auto it = l.begin(); it != l.end(); ++it) {
+        if (*it == value) {
+            l.erase(it);
+            break; // Break after deleting the first occurrence
+        }
+    }
+}
+
+int main() {
+    std::list<int> myList = {7, 3, 8, 4, 5, 4};
+    int valueToDelete = 4;
+
+    deleteValue(myList, valueToDelete);
+
+    for (const auto &element : myList) {
+        std::cout << element << " ";
+    }
+
+    return 0;
+}
+
