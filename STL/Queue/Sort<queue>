@@ -1,0 +1,30 @@
+#include <iostream>
+#include <deque>
+#include <algorithm>
+
+int main() {
+    int n;
+    std::cout << "Enter the number of elements: ";
+    std::cin >> n;
+
+    std::deque<int> ladder;
+
+    std::cout << "Enter " << n << " integers: ";
+    for (int i = 0; i < n; ++i) {
+        int num;
+        std::cin >> num;
+        ladder.push_back(num);
+    }
+
+    // Sort the ladder array using Deque
+    std::sort(ladder.begin(), ladder.end());
+
+    std::cout << "Sorted Ladder Array: ";
+    for (const int& num : ladder) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+
