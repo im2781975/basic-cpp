@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+
+bool isPalindrome(const std::string& word, int start, int end) {
+    // Base case: If the word has one or zero characters, it's a palindrome.
+    if (start >= end) {
+        return true;
+    }
+    
+    // Compare the characters at the start and end positions.
+    if (word[start] != word[end]) {
+        return false; // If they don't match, it's not a palindrome.
+    }
+    
+    // Recursively check the substring without the start and end characters.
+    return isPalindrome(word, start + 1, end - 1);
+}
+
+int main() {
+    std::string input;
+    std::cin >> input;
+    
+    if (isPalindrome(input, 0, input.length() - 1)) {
+        std::cout << "Yes" << std::endl;
+    } else {
+        std::cout << "No" << std::endl;
+    }
+    
+    return 0;
+}
