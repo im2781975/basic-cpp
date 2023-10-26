@@ -1,0 +1,44 @@
+#include <iostream>
+#include <stack>
+
+void reverseStack(std::stack<int>& originalStack) {
+    std::stack<int> tempStack;
+
+    while (!originalStack.empty()) {
+        int temp = originalStack.top();
+        originalStack.pop();
+        tempStack.push(temp);
+    }
+
+    while (!tempStack.empty()) {
+        int temp = tempStack.top();
+        tempStack.pop();
+        originalStack.push(temp);
+    }
+}
+
+int main() {
+    std::stack<int> myStack;
+
+    // Push some elements onto the original stack
+    myStack.push(1);
+    myStack.push(2);
+    myStack.push(3);
+    myStack.push(4);
+
+    std::cout << "Original Stack: ";
+    while (!myStack.empty()) {
+        std::cout << myStack.top() << " ";
+        myStack.pop();
+    }
+
+    reverseStack(myStack);
+
+    std::cout << "\nReversed Stack: ";
+    while (!myStack.empty()) {
+        std::cout << myStack.top() << " ";
+        myStack.pop();
+    }
+
+    return 0;
+}
