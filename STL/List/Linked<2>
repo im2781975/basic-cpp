@@ -1,0 +1,18 @@
+#include <iostream>
+#include <list>
+
+void deleteZero(std::list<int> &myList) {
+    myList.remove(0);
+}
+
+int main() {
+    std::list<int> mylist = {0, 2, 0, 0, 5};
+    deleteZero(mylist);
+
+    for (const auto &element : mylist) {
+        std::cout << element << " ";
+    }
+
+    return 0;
+}
+
