@@ -1,0 +1,43 @@
+#include <iostream>
+#include <stack>
+#include <string>
+
+bool isValidBracketSequence(const std::string &sequence) {
+    std::stack<char> stack;
+
+    for (char bracket : sequence) {
+        if (bracket == '(' || bracket == '[' || bracket == '{') {
+            stack.push(bracket);
+        } else if (bracket == ')' || bracket == ']' || bracket == '}') {
+            if (stack.empty()) {
+                return false;
+            }
+
+            char top = stack.top();
+            stack.pop();
+
+            if ((bracket == ')' && top != '(') ||
+                (bracket == ']' && top != '[') ||
+                (bracket == '}' && top != '{')) {
+                return false;
+            }
+        }
+    }
+
+    return stack.empty();
+}
+
+int main() {
+    std::string input;
+    std::cout << "Enter a bracket sequence: ";
+    std::cin >> input;
+
+    if (isValidBracketSequence(input)) {
+        std::cout << "Yes" << std::endl;
+    } else {
+        std::cout << "No" << std::endl;
+    }
+
+    return 0;
+}
+
