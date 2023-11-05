@@ -3,18 +3,22 @@ using namespace std;
 
 class Base {
 public:
-    // pure virtual function
+
     virtual void show() = 0;
 };
 
 class Derived : public Base {
+public:
+    // Provide an implementation for the pure virtual function
+    void show() override {
+        cout << "Derived class implementation of show()" << endl;
+    }
 };
 
-int main(void)
-{
-    // Error: Cannot instantiate an object of an abstract class
+int main(void) {
     Derived d;
-
+    d.show(); 
+    
     return 0;
 }
 
