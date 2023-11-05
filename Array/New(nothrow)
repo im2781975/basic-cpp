@@ -13,9 +13,10 @@ int main ()
         *p = 29;
         cout << "Value of p: " << *p <<"\n";
     }
+    
     float *r = new(nothrow) float(75.25);
     cout << "Value of r: " << *r << "\n";
-    //Request block of memory of size n
+    
     int n = 5;
     int *q = new(nothrow) int[n];
     if (!q)
@@ -31,8 +32,8 @@ int main ()
     }
     delete p;
     delete r;
-
     delete[] q;
  
     return 0;
 }
+
