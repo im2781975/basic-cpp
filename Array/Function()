@@ -1,4 +1,4 @@
-// working of array at() and get()
+// working of at() | get() | front() | back()
 #include<iostream>
 #include<array> 
 #include<tuple> 
@@ -18,7 +18,7 @@ int main()
     cout << get<0>(ar) << " " << get<1>(ar) << " " << get<2>(ar) << " " << get<3>(ar) << " " << get<4>(ar) << " " << get<5>(ar) << " ";
  
     // Printing number of array elements
-    cout << "\nThe number of array elements is : ";
+    cout << "\nArray size is  : ";
     cout << ar.size();
  
     // Printing maximum elements array can hold
@@ -30,5 +30,21 @@ int main()
     for ( int i=0; i<n; i++)
     cout << ar[i] << " ";
  
+    cout << "\nFirst element of array is : ";
+    int &a=ar.front();
+    cout <<a ;
+ 
+    cout << "\nLast element of array is : ";
+    int &b=ar.back();
+    cout << b ;
+      
+    a=10; 
+    b=60; 
+     
+    cout<<"\nArray after updating first and last element :";
+    for (auto x: ar)
+    {
+      cout<<x<<" ";
+    }
     return 0;
 }
