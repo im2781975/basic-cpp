@@ -1,14 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
-void array_sized(int arr[3], int n)
+void print_array(int arr[20], int n)
 {
-    cout << "Array as Sized Array Argument: ";
+    cout << "\nAfter operation array is : ";
     for (int i = 0; i < n; i++) 
         cout << arr[i] << " ";
 }
 void array_unsized(int arr[],int n)
 {
-    cout << "\nArray as Unsized Array Argument: ";
+    cout << "\nArray as Unsized Argument: ";
     for (int i = 0; i < n; i++) 
         cout << *(arr + i) << " ";
 
@@ -23,13 +23,23 @@ void array_pointer(int* ptr, int n)
 int main()
 {
   
-    int a[] = { 10, 20, 30 };
+    int a[] = {1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
     
     int n= sizeof(a)/ sizeof(a[0]);
     
-    array_sized (a, n);
+    print_array (a, n);
+    
     array_unsized (a, n);
+    
     array_pointer (a, n);
-  
+    
+    sort(a, a+ n);
+    print_array (a, n);
+    
+    if (binary_search(a, a + n, 6))
+    cout << "\nElement found in the array";
+    else
+    cout << "\nElement doesn't exist";
+
     return 0;
 }
