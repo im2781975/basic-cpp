@@ -1,13 +1,11 @@
 #include <iostream>
 using namespace std;
  
-class implementAbstraction {
-private:
+class Abstract {
+    private:
     int a, b;
- 
-public:
-    // method to set values of
-    // private members
+    public:
+    //Abstract(int x,int y):a(x),b(y){}
     void set(int x, int y)
     {
         a = x;
@@ -16,14 +14,14 @@ public:
  
     void display()
     {
-        cout << "a = " << a << endl;
-        cout << "b = " << b << endl;
+        cout << "a = " << a << " b = " << b << "\n";
     }
 };
  
 int main()
 {
-    implementAbstraction obj;
+    //Abstract obj(10,20);
+    Abstract obj;
     obj.set(10, 20);
     obj.display();
     return 0;
