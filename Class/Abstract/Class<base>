@@ -3,13 +3,13 @@ using namespace std;
 
 class Base {
 public:
-
+//pure virtual function is declared using the = 0 syntax, and it means that any class inheriting from Base must provide an implementation for the show() function. The Base class does not provide any implementation for show().
     virtual void show() = 0;
 };
 
 class Derived : public Base {
 public:
-    // Provide an implementation for the pure virtual function
+    
     void show() override {
         cout << "Derived class implementation of show()" << endl;
     }
