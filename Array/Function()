@@ -1,4 +1,4 @@
-// working of at() | get() | front() | back()
+// working of at() | get() | front() | back()  | size() | max_size() 
 #include<iostream>
 #include<array> 
 #include<tuple> 
