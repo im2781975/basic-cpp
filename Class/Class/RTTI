@@ -8,7 +8,8 @@ class D : public B {};
 
 int main()
 {
-    B* b = new D;  pointer
+    B* b = new D;
+    // B *b = new D; creates a pointer b to an object of class B but initializes it with an instance of class D. This is possible because of polymorphism; you can point a base class pointer to a derived class object.
     D* d = dynamic_cast<D*>(b);
     // Derived class pointer
     if (d != NULL)
