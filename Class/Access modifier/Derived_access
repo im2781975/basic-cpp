@@ -1,1 +1,35 @@
-
+#include<iostream>
+using namespace std;
+class base
+{
+    public:
+    void call()
+    {
+        print();
+    }
+    void print()
+    {
+        cout<<"\nBase class";
+    }
+};
+class derived:public base
+{
+    public:
+    /*void call()
+    {
+        print();
+    }
+    */
+    void print()
+    {
+        cout<<"\nDerived call";
+    }
+};
+int main()
+{
+    base b;
+    b.call();
+    derived d;
+    d.call();
+    d.print();
+}
