@@ -5,7 +5,6 @@ class Parent
     protected:
     int id_protected;
 };
-// sub class or derived class from public base class
 class Child : public Parent
 {
     public:
@@ -19,8 +18,8 @@ class Child : public Parent
     }
 };
 int main() {
-    Child obj1;
-    obj1.setId(81);
-    obj1.displayId();
+    Child c;
+    c.setId(81);
+    c.displayId();
     return 0;
 }
