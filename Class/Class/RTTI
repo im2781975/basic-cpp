@@ -2,21 +2,24 @@
 #include <iostream>
 using namespace std;
 
-class B {};
+class B {
+public:
+    virtual void someFunction() {}
+};
 
 class D : public B {};
 
-int main()
-{
-    B* b = new D;
+int main() {
     // B *b = new D; creates a pointer b to an object of class B but initializes it with an instance of class D. This is possible because of polymorphism; you can point a base class pointer to a derived class object.
+    B* b = new D;
+    //to cast the base class pointer b to a derived class pointer d.
     D* d = dynamic_cast<D*>(b);
-    // Derived class pointer
-    if (d != NULL)
+
+    if (d != nullptr)
         cout << "works";
     else
         cout << "cannot cast B* to D*";
-    getchar(); 
-    // to get the next character
+
+    delete b; 
     return 0;
 }
