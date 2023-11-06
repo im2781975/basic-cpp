@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+class abc; 
+
+class xyz {
+private:
+    int x;
+
+public:
+    xyz(int a) : x(a) {}
+    friend void max(xyz t1, abc t2);
+};
+
+class abc {
+private:
+    int y;
+
+public:
+    abc(int b) : y(b) {}
+    friend void max(xyz t1, abc t2);
+};
+
+void max(xyz t1, abc t2) {
+    if (t1.x > t2.y)
+        cout << t1.x;
+    else
+        cout << t2.y;
+}
+
+int main() {
+    abc a(20);
+    xyz b(30);
+    max(b, a); 
+    return 0;  
+}
+
