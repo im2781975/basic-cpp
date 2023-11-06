@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+class Test {
+    int a;
+  
+    public:
+    Test() { a = 1; }
+ 
+    void func(int a)
+    { 
+        cout << this->a; 
+        cout<<a;
+        cout<<Test::a;
+    }
+};
+ 
+int main()
+{
+    Test obj;
+    obj.func(3);
+    return 0;
+}
