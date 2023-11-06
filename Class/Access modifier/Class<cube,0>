@@ -1,56 +1,57 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-
-class box {
-private:
+class cube
+{
     int length;
-    int* breadth;
-    int height;
- 
-public:
-    box()
+    int *breadth;
+    int hight;
+    
+    public:
+    cube()
     {
-        breadth = new int;
+        cout<<"construct called\n";
+        breadth=new int;
     }
-
-    void set_dimension(int len, int brea,int heig)
+    void set(int l,int b,int h)
     {
-        length = len;
-        *breadth = brea;
-        height = heig;
+        length=l;
+        *breadth=b;
+        hight=h;
     }
-
-    void show_data()
+    void display()
     {
-        cout <<"Length : "<<length
-             <<"\nBreadth : "<< *breadth<<"\nHeight = " << height<<"\n";
+        cout<<"length is: "<<length<<"\n"<<"breadth is: "<<*breadth<<"\n"<<"hight is: "<<hight<<"\n";
     }
- 
     // Parameterized deep copy Constructors 
-    box(box& sample)
+    cube(cube &a)
     {
-        length = sample.length;
-        breadth = new int;
-        *breadth = *(sample.breadth);
-        height = sample.height;
+        length=a.length;
+        breadth=new int;
+        *breadth=*(a.breadth);
+        hight=a.hight;
     }
-
-    ~box()
+    cube operator+(cube & cb)
     {
+        cube newbox;
+        newbox.length=this->length+cb.length;
+        newbox.breadth=new int;
+        *(newbox.breadth)=*breadth+*(cb.breadth);
+        newbox.hight=this->hight+cb.hight;
+        return newbox;
+    }
+    ~cube()
+    {
+        cout<<"destruct called\n";
         delete breadth;
     }
 };
 int main()
 {
-    box first;
- 
-    first.set_dimension(12,14, 16);
-    
-    first.show_data();
- 
-//When the data will be copied then all the resources will also get allocated to the new object
-    box second = first;
-
-    second.show_data();
-    return 0;
+    cube c;
+    c.set(12,13,14);
+    c.display();
+    cube d=c;
+    d.display();
+    cube e=c+d;
+    e.display();
 }
