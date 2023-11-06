@@ -1,4 +1,4 @@
-//Run Time Type Identification(RTTI).but without virtual function
+//Run Time Type Identification(RTTI).
 #include <iostream>
 using namespace std;
 
@@ -14,11 +14,13 @@ int main() {
     B* b = new D;
     //to cast the base class pointer b to a derived class pointer d.
     D* d = dynamic_cast<D*>(b);
+    //D*d=dynamic_casr<D*>(d);
+    //without virtual
 
     if (d != nullptr)
         cout << "works";
     else
-        cout << "cannot cast B* to D*";
+        cout << "cannot cast B*  D*";
 
     delete b; 
     return 0;
