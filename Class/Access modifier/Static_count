@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+ 
+class Student {
+    public:
+    static int total;
+ 
+    Student() { total += 1; }
+};
+int Student::total = 0;
+int main()
+{
+    Student s1;
+    cout << "Number of students:" << s1.total;
+    
+    Student s2;
+    cout << "\nNumber of students:" << s2.total ;
+ 
+    Student s3;
+    cout << "\nNumber of students:" << s3.total ;
+    return 0;
+}
