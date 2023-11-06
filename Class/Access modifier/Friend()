@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+class base
+{
+    private:
+    int private_x;
+    
+    protected:
+    int protected_x;
+    public:
+    base()
+    {
+        private_x=10;
+        protected_x=20;
+    }
+    friend class F;
+};
+class F
+{
+    public:
+    void display(base &b)
+    {
+        cout<<"\nPrivate_x: "<<b.private_x<<"\nProtected_x: "<<b.protected_x;
+    }
+};
+int main()
+{
+    base b;
+    F fri;
+    fri.display(b);
+}
