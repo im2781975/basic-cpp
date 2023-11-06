@@ -1,0 +1,32 @@
+#include <iostream> 
+using namespace std;
+ 
+class Box 
+{ 
+    private: 
+    static int length;
+    static int breadth; 
+    static int height; 
+     
+    public:
+    static void print() 
+    { 
+        cout << "length is: " << length <<"\n"<<"breadth is: " << breadth <<"\n"<<"height is: " << height <<"\n";
+    }
+}; 
+
+int Box :: length = 10; 
+int Box :: breadth = 20; 
+int Box :: height = 30; 
+int main() 
+{
+    Box b; 
+     
+    cout << "\nStatic member function is called through Object name: "<<"\n";
+    b.print(); 
+     
+    cout << "\nStatic member function is called through Class name: "<<"\n";
+    Box::print(); 
+     
+    return 0; 
+}
