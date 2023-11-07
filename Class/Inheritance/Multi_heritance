@@ -10,41 +10,36 @@ class A
         {
              a=x;            
         }
-    
         void disp_A()
         {
-            cout<<"\n"<<"Value of A="<<a;
+            cout<<"\nValue of A: "<<a;
         }
 };
-  
 class B: public A
 {
     int b,p;
-      
     public:
         void set_B(int x,int y)
         {
             set_A(x);
             b=y;
         }
-          
         void disp_B()
         {
             disp_A();
-            cout<"\n"<<"Value of B="<<b;
+            cout<<"\nValue of B: "<<b;
         }
-          
-        void cal_product()
+        void product()
         {
             p=a*b;
             cout<<endl<<"Product of "<<a<<" * "<<b<<" = "<<p;
         }
 };
-main()
+int main()
 {
-    B _b;
-    _b.set_B(4,5);
-    _b.cal_product();
+    B b;
+    b.set_B(4,5);
+    b.product();
       
     return 0;
 }
