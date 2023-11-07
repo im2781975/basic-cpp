@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class tmp
+{
+    int a;
+    int b;
+
+public:
+    int solve(int input)
+    {
+        a = input;
+        b = a / 2;
+        return b;
+    }
+
+    void print()
+    {
+        cout << a << " " << b << "\n";
+    }
+};
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    tmp t;
+    int ans = t.solve(n);
+    cout << ans;
+}
