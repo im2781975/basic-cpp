@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+class vehicle
+{
+    private:
+    void operatore()
+    {
+        cout<<"Molla ibrahim";
+    }
+    void piston()
+    {
+        cout<<"Four piston";
+    }
+    
+    public:
+    void company()
+    {
+        cout<<"\nTOYOTA";
+    }
+    void model()
+    {
+        cout<<"\nYaris_5008";
+    }
+    void color()
+    {
+        cout<<"\nColor is: Golden";
+    }
+    void oil()
+    {
+        cout<<"\nOil is petrol";
+    }
+    void cost()
+    {
+        cout<<"\nEntro 5000£ 20000£";
+    }
+};
+int main()
+{
+    vehicle v;
+    v.color();
+    v.company();
+}
