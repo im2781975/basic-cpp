@@ -4,25 +4,24 @@ using namespace std;
  
 class Vehicle {
 public:
-    Vehicle() { cout << "This is a Vehicle\n"; }
+    Vehicle() 
+    { cout << "Vehicle\n"; }
 };
 
 class Fare {
 public:
-    Fare() { cout << "Fare of Vehicle\n"; }
+    Fare() 
+    { cout << "Fare \n"; }
 };
 
-// first sub class
 class Car : public Vehicle {
 };
   
-//second sub class
 class Bus : public Vehicle, public Fare {
 };
  
 int main()
 {
-    //Creating object of sub class will invoke the constructor of base class.
-    Bus obj2;
+    Bus b;
     return 0;
 }
