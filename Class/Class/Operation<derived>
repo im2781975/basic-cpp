@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+class A
+{
+    int a,b,c;
+    public:
+    void add(int x,int y)
+    {
+        a=x;
+        b=y;
+        cout<<"\nSum is: "<<a+b;
+    }
+    void add(int x,int y,int z)
+    {
+        a=x;
+        b=y;
+        c=z;
+        cout<<"\nSum is: "<<a+b+c;
+    }
+    virtual void print()
+    {
+        cout<<"\nClass A running";
+    }
+};
+class B:public A
+{
+    public:
+    void print()
+    {
+        cout<<"\nDerived class";
+    }
+};
+int main()
+{
+    A a;
+    a.add(5,7);
+    a.add(3,6,8);
+    B b;
+    b.print();
+    b.add(9,8,7);
+}
