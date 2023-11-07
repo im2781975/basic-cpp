@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Parent {
+    public:
+    int id_p;
+};
+ 
+class Child : public Parent {
+public:
+    int id_c;
+};
+
+int main()
+{
+    Child c;
+    c.id_c = 7;
+    c.id_p = 91;
+    cout << "Child id is: " <<c.id_c << '\n';
+    cout << "Parent id is: " << c.id_p << '\n';
+  
+    return 0;
+}
+
