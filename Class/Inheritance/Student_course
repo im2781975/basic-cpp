@@ -2,11 +2,11 @@
 using namespace std;
   
 class Person {
-private:
+    private:
     int id;
     char name[100];
   
-public:
+    public:
     void set_p()
     {
         cout << "Enter the Id:";
@@ -25,7 +25,7 @@ class Student : private Person {
     char course[50];
     int fee;
   
-public:
+    public:
     void set_s()
     {
         set_p();
@@ -49,3 +49,4 @@ int main()
     s.display_s();
     return 0;
 }
+
