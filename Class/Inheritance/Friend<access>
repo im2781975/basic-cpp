@@ -12,7 +12,6 @@ public:
     // Pass an instance of class A and an integer.
     
     int getX() { return x; }  
-    // Getter function for x.
 };
 
 class B : public A {
@@ -23,7 +22,6 @@ public:
     B() { y = 0; }
     
     int getY() { return y; }   
-    // Getter function for y.
 };
 
 void show(A a, int y)
