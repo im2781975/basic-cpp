@@ -1,6 +1,4 @@
-
-// C++ program to demonstrate working of
-// functors.
+//working of functors.
 #include <bits/stdc++.h>
 using namespace std;
  
