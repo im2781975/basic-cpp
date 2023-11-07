@@ -1,5 +1,4 @@
-/ C++ Program to Demonstrate the working
-// of conversion operator
+//working of conversion operator
 #include <iostream>
 using namespace std;
 class Fraction {
