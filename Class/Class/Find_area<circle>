@@ -1,15 +1,13 @@
 #include <iostream>
 using namespace std;
  
-// declaring class
-class Circle {
-    // access modifier
-private:
-    // Data Member
+class Circle
+{
+    private:
     float area;
     float radius;
  
-public:
+    public:
     void getRadius()
     {
         cout << "Enter radius\n";
@@ -23,8 +21,7 @@ public:
 };
 int main()
 {
-    // creating instance(object) of class
     Circle cir;
-    cir.getRadius(); // calling function
-    cir.findArea(); // calling function
+    cir.getRadius();
+    cir.findArea();
 }
