@@ -1,0 +1,38 @@
+// operator overloading using a Friend Function
+#include<bits/stdc++.h>
+using namespace std;
+class Distance
+{
+    private:
+    float inch;
+    float feet;
+    
+    public:
+    Distance(int i=0,int f=0)
+    {
+        this->feet=f;
+        this->inch=i;
+    }
+    void print()
+    {
+        cout<<"Feet :"<<feet<<" Inch: "<<inch<<"\n";
+    }
+    friend Distance operator+(Distance &,Distance &);
+};
+Distance operator+(Distance &d,Distance &e)
+{
+    Distance f;
+    f.feet=d.feet+e.feet;
+    f.inch=d.inch+e.inch;
+    return f;
+}
+
+int main()
+{
+    Distance a(4,9);
+    Distance b(7,9);
+    Distance c=a+b;
+    c.print();
+    b.print();
+    a.print();
+}
