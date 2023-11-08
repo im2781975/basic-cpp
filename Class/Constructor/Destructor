@@ -7,7 +7,10 @@ public:
         cout << "~Base() is executed" << endl;
     }
 };
-
+Base::~Base() // Explicit destructor call
+{
+    std::cout << "Pure virtual destructor is called";
+}
 class Derived : public Base {
 public:
     ~Derived() {
