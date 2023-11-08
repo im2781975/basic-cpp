@@ -1,16 +1,16 @@
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 class Student
 {
-    public:
+public:
     string name;
     int std_id;
     int age;
     string fathers_name;
     string mothers_name;
 
-    Student(){}
+    Student() {}
     Student(string name, int id, int age, string f_name, string m_name)
     {
         this->name = name;
@@ -29,63 +29,62 @@ class Student
 
     void print_information()
     {
-        cout<<name<<" "<<std_id<<" "<<age<<" "<<fathers_name<<" "<<mothers_name<<"\n";
+        cout << name << " " << std_id << " " << age << " " << fathers_name << " " << mothers_name << "\n";
     }
 
     ~Student()
     {
-        cout<<"Student destructor";
+        cout << "Student destructor ";
         print_information();
     }
 };
 
 class Person
 {
-    public:
+public:
     string name;
     Person *father, *mother;
 
-    Person()
-    {
-        father = NULL;
-        mother = NULL;
-    }
+    Person() : father(nullptr), mother(nullptr) {}
+
     Person(string name, string f_name, string m_name)
     {
-        this->name=name;
-        father=new Person;
-        father->name=f_name;
-        mother=new Person;
-        mother->name=m_name;
+        this->name = name;
+        father = new Person;
+        father->name = f_name;
+        mother = new Person;
+        mother->name = m_name;
     }
+
     void print_info()
     {
-        cout<<"Name = "<<name<<"\n";
-        cout<<"Fathers name = "<<father->name<<"\n";
-        cout<<"Mothers name = "<<mother->name<<"\n";
+        cout << "Name = " << name << "\n";
+        cout << "Father's name = " << father->name << "\n";
+        cout << "Mother's name = " << mother->name << "\n";
     }
+
     ~Person()
     {
-        cout<<"Person destructor\n";
-        if(father!=NULL)
-         delete father;
-        if(mother!=NULL)
-         delete mother;
+        cout << "Person destructor\n";
+        if (father != nullptr)
+            delete father;
+        if (mother != nullptr)
+            delete mother;
     }
 };
 
 int main()
 {
-    Student s("A" , 10 , 20 , "B" , "C");
-     s.print_information();
+    Student s("A", 10, 20, "B", "C");
+    s.print_information();
 
-    Student s2("R" , 10, 20);
+    Student s2("R", 10, 20);
     s2.print_information();
 
     Student s3;
 
-    Person p("A", "B", "C");
-    p.print_info();
-
+    Person *p = new Person("A", "B", "C");
+    p->print_info();
+    delete p; // Don't forget to delete the dynamically allocated object
     return 0;
 }
