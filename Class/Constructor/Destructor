@@ -3,14 +3,17 @@ using namespace std;
 
 class Base {
 public:
-    virtual ~Base() {
+  /*  virtual ~Base() {
         cout << "~Base() is executed" << endl;
-    }
+    }*/
+
+    virtual ~Base()=0;
 };
-Base::~Base() // Explicit destructor call
+
+Base::~Base()
 {
     std::cout << "Pure virtual destructor is called";
-}
+} 
 class Derived : public Base {
 public:
     ~Derived() {
@@ -24,4 +27,3 @@ int main() {
     delete b;
     return 0;
 }
-
