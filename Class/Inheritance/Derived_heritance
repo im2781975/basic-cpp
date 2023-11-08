@@ -6,6 +6,13 @@ public:
     { 
         cout << "\nPerson called";
     }
+    /*
+    Person()
+    { 
+        cout << "Person () called";
+    } 
+    if it is uncommmented it will be print instead of person(int x)
+    */
 };
 class Faculty : public Person {
 public:
