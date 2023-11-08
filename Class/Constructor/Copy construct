@@ -18,13 +18,25 @@ public:
         cout << "\n" << "ID=" << id;
     }
 };
-
+class storeVal
+{
+public:
+    storeVal() {}
+    
+    storeVal(const storeVal& s)
+    {
+        cout << "\nCopy constructor has been called " << endl;
+    }
+};
 int main() {
-    Sample obj1;
-    obj1.init(10);
-    obj1.display();
-    Sample obj2(obj1);
-    obj2.display();
+    Sample a;
+    a.init(10);
+    a.display();
+    Sample b(a);
+    b.display();
+    
+    storeVal c;
+    storeVal d = c;
     return 0;
 }
 
