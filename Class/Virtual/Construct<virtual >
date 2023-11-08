@@ -1,20 +1,16 @@
 #include <iostream>
 using namespace std;
- 
-//// LIBRARY START
+
 class Base
 {
-public:
- 
-    // The "Virtual Constructor"
+    public:
     static Base *Create(int id);
  
     Base() { }
  
-    virtual // Ensures to invoke actual object destructor
+    virtual
     ~Base() { }
- 
-    // An interface
+
     virtual void DisplayAction() = 0;
 };
  
@@ -23,17 +19,16 @@ class Derived1 : public Base
 public:
     Derived1()
     {
-        cout << "Derived1 created" << endl;
+        cout <<"\nDerived1 created";
     }
- 
     ~Derived1()
     {
-        cout << "Derived1 destroyed" << endl;
+        cout << "\nDerived1 destroyed";
     }
  
     void DisplayAction()
     {
-        cout << "Action from Derived1" << endl;
+        cout << "\nAction from Derived1" ;
     }
 };
  
@@ -42,17 +37,17 @@ class Derived2 : public Base
 public:
     Derived2()
     {
-        cout << "Derived2 created" << endl;
+        cout << "\nDerived2 created" ;
     }
  
     ~Derived2()
     {
-        cout << "Derived2 destroyed" << endl;
+        cout << "\nDerived2 destroyed" ;
     }
  
     void DisplayAction()
     {
-        cout << "Action from Derived2" << endl;
+        cout << "\nAction from Derived2" ;
     }
 };
  
@@ -61,26 +56,22 @@ class Derived3 : public Base
 public:
     Derived3()
     {
-        cout << "Derived3 created" << endl;
+        cout << "\nDerived3 created" ;
     }
  
     ~Derived3()
     {
-        cout << "Derived3 destroyed" << endl;
+        cout << "\nDerived3 destroyed" ;
     }
  
     void DisplayAction()
     {
-        cout << "Action from Derived3" << endl;
+        cout << "\nAction from Derived3" ;
     }
 };
- 
-// We can also declare "Create" outside Base
-// But it is more relevant to limit it's scope to Base
+
 Base *Base::Create(int id)
 {
-    // Just expand the if-else ladder, if new Derived class is created
-    // User code need not be recompiled to create newly added class objects
  
     if( id == 1 )
     {
@@ -95,16 +86,12 @@ Base *Base::Create(int id)
         return new Derived3;
     }
 }
-//// LIBRARY END
- 
-//// UTILITY START
+
 class User
 {
-public:
+    public:
     User() : pBase(nullptr)
     {
-        // Receives an object of Base hierarchy at runtime
- 
         int input;
  
         cout << "Enter ID (1, 2 or 3): ";
@@ -115,8 +102,7 @@ public:
             cout << "Enter ID (1, 2 or 3 only): ";
             cin >> input;
         }
- 
-        // Get object from the "Virtual Constructor"
+
         pBase = Base::Create(input);
     }
  
@@ -129,24 +115,18 @@ public:
         }
     }
  
-    // Delegates to actual object
     void Action()
     {
         pBase->DisplayAction();
     }
  
-private:
+    private:
     Base *pBase;
 };
- 
-//// UTILITY END
- 
-//// Consumer of User (UTILITY) class
 int main()
 {
     User *user = new User();
- 
-    // Action required on any of Derived objects
+
     user->Action();
  
     delete user;
