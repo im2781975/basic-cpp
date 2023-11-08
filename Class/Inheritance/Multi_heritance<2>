@@ -27,7 +27,8 @@ int main()
   
     obj.B::a = 10; 
     obj.C::a = 100; 
-  
+    //obj.B::a = 10; and obj.C::a = 100;. These statements specify that you want to access the member a from class A as inherited through classes B and C, respectively. 
+    
     obj.b = 20;
     obj.c = 30;
     obj.d = 40;
