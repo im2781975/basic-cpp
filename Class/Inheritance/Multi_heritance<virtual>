@@ -1,26 +1,26 @@
 //virtual multi inheritanceoy
 #include<iostream>
-class ClassA
+class A
 {
-  public:
+    public:
     int a;
 };
   
-class ClassB : virtual public ClassA
+class B : virtual public A
 {
-  public:
+    public:
     int b;
 };
   
-class ClassC : virtual public ClassA
+class C : virtual public A
 {
-  public:
+    public:
     int c;
 };
   
-class ClassD : public ClassB, public ClassC
+class D : public B, public C
 {
-  public:
+    public:
     int d;
 };
   
@@ -29,10 +29,8 @@ int main()
     ClassD obj;
   
     obj.a = 10;       
-    // Statement 3
     
     obj.a = 100;      
-    // Statement 4
   
     obj.b = 20;
     obj.c = 30;
