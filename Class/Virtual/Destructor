@@ -9,6 +9,7 @@ class base {
   public:
     base()    
     { cout << "Constructing base\n"; }
+    virtual~base()
     ~base()
     { cout<< "Destructing base\n"; }    
 };
