@@ -2,41 +2,38 @@
 #include <bits/stdc++.h>
 using namespace std;
  
-// single base class
-class A {
-public:
+class A 
+{
+    public:
     int a;
-    void get_A_data()
+    void get_A()
     {
         cout << "value of a: ";
         cin >> a;
     }
 };
- 
-// derived class from base class
+
 class B : public A {
-public:
+    public:
     int b;
-    void get_B_data()
+    void get_B()
     {
         cout << "value of b: ";
         cin >> b;
     }
 };
- 
-// derived from class derive1
+
 class C : public B {
-private:
+    private:
     int c;
  
-public:
-    void get_C_data()
+    public:
+    void get_C()
     {
-        cout << "Enter value of c: ";
+        cout << "value of c: ";
         cin >> c;
     }
  
-    // function to print sum
     void sum()
     {
         int ans = a + b + c;
@@ -45,12 +42,11 @@ public:
 };
 int main()
 {
-    // object of sub class
-    C obj;
+    C c;
  
-    obj.get_A_data();
-    obj.get_B_data();
-    obj.get_C_data();
-    obj.sum();
+    c.get_A();
+    c.get_B();
+    c.get_C();
+    c.sum();
     return 0;
 }
