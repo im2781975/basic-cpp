@@ -6,12 +6,20 @@ class Abstract {
     int a, b;
     public:
     //Abstract(int x,int y):a(x),b(y){}
+    Abstract(){}
     void set(int x, int y)
     {
         a = x;
         b = y;
     }
- 
+    // Copy constructor
+    Abstract(const Abstract& p1)
+    {
+        a = p1.a;
+        b = p1.b;
+    }
+    int getX() { return a; }
+    int getY() { return b; }
     void display()
     {
         cout << "a = " << a << " b = " << b << "\n";
@@ -24,5 +32,13 @@ int main()
     Abstract obj;
     obj.set(10, 20);
     obj.display();
+    
+    Abstract obj1= obj; 
+ 
+    cout <<"obj1.x: "<<obj1.getX()
+         <<",obj1.y = " << obj1.getY();
+         cout<<"\n";
+    cout << "obj.x: "<<obj.getX()
+         << "obj.y: " <<obj.getY();
     return 0;
 }
