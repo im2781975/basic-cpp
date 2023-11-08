@@ -1,14 +1,11 @@
-
-/ CPP program to illustrate overloading the
-// [ ] operator
- 
+//overloading the [ ] operator
 #include <iostream>
 using namespace std;
-class overload {
+class Base {
     int a[3];
  
 public:
-    overload(int i, int j, int k)
+    Base(int i, int j, int k)
     {
         a[0] = i;
         a[1] = j;
@@ -18,7 +15,7 @@ public:
 };
 int main()
 {
-    overload ob(1, 2, 3);
-    cout << ob[1]; // displays 2
+    Base ob(1, 2, 3);
+    cout << ob[1]; 
     return (0);
 }
