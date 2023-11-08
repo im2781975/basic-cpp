@@ -2,7 +2,7 @@
 using namespace std;
 class Base
 {
-public:
+    public:
     int f(int i)
     {
         cout << "f(int): ";
