@@ -21,7 +21,7 @@ void fun()
     Test t;
     t.method();
 }
-  
+
 int main()
 {
     fun();
