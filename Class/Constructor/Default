@@ -4,10 +4,8 @@ using namespace std;
 class A {
 public:
     int sum = 0;
-    A(); 
-//default constructor with no arg
+    A();
     A(int a, int x = 0)
-// default constructor with one no arg
     {
         sum = a + x;
     }
