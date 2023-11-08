@@ -28,12 +28,12 @@ int main()
 
     Geeks obj2(21);
     cout <<"Geek id is: " <<obj2.id <<"\n";
-    Geeks obj3(7); //obj3.id=7;
+    Geeks obj3(7); 
     
     int i = 0;
     while ( i < 5 )
     {
-        Geeks obj4(i); //obj4.id=i;
+        Geeks obj4(i); 
         i++;        
     } 
     return 0;
