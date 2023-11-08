@@ -1,28 +1,23 @@
 #include <iostream>
 using namespace std;
- 
-//// LIBRARY START
+
 class Base
 {
-public:
- 
+    public:
     Base() { }
- 
-    virtual // Ensures to invoke actual object destructor
+    virtual 
     ~Base() { }
  
-    // An interface
     virtual void DisplayAction() = 0;
 };
  
 class Derived1 : public Base
 {
-public:
+    public:
     Derived1()
     {
         cout << "Derived1 created" << endl;
     }
- 
     ~Derived1()
     {
         cout << "Derived1 destroyed" << endl;
@@ -52,17 +47,13 @@ public:
         cout << "Action from Derived2" << endl;
     }
 };
- 
-//// LIBRARY END
- 
+
 class User
 {
-public:
+    public:
  
-    // Creates Drived1
     User() : pBase(nullptr)
     {
-        // What if Derived2 is required? - Add an if-else ladder (see next sample)
         pBase = new Derived1();
     }
  
@@ -74,8 +65,7 @@ public:
             pBase = nullptr;
         }
     }
- 
-    // Delegates to actual object
+
     void Action()
     {
         pBase->DisplayAction();
@@ -84,12 +74,10 @@ public:
 private:
     Base *pBase;
 };
- 
 int main()
 {
     User *user = new User();
- 
-    // Need Derived1 functionality only
+
     user->Action();
  
     delete user;
