@@ -1,10 +1,11 @@
 #include "iostream"
 using namespace std;
  
-class A {
+class A 
+{
     int a, b, c;
  
-public:
+    public:
     void add(int x, int y)
     {
         a = x;
@@ -25,9 +26,8 @@ public:
         cout << "Class A's method is running" <<"\n";
     }
 };
- 
 class B : public A {
-public:
+    public:
     void print()
     {
         cout << "Class B's method is running" <<"\n";
