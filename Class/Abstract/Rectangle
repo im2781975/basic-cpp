@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-
 using namespace std;
 
 class Student
@@ -81,24 +80,18 @@ public:
         cout<<designation<<"\n";
     }
 };
-
-
-
 int main()
 {
-//    Student s;
-//    s.setInformation("A", 10, 20);
-//    s.print_information();
+   Student s;
+    s.setInformation("A", 10, 20);
+   s.print_information();
     Admin ad;
     ad.Set("A" , 20 , "D");
     ad.print();
+    Rectangle r;
+    r.height=4;
+    r.width=8;
+    cout<<r.calculate_area()<<"\n";
+    cout<<r.calculate_perimeter()<<"\n";
     return 0;
 }
-/*
-public
-
-private
-
-protected
-
-*/
