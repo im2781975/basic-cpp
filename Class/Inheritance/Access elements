@@ -1,4 +1,4 @@
-// private & protected inheritance
+//public, private & protected inheritance
 #include <iostream>
 using namespace std;
   
@@ -31,6 +31,13 @@ class Priv_Derived : private Base {
   
     int getPub() { return pub; }
 };
+
+class PublicDerived : public Base {
+public:
+//function to access protected member from Base
+    int getProt() { return prot; }
+};
+
 int main()
 {
     Prot_Derived C;
@@ -42,5 +49,10 @@ int main()
     cout << "Private cannot be accessed." << endl;
     cout << "Protected = " << C2.getProt() << endl;
     cout << "Public = " <<C2.getPub() << endl;
+    
+    PublicDerived C3;
+    cout << "Private : " << C3.getPVT() << "\n";
+    cout << "Protected : " << C3.getProt() <<"\n";
+    cout << "Public : " << C3.pub << "\n";
     return 0;
 }
