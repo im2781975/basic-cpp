@@ -1,16 +1,13 @@
 #include <iostream>
 using namespace std;
 
-// Initialization of base class
 class Base {
 public:
     virtual ~Base() {
         cout << "~Base() is executed" << endl;
     }
-    // Pure virtual destructor
 };
 
-// Initialization of derived class
 class Derived : public Base {
 public:
     ~Derived() {
@@ -18,11 +15,8 @@ public:
     }
 };
 
-// Driver Code
 int main() {
-    // base class pointer which is
-    // allocating fresh storage
-    // for Derived function object's
+    
     Base* b = new Derived();
     delete b;
     return 0;
