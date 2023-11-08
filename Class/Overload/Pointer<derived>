@@ -1,0 +1,32 @@
+// access overridden function using pointer of Base type that points to an object of Derived class
+#include <iostream>
+using namespace std;
+ 
+class Parent {
+    public:
+    void Print()
+    {
+        cout << "Base Function" ;
+    }
+};
+ 
+class Child : public Parent {
+public:
+    void Print()
+    {
+        cout << "Derived Function";
+    }
+};
+ 
+int main()
+{
+    Child C,D;
+ 
+    Parent* ptr = &C;
+    //Child::Parent *ptr=&C;
+    Child *arr=&D;
+    arr->Print();
+    ptr->Print();
+ 
+    return 0;
+}
