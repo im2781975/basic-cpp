@@ -6,9 +6,8 @@ class student {
     double fee;
  
 public:
+    student(){}
     student(int, string, double);
-    
-    // copy constructor
     student(student& t) 
     {
         rno = t.rno;
@@ -34,5 +33,16 @@ int main()
     // copy constructor called
     student Molla(s);
     Molla.display();
+    
+    int i,arr[10];
+    student st[10];
+    for(i=0;i<10;i++)
+    {
+        st[i]=student(i,"A",8);
+    }
+    for(i=0;i<10;i++)
+    {
+        st[i].display();
+    }
     return 0;
 }
