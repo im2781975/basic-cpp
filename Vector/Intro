@@ -1,58 +1,62 @@
-
 #include<bits/stdc++.h>
 using namespace std;
+
 int main()
 {
     int n;
-    cin>>n;
-    vector<int> v(n);
-    //vector<int> v;
-    for(int i=0;i<n;i++)
+    cin >> n;
+
+    vector<int> v;
+
+    for(int i = 0; i < n; i++)
     {
-        //int input;
-        cin>>v[i];
-        //cin>>input;
-        //v.push_back(input);
+        int input;
+        cin >> input;
+        v.push_back(input);
     }
-    int sz=v.size();
-    for(int i=0;i<sz;i++)
+
+    int sz = v.size();
+    cout<<"\nElement of vector are: ";
+    for(int i = 0; i < sz; i++)
     {
-        cout<<v[i]<<" ";
+        cout << v[i] << " ";
     }
-    cout<<"\n";
-    //for printing first element
-    int first_element=v.front();
-    cout<<first_element<<"\n";
-    //for printing last element
-    int last_element=v.back();
-    cout<<last_element<<"\n";
-    //for deleting last element.
+
+    int first_element = v.front();
+    cout << "\nFirst element of vect are: "<<first_element;
+
+    int last_element = v.back();
+    cout << "\nLast element of vect are: " <<last_element ;
+
+    cout<<"\nAfter erasing last element vect are: ";
     v.pop_back();
-    sz=v.size();
-    for(int i=0;i<sz;i++)
-        cout<<v[i]<<" ";
-        
-        cout<<"\n";
-    cout<<sz<<"\n";
+    sz = v.size();
+    for(int i = 0; i < sz; i++)
+        cout << v[i] << " ";
+
+    cout <<"\nSize of the vector are: " <<sz ;
+    
+    cout<<"\nWith using loop & pop elements are: ";
     while(!v.empty())
     {
-        cout<<v.back()<<" ";
+        cout << v.back() << " ";
         v.pop_back();
     }
-    cout<<"\n";
-    //for upgrade size:
-    v.resize(10,1);
-    for(int i=0;i<v.size();i++)
+
+    // Resize the vector and display elements
+    cout<<"\nAfter resize elements are: ";
+    v.resize(10, 1);
+    for(int i = 0; i < v.size(); i++)
     {
-        cout<<v[i]<<" ";
+        cout << v[i] << " ";
     }
-    cout<<"\n";
-    //for cleaning the 
+
+    // Clear the vector
     v.clear();
-    sz=v.size();
-    cout<<sz<<"\n";
-    //is empty?
-    int emp=v.empty();
-    cout<<emp<<"\n";
-    
+    sz = v.size();
+    cout<< "\nAfter clear sz is: "<<sz ;
+
+    // Check if the vector is empty
+    int emp = v.empty();
+    cout << "\nis empty: "<<emp ;
 }
