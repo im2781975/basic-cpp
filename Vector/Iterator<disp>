@@ -17,5 +17,10 @@ int main()
     for (i = v.begin(); i != v.end(); ++i) {
         cout << *i << " ";
     }
+    cout<<"\nReverse iterator: ";
+    for (i = v.end() - 1; i != v.begin() - 1; --i) {
+ 
+        cout << (*i) << " ";
+    }
     return 0;
 }
