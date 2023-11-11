@@ -1,4 +1,4 @@
-//constructive() | back_inserter()
+//constructive() | back_inserter() | iterative()
 #include<bits/stdc++.h>  
 using namespace std;  
   
@@ -38,6 +38,25 @@ int main()
     cout << "\nFirst element of vect1[] is:" <<vect1[0];
     
     cout << "\nFirst element of vect3[] is:" <<vect3[0];
+    
+    //copy<iterative>
+    vector<int> vect4;  
+  
+    vect4 = vect1;  
+    
+    cout <<"\nElements of vect1[] are: ";  
+    for (int i=0; i<vect1.size(); i++)  
+        cout << vect1[i] << " ";  
+
+    cout <<"\nAfter copy(iterative) elements of vect4[] are: ";  
+    for (int i=0; i<vect4.size(); i++)  
+        cout << vect4[i] << " ";  
+ 
+    vect1[0] = 2;  
+  
+    cout << "\nFirst element of vect1[] is :"<<vect1[0];
+
+    cout << "\nFirst element of vect4[] is :"<<vect4[0];
     
     return 0;  
 }  
