@@ -43,5 +43,17 @@ int main()
     cout << "\nSummation of vector elements is: ";
     cout << accumulate(vect.begin(), vect.end(), 0);
  
+   cout <<"\nDistance between first to max element: ";
+    cout << distance(vect.begin(),
+        max_element(vect.begin(), vect.end()));
+    
+    next_permutation(vect.begin(), vect.end());
+    cout<<"\nVector after performe next permutation: ";
+    print(vect);
+ 
+    prev_permutation(vect.begin(), vect.end());
+    cout <<"\nVector after performe prev permutation:";
+    print(vect);
+    
     return 0;
 }
