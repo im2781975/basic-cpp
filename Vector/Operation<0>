@@ -3,6 +3,13 @@
 #include <vector>
 #include <numeric> 
 using namespace std;
+void print(vector<int>&vec)
+{
+    for(int i=0; i<vec.size(); i++)
+    {
+        cout<<vec[i]<<" ";
+    }
+}
  
 int main()
 {
@@ -12,28 +19,22 @@ int main()
     vector<int> vect(arr, arr+n);
  
     cout << "Vector is: ";
-    for (int i=0; i<n; i++)
-        cout << vect[i] << " ";
+    print(vect);
  
     sort(vect.begin(), vect.end());
     cout<<"\nVector after sorting: ";
-    for (int i=0; i<n; i++)
-       cout << vect[i] <<" ";
+    print(vect);
        
-      sort(vect.begin(),vect.end(), greater<int>());
+    sort(vect.begin(),vect.end(), greater<int>());
     cout << "\nVector after sorting in Descending order is: ";
-    for (int i=0; i<n; i++)
-       cout << vect[i] << " ";
+    print(vect);
    
-    // Reversing the Vector (descending to ascending , ascending to descending)
     reverse(vect.begin(), vect.end());
- 
     cout <<"\nAfter reversing vect is: ";
-    for (int i=0; i<n; i++)
-       cout << vect[i] << " ";
+    print(vect);
  
     cout << "\nMaximum element of vector is: ";
-    cout << *max_element(vect.begin(), vect.end());
+    cout<<*max_element(vect.begin(),vect.end());
  
     cout << "\nMinimum element of vector is: ";
     cout << *min_element(vect.begin(), vect.end()) ;
