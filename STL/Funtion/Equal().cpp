@@ -1,4 +1,4 @@
-//std::equal(),std::equal_range()
+//equal() | equal_range()
 #include <iostream>
 #include <vector>
 #include <algorithm>
