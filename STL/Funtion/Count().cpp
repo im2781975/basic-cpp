@@ -1,4 +1,4 @@
-// count_if(),count().
+// count_if() | count()
 #include <bits/stdc++.h>
 using namespace std;
 bool isEven(int i)
