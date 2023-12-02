@@ -2,8 +2,8 @@
 using namespace std;
 
 int main() {
-    vector<int> v{2,3,4,5,6,7,9};
-    vector<int> m{4,5,6};
+    vector<int> v{2, 3, 4, 5, 6, 7, 9};
+    vector<int> m{4, 5, 6};
 
     for (vector<int>::iterator it = v.begin(); it != v.end(); ++it) {
         vector<int>::iterator m_it = m.begin();
@@ -19,7 +19,6 @@ int main() {
             return 0; // Found the subsequence, exit the loop
         }
     }
-
     cout << "Subsequence not found in the vector.";
     return 0;
 }
