@@ -1,4 +1,4 @@
-// remove() | remove_if()
+// remove() | remove_if() | remove_copy_if()
 #include <bits/stdc++.h>
 using namespace std;
 bool IsOdd(int i) 
@@ -35,5 +35,12 @@ int main()
     cout << "\nAfter remove_if vect2 is: ";
     for (pt=vect2.begin(); pt != it; ++pt)
         cout << ' ' << *pt;
+        
+    remove_copy_if(vect1.begin(), vect1.end(),vect2.begin(),IsOdd);
+    cout<<"\nAfter romove_copy_if vect1 is: ";
+    print(vect1);
+    
+    cout<<"\nAfter romove_copy_if vect2 is: ";
+    print(vect2);
     return 0;
 }
