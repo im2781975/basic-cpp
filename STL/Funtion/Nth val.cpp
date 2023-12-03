@@ -1,4 +1,4 @@
-// std::nth_element 
+//nth_element 
 #include <iostream> 
 #include <algorithm> 
 using namespace std; 
@@ -20,7 +20,6 @@ int main()
     cout<<"\nAfter sort v[5]: ";
     for (i = 0; i < 8; ++i) 
         cout << v[i] << " "; 
-    
     
     nth_element(v, v + 5, v + n, comp); 
     cout<<"\nAfter sort v[6]: ";
