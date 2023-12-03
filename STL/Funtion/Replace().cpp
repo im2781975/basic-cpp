@@ -1,4 +1,4 @@
-// replace() | replace_if() | replace_copy()
+// replace() | replace_if() | replace_copy() | replace_copy_if()
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -11,6 +11,13 @@ void print(int arr[],int n)
     for(int i=0; i<n; i++)
         cout<<arr[i]<<" ";
 }
+void print(vector<int>vect)
+{
+    int len=vect.size();
+    for(int i=0; i<len; i++)
+        cout<<vect[i]<<" ";
+}
+
 int main()
 {
     int arr[]{ 10, 20, 30, 30, 20, 10, 10, 20 };
@@ -44,5 +51,23 @@ int main()
     for(int i=0; i<n; i++)
         cout<<vect[i]<<" ";
     
+    vector<int>vec(arr,arr+n);
+    vector<int>cev ;
+    for(int i=0; i<n; i++)
+        cev.push_back(i);
+        
+    cout<<"\nBefore replace_copy_if cev is : ";
+    print(cev);
+    
+    cout<<"\nBefore replace_copy_if vec is : ";
+    print(vec);
+    
+    replace_copy_if(vec.begin(),vec.end(),cev.begin(),IsOdd,-1);
+            
+    cout<<"\nAfter replace_copy_if cev is : ";
+    print(cev);
+    
+    cout<<"\nAfter replace_copy_if vec is : ";
+    print(vec);
     return 0;
 }
