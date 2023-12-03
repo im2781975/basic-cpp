@@ -1,3 +1,4 @@
+//find() | find_end() | find_first_of() 
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -15,28 +16,27 @@ int main()
     vector<int>::iterator ip;
 
     // find()
-    ip = find(v.begin(), v.end(), v1.begin(), v1.end());
+    ip = search(v.begin(), v.end(), v1.begin(), v1.end());
 
-    cout << "First occurrence at index: " << (ip - v.begin()) << endl;
+    cout << "First occurrence at index: " << (ip - v.begin()) ;
 
     // find_end()
     ip = find_end(v.begin(), v.end(), v1.begin(), v1.end(), Pred);
 
     if (ip != v.end())
-        cout << "Last common occurrence begins at index: " << (ip - v.begin()) << endl;
+        cout << "\nLast common occurrence begins at index: " << (ip - v.begin()) ;
     else
-        cout << "No common occurrence found." << endl;
+        cout << "\nNo common occurrence found." ;
     
     // find_first_of()
     ip = find_first_of(v.begin(), v.end(), v1.begin(), v1.end()); 
     // Displaying the first common element.
-    cout << "First common element at idx: " << *ip << endl;
+    cout << "\nFirst common element at idx: " << *ip ;
 
     ip = find_first_of(ip + 1, v.end(), v1.begin(), v1.end()); 
   
     // Displaying the second common element found 
-    cout << "Second common element at idx: " << *ip << endl;
+    cout << "\nSecond common element at idx: " << *ip ;
     
     return 0;
 }
-
