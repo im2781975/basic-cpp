@@ -1,4 +1,4 @@
-//find() | find_end() | find_first_of() 
+//find() | find_end() | find_first_of() | find_if() | find_if_not()
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -8,7 +8,7 @@ bool Pred(int a, int b)
 {
     return (a == b);
 }
-
+bool IsOdd(int i) { return i % 2; }
 int main()
 {
     vector<int> v{1, 3, 10, 3, 10, 1, 3, 3, 10, 7, 8, 1, 3, 10};
@@ -38,5 +38,13 @@ int main()
     // Displaying the second common element found 
     cout << "\nSecond common element at idx: " << *ip ;
     
+    ip = find_if(v.begin(), v.end(), IsOdd);
+    
+    cout << "\nThe first odd value is " << *ip << "\n";
+ 
+   ip = find_if_not(v.begin(), v.end(), IsOdd);
+ 
+    cout << "\nThe first non-odd(or even) value is " << *ip
+         << "\n";
     return 0;
 }
