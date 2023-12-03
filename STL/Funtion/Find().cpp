@@ -6,28 +6,25 @@ int main()
     vector<int> arr{1, 2, 3, 4, 5};
     vector<int> vect{3, 4, 5};
     vector<int>::iterator it;
-    vector<int>::iterator pi;
+    vector<int>::iterator ip;
     vector<int>::iterator pt;
 
     for (it = arr.begin(); it != arr.end(); it++)
     {
-        pi = vect.begin();
+        ip = vect.begin();
         pt = it;
 
-        while (pt != arr.end() && pi != vect.end() && *pt == *pi)
+        while (pt != arr.end() && ip != vect.end() && *pt == *ip)
         {
             pt++;
-            pi++;
+            ip++;
         }
-
-        if (pi == vect.end())
+        if (ip == vect.end())
         {
             cout << it - arr.begin();
             return 0;
         }
     }
-
     cout << "Subsequence not found";
     return 0;
 }
-
