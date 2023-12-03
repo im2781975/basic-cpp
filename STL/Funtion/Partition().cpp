@@ -1,4 +1,4 @@
-// partition() | is_partitioned() | partition_copy()
+// partition() | is_partitioned() | partition_copy() |stable partiton | partition_point() 
 #include<iostream>
 #include<algorithm> 
 #include<vector> 
@@ -47,5 +47,26 @@ int main()
 
     cout << "\nThe elements that return false for condition are : ";
     print(vect2,vect2.size());
+    
+    stable_partition(vect.begin(), vect.end(), [](int x)
+    {
+        return x%2 == 0;        
+    });
+     
+    cout << "\nAfter stable_partiton vect is : ";
+    print(vect,vect.size());
+
+    vector<int>::iterator it;
+     
+    // using partition_point() to get ending position of partition
+    auto m= partition_point(vect.begin(), vect.end(), [](int x)
+    {
+        return x%2==0;
+    });
+
+    cout << "\nAfter partition_point vect is: ";
+    for ( it= vect.begin(); it!=m; it++)
+    cout <<*it<<" ";
+    
     return 0;
 }
