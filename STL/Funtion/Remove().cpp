@@ -41,12 +41,13 @@ int main()
     for (pt=vect2.begin(); pt != it; ++pt)
         cout << ' ' << *pt;
         
-    remove_copy_if(vect1.begin(), vect1.end(),vect2.begin(),IsOdd);
-    cout<<"\nAfter romove_copy_if vect1 is: ";
-    print(vect1);
-    
+    remove_copy_if(vect2.begin(), vect2.end(),vect2.begin(),IsOdd);
     cout<<"\nAfter romove_copy_if vect2 is: ";
     print(vect2);
+    
+    remove_copy_if(vect1.begin(), vect1.end(),vect1.begin(),IsOdd);
+    cout<<"\nAfter romove_copy_if vect1 is: ";
+    print(vect1);
     
     return 0;
 }
