@@ -1,4 +1,4 @@
-//all_of() | any_of() | copy_n() | none_of() 
+// all_of() | any_of() | copy_n() | none_of() | find_first_of()
 #include <bits/stdc++.h>
 #include <algorithm>
 using namespace std;
@@ -39,6 +39,12 @@ int main()
     cout << "\nAfter impose none_of: ";
     if (noneNeg)
         operation(ar, n);
+
+    vector<int> vect(arr, arr + n);
+    vector<int> cev(ar, ar + n);
+    auto p = find_first_of(vect.begin(), vect.end(), cev.begin(), cev.end());
+    cout << "\nAfter impose find_first_of: ";
+    cout << p - vect.begin();
 
     return 0;
 }
