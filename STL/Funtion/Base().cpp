@@ -1,4 +1,4 @@
-// all_of() | any_of() | copy_n() | none_of() | find_first_of()
+// all_of() | any_of() | copy_n() | none_of() | find_first_of() | iter_swap() | swap_range() 
 #include <bits/stdc++.h>
 #include <algorithm>
 using namespace std;
@@ -50,10 +50,27 @@ int main()
     string s2 = {'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O',  
                 'u', 'U'}; 
       
-    auto ip = std::find_first_of(s1.begin(),s1.end(), 
+    auto ip = find_first_of(s1.begin(),s1.end(), 
       s2.begin(), s2.end()); 
   
     cout << "\nFirst vowel found at index "<<(ip - s1.begin());
-
+    
+    vector<int>::iterator it1;
+    vector<int>::iterator it2;
+    it1=vect.begin();
+    it2=vect.end()-1;
+    iter_swap(it1,it2);
+    cout<<"\nAfter impose iter_swap: ";
+    for(int i=0; i<n; i++)
+    {
+        cout<<vect[i]<<" ";
+    }
+    vector<int>vec(5,10);
+    swap_ranges(vect.begin()+2,vect.begin()+5,vec.begin());
+    cout<<"\nAfter impose swap_ranges(): "
+    for(int i=0; i<vec.size(); i++)
+    {
+        cout<<vec[i]<<" ";
+    }
     return 0;
 }
