@@ -67,10 +67,15 @@ int main()
     }
     vector<int>vec(5,10);
     swap_ranges(vect.begin()+2,vect.begin()+5,vec.begin());
-    cout<<"\nAfter impose swap_ranges(): "
+    cout<<"\nAfter impose swap_ranges() vec is: ";
     for(int i=0; i<vec.size(); i++)
     {
         cout<<vec[i]<<" ";
+    }
+    cout<<"\nAfter impose swap_ranges() vect is: ";
+    for(int i=0; i<vect.size(); i++)
+    {
+        cout<<vect[i]<<" ";
     }
     return 0;
 }
