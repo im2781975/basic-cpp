@@ -1,5 +1,5 @@
-//Shuffle() 
 #include<bits/stdc++.h>
+
 using namespace std;
 void suffle(int arr[], int n)
 {
@@ -9,9 +9,22 @@ void suffle(int arr[], int n)
         cout<<arr[i]<<" ";
     }
 }
+int random_suffle(int j)
+{
+    return rand()%j;
+}
 int main()
 {
     int ar[]{10,20,30,40,50};
     int n=sizeof(ar)/sizeof(ar[0]);
     suffle(ar,n);
+    
+    vector<int>arr(ar,ar+n);
+    vector<int>::iterator it;
+    //random_shuffle(arr.begin(),arr.end());
+    random_shuffle(arr.begin(),arr.end(),random_suffle);
+    for(it=arr.begin(); it!=arr.end(); it++)
+    {
+        cout<<*it<<" ";
+    }
 }
