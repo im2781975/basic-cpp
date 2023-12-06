@@ -1,9 +1,9 @@
-// transform() in STL to add
-// 1 to all elements of arr[]
+// transform()
 #include <bits/stdc++.h>
 using namespace std;
   
-int increment(int x) {  return (x+1); }
+int increment(int x)
+    {  return (x+1); }
   
 int main()
 {
