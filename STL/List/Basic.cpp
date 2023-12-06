@@ -7,6 +7,18 @@ void print(list<int>& l) {
         cout << *it << " ";
     }
 }
+
+/*void print(list<int>&l)
+{
+    list<int>::iterator it;
+    it=l.begin();
+    while(it!=l.end())
+    {
+        cout<<*it<<" ";
+        it++;
+    }
+} */
+
 void Insert(list<int>&l, int index , int value)
 {
     auto it=l.begin();
