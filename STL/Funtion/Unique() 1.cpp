@@ -1,4 +1,4 @@
-// use of std::unique_copy
+ // unique_copy | unique()
 #include <iostream>
 #include <algorithm>
 #include <string>
@@ -6,7 +6,6 @@ using namespace std;
  
 bool Pred(char a, char b)
 {
-    // if both the arguments are same and equal to 'v' then only they are considered same & duplicates are removed
     if (a == b && a == 'v') 
         return 1;
 
@@ -17,12 +16,14 @@ bool Pred(char a, char b)
 int main()
 {
     string s = "You arre vvvisiting GFG", s1;
- 
-    // Using unique_copy to remove the consecutive v in the word and copy it to s1
     auto ip = unique_copy(s.begin(), s.end(), back_inserter(s1), Pred);
  
-    cout << "Before: " << s;
- 
-    cout << "\nAfter: " << s1;
+    cout << "Before unique_copy string is: " << s;
+    cout << "\nAfter unique_copy string is: " << s1;
+    
+   auto it = unique(s.begin(), s.end(), Pred);
+    cout << "\nAfter unique string is: " << s;
+    cout << string(s.begin(), it);
+    cout << "\nAfter unique string is: " << s;
     return 0;
 }
