@@ -15,6 +15,7 @@ int random_suffle(int j)
 }
 int main()
 {
+    //srand(unsigned(time(0)));
     int ar[]{10,20,30,40,50};
     int n=sizeof(ar)/sizeof(ar[0]);
     suffle(ar,n);
