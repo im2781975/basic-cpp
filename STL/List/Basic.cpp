@@ -1,3 +1,4 @@
+//front() | back() | push_front() | push_back() | pop_front() | pop_back() | reverse() | sort() insert() | Delete() 
 #include<bits/stdc++.h>
 using namespace std;
 void print(list<int>& l) {
@@ -5,6 +6,19 @@ void print(list<int>& l) {
     for (it = l.begin(); it != l.end(); it++) {
         cout << *it << " ";
     }
+}
+void Insert(list<int>&l, int index , int value)
+{
+    auto it=l.begin();
+    advance(it,index);
+    l.insert(it,value);
+}
+
+void Delete(list<int>&l , int index)
+{
+    auto it = l.begin();
+    advance(it , index);
+    l.erase(it);
 }
 int main() {
     list<int> l1, l2;
@@ -38,6 +52,14 @@ int main() {
     l1.push_back(15);
     print(l1);
     
+    cout << "\nimposed insert(): ";
+    Insert(l1,1,100);
+    print(l1);
+    
+    cout << "\nimposed Delete(): ";
+    Delete(l1,2);
+    print(l1);
+    
     cout << "\nimposed reverse(): ";
     l1.reverse();
     print(l1);
@@ -45,4 +67,5 @@ int main() {
     cout << "\nimposed sort(): ";
     l1.sort();
     print(l1);
+    cout<<"\nSize of list 1 is: "<<l1.size();
 }
