@@ -1,5 +1,4 @@
-// CPP program to illustrate 
-// std::sort_heap 
+// sort_heap 
 #include <vector> 
 #include <algorithm> 
 #include <functional> 
