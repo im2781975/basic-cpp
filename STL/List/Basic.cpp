@@ -1,4 +1,4 @@
-//front() | back() | push_front() | push_back() | pop_front() | pop_back() | reverse() | sort() insert() | Delete() 
+//front() | back() | push_front() | push_back() | pop_front() | pop_back() | reverse() | sort() insert() | Delete() |remove_if()
 #include<bits/stdc++.h>
 using namespace std;
 void print(list<int>& l) {
@@ -79,5 +79,10 @@ int main() {
     cout << "\nimposed sort(): ";
     l1.sort();
     print(l1);
+    
+    cout<<"\nImposed remove_if(): ";
+    l1.remove_if([](int x){return x%2!=0;});
+    print(l1);
+    
     cout<<"\nSize of list 1 is: "<<l1.size();
 }
