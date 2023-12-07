@@ -24,6 +24,10 @@ int main()
     mist=list;
     print(mist);
     
+    cout<<"\nImpose splice_after list array: ";
+    list.splice_after(list.begin(),mist);
+    print(list);
+    
     cout<<"\nImposed merge: ";
     list.merge(mist);
     print(list);
@@ -60,10 +64,6 @@ int main()
     
     it=list.erase_after(it);
     cout<<"\nimposed erase_after: ";
-    print(list);
-    
-    cout<<"\nImpose splice_after: ";
-    list.splice_after(list.begin(),mist);
     print(list);
     
     cout<<"\nImposed remove(): ";
