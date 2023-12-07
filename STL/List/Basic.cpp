@@ -1,4 +1,4 @@
-//front() | back() | push_front() | push_back() | pop_front() | pop_back() | reverse() | sort() insert() | Delete() |remove_if()
+//front() | back() | push_front() | push_back() | pop_front() | pop_back() | reverse() | sort() insert() | Delete() |remove_if() |unique() | swap() | splice() 
 #include<bits/stdc++.h>
 using namespace std;
 void print(list<int>& l) {
@@ -34,6 +34,7 @@ void Delete(list<int>&l , int index)
 }
 int main() {
     list<int> l1, l2;
+    list<int>::iterator it;
     for (int i = 1; i < 10; i++) {
         l1.push_back(i * 2);
         l2.push_back(i * 3);
@@ -45,6 +46,22 @@ int main() {
     cout << "\n2nd list is: ";
     print(l2);
     
+    l1.swap(l2);
+    cout<<"\nImposed swap() l1: ";
+    print(l1);
+    
+    cout<<"\nImposed swap() l2: ";
+    print(l2);
+    
+    it=l1.begin();
+    advance(it,2);
+    l1.unique();
+    cout<<"\nImposed unique: ";
+    print(l1);
+    
+    l1.splice(it,l2);
+    cout<<"\nImposed splice: ";
+    print(l1); 
     cout << "\nlist1 front: " << l1.front();
     cout << "\nlist1 back: " << l1.back();
     
