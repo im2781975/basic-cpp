@@ -1,4 +1,4 @@
-//push_front() |insert_after() |  pop_front() | emplace_front() | remove() | remove_if() | erase_after() | clear() 
+//copy() | merge() | push_front() |insert_after() |  pop_front() | emplace_front() | remove() | remove_if() | erase_after() | clear() 
 #include<bits/stdc++.h>
 using namespace std;
 void print(forward_list<int>fl)
@@ -13,13 +13,21 @@ void print(forward_list<int>fl)
 int main()
 {
     forward_list<int>list;
+    forward_list<int>mist;
     forward_list<int>::iterator it;
     for(int i=1; i<=10; i++)
     {
         list.push_front(i);
     }
     list.push_front(14);
-    cout<<"Imposed push_front : ";
+    cout<<"\nImposed copy(): ";
+    mist=list;
+    print(mist);
+    
+    cout<<"\nImposed merge: ";
+    list.merge(mist);
+    print(list);
+    cout<<"\nImposed push_front : ";
     print(list);
     
     it=list.insert_after(list.begin(),{1,2,3});
