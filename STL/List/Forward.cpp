@@ -1,4 +1,4 @@
-//copy() | merge() | push_front() |insert_after() |  pop_front() | emplace_front() | remove() | remove_if() | erase_after() | clear() 
+//copy() | merge() | push_front() |insert_after() |  pop_front() | emplace_front() | remove() | remove_if() | erase_after() | clear() | sort() | unique() 
 #include<bits/stdc++.h>
 using namespace std;
 void print(forward_list<int>fl)
@@ -28,6 +28,14 @@ int main()
     list.merge(mist);
     print(list);
     cout<<"\nImposed push_front : ";
+    print(list);
+    
+    list.sort();
+    cout<<"\nImposed sort(): ";
+    print(list);
+    
+    list.unique();
+    cout<<"\nImposed unique(): ";
     print(list);
     
     it=list.insert_after(list.begin(),{1,2,3});
@@ -61,8 +69,8 @@ int main()
     cout<<"\nImposed remove_if: ";
     list.remove_if([](int x){return x>5;});
     print(list);
-    
+
     list.clear();
-    cout<<"Imposed clear(): ";
+    cout<<"\nImposed clear(): ";
     print(list);
 }
