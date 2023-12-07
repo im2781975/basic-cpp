@@ -29,5 +29,9 @@ int main()
     {
         cout << "\nKey: "<< pt->first << " " << "value: "<< pt->second;
     }
+    if(mpp.count(23)>0)
+        cout<<"\nExit";
+    else
+        cout<<"\ndoesn't exit";
     return 0;
 }
