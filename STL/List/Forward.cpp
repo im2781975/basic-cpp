@@ -1,4 +1,4 @@
-//copy() | merge() | push_front() |insert_after() |  pop_front() | emplace_front() | remove() | remove_if() | erase_after() | clear() | sort() | unique() 
+//copy() | merge() | push_front() |insert_after() |  pop_front() | emplace_front() | remove() | remove_if() | erase_after() | clear() | sort() | unique() | splice_after()
 #include<bits/stdc++.h>
 using namespace std;
 void print(forward_list<int>fl)
@@ -60,6 +60,10 @@ int main()
     
     it=list.erase_after(it);
     cout<<"\nimposed erase_after: ";
+    print(list);
+    
+    cout<<"\nImpose splice_after: ";
+    list.splice_after(list.begin(),mist);
     print(list);
     
     cout<<"\nImposed remove(): ";
