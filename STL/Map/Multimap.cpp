@@ -46,6 +46,7 @@ int main() {
     printUmm(umm2);
     umm2.insert(make_pair("D", 11));
     umm2.insert({ { "E", 12 }, { "F", 33 } });
+    umm2.insert(pair<string,int>("G",11));
     cout << "\nAfter insertion :";
     printUmm(umm2);
  
