@@ -1,4 +1,4 @@
-//Queue operations.
+//push() | pop() | swap() | size() | front() | back() | swap() empty() 
 #include <iostream>
 #include <queue>
 using namespace std;
@@ -10,7 +10,14 @@ void print_queue(queue<int> q)
         cout << temp.front()<<" ";
         temp.pop();
     }
-    cout<<"\n";
+}
+void print_queue(queue<char> q)
+{
+    queue<char> temp = q;
+    while (!temp.empty()) {
+        cout << temp.front()<<" ";
+        temp.pop();
+    }
 }
 int main()
 {
@@ -46,6 +53,18 @@ int main()
     cout<<"\nis empty: ";
     cout<<q1.empty(); 
     
- 
+    queue<char>q;
+    q.push('a');
+    q.push('b');
+    q.push('c');
+    cout<<"\nElements of queue is: ";
+    print_queue(q);
+    cout<<"\nq.front: "<<q.front();
+    q.pop();
+    q.pop();
+
+    cout<<"\nAfter pop() q.front(): "<<q.front() ;
+    cout<<"\nAfter pop() queue_print(): ";
+    print_queue(q);
     return 0;
 }
