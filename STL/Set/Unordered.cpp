@@ -51,6 +51,8 @@ int main()
         cout<<"\ndoesn't exit";
         
     unordered_set<string>stringSet;
+    stringSet.rehash(9);
+    //rehash sets the number of buckets in the container to N or more. If N is greater than the current number of buckets in the container (bucket_count), a rehash is forced. The new bucket count can either be equal or greater than N.
     stringSet.insert("code");
     stringSet.insert("in");
     stringSet.insert("c++");
@@ -67,7 +69,7 @@ array<string,2> myArray = { "tenth", "seventh"};
  
     stringSet.insert({"fourth","sixth" });
     cout<<"myset contains:"<<"\n";
-    
+    cout<<"\nbucket count is: "<<stringSet.bucket_count();
     string key = "slow";
 
     if (stringSet.find(key) == stringSet.end())
