@@ -29,7 +29,7 @@ int main()
  
     // remove all elements up to 30 in s2
     cout<<"\nset s after removal of elements less than 30:";
-    s.erase(s.begin(), s.find(30));
+    s.erase(s.begin(),s.find(30));
     for (itr = s.begin(); itr != s.end(); itr++) {
         cout << *itr << " ";
     }
@@ -46,6 +46,10 @@ int main()
     cout<<"\ns.lower_bound(40) : "<< *s.lower_bound(40) ;
     
     cout<<"\ns.upper_bound(40) : "<< *s.upper_bound(40) ;
- 
+    cout<<"\ns.size(): "<<s.size();
+    if(s.find(2)!=s.end())
+        cout<<"\n2 found";
+    else
+        cout<<"\nNot found";
     return 0;
 }
