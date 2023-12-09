@@ -1,7 +1,15 @@
-//Insert() | bucket_count() | load_factor() | max_size() | size() 
+//Insert() | bucket_count() | load_factor() | max_size() | size() | emplace() | bucket_search() | count() 
 #include <iostream> 
 #include <unordered_set> 
 using namespace std; 
+void print(unordered_set<int>s)
+{
+    unordered_set<int>::iterator it;
+    for(it=s.begin(); it!=s.end(); it++)
+    {
+        cout<<*it<<" ";
+    }
+}
 int main() 
 { 
     unordered_set<int> s; 
@@ -24,5 +32,22 @@ int main()
     cout<<"\nAfter insertion size is : "<<s.size() ;
     cout <<"\nAfter insertion bucket count is: " << s.bucket_count() ;
     cout <<"\nAfter insertion load factor is: " <<s.load_factor() ;
+    int i=0;
+    while(i<25)
+    {
+        s.emplace(i);
+        i+=5;
+    }
+    cout<<"\nImposed emplace(): ";
+    print(s);
+    cout<<"\nBucket search: ";
+    for (auto itr = s.begin(); itr != s.end(); itr++) 
+    { 
+        cout <<"\nElement "<<(*itr) << " is present in the bucket: "<< s.bucket(*itr);
+    }
+    if(s.count(22)==1)
+        cout<<"\n22 Exit";
+    else
+        cout<<"\ndoesn't exit";
     return 0; 
 } 
