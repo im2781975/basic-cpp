@@ -10,27 +10,25 @@ void showpq(
         cout << ' ' << g.top();
         g.pop();
     }
-    cout << '\n';
 }
-  
 void showArray(int* arr, int n)
 {
     for (int i = 0; i < n; i++) {
         cout << arr[i] << ' ';
     }
-    cout << "\n";
 }
-
 int main()
 {
     int arr[6]={10, 2, 4, 8, 6, 9};
     priority_queue<int, vector<int>, greater<int> > gquiz(
         arr, arr + 6);
-  
-    cout << "Array: ";
+    //int: The data type of elements in the priority q.
+//vector<int>:underlying container used for the priority queue 
+//greater<int>: The comparison function or functor that defines the order of elements.
+    cout << "\nArray: ";
       showArray(arr, 6);
   
-    cout << "Priority Queue : ";
+    cout << "\nPriority Queue : ";
     showpq(gquiz);
   
     return 0;
