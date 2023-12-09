@@ -2,7 +2,7 @@
 #include <iostream> 
 #include <unordered_set> 
 using namespace std; 
-void print(unordered_set<int>s)
+void print(unordered_set<int>&s)
 {
     unordered_set<int>::iterator it;
     for(it=s.begin(); it!=s.end(); it++)
@@ -51,13 +51,23 @@ int main()
         cout<<"\ndoesn't exit";
         
     unordered_set<string>stringSet;
-
     stringSet.insert("code");
     stringSet.insert("in");
     stringSet.insert("c++");
     stringSet.insert("is");
     stringSet.insert("fast");
+    
+array<string,2> myArray = { "tenth", "seventh"};
+
+    string myString = "ninth";
  
+    stringSet.insert(myString);
+    
+    stringSet.insert(myArray.begin(), myArray.end());
+ 
+    stringSet.insert({"fourth","sixth" });
+    cout<<"myset contains:"<<"\n";
+    
     string key = "slow";
 
     if (stringSet.find(key) == stringSet.end())
