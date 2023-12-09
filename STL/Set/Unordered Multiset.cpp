@@ -1,4 +1,3 @@
-// unordered_multiset 
 #include <bits/stdc++.h> 
 using namespace std; 
  
@@ -9,9 +8,7 @@ void printUset(unordered_multiset<int> ums)
     umit it = ums.begin(); 
     for (; it != ums.end(); it++) 
         cout << *it << " "; 
-    cout << endl; 
 } 
- 
 int main() 
 { 
     unordered_multiset<int> ums1; 
@@ -23,26 +20,22 @@ int main()
     else
         cout << "\nunordered multiset1 isn't empty"; 
     cout << "\nSize of unordered multiset 2 is : "<< ums2.size();
-  
     printUset(ums1); 
   
     ums1.insert(7); 
     printUset(ums1); 
   
     int val = 3; 
-  
     if (ums1.find(val) != ums1.end()) 
         cout << "\nunordered multiset 1 contains " << val;
     else
         cout << "\nunordered multiset 1 does not contains " << val;
   
-    //  count function returns total number of occurrence in set 
     val = 5; 
     int cnt = ums1.count(val); 
     cout <<"\n"<<val << " appears " <<cnt << " times in unordered multiset 1;
   
     val = 9; 
-  
     //  if count return >0 value then element exist 
     //  otherwise not 
     if (ums1.count(val)) 
@@ -52,7 +45,6 @@ int main()
              << val;
   
     val = 1; 
-  
     // equal_range returns a pair, where first is iterator 
     // to first position of val and second it iterator to 
     // last position to val 
@@ -61,9 +53,7 @@ int main()
         cout << val << "\n appeared atleast once in unoredered _multiset";
   
     printUset(ums2); 
- 
-    ums2.erase(val); 
-  
+    ums2.erase(val);
     printUset(ums2); 
     ums1.clear(); 
     ums2.clear(); 
