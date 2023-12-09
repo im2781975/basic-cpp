@@ -2,7 +2,15 @@
 using namespace std; 
  
 typedef unordered_multiset<int>::iterator umit; 
-  
+
+void erase_one_entry(unordered_multiset<int>& ums,
+                    int val)
+{
+    umit it = ums.find(val);
+    
+    if (it != ums.end())
+       ums.erase(it);
+}
 void printUset(unordered_multiset<int> ums) 
 { 
     umit it = ums.begin(); 
@@ -33,7 +41,7 @@ int main()
   
     val = 5; 
     int cnt = ums1.count(val); 
-    cout <<"\n"<<val << " appears " <<cnt << " times in unordered multiset 1;
+    cout <<"\n"<<val << " appears " <<cnt << " times in unordered multiset 1";
   
     val = 9; 
     //  if count return >0 value then element exist 
@@ -41,7 +49,7 @@ int main()
     if (ums1.count(val)) 
         cout<<"\nunordered multiset 1 contains " << val;
     else
-        cout <<"unordered multiset 1 does not contains "
+        cout <<"\nunordered multiset 1 does not contains "
              << val;
   
     val = 1; 
@@ -50,11 +58,13 @@ int main()
     // last position to val 
     pair<umit, umit> erange_it = ums2.equal_range(val); 
     if (erange_it.first != erange_it.second) 
-        cout << val << "\n appeared atleast once in unoredered _multiset";
+        cout << val << "\nappeared atleast once in unoredered _multiset: ";
   
     printUset(ums2); 
     ums2.erase(val);
     printUset(ums2); 
+    erase_one_entry(ums1, val);
+    printUset(ums1);
     ums1.clear(); 
     ums2.clear(); 
  
