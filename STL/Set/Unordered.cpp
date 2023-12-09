@@ -49,5 +49,26 @@ int main()
         cout<<"\n22 Exit";
     else
         cout<<"\ndoesn't exit";
+        
+    unordered_set<string>stringSet;
+
+    stringSet.insert("code");
+    stringSet.insert("in");
+    stringSet.insert("c++");
+    stringSet.insert("is");
+    stringSet.insert("fast");
+ 
+    string key = "slow";
+
+    if (stringSet.find(key) == stringSet.end())
+        cout<<"\n'"<<key<<"' isn't found";
+    else
+        cout<<"\nFound '"<< key<<"'";
+
+    cout << "Elements are : ";
+    unordered_set<string>::iterator itr;
+    for (itr = stringSet.begin(); itr != stringSet.end();
+         itr++)
+        cout << (*itr) <<" ";
     return 0; 
 } 
