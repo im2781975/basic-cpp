@@ -27,7 +27,7 @@ int main()
     else
         cout<<"\ndoesn't exits element";
     if(s.count(5)!=s.end())
-        cout<<"\n"
+        cout<<"\n";
     cout<<"\nSize of ms is: "<<ms.size();
     cout<<"\nCount 15 is: "<<s.count(15);
     
@@ -49,6 +49,10 @@ int main()
         cout << "\n5 Exists";
     else
         cout << "\n5 doesn't exist";
-
+    s.clear();
+    if(!s.empty())
+        cout<<"\nExits element";
+    else
+        cout<<"\ndoesn't exits element";
     return 0;
 }
