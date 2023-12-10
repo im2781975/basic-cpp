@@ -32,6 +32,10 @@ int main()
     cout<<"\nAfter insertion size is : "<<s.size() ;
     cout <<"\nAfter insertion bucket count is: " << s.bucket_count() ;
     cout <<"\nAfter insertion load factor is: " <<s.load_factor() ;
+    cout <<"\nAfter insertion max load factor is: " <<s.max_load_factor() ;
+    s.max_load_factor(0.5);
+    cout <<"\nAfter insertion max factor,load factor is: " <<s.load_factor() ;
+    cout <<"\nAfter insertion max factor,max load factor is: " <<s.max_load_factor() ;
     int i=0;
     while(i<25)
     {
