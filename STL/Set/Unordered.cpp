@@ -55,6 +55,8 @@ int main()
         cout<<"\ndoesn't exit";
         
     unordered_set<string>stringSet;
+    stringSet.reserve(2);
+    //reserve() is used to request capacity change of unordered_set. It sets the number of buckets in the container to contain at least n elements. If n is greater than the current bucket_count multiplied by the max_load_factor, the container’s bucket_count is increased and a rehash is forced. If n is lower than the bucket_count, then the function has no effect on it. 
     stringSet.rehash(9);
     //rehash sets the number of buckets in the container to N or more. If N is greater than the current number of buckets in the container (bucket_count), a rehash is forced. The new bucket count can either be equal or greater than N.
     stringSet.insert("code");
