@@ -1,7 +1,3 @@
-/* takes n integer numbers, sorts them using Merge sort.
-->5
-6  2  3  3  5
-<-2 3 3 5 6 */
 #include<bits/stdc++.h>
 using namespace std;
 vector<int>merged(vector<int>a, vector<int>b)
@@ -36,11 +32,10 @@ vector<int>merged(vector<int>a, vector<int>b)
     }
     return output;
 }
-
-vector<int>devide_arr(vector<int>p)
+vector<int>devide(vector<int>p)
 {
-    vector<int>part_1;
-    vector<int>part_2;
+    vector<int>b;
+    vector<int>c;
 
     if(p.size() <= 1)
         return p;
@@ -48,17 +43,17 @@ vector<int>devide_arr(vector<int>p)
     int len = p.size();
     for(int i =0; i<len/2; i++)
     {
-        part_1.push_back(p[i]);
+        b.push_back(p[i]);
     }
     for(int i=len/2; i<len; i++)
     {
-        part_2.push_back(p[i]);
+        c.push_back(p[i]);
     }
 
-    vector<int>Sorted_part_1 = devide_arr(part_1);
-    vector<int>Sorted_part_2 = devide_arr(part_2);
+    vector<int>Sorted_b = devide(b);
+    vector<int>Sorted_c = devide(c);
 
-    return merged(Sorted_part_1, Sorted_part_2);
+    return merged(Sorted_b, Sorted_c);
 }
 int main()
 {
@@ -70,7 +65,7 @@ int main()
         cin >> x;
         p.push_back(x);
     }
-    vector<int>ans = devide_arr(p);
+    vector<int>ans = devide(p);
     for(int i = 0; i<ans.size(); i++)
     {
         cout << ans[i] << " ";
