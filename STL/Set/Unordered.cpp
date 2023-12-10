@@ -59,16 +59,16 @@ int main()
     stringSet.insert("is");
     stringSet.insert("fast");
     
-array<string,2> myArray = { "tenth", "seventh"};
+   // array<string,2> myArray { "tenth", "seventh"};
 
     string myString = "ninth";
  
     stringSet.insert(myString);
     
-    stringSet.insert(myArray.begin(), myArray.end());
+   // stringSet.insert(myArray.begin(), myArray.end());
  
     stringSet.insert({"fourth","sixth" });
-    cout<<"myset contains:"<<"\n";
+    cout<<"\nmyset contains: ";
     cout<<"\nbucket count is: "<<stringSet.bucket_count();
     string key = "slow";
 
@@ -77,10 +77,21 @@ array<string,2> myArray = { "tenth", "seventh"};
     else
         cout<<"\nFound '"<< key<<"'";
 
-    cout << "Elements are : ";
+    cout << "\nElements are : ";
     unordered_set<string>::iterator itr;
     for (itr = stringSet.begin(); itr != stringSet.end();
          itr++)
         cout << (*itr) <<" ";
+        
+    unordered_set<string> ms; 
+    
+    bool res=ms.key_eq()("a","A"); 
+    cout << "\nms.key_eq() is: ";
+    
+    if (res == 1) 
+    cout << "case insensitive"; 
+    
+    else
+        cout << "case sensitive"; 
     return 0; 
 } 
