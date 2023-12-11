@@ -1,10 +1,3 @@
- /*takes n integer numbers, sorts them in non-increasing order using Quick sort.
-->5
-6  2  3  3  5
-<-6 5 3 3 2
-->6
-5 6 7 8 0 1
-<-8 7 6 5 1 0*/
 #include<bits/stdc++.h>
 using namespace std;
 vector<int>quick_sort(vector<int>&a)
@@ -29,18 +22,18 @@ vector<int>quick_sort(vector<int>&a)
             c.push_back(a[i]);
         }
     }
-vector <int> sorted_b=quick_sort(b);
+    vector <int> sorted_b=quick_sort(b);
     vector<int> sorted_c= quick_sort(c);
     vector<int> sorted_a;
-for(int i=0;i<sorted_c.size();i++)
-{
-    sorted_a.push_back(sorted_c[i]);
-}
+    for(int i=0;i<sorted_c.size();i++)
+    {
+        sorted_a.push_back(sorted_c[i]);
+    }
     sorted_a.push_back(a[pivot]);
-for(int i=0;i<sorted_b.size();i++)
-{
-    sorted_a.push_back(sorted_b[i]);
-}
+    for(int i=0;i<sorted_b.size();i++)
+    {
+        sorted_a.push_back(sorted_b[i]);
+    }
     return sorted_a;
 }
 int main()
