@@ -24,6 +24,26 @@ void binarySearch_iterative(int arr[],int n,int k)
         cout<<"\nDoesn't exits";
     }
 }
+int binarySearch_recursive(int arr[], int low, int high, int x)
+{
+    int mid=low+(high-low)/2;
+    while(low<=high)
+    {
+        if(arr[mid]==x)
+        {
+            return mid;
+        }
+        else if(arr[mid]>x)
+        {
+            return binarySearch_recursive(arr,0,mid-1,x);
+        }
+        else
+        {
+            return binarySearch_recursive(arr,mid+1,high,x);
+        }
+    }
+    return -1;
+}
 int main() {
     int n, k;
     cin >> n >> k;
@@ -33,5 +53,9 @@ int main() {
     }
     sort(arr, arr + n);
     binarySearch_iterative(arr, n, k);
+    int result=binarySearch_recursive(arr, 0, n-1, k);
+    (result==-1)?
+    cout<<"\nElement doesn't found":
+    cout<<"\nElement found at index: "<<result;
     return 0;
 }
