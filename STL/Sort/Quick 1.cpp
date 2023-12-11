@@ -1,7 +1,3 @@
-/*Write a program to sort the numbers in non-increasing order using quick sort. You have to take random index as a pivot element.
-->5
-6 3 2 3 5
-<-6 5 3 3 2 */
 #include<bits/stdc++.h>
 using namespace std;
 int partition(int a[],int low, int high)
