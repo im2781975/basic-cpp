@@ -2,58 +2,51 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
-
+using namespace std;
 // Function to partition the array
-int partition(std::vector<int> &arr, int low, int high) {
+int partition(vector<int> &arr, int low, int high) {
     int pivotIndex = low + rand() % (high - low + 1);
     int pivot = arr[pivotIndex];
-    std::swap(arr[pivotIndex], arr[high]);
+    swap(arr[pivotIndex], arr[high]);
     int i = low;
 
     for (int j = low; j < high; j++) {
         if (arr[j] >= pivot) {
-            std::swap(arr[i], arr[j]);
+            swap(arr[i], arr[j]);
             i++;
         }
     }
-
-    std::swap(arr[i], arr[high]);
+    swap(arr[i], arr[high]);
     return i;
 }
-
 // Function to perform quick sort
-void quickSort(std::vector<int> &arr, int low, int high) {
+void quickSort(vector<int> &arr, int low, int high) {
     if (low < high) {
         int pivotIndex = partition(arr, low, high);
         quickSort(arr, low, pivotIndex - 1);
         quickSort(arr, pivotIndex + 1, high);
     }
 }
-
 int main() {
-    std::vector<int> numbers;
+    vector<int> numbers;
     int n;
 
-    std::cout << "Enter the number of elements: ";
-    std::cin >> n;
+    cout << "Enter the number of elements: ";
+    cin >> n;
 
-    std::cout << "Enter " << n << " numbers: ";
+    cout << "Enter " << n << " numbers: ";
     for (int i = 0; i < n; i++) {
         int num;
-        std::cin >> num;
+        cin >> num;
         numbers.push_back(num);
     }
-
     // Seed the random number generator
     srand(static_cast<unsigned>(time(nullptr));
-
     quickSort(numbers, 0, n - 1);
 
-    std::cout << "Sorted numbers in non-increasing order: ";
+    cout << "Sorted numbers in non-increasing order: ";
     for (int i = 0; i < n; i++) {
-        std::cout << numbers[i] << " ";
+        cout << numbers[i] << " ";
     }
-    std::cout << std::endl;
-
     return 0;
 }
