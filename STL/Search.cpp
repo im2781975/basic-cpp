@@ -13,8 +13,9 @@ int main() {
     bool flag=0;
     while (low <= high) {
         int mid = low + (high - low) / 2;
+        cout<<"\nLow: "<< low <<" High: "<<high<<" Mid: "<<mid;
         if (arr[mid] == k) {
-            cout << "Present at index: "<<mid;
+            cout << "\nPresent at index: "<<mid;
             flag=1;
 
             
@@ -27,7 +28,7 @@ int main() {
     }
     if(flag==0)
     {
-        cout<<"Doesn't exits";
+        cout<<"\nDoesn't exits";
     }
     return 0;
 }
