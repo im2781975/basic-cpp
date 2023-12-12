@@ -47,4 +47,11 @@ int main()
     
     swap(A, B);
     cout << "\nAfter swapping A has " << A.first << "& B has "<< B.first;
+    
+    pair< pair< string, string>,int> Pair;
+    Pair.first.first ="Ibrahim";
+    Pair.first.second ="Molla";
+    Pair.second =24;
+    cout<<"\nImposed pair<pair>: ";
+    cout<<"\nPair.first.first :"<< Pair.first.first<< "\nPair.first.second :"<< Pair.first.second<< "\nPair.second :"<< Pair.second; 
 }
