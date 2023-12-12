@@ -1,5 +1,6 @@
 #include <iostream>
 #include <utility>
+#include <vector>
 using namespace std;
  
 int main()
@@ -54,4 +55,23 @@ int main()
     Pair.second =24;
     cout<<"\nImposed pair<pair>: ";
     cout<<"\nPair.first.first :"<< Pair.first.first<< "\nPair.first.second :"<< Pair.first.second<< "\nPair.second :"<< Pair.second; 
+    
+    int n;
+    cout<<"\nEnter student number: ";
+    cin>> n;
+    vector<pair<pair<string, string>, int>>p;
+    for(int i=0; i<n; i++)
+    {
+        string firstName;
+        string lastName;
+        int age;
+        cout<<"\nEnter Name & age: ";
+        cin>>firstName>>lastName>>age;
+        p.push_back({{firstName,lastName},age});
+    }
+    cout<<"\nInformation of students are: \n";
+    for(int i=0; i<n; i++)
+    {
+        cout<<p[i].first.first<<" "<<p[i].first.second<<" "<<p[i].second<<"\n";
+    }
 }
