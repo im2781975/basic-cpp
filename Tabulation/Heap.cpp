@@ -1,15 +1,16 @@
+
 #include<bits/stdc++.h>
 using namespace std;
-// To heapify a subtree rooted with node i which is an index in arr[]. n is size of heap.
+void printArray(int arr[], int n)
+{
+    for (int i = 0; i < n; ++i)
+        cout << arr[i] << " ";
+}
 void heapify(int arr[], int n, int i)
 {
     // Initialize largest as root
     int largest = i; 
-    
-    // left = 2*i + 1
     int l = 2 * i + 1;
-    
-    // right = 2*i + 2
     int r = 2 * i + 2;
     
     if (l < n && arr[l] > arr[largest])
@@ -21,8 +22,9 @@ void heapify(int arr[], int n, int i)
     // If largest is not root
     if (largest != i) {
         swap(arr[i], arr[largest]);
-    
-        // Recursively heapify the affected sub-tree
+        
+        cout<<"\n";
+        printArray(arr,n);
         heapify(arr, n, largest);
     }
 } 
@@ -37,18 +39,9 @@ void heapSort(int arr[], int n)
     for (int i = n - 1; i >= 0; i--) {
         // Move current root to end
         swap(arr[0], arr[i]);
-    
         // call max heapify on the reduced heap
         heapify(arr, i, 0);
     }
-}
-    
-/* A utility function to print array of size n */
-void printArray(int arr[], int n)
-{
-    for (int i = 0; i < n; ++i)
-        cout << arr[i] << " ";
-    cout <<endl;
 }
 int main()
 {
@@ -57,7 +50,6 @@ int main()
     
     heapSort(arr, n);
     
-    cout << "array after using heap sort:"<<endl;
+    cout << "\narray after using heap sort: ";
     printArray(arr, n);
 }
-
