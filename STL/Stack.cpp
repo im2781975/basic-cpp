@@ -11,7 +11,6 @@ void decrease_size(stack<int>& s) {
         s.pop();
         stack_size++;
     }
-
     // Check if stack_size is less than array_cap/2
     if (stack_size < array_cap / 2) {
         int new_array_cap = array_cap / 2;
@@ -55,8 +54,12 @@ int main() {
     s.push(2);
     
     sort_stack(s);
-
+/*
     while (!s.empty()) {
+        cout << s.top() << " ";
+        s.pop();
+    }*/
+    while(s.empty() == false){
         cout << s.top() << " ";
         s.pop();
     }
