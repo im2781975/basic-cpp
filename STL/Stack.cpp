@@ -1,11 +1,10 @@
 #include <iostream>
 #include <stack>
-
-void decrease_size(std::stack<int>& s) {
+using namespace std;
+void decrease_size(stack<int>& s) {
     int array_cap = s.size(); // Get the current array capacity
     int stack_size = 0;
-
-    std::stack<int> temp_stack;
+    stack<int> temp_stack;
     
     while (!s.empty()) {
         temp_stack.push(s.top());
@@ -16,13 +15,11 @@ void decrease_size(std::stack<int>& s) {
     // Check if stack_size is less than array_cap/2
     if (stack_size < array_cap / 2) {
         int new_array_cap = array_cap / 2;
-        std::stack<int> new_stack;
-        
+        stack<int> new_stack;
         while (!temp_stack.empty() && new_stack.size() < new_array_cap) {
             new_stack.push(temp_stack.top());
             temp_stack.pop();
         }
-
         // Copy elements from the new_stack to the original stack
         while (!new_stack.empty()) {
             s.push(new_stack.top());
@@ -30,9 +27,8 @@ void decrease_size(std::stack<int>& s) {
         }
     }
 }
-
-void sort_stack(std::stack<int>& s) {
-    std::stack<int> temp_stack;
+void sort_stack(stack<int>& s) {
+    stack<int> temp_stack;
     
     while (!s.empty()) {
         int temp = s.top();
@@ -45,16 +41,14 @@ void sort_stack(std::stack<int>& s) {
 
         temp_stack.push(temp);
     }
-
     // Copy elements back to the original stack
     while (!temp_stack.empty()) {
         s.push(temp_stack.top());
         temp_stack.pop();
     }
 }
-
 int main() {
-    std::stack<int> s;
+    stack<int> s;
     s.push(4);
     s.push(1);
     s.push(3);
@@ -63,10 +57,8 @@ int main() {
     sort_stack(s);
 
     while (!s.empty()) {
-        std::cout << s.top() << " ";
+        cout << s.top() << " ";
         s.pop();
     }
-
     return 0;
 }
-
