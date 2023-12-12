@@ -1,6 +1,21 @@
 #include <iostream>
 #include <stack>
 using namespace std;
+void reverseStack(stack<int>& originalStack) {
+    stack<int> tempStack;
+
+    while (!originalStack.empty()) {
+        int temp = originalStack.top();
+        originalStack.pop();
+        tempStack.push(temp);
+    }
+
+    while (!tempStack.empty()) {
+        int temp = tempStack.top();
+        tempStack.pop();
+        originalStack.push(temp);
+    }
+}
 void decrease_size(stack<int>& s) {
     int array_cap = s.size(); // Get the current array capacity
     int stack_size = 0;
@@ -73,6 +88,9 @@ int main() {
     sort_stack(s);
     cout<<"\nStack size(): "<<s.size();
     cout<<"\nElements are: ";
+    print(s);
+    cout<<"\nElements after reverse: ";
+    reverseStack(s);
     print(s);
     return 0;
 }
