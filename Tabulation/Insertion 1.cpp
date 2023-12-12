@@ -1,35 +1,42 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main()
+void insertionSort(int arr[],int n)
 {
-    int n;
-    cin >> n;
-    int arr[n + 2];
-
-    for (int i = 0; i < n; i++)
+    int i, key, j;
+    for (i = 1; i < n; i++)
     {
-        cin >> arr[i];
-    }
-
-    for (int i = 1; i < n; i++)
-    {
-        int tmp = arr[i];
-        int j = i - 1;
-
-        while (j >= 0 && arr[j] < tmp)
+        key = arr[i];
+        j = i - 1;
+   
+        while (j >= 0 && arr[j] > key)
         {
             arr[j + 1] = arr[j];
-            j--;
+            j = j - 1;
+            cout<<"*";
+            cout<<arr[j]<<" ";
         }
-
-        arr[j + 1] = tmp;
+        cout<<"\n";
+        cout<<arr[j]<<" ";
+        arr[j + 1] = key;
+        
     }
-
-    for (int i = 0; i < n; i++)
-    {
+}
+void printArray(int arr[], int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
         cout << arr[i] << " ";
-    }
-
+    cout << endl;
+}
+int main()
+{
+    int arr[] = { 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
+    int N =10;
+   
+    insertionSort(arr, N);
+    cout<<"\narray after using insertion sort:"<<endl;
+    printArray(arr, N);
+   
     return 0;
 }
