@@ -46,22 +46,33 @@ void sort_stack(stack<int>& s) {
         temp_stack.pop();
     }
 }
+void print(stack<int>s)
+{
+    while(!s.empty())
+    {
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+}
+void print(stack<char>s)
+{
+    while(s.empty() == false)
+    {
+        cout << s.top() << " ";
+        s.pop();
+    }
+}
 int main() {
     stack<int> s;
     s.push(4);
     s.push(1);
     s.push(3);
     s.push(2);
-    
+    int n=5;
+    s.push(n);
     sort_stack(s);
-/*
-    while (!s.empty()) {
-        cout << s.top() << " ";
-        s.pop();
-    }*/
-    while(s.empty() == false){
-        cout << s.top() << " ";
-        s.pop();
-    }
+    cout<<"\nStack size(): "<<s.size();
+    cout<<"\nElements are: ";
+    print(s);
     return 0;
 }
