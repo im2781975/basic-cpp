@@ -53,11 +53,11 @@ int main()
     auto p = find_first_of(vect.begin(), vect.end(), cev.begin(), cev.end());
     cout << "\nAfter impose find_first_of: ";
     cout << p - vect.begin();
-
-    // //check find first element in vector v which is divisible by any element of v1
+    
+    //check find first element in vector vect which is divisible by any element of cev
     vector<int>::iterator it; 
     it = find_first_of(vect.begin(), vect.end(), cev.begin(), cev.end(), Pred); 
-  
+
     cout << "\nDivisible elements are: "<<*it;
     
     string s1 = "You are reading about std::find_first_of"; 
