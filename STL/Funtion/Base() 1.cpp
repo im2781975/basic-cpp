@@ -27,6 +27,7 @@ int main()
     int *it;
     cout<<"\nImposed is_sorted until: ";
     it = is_sorted_until(v, v + 9, comp);
+    //it = is_sorted_until(v, v + 9, comp);
  
     cout << "\nThere are " << (ip - v)
          << " sorted elements in "
