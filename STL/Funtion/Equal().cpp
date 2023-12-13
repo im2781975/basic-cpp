@@ -4,6 +4,10 @@
 #include <algorithm>
 using namespace std;
 
+bool comp(int a, int b) 
+{ 
+    return (a > b); 
+} 
 int main()
 {
     vector<int> v{10, 10, 30, 30, 30, 100, 10, 300, 300, 70, 70, 80};
@@ -26,7 +30,17 @@ int main()
 
     cout << "\n30 is present in the sorted vector from index "
          << (ip.first - v.begin()) << " to " << (ip.second - v.begin());
-         
+    
+    sort(v.begin(), v.end(), greater<int>());
+  
+    // equal_range and comparing the elements with 10 
+    ip = equal_range(v.begin(), v.begin() + 12, 10, comp); 
+  
+    // Displaying the subrange bounds 
+    cout << "\n10 is present in the sorted vector from index "
+         << (ip.first - v.begin()) << " till "
+         << (ip.second - v.begin()); 
+  
     vector<int>::iterator i1, i2; 
   
     //lower_bound 
@@ -48,6 +62,5 @@ int main()
         cout << "\nContents of both sequences are equal";
     else
         cout << "\nContents of both sequences differ.";
-
     return 0;
 }
