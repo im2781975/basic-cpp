@@ -1,15 +1,16 @@
-//iota() | min_element() | search() 
+//iota() | min_element() | search()
 #include <bits/stdc++.h>
 #include <iostream>
 #include <numeric>
-#include <algorithm>  // Add this line for min_element and search
+#include <algorithm> 
 using namespace std;
 
 bool comp(int a, int b)
 {
-    return a < b;
+    if(a > b)
+        return 1
+    return 0;
 }
-
 int main()
 {
     int ar[6] = {0};
@@ -27,7 +28,7 @@ int main()
     vector<int> cev{22, 23};
     vector<int>::iterator it;
 
-    it = search(vect.begin(), vect.end(), cev.begin(), cev.end());
+    it = search(vect.begin(), vect.end(), cev.begin(), cev.end(),comp);
     if (it != vect.end())
     {
         cout << "\nFirst idx where the other idx found: " << it - vect.begin();
@@ -37,3 +38,4 @@ int main()
         cout << "cev isn't present in vect";
     }
 }
+
