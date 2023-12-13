@@ -1,23 +1,23 @@
 #include <iostream>
 #include <stack>
 using namespace std;
-void reverseStack(stack<int>& originalStack) {
-    stack<int> tempStack;
+void reverseStack(stack<int>& st) {
+    stack<int> temp;
 
-    while (!originalStack.empty()) {
-        int temp = originalStack.top();
-        originalStack.pop();
-        tempStack.push(temp);
+    while (!st.empty()) {
+        int t = st.top();
+        st.pop();
+        temp.push(t);
     }
-
-    while (!tempStack.empty()) {
-        int temp = tempStack.top();
-        tempStack.pop();
-        originalStack.push(temp);
+    while (!temp.empty()) {
+        int t = temp.top();
+        temp.pop();
+        st.push(t);
     }
 }
 void decrease_size(stack<int>& s) {
-    int array_cap = s.size(); // Get the current array capacity
+    int array_cap = s.size(); 
+    
     int stack_size = 0;
     stack<int> temp_stack;
     
