@@ -23,7 +23,16 @@ int main()
     int *pt;
     pt = min_element(ar, ar + 6, comp);
     cout << "\nAfter impose min_element: " << *pt;
-
+    
+    int *it;
+    cout<<"\nImposed is_sorted until: ";
+    it = is_sorted_until(v, v + 9, comp);
+ 
+    cout << "\nThere are " << (ip - v)
+         << " sorted elements in "
+         << "the list and the first unsorted element is "
+         << *ip;
+         
     vector<int> vect(ar, ar + 6);
     vector<int> cev{22, 23};
     vector<int>::iterator it;
@@ -38,4 +47,3 @@ int main()
         cout << "cev isn't present in vect";
     }
 }
-
