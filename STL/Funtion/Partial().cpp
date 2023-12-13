@@ -12,7 +12,7 @@ void print(vector<int>vec)
 }
 int main()
 {
-    vector<int> vec = { 1, 1, 3, 10, 3, 3, 7, 7, 8 }, v(3); 
+    vector<int> vec = { 1, 1, 3, 10, 3, 3, 7, 7, 8 }, v(3),cev(7); 
     vector<int>::iterator it;
     partial_sort(vec.begin(), vec.begin()+7, vec.end());
     cout<<"\nImposed partial sort: ";
@@ -32,4 +32,13 @@ int main()
     //partial_sort_copy(vec.begin(), vec.end(), v.begin(), v.end());
     cout<<"\nImposed partial_sort_copy: ";
     print(v);
+    
+    cev.resize(vec.size());
+    cev=vec;
+    partial_sort(vec.begin(), vec.begin() + 2, vec.end());
+    sort(cev.begin(), cev.begin()+2);
+    cout<<"\nImposed partial_sort(range),vec is: ";
+    print(vec);
+    cout<<"\nImposed partial_sort(range),cev is: ";
+    print(cev);
 }
