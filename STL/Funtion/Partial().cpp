@@ -1,14 +1,35 @@
-//partial_sort()
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+bool comp(int a,int b)
+{
+    return (a < b);
+}
+void print(vector<int>vec)
+{
+    vector<int>::iterator it;
+    for(it=vec.begin(); it!=vec.end(); it++)
+        cout<<*it<<" ";
+}
 int main()
 {
-    vector<int> v = { 11, 65, 193, 36, 209, 664, 32 };
-    partial_sort(v.begin(), v.begin() + 3, v.end(), greater<int>());
+    vector<int> vec = { 1, 1, 3, 10, 3, 3, 7, 7, 8 }, v(3); 
+    vector<int>::iterator it;
+    partial_sort(vec.begin(), vec.begin()+7, vec.end());
+    cout<<"\nImposed partial sort: ";
+    print(vec);
     
-    for(int i=0; i<v.size(); i++)
-    {
-        cout<<v[i]<<" ";
-    }
-    return 0;
+    partial_sort(vec.begin(), vec.begin()+7, vec.end(), greater<int>());
+    cout<<"\nImposed desc partial sort: ";
+    print(vec);
+    
+    cout<<"\nLargest element is: ";
+    it=vec.begin();
+    cout<<*it;
+    
+    v.resize(vec.size());
+    partial_sort_copy(vec.begin(), vec.end(), v.begin(), v.end());
+    
+    //partial_sort_copy(vec.begin(), vec.end(), v.begin(), v.end());
+    cout<<"\nImposed partial_sort_copy: ";
+    print(v);
 }
