@@ -26,14 +26,24 @@ int main()
 
     cout << "\n30 is present in the sorted vector from index "
          << (ip.first - v.begin()) << " to " << (ip.second - v.begin());
-
+         
+    vector<int>::iterator i1, i2; 
+  
+    //lower_bound 
+    i1 = lower_bound(v.begin(), v.end(), 5); 
+    cout << "\nlower_bound is = " << (i1 - v.begin()); 
+  
+    //upper_bound 
+    i2 = upper_bound(v.begin(), v.end(), 5); 
+    cout << "\nupper_bound is = " << (i2 - v.begin()); 
+    
     vector<int> vect(v.begin(), v.end());
     //vector<int> vect(v, v+sizeof(v) / sizeof(int) );
     cout << "\nElements of vect are:";
     for (unsigned int i = 0; i < vect.size(); i++)
         cout << " " << vect[i];
 
-    // Using std::equal() to compare vectors
+    //equal() to compare vectors
     if (equal(vect.begin(), vect.end(), v.begin()))
         cout << "\nContents of both sequences are equal";
     else
