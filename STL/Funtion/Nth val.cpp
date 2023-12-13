@@ -1,6 +1,7 @@
 //nth_element 
 #include <iostream> 
 #include <algorithm> 
+#include <vector>
 using namespace std; 
 bool comp(int a, int b) 
 { 
@@ -35,5 +36,9 @@ int main()
     cout<<"\n2nd largest element is : ";
     nth_element(v, v + 1, v + 8, greater<int>()); 
     print(v, 3);
+    
+    vector<int>vect(v, v + n);
+    nth_element(vect.begin(), vect.begin()+ vect.size()/2, vect.end());
+    cout << "\nThe median of the array is " << vect[vect.size() / 2]; 
     return 0; 
 } 
