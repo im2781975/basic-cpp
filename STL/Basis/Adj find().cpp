@@ -1,4 +1,4 @@
-// std :: adjacent_find'
+// adjacent_find
 #include <algorithm>
 #include <iostream>
 #include <vector>
@@ -12,7 +12,7 @@ int main()
  
     vector<int>::iterator it;
  
-    //sorted till range
+    // Check if the elements in the range [vec.begin(), vec.begin() + range1) are sorted in descending order.
     it = adjacent_find(vec.begin(),vec.begin() + range1,greater<int>());
     if (it == vec.begin() + range1) 
     {
@@ -22,7 +22,7 @@ int main()
     {
     cout << "\nNot sorted in the range : " << range1 ;
     }
- 
+    // Check if the elements in the range [vec.begin(), vec.begin() + range2) are sorted in descending order.
     it =adjacent_find(vec.begin(),vec.begin() + range2, greater<int>());
  
     if (it == vec.begin() + range2) 
@@ -37,7 +37,6 @@ int main()
     int n =sizeof(A) /sizeof(A[0]);
  
     int* pt = adjacent_find(A, A + n);
- 
     cout<<"\nrepeated element is: ";
-    cout << *it;
+    cout << *pt;
 }
