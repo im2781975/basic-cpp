@@ -1,4 +1,4 @@
-//mismatch()
+//mismatch() | minmax() 
 #include<iostream> 
 #include<algorithm>  
 #include<vector> 
@@ -27,4 +27,24 @@ int main()
       
     cout << "\nThe returned value from 2nd container is : "; 
     cout << *mispair.second ; 
+    
+    pair<vector<int>::iterator, vector<int>::iterator> mnmx;
+
+   mnmx = minmax_element(v1.begin(), v1.begin() + 4);
+
+    cout << "\nMinimum value idx is : " << mnmx.first - v1.begin();
+    cout << "\nMaximum value idx is : " << mnmx.second - v1.begin();
+    
+    // using duplicated
+    // prints 1 and 5 respectively
+    mnmx = minmax_element(v1.begin(), v1.end());
+
+    cout << "\nAfter sort() minimum value idx is : " << mnmx.first - v1.begin();
+    cout << "\nAfter sort() maximum value idx is : " << mnmx.second - v1.begin();
+
+    pair<int,int>mnmx_array = minmax({2, 5, 1, 6, 3});
+
+    cout << "\nMinimum value [array] is : " << mnmx_array.first;
+    cout << "\nMaximum value [array] is : " << mnmx_array.second;
 } 
+
