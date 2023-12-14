@@ -29,6 +29,25 @@ int partition(int arr[], int start, int end)
     }
    
     return pivotIndex;
+} 
+int partition(int arr[],int low,int high)
+{
+
+    int pivot=arr[high];
+  //Index of smaller element and Indicate the right position of pivot found so far
+  int i=(low-1);
+  for(int j=low;j<=high;j++)
+  {
+    //If current element is smaller than the pivot
+    if(arr[j]<pivot)
+    {
+      //Increment index of smaller element
+      i++;
+      swap(arr[i],arr[j]);
+    }
+  }
+  swap(arr[i+1],arr[high]);
+  return (i+1);
 }
    
 void quickSort(int arr[], int start, int end)
@@ -42,7 +61,6 @@ void quickSort(int arr[], int start, int end)
     
     quickSort(arr, p + 1, end);
 }
-   
 int main()
 {
    
@@ -57,4 +75,3 @@ int main()
    
     return 0;
 }
-  
