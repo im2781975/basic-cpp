@@ -17,6 +17,14 @@ int main()
    for(int i=0; i<v2.size(); i++) 
        cout << v2[i] << " ";
      
+    vector<int>::iterator itr; 
+    vector<int> v4; 
+ 
+    copy(v1.begin(), v1.end(), inserter(v4, itr)); 
+  
+    cout << "\nThe new vector elements entered using inserter: "; 
+    for (int i = 0; i < v4.size(); i++) 
+        cout << v4[i] << " "; 
    // using copy_n() to copy 1st 4 elements 
    copy_n(v1.begin(), 4, v3.begin()); 
    cout << "\nAfter using copy_n array is : "; 
