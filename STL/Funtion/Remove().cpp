@@ -1,4 +1,5 @@
-// remove() | remove_if() | remove_copy_if() |remove_copy()
+// remove() | remove_if() | remove_copy_if() 
+//remove_copy() | erase() 
 #include <bits/stdc++.h>
 using namespace std;
 bool IsOdd(int i) 
@@ -49,5 +50,9 @@ int main()
     cout<<"\nAfter romove_copy_if vect1 is: ";
     print(vect1);
     
+   vect1.erase(find(vect1.begin(),vect1.end(),10));
+    cout << "\nVector after erasing element: ";
+    for (int i = 0; i < vect1.size(); i++)
+        cout << vect1[i] << " ";
     return 0;
 }
