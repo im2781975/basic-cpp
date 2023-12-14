@@ -36,5 +36,11 @@ int main()
     
     int count =distance(vect.begin(), unique(vect.begin(), vect.begin() + 12));
     cout << "\nTotal no. of unique elements are: " << count;
+    
+   vect.erase(unique(vect.begin(), vect.end()),
+               vect.end());
+    cout << "\nVector after removing duplicates: ";
+    for (int i = 0; i < vect.size(); i++)
+        cout << vect[i] << " ";
     return 0;
 }
