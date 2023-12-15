@@ -13,7 +13,7 @@ int main() {
     vector<int> vect1{1, 2, 3, 4};
     vector<int> vect2(vect1);
     vector<int> vect3;
-    vector<int> cev(vect1.size() + vect2.size());  // Resize to accommodate merged elements
+    vector<int> cev(vect1.size() + vect2.size());
     cout << "\nElement of Vect1[] is: ";
     print(vect1);
 
@@ -53,6 +53,16 @@ int main() {
     cout << "\nReversed cev is: ";
     for (it = cev.end() - 1; it != cev.begin() - 1; --it)
         cout << *it;
-
+        
+    vect2.clear();
+    vect2.assign(cev.begin(),cev.end());
+    cout<<"\nImposed assign: ";
+    print(cev);
+    
+    //vect3.clear();
+    int n=0;
+    vect3.insert(vect3.begin()+n, vect1.begin()+n, vect1.end());
+    cout<<"\nImposed insert: ";
+    print(vect3);
     return 0;
 }
