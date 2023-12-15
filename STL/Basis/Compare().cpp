@@ -1,4 +1,7 @@
-#include<bits/stdc++.h>
+//#include<bits/stdc++.h>
+#include<iostream>
+#include<algorithm>
+#include<cstring>
 using namespace std;
 int count(char a[])
 {
@@ -42,13 +45,12 @@ int main()
         {'a','b','b','a'}
     };
     char min[100] = "zzzzzz";
-     
-    //lexicographical_compare for checking the smallest
     for (int i=0; i<4; i++)
     { 
         //list,list+n,min,min+n
+        //if( lexicographical_compare(list[i], list[i] + strlen(list[i]), min, min+strlen(min)))
         if( lexicographical_compare(list[i], list[i] 
-        + strlen(list[i]), min, min+strlen(min)))
+        + count(list[i]), min, min+count(min)))
         {
             strcpy(min,list[i]);
         }
