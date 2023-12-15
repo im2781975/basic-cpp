@@ -29,16 +29,13 @@ int main()
     cout << "\nVector after sorting in Descending order is: ";
     print(vect);
    
-    reverse(vect.begin(), vect.end());
-    cout <<"\nAfter reversing vect is: ";
-    print(vect);
  
     cout << "\nMaximum element of vector is: ";
     cout<<*max_element(vect.begin(),vect.end());
  
     cout << "\nMinimum element of vector is: ";
     cout << *min_element(vect.begin(), vect.end()) ;
- 
+    
     //Starting the summation from 0
     cout << "\nSummation of vector elements is: ";
     cout << accumulate(vect.begin(), vect.end(), 0);
@@ -54,6 +51,7 @@ int main()
     prev_permutation(vect.begin(), vect.end());
     cout <<"\nVector after performe prev permutation:";
     print(vect);
+    
     
     return 0;
 }
