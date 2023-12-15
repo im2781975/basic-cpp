@@ -1,4 +1,4 @@
-//iota() | min_element() | max_element() | search()
+//iota() | min_element() | min() | max_element() | search() is_sorted_until()
 #include <bits/stdc++.h>
 #include <iostream>
 #include <numeric>
@@ -9,7 +9,6 @@ bool comp(int a, int b)
 {
     return a > b; 
 }
-
 bool pred(int a, int b)
 {
     return a < b;
@@ -23,19 +22,20 @@ int main()
     for (int i = 0; i < 6; i++)
         cout << ar[i] << " ";
 
+    int *it;
+    it = is_sorted_until(ar, ar + 6, comp); 
+    cout << "\nImposed is_sorted_until: "<<*it<<" ";
+    
     int *pt;
     pt = min_element(ar, ar + 6, comp);
     cout << "\nAfter impose min_element: " << *pt;
-
+    
+    cout<<"\nMin element is: "<< min({7, 5, 9, 2, -1, 5});
     int* i1; 
     i1 = max_element(ar, ar + 6, pred); 
     cout << "\nImposed max_element: "<< *i1;
 
-    int *it;
-    cout << "\nImposed is_sorted_until: ";
-    it = is_sorted_until(ar, ar + 6, comp); 
-
-    cout << "\nThere are " << (it - ar) << "sorted elements in the list and the first unsorted element is "
+    cout << "\nThere are " << (it - ar) << " sorted elements in the list and the first unsorted element is "
          << *it;
 
     vector<int> vect(ar, ar + 6);
