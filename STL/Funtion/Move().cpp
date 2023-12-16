@@ -11,7 +11,7 @@ void print(vector<int>&vec,int n)
 int main() 
 { 
     vector <int> vec1{ 1,2,3,4,5 };
-    vector <int> vec2 {7,7,7,7,7}; 
+    vector <int> vec2 (5,7); 
   
     cout <<"Elements of vect1 :";
     print(vec1, vec1.size());
@@ -24,7 +24,9 @@ int main()
     cout << "\nVect2 contains after move() :"; 
     print(vec2, vec2.size());
     
-    move_backward (vec2.begin(), vec2.begin() + 3, vec1.begin() + 3); 
+    int n=3, x=3;
+    //n<=x
+    move_backward (vec2.begin(), vec2.begin() + n, vec1.begin() + x); 
   
     cout<<"\nVect1 contains after move_backward () : "; 
     print(vec1, vec1.size());
