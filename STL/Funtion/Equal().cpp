@@ -24,13 +24,11 @@ int main()
     pair<vector<int>::iterator, vector<int>::iterator> it;
 
     cout << "Before sorting elements: ";
-    for(int i=0; i<vect.size(); i++)
-        cout<< vect[i] <<" ";
+    print(vect);
 
     sort(vect.begin(), vect.end());
     cout << "\nAfter sorting elements: ";
-    for(int i=0; i<vect.size(); i++)
-        cout<< vect[i] <<" ";
+    print(vect);
 
     // Comparing elements with 30
     it = equal_range(vect.begin(), vect.end(), 30);
@@ -61,8 +59,7 @@ int main()
     vector<int> vec(vect.begin(), vect.end());
     //vector<int> vect(v, v+sizeof(v) / sizeof(int) );
     cout << "\nElements of vect are:";
-    for (unsigned int i = 0; i < vec.size(); i++)
-        cout << " " << vec[i];
+    print(vec);
 
     //equal() to compare vectors
     if (equal(vec.begin(), vec.end(), vect.begin()))
@@ -74,11 +71,8 @@ int main()
     vector<int>cev(arr,arr+(sizeof(arr)/sizeof(arr[0])));
     
     if(equal(cev.begin(),cev.end(),arr, pred))
-    {
-        cout<<"\nYes";
-    }
+        cout << "\nContents of both sequences are equal";
+        
     else
-    {
-        cout<<"\nNo";
-    }
+        cout << "\nContents of both sequences differ.";
 }
