@@ -8,6 +8,15 @@ bool comp(int a, int b)
 { 
     return (a > b); 
 } 
+bool pred(int a, int b)
+{
+    return (a = b);
+}
+void print(vector<int>&vec)
+{
+    for(int i=0; i<vec.size(); i++)
+        cout<<vec[i]<<" ";
+}
 int main()
 {
     vector<int> vect{10, 10, 30, 30, 30, 100, 10, 300, 300, 70, 70, 80};
@@ -60,5 +69,16 @@ int main()
         cout << "\nContents of both sequences are equal";
     else
         cout << "\nContents of both sequences differ.";
-    return 0;
+        
+    int arr[]{2,4,7,9,7};
+    vector<int>cev(arr,arr+(sizeof(arr)/sizeof(arr[0])));
+    
+    if(equal(cev.begin(),cev.end(),arr, pred))
+    {
+        cout<<"\nYes";
+    }
+    else
+    {
+        cout<<"\nNo";
+    }
 }
