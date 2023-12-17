@@ -1,4 +1,4 @@
-//mismatch() | minmax() 
+//mismatch() | minmax() | swap_range()
 #include<iostream> 
 #include<algorithm>  
 #include<vector> 
@@ -9,7 +9,30 @@ int main()
     vector<int> v1{ 1, 10, 15, 20 }; 
     vector<int> v2{1,10, 25,30,45}; 
     vector<int> v3 = {1,10,15,20 }; 
-    vector<int> v4{1,10,15,20,24 }; 
+    vector<int> v4{1,10,15,20,24 };
+    
+    vector<int> vec= v1;
+    vector<int> cev= v2;
+    
+    if (v1.size() % 2 == 0) 
+        swap_ranges(v1.begin(), v1.begin() + (v1.size() / 2), v1.begin() + v1.size() / 2); 
+  
+    else
+        swap_ranges(v1.begin(), v1.begin() + v1.size() / 2, v1.begin() + (v1.size() / 2) + 1); 
+    cout<<"\nImposed swap_range: ";
+    for(int i=0; i<v1.size(); i++)
+        cout<< v1[i]<< " ";
+    
+    cout<<"\nElements of vec is: ";
+    for(int i=0; i<vec.size(); i++)
+        cout<<vec[i]<<" ";
+        
+    if (v1 == vec)  
+        cout << "\nYes,both vectors are same"; 
+    else 
+    {
+        cout << "\nNo,they aren't same."; 
+    }
     pair< vector<int>::iterator,  vector<int>::iterator > mispair; 
       
     mispair = mismatch(v1.begin(), v1.end(), v2.begin()); 
@@ -47,4 +70,3 @@ int main()
     cout << "\nMinimum value [array] is : " << mnmx_array.first;
     cout << "\nMaximum value [array] is : " << mnmx_array.second;
 } 
-
