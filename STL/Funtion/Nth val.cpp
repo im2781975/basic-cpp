@@ -1,4 +1,4 @@
-//nth_element 
+//nth_element | not2()
 #include <iostream> 
 #include <algorithm> 
 #include <vector>
@@ -40,5 +40,17 @@ int main()
     vector<int>vect(v, v + n);
     nth_element(vect.begin(), vect.begin()+ vect.size()/2, vect.end());
     cout << "\nThe median of the array is " << vect[vect.size() / 2]; 
+    
+    sort(vect.begin(), vect.end(), not2(greater<int>())); 
+    cout<<"\nAscending sort using not2:";
+    for (int i = 0; i < vect.size(); i++) 
+        cout << vect[i] << " "; 
+    
+    sort(vect.begin(), vect.end(), not2(less<int>())); 
+    
+    cout<<"\nDescending sort using not2:";
+    for (int i = 0; i < vect.size(); i++) 
+        cout << vect[i] << " "; 
+    
     return 0; 
 } 
