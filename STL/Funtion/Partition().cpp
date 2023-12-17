@@ -5,7 +5,11 @@
 using namespace std;
 bool odd(int i)
   { return (i % 2) == 1; } 
-  
+ 
+bool pred(int a) 
+{ 
+    return (a % 2 == 0); 
+} 
 void print(vector<int>&vect, int n)
 {
     for(int i=0; i<vect.size(); i++)
@@ -25,6 +29,15 @@ int main()
     cout <<"\nVector is partitioned":
     cout<<"\nVector is not partitioned";
      
+    vector<int> v1{ 2, 4, 6, 3, 5, 7, 9 }; 
+ 
+    bool b = is_partitioned(v1.begin(), v1.end(), pred); 
+  
+    if (b == 1) { 
+        cout << "\nAll the even no. are present before odd no "; 
+    } else { 
+        cout << "\nAll the even no. are not present before odd no "; 
+    } 
     partition(vect.begin(), vect.end(), [](int x)
     { return x%2==0; });
 
