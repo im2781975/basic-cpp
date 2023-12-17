@@ -2,7 +2,17 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include<string>
 using namespace std;
+bool Pred(char a, char b)
+{
+    if (a == b && a == 'v') 
+        return 1;
+
+    else
+        return 0;
+
+}
 int main()
 {
     vector<int> vect{ 1, 2, 3, 3, 3, 10, 1, 2, 3, 7, 7, 8 };
@@ -42,5 +52,16 @@ int main()
     cout << "\nVector after removing duplicates: ";
     for (int i = 0; i < vect.size(); i++)
         cout << vect[i] << " ";
+        
+    string s = "You arre vvvisiting GFG", s1;
+    auto ip = unique_copy(s.begin(), s.end(), back_inserter(s1), Pred);
+ 
+    cout << "\nBefore unique_copy string is: " << s;
+    cout << "\nAfter unique_copy string is: " << s1;
+    
+    auto pi=unique(s.begin(), s.end(), Pred);
+    cout << "\nAfter unique string is: " << s;
+    cout << string(s.begin(), pi);
+    cout << "\nAfter unique string is: " << s;
     return 0;
 }
