@@ -41,4 +41,18 @@ int main()
     print(vec);
     cout<<"\nImposed partial_sort(range),cev is: ";
     print(cev);
+    
+    vector<int> v1 = {1, 3, 4, 5, 20, 30};
+    vector<int> v2 = {1, 5, 6, 7, 25, 30};
+    vector<int> v3(12);
+  
+    // using copy to copy both vectors into one container
+    auto ip = copy(v1.begin(), v1.end(), v3.begin());
+    copy(v2.begin(), v2.end(), ip);
+  
+    // Using inplace_merge() to sort the container
+    inplace_merge(v3.begin(),ip,v3.end());
+    cout << "\nContainer after inplace_merging is : ";
+    for(ip=v3.begin(); ip!=v3.end(); ip++)
+        cout<<*ip<<" ";
 }
