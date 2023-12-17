@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 #include <vector>
-void print(vector<int>&vec)
+using namespace std;
+void print(vector<int>vec)
 {
     for(int i=0; i<vec.size(); i++)
         cout<<vec[i]<<" ";
 }
-using namespace std;
 int main()
 {
     vector<int> vec;
@@ -39,9 +39,42 @@ int main()
     vec.emplace_back(20);
     cout << "\nImposed emplace_back: ";
         print(vec);
+    
+    cout << "\nSize: " << vec.size();
+    cout << "\nCapacity: " <<vec.capacity();
+    cout << "\nMax_Size: " <<vec.max_size();
  
+    vec.resize(4);
+    cout << "\nAfter resize,Size is : "<< vec.size();
+ 
+    if (vec.empty() == false)
+    cout<<"\nVector isn't empty";
+    else
+    cout <<"\nVector is empty";
+ 
+    vec.shrink_to_fit();
+    cout<<"\nImposed shrink_to_fit(): ";
+    for (auto it = vec.begin(); it != vec.end(); it++)
+        cout << *it << " ";
+ 
+    cout << "\nOutput of begin and end: ";
+    for (auto i =vec.begin(); i !=vec.end(); ++i)
+        cout << *i << " ";
+ 
+    cout << "\nOutput of cbegin and cend: ";
+    for (auto i =vec.cbegin(); i != vec.cend(); ++i)
+        cout << *i << " ";
+ 
+    cout << "\nOutput of rbegin and rend: ";
+    for (auto i = vec.rbegin(); i != vec.rend(); ++i)
+        cout << *i << " ";
+ 
+    cout << "\nOutput of crbegin and crend : ";
+    for (auto i =vec.crbegin(); i != vec.crend(); ++i)
+        cout << *i << " ";
+        
     vec.clear();
-    cout << "\nAfter clear() size is: " << v.size()
+    cout << "\nAfter clear() size is: " << vec.size();
     // two vector to perform swap
     vector<int> v1, v2;
     v1.push_back(1);
