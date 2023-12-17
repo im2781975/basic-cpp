@@ -1,5 +1,5 @@
 // remove() | remove_if() | remove_copy_if() 
-//remove_copy() | erase() 
+//remove_copy() | erase() | // replace() | replace_if() | replace_copy() | replace_copy_if()
 #include <bits/stdc++.h>
 using namespace std;
 bool IsOdd(int i) 
