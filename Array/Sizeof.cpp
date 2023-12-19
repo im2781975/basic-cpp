@@ -40,16 +40,13 @@ int main()
     int n =sizeof(a) /sizeof(a[0]);
     
     cout << "size of []: "<< sizeof(a) ;
+    
     Unsized_array(a);
-    
     Referenced_array(a);
-    
     Sized_array(a,n);
-    
     aDecay(a);
-    
     pDecay(&a);
-    
     mDecay(a);
+    
     return 0;
 }
