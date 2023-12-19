@@ -21,6 +21,21 @@ void array_pointer(int* ptr, int n)
         cout << ptr[i] << " ";
 
 }
+void condition()
+{
+    cout<<"\nConditional [] : ";
+    for (int i=0, j=10, k=20;(i+j+k) <100; j++, k--, i += k)
+    {
+        cout <<"\ni="<< i << " " << " j="<<j << " " << "k="<<k <<" ";
+    }
+}
+void display()
+{
+    int arr[5];
+
+    for (int i = 0; i < 7; i++) 
+        arr[i] = i * i - 2 * i + 1;
+}
 
 int main()
 {
@@ -36,6 +51,9 @@ int main()
     
     sort(a, a+ n);
     print_array (a, n);
+    
+    condition();
+    display();
     
     if (binary_search(a, a + n, 6))
     cout << "\nElement found in the array";
