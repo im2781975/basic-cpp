@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
  
-// Function to return the only occurring which is odd or even
+// return the only occurring which is odd or even
 int findOdd(int arr[], int n)
 {
     int res = 0, i;
@@ -19,4 +19,3 @@ int main(void)
     //Here's 90 occurring only ones.so it will be print
     return 0;
 }
-
