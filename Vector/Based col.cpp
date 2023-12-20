@@ -26,10 +26,10 @@ int main()
             cout <<vect[i][j]<<" ";
     }
     
+    sort(vect[0].rbegin(), vect[0].rend());
     //sort(vect[0].begin(), vect[0].end());
-    sort(vect.begin(),vect.end(),sortcol);
+    //sort(vect.begin(),vect.end(),sortcol);
    // sort(vect.begin(), vect.end(), Sortcol);
- 
     cout << "\nAfter sorting : ";
     for (int i = 0; i < m; i++) {
         cout<< "\n" ;
