@@ -8,6 +8,10 @@ bool sortcol(const vector<int>& v1, const vector<int>& v2)
 {
     return v1[1] < v2[1];
 }
+bool Sortcol(const vector<int>& v1, const vector<int>& v2)
+{
+    return v1[1] > v2[1];
+}
 int main()
 {
     vector<vector<int> >vect{ { 3, 5, 1 },{ 4, 8, 6 },{ 7, 2, 9 } };
@@ -23,6 +27,7 @@ int main()
     }
     
     sort(vect.begin(), vect.end(), sortcol);
+   // sort(vect.begin(), vect.end(), Sortcol);
  
     cout << "\nAfter sorting : ";
     for (int i = 0; i < m; i++) {
