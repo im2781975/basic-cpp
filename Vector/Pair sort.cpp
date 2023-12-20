@@ -28,7 +28,6 @@ int main()
     cout << "After sort vector is: " ;
     for (int i=0; i<n; i++)
     {
-        //"first" and "second" are used to access 1st and 2nd element of pair respectively
         cout << vect[i].first <<" "<<vect[i].second <<"\n";
     }
     return 0;
