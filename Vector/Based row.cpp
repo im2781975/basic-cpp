@@ -1,4 +1,4 @@
-//Demonstrate sorting basis of a column
+// sorting basis of a column
 #include <algorithm> 
 #include <iostream>
 #include <vector> 
@@ -8,14 +8,11 @@ bool sortcol(const vector<int>& v1, const vector<int>& v2)
 {
     return v1[1] < v2[1];
 }
-
 int main()
 {
     vector<vector<int> >vect{ { 3, 5, 1 },{ 4, 8, 6 },{ 7, 2, 9 } };
-    // Number of rows;
+    
     int m = vect.size();
- 
-    // Number of columns.
     int n = vect[0].size();
  
     cout << "Before sorting :\n";
