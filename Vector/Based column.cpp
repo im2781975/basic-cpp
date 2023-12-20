@@ -1,9 +1,7 @@
-//sorting in ascending order
 #include<iostream>
 #include<vector> 
 #include<algorithm> 
 using namespace std;
-// on basis of a no. of columns in ascending order
 bool sizecom(const vector<int>& v1, const vector<int>& v2)
 {
     return v1.size() < v2.size();
@@ -16,7 +14,7 @@ int main()
     cout<<"Before sorting Matrix: ";
     for (int i=0; i<vect.size(); i++)
     {
-        cout<< "\n" ;
+        cout<<"\n";
         for (int j=0; j<vect[i].size() ;j++)
             cout <<vect[i][j]<< " ";
     }
