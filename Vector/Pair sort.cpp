@@ -1,10 +1,14 @@
-//sorting/in vector of pair according to 2nd element of pair in descending order
+//sorting in vector of pair according to 2nd element of pair in descending order
 #include<bits/stdc++.h>
 using namespace std;
 
 bool sortbysecdesc(const pair<int,int> &a,const pair<int,int> &b)
 {
-       return a.second>b.second;
+       return a.second > b.second;
+}
+bool Sortbysecdesc(const pair<int,int> &a,const pair<int,int> &b)
+{
+       return a.second < b.second;
 }
 int main()
 {
@@ -23,8 +27,9 @@ int main()
         cout <<vect[i].first << " "
             <<vect[i].second<<"\n";
     }
-    sort(vect.begin(), vect.end(), sortbysecdesc);
- 
+    //sort(vect.begin(), vect.end(), sortbysecdesc);
+    sort(vect.begin(), vect.end(), Sortbysecdesc);
+
     cout << "After sort vector is: " ;
     for (int i=0; i<n; i++)
     {
