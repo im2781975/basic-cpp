@@ -1,4 +1,3 @@
-// reinterpret_cast 
 #include <iostream> 
 using namespace std; 
 int main() 
@@ -21,6 +20,13 @@ int main()
 
     int* nonConstPtr = const_cast<int*>(ptr); 
     *nonConstPtr = 10; 
-    cout << "\nModified number: " << *nonConstPtr; 
+    cout << "\nModified number: " << *nonConstPtr <<"\n";
+    
+    int* p = new int(65);
+    char* ch = reinterpret_cast<char*>(p);
+    cout << *p << "\n";
+    cout << *ch << "\n";
+    cout << p << "\n";
+    cout << ch << "\n";
     return 0; 
 }
