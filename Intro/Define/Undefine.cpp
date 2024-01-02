@@ -1,7 +1,5 @@
 #include<iostream>
- 
 #define gfg 50
-  
 #if gfg > 200
    #undef gfg
    #define gfg 200
@@ -12,8 +10,7 @@
    #undef gfg
    #define gfg 100
 #endif
- 
 int main()
 {
-    std::cout << gfg;  // gfg = 50
+    std::cout << gfg;
 }   
