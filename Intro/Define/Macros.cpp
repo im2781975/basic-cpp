@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-  
+#define min(a,b) ((a < b)? a: b)
 #define rep(i,n) for (i = 0; i < n; ++i)
 #define REP(i,k,n) for (i = k; i <= n; ++i)
 #define REPR(i,k,n) for (i = k; i >= n; --i)
@@ -20,5 +20,9 @@ int main()
     
     REPR(i, size-1,0)     
         cout << array[i] << " ";
+        
+    int a =2, b=5;
+    cout<<"\nMinimum element is: "<<min(a, b);
+    
     return 0;
 }
