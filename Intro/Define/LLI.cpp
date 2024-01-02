@@ -1,7 +1,6 @@
 #include <iostream>
 #define mod 1000000007
 using namespace std;
-  
 int main()
 {
     long long int x, y, z;
@@ -9,7 +8,6 @@ int main()
     cin >> x >> y >> z;
     //z = (z + x*y)%mod; 
     z = ((z%mod) + ((x%mod)*(y%mod))%mod) % mod;
-    // not good practice
     cout << z;
     return 0;
 }
