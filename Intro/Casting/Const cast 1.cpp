@@ -4,8 +4,7 @@ using namespace std;
 int fun(int* ptr) 
 { 
     return (*ptr + 10); 
-} 
-  
+}
 int main(void) 
 { 
     const int val = 10; 
