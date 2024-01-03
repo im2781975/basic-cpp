@@ -1,8 +1,6 @@
 // static storage class objects
 #include <iostream>
 using namespace std;
- 
-// Function containing static variables memory is retained during execution
 int staticFun()
 {
     cout<<"For static variables: ";
