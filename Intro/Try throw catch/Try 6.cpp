@@ -1,8 +1,5 @@
-
-//the function should specify all uncaught exceptions and function signature should be "void fun(int *ptr, int x) throw (int *, int)".
 #include <iostream>
 using namespace std;
- 
 void fun(int *ptr, int x)
 {
     if (ptr == NULL)
