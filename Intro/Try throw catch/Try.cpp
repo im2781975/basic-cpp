@@ -1,10 +1,8 @@
 #include <iostream>
 using namespace std;
- 
 int main()
 {
    int x = -7;
-
    cout << "Before try \n";
    try {
       cout << "Inside try \n";
