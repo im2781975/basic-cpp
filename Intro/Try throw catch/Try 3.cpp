@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
- 
 int main()
 {
     try {
@@ -9,7 +8,7 @@ int main()
         }
         catch (int n) {
             cout << "Handle Partially ";
-            throw; // Re-throwing an exception
+            throw;
         }
     }
     catch (int n) {
