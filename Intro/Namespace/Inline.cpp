@@ -1,12 +1,11 @@
-// inline.
 #include <iostream>
 using namespace std;
   
-namespace ns1
+namespace first
 {
-    inline namespace ns2 
+    inline namespace second
     {
-        inline namespace ns3
+        inline namespace third
         {
             int var = 10;
         }
@@ -14,6 +13,6 @@ namespace ns1
 } 
 int main()
 {
-    cout << ns1::var;
+    cout << first::var;
     return 0;
 }
