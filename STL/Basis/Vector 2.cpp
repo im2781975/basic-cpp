@@ -86,10 +86,15 @@ int main()
         print(v1);
     cout << "\nVector 2: ";
         print(v2);
+        
+    cout<<"\nImplemented Not2: ";
+    sort(v1.begin(), v1.end(), not2(less<int>()));
+    print(v1);
  
     v1.swap(v2);
     cout<<"\nAfter Swap Vector 1:";
         print(v1);
     cout<<"\nAfter Swap Vector 2:";
         print(v2);
+    
 }
