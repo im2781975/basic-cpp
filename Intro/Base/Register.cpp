@@ -1,7 +1,7 @@
-//Registers are faster than memory to access, so the variables which are most frequently used in a program can be put in registers using the register keyword
+//Registers are faster than memory to access, so the variables which are most frequently 
+//used in a program can be put in registers using the register keyword
 #include <iostream>
 #include <cstdio>
-
 using namespace std;
 
 void fastscan(int &number)
@@ -11,17 +11,14 @@ void fastscan(int &number)
 
     number = 0;
     // Extract current character from buffer
-
     c = getchar();
     if (c == '-')
     {
         // Number is negative
         negative = true;
-
         // Extract the next character from the buffer
         c = getchar();
     }
-
     // Keep on extracting characters if they are integers
     // i.e ASCII Value lies from '0' (48) to '9' (57)
     for (; (c >= '0' && c <= '9'); c = getchar())
@@ -32,8 +29,6 @@ void fastscan(int &number)
     if (negative)
         number *= -1;
 }
-
-// Function Call
 int main()
 {
     int number;
