@@ -1,4 +1,4 @@
-// Use of scope resolution class inside another class.
+//scope resolution class inside another class.
 #include <iostream>
 using namespace std;
  
@@ -13,7 +13,6 @@ class outside {
     };
 };
 int outside::inside::y = 5;
- 
 int main()
 {
     outside A;
