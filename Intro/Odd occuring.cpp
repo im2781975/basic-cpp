@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
- 
-// Function to return the only odd
-// occurring element
+// odd occurring element
 int findOdd(int arr[], int n)
 {
     int res = 0, i;
@@ -10,12 +8,10 @@ int findOdd(int arr[], int n)
         res ^= arr[i];
     return res;
 }
- 
-// Driver Method
 int main(void)
 {
     int arr[] = { 12, 12, 14, 90, 14, 14, 14 };
     int n = sizeof(arr) / sizeof(arr[0]);
-    cout << "The odd occurring element is  "<< findOdd(arr, n);
+    cout << "\nThe odd occurring element is  "<< findOdd(arr, n);
     return 0;
 }
