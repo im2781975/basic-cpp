@@ -1,34 +1,26 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-
 int main()
 {
-    string s1 = "Ibrahim ";
-    string s2 = "Molla ";
-
-    cout<<s1.size()<<"\n";
-    cout<<s1[0]<<"\n";
-    cout<<s1[1]<<s1[2]<<"\n";
-    string s3 = s1 + s2;
-    cout<<"Concateneted string is: "<< s3;
-
-    for(int i=0;i<s1.size();i++)
-    {
-       s1[i] = s1[i] + 1;
-       //'a' + 1 = 'b'
-    }
-    cout<<s1<<"\n";
-    s1.pop_back();
-    string s4= "abcdefg";
-    s4.erase(s4.begin()+100);
+    string a ="ibrahim";
+    string b ="Molla";
+    cout<<a[0] <<" " <<a[1];
+    string c= a + b;
+    cout<<"\nAfter concatenate string is: " << c ;
+    cout<< "\nSizeof string is: " << a.size();
+    for(int i = 0; i < a.size(); i++)
+        a[i] = a[i] +1;
+        //'a' + 1 = 'b'
     
-    cout<<s4<<"\n";
-    string s;
-    cin>>s;
-    s.erase(s.begin());
-    s.erase(s.begin() + s.size()-1);
-    s.pop_back();
-    cout<<s<<"\n";
-    return 0;
+    cout<< "\nAfter add string is: " <<a;
+    a.pop_back();
+    cout<< "\nAfter pop_back string is: " << a ;
+    
+    b.erase(b.begin()+ 0);
+    cout <<"\nAfter erase B is: " << b;
+    c.erase(c.begin());
+    cout <<"\nAfter erase front string is: " << c;
+    c.erase(c.begin()+ c.size() -1);
+    cout<< "\nAfter erase back string is: " << c;
+    c.pop_back()
 }
