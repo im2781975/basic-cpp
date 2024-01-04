@@ -6,6 +6,6 @@ int sum(int x,int y,float z=0, float w = 0)
 }
 int main()
 {
-    cout << sum(10, 15, 25, 30) << endl;
+    cout << sum(10, 15, 25, 30) <<"\n";
     return 0;
 }
