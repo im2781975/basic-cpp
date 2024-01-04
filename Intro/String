@@ -4,40 +4,31 @@ using namespace std;
 
 int main()
 {
-//    string s = "I am eating rice.";
-//    string s2 = "I am also eating dal.";
+    string s1 = "Ibrahim ";
+    string s2 = "Molla ";
 
-//    cout<<s.size()<<"\n";
-//    string s3 = "I am eating rice.I am also eating dal.";
+    cout<<s1.size()<<"\n";
+    cout<<s1[0]<<"\n";
+    cout<<s1[1]<<s1[2]<<"\n";
+    string s3 = s1 + s2;
+    cout<<"Concateneted string is: "<< s3;
 
-//    cout<<s[0]<<"\n";
-//    cout<<s[1]<<s[2]<<"\n";
-//    string s3 = s + s2;
-//    cout<<s3<<"\n";
-
-//    for(int i=0;i<s.size();i++)
-//    {
-//        s[i] = s[i] + 1; /* 'a' + 1 = 'b'*/
-//    }
-//    cout<<s<<"\n";
-
-//    s.pop_back();
-//    string s= "abcdefg";
-//    s.erase(s.begin()+100);
-//    cout<<s<<"\n";
-
+    for(int i=0;i<s1.size();i++)
+    {
+       s1[i] = s1[i] + 1;
+       //'a' + 1 = 'b'
+    }
+    cout<<s1<<"\n";
+    s1.pop_back();
+    string s4= "abcdefg";
+    s4.erase(s4.begin()+100);
+    
+    cout<<s4<<"\n";
     string s;
     cin>>s;
-
     s.erase(s.begin());
     s.erase(s.begin() + s.size()-1);
-//    s.pop_back();
+    s.pop_back();
     cout<<s<<"\n";
     return 0;
 }
-/*
-A --> B
-B --> C
-
-abcd xyz
-*/
