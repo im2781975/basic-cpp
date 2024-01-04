@@ -38,6 +38,7 @@ int main()
  
     // One’s Complement operator
     cout << "\n~(a) is : " <<~(a) ;
+    cout << "\n~(-a) is : " <<~(-a) ;
     cout << "\na : " << a ;
    
     cout << "\na += b is : " << (a += b) ;
