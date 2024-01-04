@@ -1,9 +1,0 @@
-#include <iostream> 
-using namespace std; 
-int main() 
-{ 
-    cerr << "An error occurred";
-    clog << "\nAn error occurred"; 
-    return 0; 
-} 
-
