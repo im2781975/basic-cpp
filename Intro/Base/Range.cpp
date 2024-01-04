@@ -5,7 +5,6 @@
 using namespace std; 
 int main() 
 { 
- 
     cout<<"range[char]: "<<CHAR_MIN << " -- " << CHAR_MAX; 
     
     cout << "\nrange[short_char] : " << SCHAR_MIN <<" -- "<< SCHAR_MAX; 
@@ -34,6 +33,5 @@ int main()
     cout << "\nrange[double ranges] : " << DBL_MIN << " -- " << DBL_MAX; 
     
     cout << "\nrange[negative double] : " << -DBL_MIN << " -- " << DBL_MAX; 
-  
    return 0; 
 }
