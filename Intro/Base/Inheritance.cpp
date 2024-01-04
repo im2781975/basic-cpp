@@ -1,7 +1,6 @@
 // multiple inheritance.
 #include<iostream>
 using namespace std;
- 
 class A
 {
     protected:
@@ -9,7 +8,6 @@ class A
     public:
     A() { x = 10; }
 };
- 
 class B
 {
     protected:
@@ -17,15 +15,14 @@ class B
     public:
     B() { x = 20; }
 };
-
 class C: public A, public B
 {
     public:
     void fun()
-{
-    cout << "A's x is " << A::x;
-    cout << "\nB's x is " << B::x;
-}
+    {
+        cout << "A's x is " << A::x;
+        cout << "\nB's x is " << B::x;
+    }
 };
 int main()
 {
