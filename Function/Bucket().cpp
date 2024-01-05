@@ -16,6 +16,7 @@ int main()
     cout <<"\nBucket size for uset is:  "<< bucketCount;
  
     cout <<"\nBucket number 3 contains "<<uset.bucket_size(3) <<" elements";
+    uset.emplace_hint(uset.begin(),7);
     cout<< "\nElements of uset is: ";
     for(auto it = uset.begin(); it!=uset.end(); it++)
     {
