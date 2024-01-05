@@ -1,13 +1,6 @@
-/*Elements of the array are: 10 100 200
-address of ptr = 0x7ffef5de59f8
-Value at *ptr = 10
-address of ptr = 0x7ffef5de59fc
-Value at *ptr = 100
-address of ptr = 0x7ffef5de5a00
-Value at *ptr = 200 */
 #include <bits/stdc++.h>
 using namespace std;
-void geeks()
+int main()
 {
     int v[3] = { 10, 100, 200 };
     int* ptr;
@@ -20,8 +13,6 @@ void geeks()
     for (int i = 0; i < 3; i++) {
         cout << "address of ptr = " << ptr << "\n";
         cout << "Value at *ptr = " << *ptr << "\n";
-  
         ptr++;
     }
 }
-int main() { geeks(); }
