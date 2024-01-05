@@ -1,7 +1,3 @@
-/**data points to a char
-The new value of c is: y
-*data points to an int
-The new value of i is: 11 */
 #include <bits/stdc++.h>
 using namespace std;
 void increase(void* data,int ptrsize)
@@ -21,7 +17,7 @@ void increase(void* data,int ptrsize)
              << "\n";
     }
 }
-void geek()
+int main()
 {
     char c = 'x';
     int i = 10;
@@ -30,4 +26,3 @@ void geek()
     increase(&i, sizeof(i));
     cout << "The new value of i is: " << i << "\n";
 }
-int main() { geek(); }
