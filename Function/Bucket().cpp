@@ -16,7 +16,14 @@ int main()
     cout <<"\nBucket size for uset is:  "<< bucketCount;
  
     cout <<"\nBucket number 3 contains "<<uset.bucket_size(3) <<" elements";
-    
+    cout<< "\nElements of uset is: ";
+    for(auto it = uset.begin(); it!=uset.end(); it++)
+    {
+        cout <<*it <<" ";
+    }
+    cout<< "\nSize of uset is: " <<uset.size();
+    uset.clear();
+    cout<< "\nImplemented clear uset is: " << uset.size();
     unordered_map<string,string> umap = { {"AB","CD"},{"EF","GH"},
     {"IJ","KL"},{"MN","OP"},{"QR","ST"}, {"UV","WX"} };
 
