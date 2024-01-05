@@ -1,7 +1,6 @@
-// CPP Program to demonstrate the raise() function
+// raise() function
 #include<bits/stdc++.h>
 using namespace std;
-  
 void signal_handler(int signal_num)
 {
     cout << "Interrupt signal is (" << signal_num << ").\n";
@@ -13,7 +12,6 @@ int main()
     int count = 0;
     signal(SIGSEGV,signal_handler);
     // register signal SIGSEGV and signal handler
-  
     while (++count) {
         cout << "Hello..." <<"\n";
         if (count == 5)
