@@ -1,19 +1,21 @@
-#include<iostream>
-#include<unordered_set>
-using namespace std;
-int main()
-{
-    unordered_set <int> uset;
-    uset.insert({10, 20, 30});
-    auto it= uset.equal_range(20);
+#include <iostream> 
+#include <string> 
+#include <unordered_set> 
+ 
+using namespace std; 
+int main() 
+{ 
+    unordered_set <string> uset={"geeks1","for","geeks2"}; 
+    if (uset.find("geeks1") != uset.end()) 
+        cout<<"\nElement found" ;
+    else 
+        cout << "\nElement not found" ;
     
-    if(it.first!=uset.end())
-    {
-        for(;it.first!=it.second; ++it.first)
-            cout<< *it.first <<" ";
+    unordered_set<string>::hasher fn = uset.hash_function();
+    
+    cout << fn("geeks") << endl; 
+    for (auto it = uset.begin(); it != uset.end(); it++) { 
+        cout << *it << " "; 
     }
-    else
-    {
-        cout<< "Doesn't exit";
-    }
-}
+    return 0; 
+} 
