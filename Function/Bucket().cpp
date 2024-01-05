@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unordered_set>
+#include <unordered_map>
 using namespace std;
 int main()
 {
@@ -15,5 +16,17 @@ int main()
     cout <<"\nBucket size for uset is:  "<< bucketCount;
  
     cout <<"\nBucket number 3 contains "<<uset.bucket_size(3) <<" elements";
-    return 0;
+    
+    unordered_map<string,string> umap = { {"AB","CD"},{"EF","GH"},
+    {"IJ","KL"},{"MN","OP"},{"QR","ST"}, {"UV","WX"} };
+
+    int n = umap.bucket_count();
+    cout << "\numap has " << n << " buckets ";
+
+    for (int i=0; i<n; ++i)
+    {
+        cout << "\nBucket " << i+1 << " contains: ";
+        for (auto it = umap.begin(i); it!=umap.end(i); ++it)
+            cout << it->first << " " << it->second <<" ";
+    }
 }
