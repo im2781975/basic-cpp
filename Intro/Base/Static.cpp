@@ -1,4 +1,3 @@
-// static storage class objects
 #include <iostream>
 using namespace std;
 int staticFun()
@@ -17,6 +16,13 @@ int nonStaticFun()
     count++;
     return count;
 }
+void demo()
+{
+    static int count = 0;
+    cout << count << " ";
+
+    count++;
+}
 int main()
 {
     cout << staticFun() << "\n";
@@ -24,6 +30,9 @@ int main()
      
     cout << nonStaticFun() << "\n";
     cout << nonStaticFun() << "\n";
+    
+    for (int i = 0; i < 5; i++)
+        demo();
      
     return 0;
 }
