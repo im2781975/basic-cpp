@@ -1,12 +1,9 @@
-/*x = 20
-ref = 30 */
 #include<bits/stdc++.h>
 using namespace std;
 int main()
 {
     int x = 10;
     int& ref = x;
-    // Value of x is now changed to 20
     ref = 20;
     cout << "x = " << x << '\n';
     // Value of x is now changed to 30
