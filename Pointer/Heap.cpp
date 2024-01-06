@@ -11,9 +11,7 @@ int main() {
     };
 
     cust* var1 = new cust;
-    
     var1 = new cust();
-
     cust* var = new cust(25);
 
     cout << "Value of int p: " << *p << "\n";
@@ -25,6 +23,5 @@ int main() {
     delete q;
     delete var;
     delete var1;
-
     return 0;
 }
