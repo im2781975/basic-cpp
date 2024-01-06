@@ -1,13 +1,11 @@
-/*10000 10
-0x7ffd98ee1a38 0x7ffd98ee1a30 */
 #include<bits/stdc++.h>
 using namespace std;
 void fun(int n, int* square, double* sq_root)
 {
     *square = n * n;
     *sq_root = sqrt(n);
-    cout<< *square<<" "<<*sq_root<<"\n";
-    cout<< square<<" "<< sq_root;
+    cout<< "Value is: " << *square<<" "<<*sq_root ;
+    cout<< "\nAddress of the value is: " << square<<" "<< sq_root;
     
 }
  
