@@ -1,5 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
+void square (int *x)
+{
+    //*x = (*x)++ * (*x);
+    *x = (*x) * (*x);
+}
+void square (int *x, int *y)
+{
+    *x = (*x) * --(*y);
+    //*x = (*x) * (*y);
+}
 int main()
 {
     int x=10;
@@ -18,4 +28,10 @@ int main()
     ptr--;
     cout<< "\nAfter decrement: " << ptr;
     
+    int number = 30;
+    square(&number, &number);
+    cout << "\nsquare base double number is: " <<number;
+    int n=30;
+    square(&n);
+    cout << "\nSquare base single  number is: " << n;
 }
