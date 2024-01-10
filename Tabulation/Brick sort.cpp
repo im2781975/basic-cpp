@@ -1,4 +1,4 @@
-//implement Odd-Even / Brick Sort
+//implement of Brick Sort
 #include<bits/stdc++.h>
 using namespace std;
 void oddEvenSort(int arr[], int n)
