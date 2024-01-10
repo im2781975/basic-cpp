@@ -8,22 +8,18 @@ bool isSorted(int a[], int n)
     return true;
 }
 // To generate permutation of the array
-void shuffle(int a[], int n)
-{
-    for (int i = 0; i < n; i++)
-        swap(a[i], a[rand() % n]);
-}
 void bogosort(int a[], int n)
 {
-    // if array is not sorted then shuffle the array again
     while (!isSorted(a, n))
-        shuffle(a, n);
+    {
+        for (int i = 0; i < n; i++)
+            swap(a[i], a[rand() % n]);
+    }
 }
 void printArray(int a[], int n)
 {
     for (int i = 0; i < n; i++)
         cout << a[i] << " ";
-    cout << "\n";
 }
 int main()
 {
