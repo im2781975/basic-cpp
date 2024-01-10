@@ -21,23 +21,19 @@ for (mi = 0, i = 0; i < n; ++i)
             mi = i; 
 return mi; 
 } 
-
 void pancakeSort(int *arr, int n) 
 { 
-    // Start from the complete array and one by one  reduce current size by one 
-    for (int curr_size = n; curr_size > 1;--curr_size) 
+    for (int cur = n; cur > 1;--cur) 
     { 
         // Find index of the  maximum element in 
-        // arr[0..curr_size-1] 
-        int mi = findMax(arr, curr_size); 
+        int mi = findMax(arr, cur); 
         // Move the maximum  element to end of current array if  it's not already  at the end
-        if (mi != curr_size-1) 
+        if (mi != cur -1) 
         { 
-            // To move at the end, first move maximum  number to beginning 
             flip(arr, mi); 
  
             // Now move the maximum number to end by  reversing current array 
-            flip(arr, curr_size-1);
+            flip(arr, cur -1);
         } 
     } 
 } 
@@ -53,7 +49,7 @@ int main()
  
     pancakeSort(arr, n); 
  
-    cout<<"Sorted Array "<<endl; 
+    cout<<"Sorted Array "; 
     printArray(arr, n); 
  
     return 0; 
