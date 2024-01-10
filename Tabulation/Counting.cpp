@@ -1,42 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
  
-vector<int> countSort(vector<int>& inputArray)
+vector<int> countSort(vector<int>& input)
 {
-    int N = inputArray.size();
+    int N = input.size();
     // Finding the maximum element of array inputArray[].
     int M = 0;
     for (int i = 0; i < N; i++)
-        M = max(M, inputArray[i]);
+        M = max(M, input[i]);
  
     // Initializing countArray[] with 0
-    vector<int> countArray(M + 1, 0);
+    vector<int> count(M + 1, 0);
     // Mapping each element of inputArray[] as an index of countArray[] array
     for (int i = 0; i < N; i++)
-        countArray[inputArray[i]]++;
+        count[input[i]]++;
     // Calculating prefix sum at every index of array countArray[]
     for (int i = 1; i <= M; i++)
-        countArray[i] += countArray[i - 1];
+        count[i] += count[i - 1];
  
     // Creating outputArray[] from countArray[] array
-    vector<int> outputArray(N);
+    vector<int> output(N);
     for (int i = N - 1; i >= 0; i--)
  
     {
-        outputArray[countArray[inputArray[i]] - 1]
-            = inputArray[i];
+        output[count[input[i]] - 1]
+            = input[i];
  
-        countArray[inputArray[i]]--;
+        count[input[i]]--;
     }
-    return outputArray;
+    return output;
 }
 int main()
 {
-    vector<int> inputArray = { 4, 3, 12, 1, 5, 5, 3, 9 };
-    
-    vector<int> outputArray = countSort(inputArray);
+    vector<int> input = { 4, 3, 12, 1, 5, 5, 3, 9 };
+    vector<int> output = countSort(input);
  
-    for (int i = 0; i < inputArray.size(); i++)
-        cout << outputArray[i] << " ";
+    for (int i = 0; i < input.size(); i++)
+        cout << output[i] << " ";
     return 0;
 }
