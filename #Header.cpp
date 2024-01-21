@@ -36,6 +36,17 @@ using namespace std;
 #include <stack>
 #include <cstring>
 #include<bits/stdc++.h>
+#define ll            long long int
+#define all(vec)      vec.begin(),vec.end()
+#define rep(i,a,b)    for(i=a;i<=b;i++)
+#define repr(i,a,b)   for(i=a;i>=b;i--)
+#define pb            push_back
+#define pll           pair<ll,ll>
+#define vpll          vector<pair<ll,ll>>
+#define ull           unsigned long long int
+#define vll           vector<ll> 
+#define vvll          vector<vector<ll>>
+
 #define abdo ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 #define ll long long int
 #define tc ll t ; cin>>t; while(t--)
