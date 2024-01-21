@@ -21,7 +21,30 @@
 #include <fstream>
 #include <type_traits> 
 using namespace std;
-   
+#include <iostream>
+#include <math.h>
+// #include <bits/stdc++.h>
+#include <cmath>
+#include <iomanip>
+#include <bitset>
+#include <vector>
+#include <cstdio>
+#include <algorithm>
+#include <set>
+#include <deque>
+#include <map>
+#include <stack>
+#include <cstring>
+using namespace std;
+typedef long long ll;
+#define Trav(a, x) for (auto &a : x)
+#define all(x) x.begin(), x.end()
+#define rall(x) x.rbegin(), x.rend()
+#define int ll
+#define size_t int
+#define endl '\n'
+#define uni(a) a.resize(distance(a.begin(),unique(a.begin(),a.end())));
+
 typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> p32;
