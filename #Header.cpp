@@ -46,7 +46,26 @@ using namespace std;
 #define ull           unsigned long long int
 #define vll           vector<ll> 
 #define vvll          vector<vector<ll>>
-
+// #define ll long long int
+ 
+// #define pll pair<ll,ll>
+// #define vpll vector<pair<ll,ll>>
+// #define ull unsigned long long int
+// #define vll vector<ll>
+// #define vvll vector<vector<ll>>
+// #define rep(i,a,b) for(i=a;i<=b;i++)
+// #define repr(i,a,b) for(i=a;i>=b;i--)
+// #define all(v) v.begin() , v.end()
+// #define rall(v) v.rbegin(),v.rend()
+// #define ff first
+// #define ss second
+// #define pb push_back
+// typedef unsigned long long int ulli;
+// template<typename T> istream& operator>>(istream& in, vector<T>& a) {for (auto &x : a) in >> x; return in;};
+// template<typename T> ostream& operator<<(ostream& out, vector<T>& a) {for (auto &x : a) out << x << ' '; return out;};
+ 
+// template<typename T1, typename T2> ostream& operator<<(ostream& out, const pair<T1, T2>& x) {return out << x.ff << ' ' << x.ss;}
+// template<typename T1, typename T2> istream& operator>>(istream& in, pair<T1, T2>& x) {return in >> x.ff >> x.ss;}
 #define abdo ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 #define ll long long int
 #define tc ll t ; cin>>t; while(t--)
