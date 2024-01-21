@@ -35,6 +35,44 @@ using namespace std;
 #include <map>
 #include <stack>
 #include <cstring>
+#include<bits/stdc++.h>
+#define abdo ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define ll long long int
+#define tc ll t ; cin>>t; while(t--)
+#define pb push_back
+#define pob pop_back
+#define loopj(j,a,b) for(ll j = a ; j < b-1 ; j++)
+#define loopi(i,a,b) for (ll i = a; i < b; i++)
+#define vl vector<ll>
+#define vi vector<int>
+#define lb lower_bound
+#define ub upper_bound
+#define sumv(v) accumalate(v.begin(),v.end(),0)
+#define mii map<int,int>
+#define umii unordered_map<int,int>
+#define order(v) sort(v.begin(),v.end())
+#define ed '\n'
+#define el "\n"
+#define all(v) v.begin(),v.end()
+#define YES cout<<"YES"<<ed;
+#define NO cout<<"NO"<<ed;
+#define Yes cout<<"Yes"<<ed;
+#define No cout<<"No"<<ed;
+#define yEs cout<<"yEs"<<ed;
+#define yeS cout<<"yeS"<<ed;
+#define nO cout<<"nO"<<ed;
+#define yes cout<<"yes"<<ed;
+#define no cout<<"no"<<ed;
+#define ans1 ll ans = 0;
+#define cnt1 ll cnt = 0;
+#define sum(a , b) (a + b)
+#define product(a , b) (a * b)
+#define squarear(a) (a * a)
+#define rectanglear(a , b) (a * b)
+#define squarepre(a) (a * 4)
+#define rectanglpr(a , b) ((a + b)*2)
+typedef unsigned long long ull;
+typedef long double lld;
 using namespace std;
 typedef long long ll;
 #define Trav(a, x) for (auto &a : x)
