@@ -1,23 +1,24 @@
-// pointer reinterpret
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-class A {
-public:
+class A
+{
+    public:
     void fun_a()
-        cout << " In class A\n";
+    {
+        cout << "A";
+    }
 };
-class B {
-public:
+class B
+{
+    public:
     void fun_b()
-        cout << " In class B\n";
+    {
+        cout << "B";
+    }
 };
 int main()
 {
-    B* x = new B();
- 
-    // converting the pointer to object referenced of class B to class A
-    A* new_a = reinterpret_cast<A*>(x);
-    // accessing the function of class A
-    new_a->fun_a();
-    return 0;
+    B *b = new B();
+    A *a = reinterpret_cast<A*>(b);
+    a->fun_a();
 }
