@@ -2,45 +2,42 @@
 using namespace std;
 int main()
 {
-   char s[] = "Ibrahim";
-    cout <<"s[] :"<<s <<"\n";
+    char s[] = "Ibrahim";
+    cout <<"\nchar array is: "<<s ;
 
     string str("GeeksforGeeks");
-    cout << "str is :" <<str<<"\n";
+    cout << "\nstr is :" <<str ;
     
-    string str_(5, 'g');
-    cout <<"str_ :"<<str_<<"\n";
+    string g(5, 'g');
+    cout << "\na: "<< g;
 
     char s1[]{'g', 'f', 'g', '\0'};
     char s2[4]{'g', 'f', 'g','\0'};
     char s3[4] = "gfg";
-    char s4[] = "gfg";
  
-    cout << "s1 : " << s1 << "\n";
-    cout << "s2 : " << s2 <<"\n";
-    cout << "s3 : " << s3 << "\n";
-    cout << "s4 : " << s4 << "\n";
+    cout << "\ns1 : " << s1 ;
+    cout << "\ns2 : " << s2 ;
+    cout << "\ns3 : " << s3 ;
     
     string st;
-    cout<<"Enter string :";
+    cout << "\nEnter String: ";
     getline(cin,st);
-    cout<<"String is :"<<st<<"\n";
+    cout <<" \nString is :" << st ;
     
-//string obj is used for take multiple string.
+    //string obj is used for take multiple string.
     string a = " GeeksforGeeks to the Moon ";
     stringstream obj(a);
     // string to store words individually.
     string temp;
+    cout << "\n" ;
     while (obj >> temp) {
-        cout << temp << "\n";
+        cout << temp << " ";
     }
-
-
-string x = "Geeksforgeeks";
+    string x = "Geeksforgeeks";
     char* p = &x[0];
 
     while (*p != '\0') {
-        cout << *p;
+        cout << *p << " ";
         p++;
     }
     cout <<"\n";
@@ -51,7 +48,7 @@ string x = "Geeksforgeeks";
     {
         if (b.empty())
             break;
-        cout << b << "\n";
+        cout << b << " ";
     }
     return 0;
 }
