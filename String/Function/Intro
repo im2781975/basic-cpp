@@ -1,20 +1,20 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
 int main()
 {
-    string s ="fox jumps over the lazy dog";
-    cout << "The length of the string is: "<< s.length() <<"\n";
-    
-    cout << "The capacity of string is: "<< s.capacity()<<"\n";
-//---------------------------------
-      s.resize(10);
-    cout << "The string after using resize function is: "<<s<< "\n";
-//---------------------------------
-      s.resize(20);
-    cout<<"The capacity of string before using shrink_to_fit function is: "<<s.capacity() <<"\n";
-      // shrink to fit function is used to reduce the capacity of the container
-
-    s.shrink_to_fit();
-    cout << "The capacity of string after using shrink_to_fit function is "<< s.capacity() <<"\n";
-    return 0;
+    string str;
+    cout << "\nEnter String: ";
+    getline(cin,str);
+    str.push_back('o');
+    cout << "\nAfter push_back String is: " << str;
+    str.pop_back();
+    cout << "\nAfter pop_back original String is: " << str;
+    cout << "\nLength of str is: " << str.length();
+    cout << "\nCapacity of str is: " << str.capacity();
+    str.resize(10);
+    cout << "\nAfter resize str is: " << str ;
+    cout << "\nAfter resize capacity is: " << str.capacity();
+    str.shrink_to_fit();
+    cout << "\nAfter shrink_to_fit capacity is: " << str.capacity();
 }
+
