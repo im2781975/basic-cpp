@@ -4,14 +4,25 @@ void FindOccurance(string str, char ch)
 {
     size_t found = str.find(ch);
     if(found == string::npos)
-        cout << ch << " Doesn't exit";
+        cout << ch << " Doesn't exit" << "\n";
     else
         cout << ch << " Exit at position " << found;
+}
+void FindLast(string str, char ch, size_t position)
+{
+    size_t found = str.find(ch, position);
+    if (found == string::npos)
+        cout << "\nCharacter '"  << ch << "' isn't present";
+    else
+        cout << "\nOccurance of '" << ch << "' before position '" << position << "' found at idx " << found ;
 }
 int main()
 {
     string str;
     getline(cin, str);
-    char ch = 'a';
+    char ch = 'm';
     FindOccurance(str, ch);
+    
+    size_t position = 4;
+    FindLast(str, ch, position);
 }
