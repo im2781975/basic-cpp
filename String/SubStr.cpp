@@ -8,22 +8,23 @@ void subString(string s, int n)
 }
 void subString1(string s, int n)
 {
-      vector<int> v;
+    vector<int> v;
     for (int i = 0; i < n; i++){
         for (int len = 1; len <= n - i; len++){
-             string sub =(s.substr(i, len));
-             int x=stoi(sub);
-             v.push_back(x);
-            }
-     }
-     cout<<*min_element(v.begin(),v.end())<<"\n";
-     cout<<*max_element(v.begin(),v.end())<<"\n";
+            string sub = (s.substr(i, len));
+            int x = stoi(sub);
+            v.push_back(x);
+        }
+    }
+    cout << *min_element(v.begin(),v.end()) << "\n";
+     cout << *max_element(v.begin(),v.end()) << "\n";
 }
 int main()
 {
     //string s = "abcd";
-    string s="823";
-    subString1(s, s.length());
+    string s = "823";
+    subString(s, s.length());
     return 0;
 }
+
 
