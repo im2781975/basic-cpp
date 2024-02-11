@@ -1,7 +1,3 @@
-/*Pointing to the start of the string: G
-Pointing to the end of the string: s
-Pointing to the last character of the string: s
-Pointing to the first character of the string: G */
 #include <bits/stdc++.h>
 using namespace std;
 int main()
