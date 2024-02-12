@@ -7,57 +7,49 @@ int main()
     const char s[4] = "-";
     char* tok;
     tok = strtok(gfg, s);
-    cout<<"After strtok e :";
+    cout << "\nAfter strtok e :";
     while (tok != NULL) {
-    cout<<tok<<",";
- 
+        cout<<tok<<" ";
         tok = strtok(0, s);
     }
-    cout<<"\n";
-//---------------------------------
+    cout << "\n";
     char str1[] = "Geeks for Geeks";
     char* toke;
     char* rest = str1;
  
     while ((toke = strtok_r(rest, " ", &rest)))
-        cout<<toke<<" ";
-        cout<<"\n";
-//---------------------------------
+        cout << toke << " ";
+        cout << "\n";
+        
     char str[] = "Hello, World! Geeks for Geeks.";
-    const char outer_delimiters[] = "!.";
-    const char inner_delimiters[] = " ,";
+    const char outer[] = "!.";
+    const char inner[] = " ,";
  
     char* token;
     char* outer_saveptr = NULL;
     char* inner_saveptr = NULL;
  
-    token = strtok_r(str, outer_delimiters, &outer_saveptr);
+    token = strtok_r(str, outer, &outer_saveptr);
  
     while (token != NULL)
     {
-        cout<<"Outer Token: "<<token<<"\n";
- 
+        cout << "\nOuter Token: " << token ;
         char* inner_token = strtok_r(
-            token, inner_delimiters, &inner_saveptr);
+            token, inner, &inner_saveptr);
  
         while (inner_token != NULL) {
-            cout<<"Inner Token: "<<inner_token<<"\n";
-            inner_token = strtok_r(NULL, inner_delimiters,
-                                   &inner_saveptr);
+            cout << "\nInner Token: " << inner_token ;
+            inner_token = strtok_r(NULL, inner,&inner_saveptr);
         }
- 
-        token = strtok_r(NULL, outer_delimiters,
-                         &outer_saveptr);
+        token = strtok_r(NULL, outer, &outer_saveptr);
     }
     char str2[] ="Geeks,for.Geeks";
-    //Delimiters: space, comma, dot, exclamation mark
     const char delimiters[] = ",.";
     char* toen = strtok(str, delimiters);
     while (toen != NULL) {
-    cout<<"Token: "<<toen<<" ";
-    
+    cout << "\nToken: " << toen << " ";
         toen = strtok(NULL, delimiters);
     }
-    cout<<"\n";
+    cout << "\n";
     return 0;
 }
