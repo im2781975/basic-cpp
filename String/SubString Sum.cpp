@@ -8,7 +8,6 @@ int toDigit(char ch)
 int sumOfSubstrings(string num)
 {
     int n = num.length();
- //allocate memory equal to length of string
     int sumofdigit[n];
     
     sumofdigit[0] =toDigit(num[0]);
@@ -16,11 +15,8 @@ int sumOfSubstrings(string num)
 
     for (int i = 1; i < n; i++) {
         int numi = toDigit(num[i]);
-        // update each sumofdigit from previous value
         sumofdigit[i] = (i + 1) * numi + 10 * sumofdigit[i - 1];
-        //cout<<i<<" "<<numi<<" "<<sumofdigit[i]<<"\n";
-        
-        // add current value to the result
+        cout << i << " " << numi << " " << sumofdigit[i]<< "\n";
         res += sumofdigit[i];
     }
     return res;
