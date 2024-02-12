@@ -10,41 +10,34 @@ char* mystrtok(char* s, char d)
     // Case for final token
     if (input == NULL)
         return NULL;
- 
     // Stores the extracted string
     char* result = new char[strlen(input) + 1];
     int i = 0;
-    // Start extracting string and
-    // store it in array
+    // Start extracting string and store it in array
     for (; input[i] != '\0'; i++) {
-//If delimiter is not reached then add the current character to result[i]
+    //If delimiter is not reached then add the current character to result[i]
         if (input[i] != d)
             result[i] = input[i];
  
-     //Else store the string formed
+    //Else store the string formed
         else {
             result[i] = '\0';
             input = input + i + 1;
             return result;
         }
     }
- 
     // Case when loop ends
     result[i] = '\0';
     input = NULL;
- 
-    // Return the resultant pointer
-    // to the string
+    // Return the resultant pointer to the string
     return result;
 }
 int main()
 {
     char str[90] = "It, is my, day";
-    
     // Tokenized the first string
     char* ptr = mystrtok(str, ' ');
     cout << ptr <<"\n";
- 
     while (ptr != NULL) 
     {
         ptr = mystrtok(NULL, ' ');
