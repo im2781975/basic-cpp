@@ -22,5 +22,18 @@ int main()
     for(int i =0;str2[i]!='\0';i++)
         str1.push_back(str2[i]);
     cout << "\nAfter push_back : " << str1 ;
+    
+    string init("this is init");
+    string add(" added now");
+    //init.append(add);
+    // init = init + add;
+    //cout << init <<"\n";
+
+    string output;
+    for (int i = 0; init[i] != '\0'; i++)
+        output += init[i];
+    for (int i = 0; add[i] != '\0'; i++)
+        output += add[i];
+    cout << "\nAfter Concat string is: " << output;
     return 0;
 }
