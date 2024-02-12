@@ -1,35 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
-void string_concatenation()
+int main()
 {
+    char src[50] = "forgeeks";
+    char dest1[50] = "geeks";
+    char dest2[50] = "geeks";
+   
+    cout << "\nBefore strcat() func execution,string :" << dest1 ;
+    strcat(dest1, src);
+    cout << "\nAfter strcat() func execution,string :" << dest1 ;
+  
+    cout << "\nBefore strcat() func execution,string :"<<dest2 ;
+    // Appends 3 characters from src to dest2
+    strncat(dest2, src, 3);
+    cout << "\nAfter append char strcat() func execution,string :" << dest2 ;
+    
     string str1("Geeksfor");
     string str2("Geeks");
  
-    cout<<"Original String : "<< str1 <<"\n";
-    
+    cout << "\nOriginal String : "<< str1 ;
     for(int i =0;str2[i]!='\0';i++)
-    {
         str1.push_back(str2[i]);
-    }
-    cout << "After push_back : ";
-    cout << str1;
-}
-int main()
-{
-   char src[50] = "forgeeks";
-   char dest1[50] = "geeks";
-   char dest2[50] = "geeks";
-   
-   cout<<"Before strcat() func execution,string :"<<dest1<<"\n";
-   strcat(dest1, src);
-   cout<<"After strcat() func execution,string :"<<dest1<<"\n";
-  
-   cout<<"Before strcat() func execution,string :"<<dest2<<"\n";
- // Appends 3 characters from src to dest2
-   strncat(dest2, src, 3);
-   cout<<"After append char strcat() func execution,string :"<<dest2<<"\n";
- 
-   string_concatenation();
+    cout << "\nAfter push_back : " << str1 ;
     return 0;
 }
-   
