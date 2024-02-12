@@ -16,8 +16,17 @@ int main()
     cout << "\nAfter append char strcat() func execution,string :" << dest2 ;
     
     string str1("Geeksfor");
-    string str2("Geeks");
- 
+    string str2(" Fun");
+    
+    char ch[80];
+    str1.copy(ch, 13, 0);
+    cout << "\nNew copied character array is : " << ch ;
+
+    cout << "\nBefore swapping strings are : " << str1 << " " << str2 ;
+
+    str1.swap(str2);
+    cout << "\nAfter Swapping Strings are : " << str1 << " " << str2;
+    
     cout << "\nOriginal String : "<< str1 ;
     for(int i =0;str2[i]!='\0';i++)
         str1.push_back(str2[i]);
@@ -35,5 +44,16 @@ int main()
     for (int i = 0; add[i] != '\0'; i++)
         output += add[i];
     cout << "\nAfter Concat string is: " << output;
-    return 0;
+    
+    char source[] = "geeksforgeeks";
+    char dest[2];
+    strcpy(dest, source);
+    cout << "\nCopied string: " << dest ;
+    
+    char sr[] = "geeksforgeeks";
+    char dst[8];
+    strncpy(dst, sr, 8);
+    int len = strlen(dst);
+    cout << "\nCopied string: " << dst ;
+    cout << "\nLength of destination string: " << len ;
 }
