@@ -5,12 +5,12 @@ int main()
     string line = "GeeksForGeeks is a must try";
     vector <string> tokens;
 
-    stringstream check1(line);
-    string intermediate;
-    // Tokenizing w.r.t. space ' ''
-    while(getline(check1, intermediate, ' '))
+    stringstream obj(line);
+    string word;
+
+    while(getline(obj, word , ' '))
     {
-        tokens.push_back(intermediate);
+        tokens.push_back(word);
     }
     for(int i=0;i<tokens.size();i++)
         cout << tokens[i] << '\n';
