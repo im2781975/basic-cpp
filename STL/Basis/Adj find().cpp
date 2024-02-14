@@ -1,4 +1,4 @@
-// adjacent_find
+// adjacent_find || is contain duplicate
 #include <algorithm>
 #include <iostream>
 #include <vector>
