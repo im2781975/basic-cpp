@@ -1,6 +1,7 @@
 #pragma GCC optimize("Ofast")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
 #pragma GCC optimize("unroll-loops")
+
 #include <algorithm>
 #include <bitset>
 #include <complex>
@@ -10,13 +11,14 @@
 #include <cstring>
 #include <deque>
 #include <queue>
+#include <string>
 #include <set>
 #include <stack>
+#include<sstream>
 #include <unordered_set>
 #include <unordered_map>
 #include <list>
 #include <random>
-#include <string>
 #include <vector>
 #include <map>
 #include <math.h>
@@ -24,6 +26,7 @@
 #include <type_traits> 
 #include <iostream>
 #include <iomanip>
+#include<iterator>
 #include <vector>
 
 #define ll long long int
@@ -40,7 +43,6 @@
 #define vll vector<ll> 
 #define vvll vector<vector<ll>>
 #define ll long long int
-
 #define ff first
 #define ss second
 #define abdo ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
@@ -96,6 +98,31 @@
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
+#define lli long long int
+#define ld long double
+#define llu long unsigned int
+#define mod ((lli)(1e9+7))
+#define ilpf(a,b) for(lli i=a;i<=b;i++)
+#define jlpf(a,b) for(lli j=a;j<=b;j++)
+#define klpf(a,b) for(lli k=a;k<=b;k++) 
+#define ilpb(a,b) for(lli i=a;i>=b;i--)
+#define jlpb(a,b) for(lli j=a;j>=b;j--)
+#define klpb(a,b) for(lli k=b;k>=a;k--)
+#define vlli vector<lli>
+#define vld vector<ld>
+#define vb vector<bool>
+#define vch vector<char>
+#define vstr vector<string>
+#define vpllilli vector<pair<lli,lli>>
+#define vpllild vector<pair<lli,ld>>
+#define vpldlli vector<pair<ld,lli>>
+#define vpllib vector<pair<lli,bool>>
+#define vpldld vector<pair<ld,ld>>
+#define vpldb vector<pair<ld,bool>>
+#define vpstrlli vector<pair<string,lli>>
+#define vpllistr vector<pair<lli,string>>
+#define vpstrld vector<pair<string,ld>>
+#define vpldstr vector<pair<ld,string>>
 typedef unsigned long long int ulli;
 template<typename T> istream& operator>>(istream& in, vector<T>& a) {for (auto &x : a) in >> x; return in;};
 template<typename T> ostream& operator<<(ostream& out, vector<T>& a) {for (auto &x : a) out << x << ' '; return out;};
@@ -130,41 +157,6 @@ int main()
     }
     return 0;
 }
-#include<bits/stdc++.h>
-#include<sstream>
-#include<set>
-#include<map>
-#include<unordered_set>
-#include<unordered_map>
-#include<iterator>
-#include<iostream>
-#include<cmath>
-
-#define lli long long int
-#define ld long double
-#define llu long unsigned int
-#define mod ((lli)(1e9+7))
-#define ilpf(a,b) for(lli i=a;i<=b;i++)
-#define jlpf(a,b) for(lli j=a;j<=b;j++)
-#define klpf(a,b) for(lli k=a;k<=b;k++) 
-#define ilpb(a,b) for(lli i=a;i>=b;i--)
-#define jlpb(a,b) for(lli j=a;j>=b;j--)
-#define klpb(a,b) for(lli k=b;k>=a;k--)
-#define vlli vector<lli>
-#define vld vector<ld>
-#define vb vector<bool>
-#define vch vector<char>
-#define vstr vector<string>
-#define vpllilli vector<pair<lli,lli>>
-#define vpllild vector<pair<lli,ld>>
-#define vpldlli vector<pair<ld,lli>>
-#define vpllib vector<pair<lli,bool>>
-#define vpldld vector<pair<ld,ld>>
-#define vpldb vector<pair<ld,bool>>
-#define vpstrlli vector<pair<string,lli>>
-#define vpllistr vector<pair<lli,string>>
-#define vpstrld vector<pair<string,ld>>
-#define vpldstr vector<pair<ld,string>>
 using namespace std;
 lli llin(){lli x;scanf("%lld",&x);return x;}
 ld ldin(){ld x;scanf("%Lf",&x);return x;}
@@ -182,93 +174,79 @@ lli min_e(vlli v){lli mn_e=v[0],n=v.size();ilpf(0,n-1)mn_e=min(mn_e,v[i]);return
 lli max_e(vlli v){lli mx_e=v[0],n=v.size();ilpf(0,n-1)mx_e=max(mx_e,v[i]);return mx_e;}
 void make_prime(vb&v){lli I=2,n=(lli)v.size()-1;ilpf(0,n)v[i]=true;v[0]=false;v[1]=false;while(I<=n){while(I<=n&&!v[I])I++;if(I>n)break;lli i=2;while(i*I<=n){v[i*I]=false;i++;}I++;}}
 
-/*---------------------------------------------------Vector STL/Function----------------------------------------------------------
- * vlli v2(v.begin(),v.begin()+size);
- * vlli v2(v)
- * sort(v.begin().v.end())
- * reverse(v.begin(),v.end())
- * (bool) binary_search(v.begin(),v.end(),key)
- * (iterator) lower_bound(v.begin(),v.end(),key);
- * (iterator) upper_bound(v.bein(),v.end(),key);
- * (iterator) v.lower_bound(key);
- * (iterator) v.upper_bound(key);
- * v.erase(v.begin()+i)
- * v.erase(unique(v.begin(),v.end()),v.end())
- * v.erase(v.begin()+i,v.end()-j)  ||    v.erase(v.begin(),v.begin()+j)
- * v.erase(remove(v.begin(),v.end(),data),v.end())  //erase  all the 'data' from the vector
- * (bool)next_premutation(v.begin(),v.end())
- * (bool)prev_premutation(v.begin(),v.end())
- * v.insert(it,data) || v.insert(i,data)  
- * v.insert(it,no_of_times,data) || v.insert(i,no_of_times,data)
- * 
- * v.push_back(data),v.pop_back(data),(data) v.front() ,(data) v.back() ,(data) v[index] ,(iterator) v.begin() ,(iterator) v.end()
- * (lli) max_e(v) ,(lli)min_e(v) ,lli fmax_i(v) ,lli lmax_i(v) ,lli fmin_i(v) ,lli lmin_i(v)
- */ 
+//Vector STL/Function
+* vlli v2(v.begin(),v.begin()+size);
+* vlli v2(v)
+* sort(v.begin().v.end())
+* reverse(v.begin(),v.end())
+* (bool) binary_search(v.begin(),v.end(),key)
+* (iterator) lower_bound(v.begin(),v.end(),key);
+* (iterator) upper_bound(v.bein(),v.end(),key);
+* (iterator) v.lower_bound(key);
+* (iterator) v.upper_bound(key);
+* v.erase(v.begin()+i)
+* v.erase(unique(v.begin(),v.end()),v.end())
+* v.erase(v.begin()+i,v.end()-j)  ||    v.erase(v.begin(),v.begin()+j)
+* v.erase(remove(v.begin(),v.end(),data),v.end())  //erase  all the 'data' from the vector
+* (bool)next_premutation(v.begin(),v.end())
+* (bool)prev_premutation(v.begin(),v.end())
+* v.insert(it,data) || v.insert(i,data)  
+* v.insert(it,no_of_times,data) || v.insert(i,no_of_times,data)
+* v.push_back(data),v.pop_back(data),(data) v.front() ,(data) v.back() ,(data) v[index] ,(iterator) v.begin() ,(iterator) v.end()
+* (lli) max_e(v) ,(lli)min_e(v) ,lli fmax_i(v) ,lli lmax_i(v) ,lli fmin_i(v) ,lli lmin_i(v)
  
- /*--------------------------------------------------Vector of pairs----------------------------------------------------------------
-  * vector<pair<key_type,data type>> vp
-  * vp.push_back(make_pair(key,data))
-  * 
-  * sort by key/first element (then data/second)
-  * sort(vp.begin(),vp.end()) 
-  * 
-  * sort by sec element(only by sec)
-  * bool sortbysec(const pair<int,int> &a, const pair<int,int> &b) 
-  * { 
-  *       return (a.second < b.second); 
-  * }
-  * sort(vp.begin(),vp.end(),sortbysec) 
-  * 
-  * (data) vp[i].first ,(data) vp[i].second ,
-  */
+//Vector of pairs
+* vector<pair<key_type,data type>> vp
+* vp.push_back(make_pair(key,data))
+* sort by key/first element (then data/second)
+* sort(vp.begin(),vp.end()) 
+* sort by sec element(only by sec)
+* bool sortbysec(const pair<int,int> &a, const pair<int,int> &b) { return (a.second < b.second);}
+*sort(vp.begin(),vp.end(),sortbysec) 
+* (data) vp[i].first ,(data) vp[i].second ,
   
-  /*----------------------------------------------String Manupulation -------------------------------------------------------------
-   * string str2(str1)
-   * string str2(str1.begin(),str1.begin()+length)
-   * string s=str.substr(starting_index,length) 
-   * s.erase(s.begin()+index)
-   * s.erase(s.begin()+index,s.end()-index)  ||  s.erase(s.begin()+index(),s.begin()+index)
-   * s.erase(unique(s.begin(),s.end()),s.end())  ::adjecent will not be same
-   * sort(s.begin(),s.end());
-   * reverse(s.begin(),s.end())
-   * str.erase(remove(str.begin(),str.end(),'ch'),str.end()); //erase all the 'ch' from string
-   * str.insert(it,'ch')  ||  str.insert(i,'ch')
-   * str.insert(it,no_of_times,'ch') ||  str.insert(i,no_of_times,'ch')
-   * 
-   * getline(cin,string_name)
-   * stringstream(string_name)>>type1_>>type2_>>type3_.........>>typeN_;
-   * stringstream STREAM_name(string_name)
-   * STREAM_name>>type1_>>type2_>>type3>>type4_>>type5_;
-   * s=to_string(2018)
-   */
-   
- /* -------------------------------------------------STACK------------------------------------------ 
-  * stack<data_type>s
-  * push()              :s.push(data)           :O(1)
-  * pop()               :s.pop()                :O(1)
-  * top()               :s.top()                :O(1)
-  * empty()             :s.empty()              :O(1)
-  * size()              :s.size()               :O(1)
-  */
+//-------String Manupulation------
+* string str2(str1)
+* string str2(str1.begin(),str1.begin()+length)
+* string s=str.substr(starting_index,length) 
+* s.erase(s.begin()+index)
+* s.erase(s.begin()+index,s.end()-index)  ||  s.erase(s.begin()+index(),s.begin()+index)
+* s.erase(unique(s.begin(),s.end()),s.end())  ::adjecent will not be same
+* sort(s.begin(),s.end());
+* reverse(s.begin(),s.end())
+* str.erase(remove(str.begin(),str.end(),'ch'),str.end()); //erase all the 'ch' from string
+* str.insert(it,'ch')  ||  str.insert(i,'ch')
+* str.insert(it,no_of_times,'ch') ||  str.insert(i,no_of_times,'ch')
+* getline(cin,string_name)
+* stringstream(string_name)>>type1_>>type2_>>type3_.........>>typeN_;
+* stringstream STREAM_name(string_name)
+* STREAM_name>>type1_>>type2_>>type3>>type4_>>type5_;
+* s=to_string(2018)
+
+// -----------STACK-----------
+* stack<data_type>s
+* push()  :s.push(data) :O(1)
+* pop()   :s.pop()      :O(1)
+* top()   :s.top()      :O(1)
+* empty() :s.empty()    :O(1)
+* size()  :s.size()     :O(1)
+
+//----------QUEUE-------------
+* queue<data_type>q    
+* push()  :q.push(data) :O(1)
+* pop()   :q.pop()      :O(1)
+* front() :q.front()    :O(1)
+* back()  :q.back()     :O(1)
+* empty() :q.empty()    :O(1)
+* size()  :q.size()     :O(1)
   
- /* -------------------------------------------------QUEUE------------------------------------------          
-  * queue<data_type>q    
-  * push()               :q.push(data)          :O(1)
-  * pop()                :q.pop()               :O(1)
-  * front()              :q.front()             :O(1)
-  * back()               :q.back()              :O(1)
-  * empty()              :q.empty()             :O(1)
-  * size()               :q.size()              :O(1)
-  */
-  
- /*------------------------------------------ priority_queue(default MAX HEAP)-------------------------------
-  * priority_queue(data_type>pq
-  * push()               :pq.push(data)         :O(log(n))
-  * pop()                :pq.pop()              :O(long(n))
-  * top()                :pq.top()              :O(1)
-  * size()               :pq.size()             :O(1)
-  * empty()              :pq.empty()            :O(1)
-  */
+//--- priority_queue(default MAX HEAP)---------
+* priority_queue(data_type>pq
+* push()   :pq.push(data) :O(log(n))
+* pop()     :pq.pop()     :O(long(n))
+* top()     :pq.top()     :O(1)
+* size()    :pq.size()    :O(1)
+* empty()   :pq.empty()   :O(1)
 
  /*-------------------------------SET:Element in sorted order(increasing) and UNIQUE*****----------------------
  * declaration     :set<lli>s
@@ -366,7 +344,3 @@ int main()
 		}
 	}
 }
-		
-	
-	
-
