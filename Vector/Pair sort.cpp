@@ -1,11 +1,13 @@
 //sorting in vector of pair according to 2nd element of pair in descending order
 #include<bits/stdc++.h>
 using namespace std;
-bool sortby(const pair<int, int> a, const pair <int, int> b)
+//typedef pair<int, int> pi;
+#define pi pair<int, int>
+bool Sortby(const pi a, const pi b)
 {
     return a.second < b.second;
 }
-bool sortby(const pair<int, int> a, const pair <int, int> b)
+bool sortby(const pi a, const pi b)
 {
     return a.second > b.second;
 }
