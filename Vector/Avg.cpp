@@ -1,5 +1,11 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+int findMax(int arr[], int n)
+{
+    if (n == 1) return arr[0];
+    int max = findMax(arr, n-1);
+    return (arr[n-1] > max) ? arr[n-1] : max;
+}
 int getavg(int *arr, int n)
 {
     int sum = 0;
@@ -10,7 +16,12 @@ int getavg(int *arr, int n)
 }
 int main()
 {
-    int arr[]{2, 3, 1, 5, 4};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    cout << getavg(arr, n);
+    int n; cin >> n; int arr[n];
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    int max = findMax(arr, n);
+    cout <<"Maximum element is: "<<max;
+    cout << "\nAvg value is: " << getavg(arr, n);
+    return 0;
 }
+
