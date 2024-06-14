@@ -39,3 +39,28 @@ int main()
         cout << output[i] << " ";
     return 0;
 }
+#include<bits/stdc++.h>
+using namespace std;
+vector <int > cntsort(vector<int>arr)
+{
+    int n = arr.size();
+    int m = 0;
+    for(int i = 0; i < n; i++)
+        m = max(m, arr[i]);
+    vector <int >cnt(m + 1, 0);
+    for(int i = 0; i < n; i++)
+        cnt[arr[i]]++;
+    for(int i = 1; i <= m; i++)
+        cnt[i] += cnt[i - 1];
+    vector <int> output(n);
+    for(int i = n - 1; i >= 0; i--)
+    {
+        output[cnt[arr[i] -1]] = arr[i];
+        cnt[arr[i]]--;
+    }
+}
+int main()
+{
+    vector<int>vec{2, 3, 1, 5, 4};
+    vector <int> output = cntsort(vec);
+}
