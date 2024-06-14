@@ -46,3 +46,35 @@ int main()
  
     return 0;
 }
+#include<bits/stdc++.h>
+using namespace std;
+int gapnxt(int gap)
+{
+    gap = (gap * 10)/13;
+    if(gap < 1)
+        return 1;
+    return gap;
+}
+void perform(int *arr, int n)
+{
+    int gap = n;
+    bool swaped = true;
+    while(gap!=1 || swaped)
+    {
+        gap = gapnxt(gap);
+        swaped = false;
+        for(int i =  0; i < n - gap)
+        {
+            if(arr[i] > arr[i + gap])
+                swap(arr[i], arr[i + gap]);
+                swaped = true;
+        }
+        
+    }
+}
+int main()
+{
+    int arr[]{2, 3, 1, 5, 4};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    perform(arr, n);
+}
