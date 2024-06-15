@@ -7,7 +7,6 @@ bool isSorted(int a[], int n)
             return false;
     return true;
 }
-// To generate permutation of the array
 void bogosort(int a[], int n)
 {
     while (!isSorted(a, n))
@@ -15,6 +14,31 @@ void bogosort(int a[], int n)
         for (int i = 0; i < n; i++)
             swap(a[i], a[rand() % n]);
     }
+}
+void BrickSort(int arr[], int n)
+{
+    bool isSorted = false;
+    while (!isSorted)
+    {
+        isSorted = true;
+        for (int i = 1; i<= n -2; i+= 2)
+        {
+            if (arr[i] > arr[i+1])
+             {
+                swap(arr[i], arr[i+1]);
+                isSorted = false;
+              }
+        }
+        for (int i = 0; i<= n-2; i+= 2)
+        {
+            if (arr[i] > arr[i+1])
+            {
+                swap(arr[i], arr[i+1]);
+                isSorted = false;
+            }
+        }
+    }
+    return;
 }
 void printArray(int a[], int n)
 {
@@ -27,6 +51,8 @@ int main()
     int n = sizeof a / sizeof a[0];
     bogosort(a, n);
     cout<<"\nBogo sort: ";
+    printArray(a, n);
+    BrickSort(a, n);
     printArray(a, n);
     return 0;
 }
