@@ -24,7 +24,6 @@ void BubbleSort(int arr[], int n)
                 swapped = true;
             }
         }
- 
         // If no two elements were swapped
         // by inner loop, then break
         if (swapped == false)
@@ -34,9 +33,7 @@ void BubbleSort(int arr[], int n)
 void print(int arr[], int n)
 {
     for(int i=0; i<n; i++)
-    {
         cout << arr[i] << " ";
-    }
 }
 int main()
 {
@@ -49,4 +46,22 @@ int main()
     cout<<"\nImposed Bubble sort: ";
     Bubble_sort(arr, n);
     print(arr, n);
+    vector<int> a(arr, arr+n);
+    for (int pass = 0; pass < n; pass++) {
+        int last = n - 1 - pass;
+        bool sorted = true;
+
+        for (int j = 0; j <= last - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                swap(a[j], a[j + 1]);
+                sorted = false;
+            }
+        }
+        if (sorted)
+            break;
+    }
+    for (int i = 0; i < n; i++) {
+        cout << a[i] << " ";
+    }
+    cout << "\n";
 }
