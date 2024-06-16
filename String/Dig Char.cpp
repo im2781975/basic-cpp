@@ -28,7 +28,7 @@ int main()
     const char *ptr = strrchr(str.c_str(), ch);
     //Use str.c_str() to get a C-style string
     if(ptr)
-        cout << ptr-str.c_str();
+        cout << "\nLast occurrence of '" << ch << "' in "<< str << " is at idx " << ptr-str.c_str();
     else
-        cout << "doesn't";
+        cout << "'" << ch <<"' isn't present in " <<str.c_str();
 }
