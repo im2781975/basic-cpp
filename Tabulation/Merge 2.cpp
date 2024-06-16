@@ -1,68 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-void merge(int array[], int const left, int const mid,
-           int const right)
+void merge(int array[], int const l, int const mid,
+           int const r)
 {
-    int const subArrayOne = mid - left + 1;
-    int const subArrayTwo = right - mid;
+    int const One = mid - l + 1;
+    int const Two = r - mid;
     
-    // Create temp arrays
-    auto *leftArray = new int[subArrayOne],
-         *rightArray = new int[subArrayTwo];
- 
+    auto *left = new int[One],
+         *right = new int[Two];
     // Copy data to temp arrays leftArray[] and rightArray[]
-    for (auto i = 0; i < subArrayOne; i++)
-        leftArray[i] = array[left + i];
-    for (auto j = 0; j < subArrayTwo; j++)
-        rightArray[j] = array[mid + 1 + j];
- 
-    auto indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0;
-    int indexOfMergedArray = left;
+    for (auto i = 0; i < One; i++)
+        left[i] = array[l + i];
+    for (auto j = 0; j < Two; j++)
+        right[j] = array[mid + 1 + j];
+    auto idx1 = 0, idx2= 0;
+    int indexOfMergedArray = l;
  
     // Merge the temp arrays back into array[left..right]
-    while (indexOfSubArrayOne < subArrayOne
-           && indexOfSubArrayTwo < subArrayTwo) {
-        if (leftArray[indexOfSubArrayOne]
-            <= rightArray[indexOfSubArrayTwo]) {
-            array[indexOfMergedArray]
-                = leftArray[indexOfSubArrayOne];
-            indexOfSubArrayOne++;
+    while (idx1 < One && idx2< Two)
+    {
+        if (left[idx1]
+            <= right[idx2]) {
+           array[indexOfMergedArray]
+                = left[idx1];
+            idx1++;
         }
         else {
             array[indexOfMergedArray]
-                = rightArray[indexOfSubArrayTwo];
-            indexOfSubArrayTwo++;
+                = right[idx2];
+            idx2++;
         }
         indexOfMergedArray++;
     }
- 
     // Copy the remaining elements of left[], if there are any
-    while (indexOfSubArrayOne < subArrayOne) {
+    while (idx1 < One) {
         array[indexOfMergedArray]
-            = leftArray[indexOfSubArrayOne];
-        indexOfSubArrayOne++;
+            = left[idx1];
+        idx1++;
         indexOfMergedArray++;
     }
- 
     // Copy the remaining elements of right[], if there are any
-    while (indexOfSubArrayTwo < subArrayTwo) {
+    while (idx2 < Two) {
         array[indexOfMergedArray]
-            = rightArray[indexOfSubArrayTwo];
-        indexOfSubArrayTwo++;
+            = right[idx2];
+        idx2++;
         indexOfMergedArray++;
     }
-    delete[] leftArray;
-    delete[] rightArray;
+    delete[] left;
+    delete[] right;
 }
- 
-// begin is for left index and end is right index
-// of the sub-array of arr to be sorted
 void mergeSort(int array[], int const begin, int const end)
 {
     if (begin >= end)
         return;
- 
     int mid = begin + (end - begin) / 2;
     mergeSort(array, begin, mid);
     mergeSort(array, mid + 1, end);
@@ -76,14 +66,12 @@ void printArray(int A[], int size)
 int main()
 {
     int arr[] = { 12, 11, 13, 5, 6, 7 };
-    int arr_size = sizeof(arr) / sizeof(arr[0]);
- 
+    int n = sizeof(arr) / sizeof(arr[0]);
     cout << "Given array is \n";
-    printArray(arr, arr_size);
+    printArray(arr, n);
  
-    mergeSort(arr, 0, arr_size - 1);
- 
+    mergeSort(arr, 0, n - 1);
     cout << "\nSorted array is \n";
-    printArray(arr, arr_size);
+    printArray(arr, n);
     return 0;
 }
