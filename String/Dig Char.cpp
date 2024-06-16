@@ -25,4 +25,10 @@ int main()
     
     size_t position = 4;
     FindLast(str, ch, position);
+    const char *ptr = strrchr(str.c_str(), ch);
+    //Use str.c_str() to get a C-style string
+    if(ptr)
+        cout << ptr-str.c_str();
+    else
+        cout << "doesn't";
 }
