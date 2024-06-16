@@ -16,3 +16,19 @@ int main()
     cout << str2 << ": " << num_bin << "\n";
     return 0;
 }
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    string str = "ibrahim";
+    try {
+        int num = stoi(str);
+        cout << num;
+    } catch (invalid_argument const &e) {
+        cout << "Invalid argument: " << e.what() << endl;
+    } catch (out_of_range const &e) {
+        cout << "Out of range: " << e.what() << endl;
+    }
+    return 0;
+}
