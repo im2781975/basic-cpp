@@ -34,6 +34,20 @@ int shellSort(int arr[], int n)
     } 
     return 0; 
 } 
+void selectionSort(int arr[], int n)
+{
+    int i, j, min_idx;
+    // One by one move boundary of unsorted subarray
+    for (i = 0; i < n - 1; i++) {
+        min_idx = i;
+        for (j = i + 1; j < n; j++) {
+            if (arr[j] < arr[min_idx])
+                min_idx = j;
+        }
+        if (min_idx != i)
+            swap(arr[min_idx], arr[i]);
+    }
+}
 void printArray(int arr[], int n) 
 { 
     cout << "Sorted sequence after Gnome sort: "; 
@@ -45,7 +59,8 @@ int main()
     int arr[] = { 34, 2, 10, -9 }; 
     int n = sizeof(arr) / sizeof(arr[0]); 
     shellSort(arr, n); 
-    gnomeSort(arr, n); 
+    gnomeSort(arr, n);
+    selectionSort(arr, n);
     printArray(arr, n); 
     return (0); 
 } 
