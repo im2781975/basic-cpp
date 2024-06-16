@@ -18,7 +18,6 @@ void CocktailSort(int a[], int n)
         // if nothing moved, then array is sorted.
         if (!swapped)
             break;
- 
         // otherwise, reset the swapped flag so that it can be used in the next stage
         swapped = false;
  
@@ -39,7 +38,7 @@ void CocktailSort(int a[], int n)
 void printArray(int a[], int n)
 {
     for (int i = 0; i < n; i++)
-        printf("%d ", a[i]);
+        cout << a[i] << " ";
 }
 int main()
 {
