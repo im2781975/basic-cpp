@@ -26,7 +26,26 @@ inline long long int fast_input(void)
         x = -x;
     return x;
 }
-
+#include<bits/stdc++.h>
+using namespace std;
+void fast(void)
+{
+    char t;
+    long long int x = 0;
+    long long neg = 0;
+    t = getchar();
+    while((t < '0' || t > '9') && t!='-')
+        t = getchar();
+    if (t == '-')
+        neg = 1;
+        t = getchar();
+    while(t >= '0' && t <= '9')
+        x = (x << 3) + (x << 1) +t -'0';
+        t = getchar();
+    if(neg)
+        x -= x;
+    return x;
+}
 // Fast output function
 inline void fast_output(long long int x)
 {
