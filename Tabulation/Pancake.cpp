@@ -12,14 +12,13 @@ void flip(int arr[], int i)
         i--; 
     } 
 } 
-
 int findMax(int arr[], int n) 
 { 
-int mi, i; 
-for (mi = 0, i = 0; i < n; ++i) 
+    int mi, i; 
+    for (mi = 0, i = 0; i < n; ++i) 
     if (arr[i] > arr[mi]) 
             mi = i; 
-return mi; 
+    return mi; 
 } 
 void pancakeSort(int *arr, int n) 
 { 
@@ -37,6 +36,24 @@ void pancakeSort(int *arr, int n)
         } 
     } 
 } 
+void pancakeSort(int arr[], int n)
+{
+    if (n == 1)
+        return;
+    int mi = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > arr[mi]) {
+            mi = i;
+        }
+    }
+    // Move the maximum element to the front of the array if it's not already there
+    if (mi != 0) {
+        flip(arr, mi);
+    }
+    // Flip the entire array to move the maximum element to its correct position
+    flip(arr, n - 1);i
+    pancakeSort(arr, n - 1);
+}
 void printArray(int arr[], int n) 
 { 
     for (int i = 0; i < n; ++i) 
@@ -48,9 +65,7 @@ int main()
     int n = sizeof(arr)/sizeof(arr[0]); 
  
     pancakeSort(arr, n); 
- 
     cout<<"Sorted Array "; 
     printArray(arr, n); 
- 
     return 0; 
 } 
