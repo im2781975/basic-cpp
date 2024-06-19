@@ -25,6 +25,7 @@ int main()
         cout<< "\nSorted in the range : " << range2 ;
     else
         cout<<"\nNot sorted in the range : "<<range2 ;
+    //Find repeating
     int A[]{ 10, 13, 16, 16, 18 };
     int n =sizeof(A) /sizeof(A[0]);
  
