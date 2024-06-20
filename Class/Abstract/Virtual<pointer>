@@ -1,42 +1,26 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-class Base {
-
+class base{
     protected:
     int x;
     public:
-
-    virtual void fun() = 0;
-    Base(int i)
-    {
+    virtual void fun(){}
+    base(int i){
         x = i;
         cout << "Constructor of base called\n";
     }
 };
-
-class Derived : public Base {
+class derieved:public base{
     int y;
     public:
-    Derived(int i, int j)
-        : Base(i)
-    {
-        y = j;
-    }
-    
-    void fun()
-    {
-        cout << "x = " << x << ", y = " << y << '\n';
+    derieved(int i, int j):base(i), y(j){};
+    void fun(){
+        cout << x << " " << y;
     }
 };
-int main(void)
-{
-    Derived d(4, 5);
-
+int main(){
+    derieved d(5, 9);
     d.fun();
- 
-    Base* ptr = new Derived(6, 7);
- 
+    base *ptr = new derieved(8, 10);
     ptr->fun();
- 
-    return 0;
 }
