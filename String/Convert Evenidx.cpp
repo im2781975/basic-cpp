@@ -17,5 +17,10 @@ int main()
         }*/
     }
     cout << s << "\n";
-    return 0;
+
+    char arr[6] = { 'G', 'e', 'e', 'k', 's' };
+    int i = 0;
+    while (arr[i]) {
+        printf("%c", arr[i++]);
+    }
 }
