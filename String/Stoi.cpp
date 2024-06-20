@@ -14,13 +14,8 @@ int main()
     cout << str << ": " << num << "\n";
     cout << str1 << ":" << num_hex<< "\n";
     cout << str2 << ": " << num_bin << "\n";
-    return 0;
-}
-#include <bits/stdc++.h>
-using namespace std;
-
-int main()
-{
+    
+    //if string didn't contain any number char
     string str = "ibrahim";
     try {
         int num = stoi(str);
@@ -30,5 +25,4 @@ int main()
     } catch (out_of_range const &e) {
         cout << "Out of range: " << e.what() << endl;
     }
-    return 0;
 }
