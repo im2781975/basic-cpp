@@ -10,7 +10,8 @@ class Abstract {
     void set(int x, int y){
         a = x; b = y;
     }
-    // Copy constructor
+    //constructor which creates an object by initializing it with an object 
+    //of the same class, which has been created previously is known as a copy constructor
     Abstract(const Abstract& p){
         a = p.a; b = p.b;
     }
@@ -25,7 +26,7 @@ class Abstract {
     }
 };
 int main(){
-    //Abstract t(10,20);
+    //Abstract obj(10,20);
     Abstract t;
     t.set(10, 20);
     t.display();
