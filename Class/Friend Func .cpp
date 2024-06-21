@@ -12,16 +12,28 @@ class base{
         x = 10; y = 99;
     }
     friend class F;
+    friend void FriendFunc(base &b);
 };
 class F{
     public:
     void display(base &b){
-        cout << b.x << " " <<  b.y << " ";
+        cout << "The value of Private Variable = "
+             << b.x<< "\n";
+        cout << "The value of Protected Variable = "
+             << b.y << "\n";
     }
 };
+void FriendFunc(base &b){
+    cout << "The value of Private Variable = "
+             << b.x<< "\n";
+        cout << "The value of Protected Variable = "
+             << b.y << "\n";
+}
 int main(){
     base a;
     F fri;
     fri.display(a);
+    FriendFunc(a);
     return 0;
 }
+
