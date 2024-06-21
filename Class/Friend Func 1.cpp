@@ -1,10 +1,13 @@
+//create a member function of another class as a friend function
 #include<bits/stdc++.h>
 using namespace std;
 class base;
+// another class in which function is declared
 class another{
     public:
     void member(base &b);
 };
+// base class for which friend is declared
 class base {
     int x;
     protected:
