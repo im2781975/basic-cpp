@@ -25,6 +25,10 @@ class student{
         cout << "Father name: " << father_name << "\n";
         cout << "Mother name: " << mother_name << "\n\n";
     }
+    /*~student(){
+        cout << "\nDestructor Called\n";
+        print();
+    }*/
     bool operator < (student s){
         return std_id < s.std_id;
     }
