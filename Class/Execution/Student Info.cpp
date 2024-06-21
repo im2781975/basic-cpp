@@ -18,6 +18,12 @@ class student{
         age = digit;
         std_id = num;
     }
+    void setInformation(string str, int num, int digit)
+    {
+        name = str;
+        std_id = num;
+        age = digit;
+    }
     void print(){
         cout << "Name: " << name <<"\n" ;
         cout << "Age: " << age << "\n";
@@ -41,6 +47,9 @@ bool comp(student a, student b){
         return a.std_id < b.std_id;
 }
 int main(){
+    student s;
+    s.setInformation("X", 29, 35);
+    s.print();
     vector <student> stud;
     for(int i = 0; i < 10; i++)
         stud.push_back(student("A", 20 - i, 20 + i));
