@@ -1,39 +1,31 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-namespace first
-{
+namespace first{
     class base;
 }
-class first::base
-{ 
+class first::base{
     public:
-    void display()
-    {
-        cout<<"\nfirst::base b";
+    void display(){
+        cout << "first:base:b\n";
     }
 };
-namespace second
-{
+namespace second{
     void display();
-    class base
-    {
+    class base{
         public:
         void display();
     };
 }
-void second::base::display()
-{
-    cout<<"\nabcd";
+void second::base::display(){
+    cout << "abcd\n";
 }
-void second::display()
-{
-    cout<<"\nefgh";
+void second::display(){
+    cout << "efgh\n";
 }
-int main()
-{
+int main(){
     first::base b;
     b.display();
     second::base c;
-    second::display();
     c.display();
+    second::display();
 }
