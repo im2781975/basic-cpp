@@ -51,4 +51,21 @@ int main(){
     cout << "\n" << gender << "\n" << gender2 << "\n";
     int otherVariable = 10;
     cout  <<gender << "\n";
+
+    // 
+    enum Gender{
+        Male, Female
+    };
+    Gender gender = Male;
+    switch(gender){
+        case Male:
+            cout << "Male";
+            break;
+        case Female:
+            cout << "Female";
+            break;
+        default:
+            cout << "other";
+    }
+    return 0;
 }
