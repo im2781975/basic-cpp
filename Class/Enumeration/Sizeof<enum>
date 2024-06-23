@@ -22,4 +22,36 @@ int main() {
     cout << "size of enum class eyecolor variable: " << sizeof(eye) << endl;
     return 0;
 }
+#include <bits/stdc++.h>
+using namespace std;
+
+// Define an enumeration for rainbow colors
+enum rainbow {
+    violet, indigo, blue,
+    green, yellow, orange, red
+};
+
+// Define an enumeration class for eye colors
+enum class eyeclass : char {
+    white, green, blue
+} eye;
+
+string eyeclassToString(eyeclass eye) {
+    switch (eye) {
+        case eyeclass::white: return "white";
+        case eyeclass::green: return "green";
+        case eyeclass::blue: return "blue";
+        default: return "unknown";
+    }
+}
+
+int main() {
+    // Set the value of eye
+    eye = eyeclass::green;
+
+    // Print the name of the eye class value
+    cout << eyeclassToString(eye) << endl;
+
+    return 0;
+}
 
