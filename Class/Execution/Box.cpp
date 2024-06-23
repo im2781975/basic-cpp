@@ -23,6 +23,17 @@ class box{
         return newb;
     }
 };
+class Box{
+    private:
+    static int length, breadth, height;
+    public:
+    static void print(){
+        cout << "Length: " << length << "\nHeight: " << height << "\nbreadth: " << breadth << "\n";
+    }
+};
+int Box :: length = 10;
+int Box :: breadth = 20;
+int Box :: height = 30;
 int main(){
     box x, y;
     x.set(12, 13, 14);
@@ -30,4 +41,10 @@ int main(){
     box z = x + y;
     z.display();
     z.volume();
+    
+    Box b;
+    cout << "\nStatic member function is called through Object name: "<<"\n";
+    b.print();
+    cout << "\nStatic member function is called through Class name: "<<"\n";
+    Box ::print();
 }
