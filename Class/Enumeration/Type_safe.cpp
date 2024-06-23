@@ -29,7 +29,7 @@ int main(){
     //it will give error because type conversion */
     cout << x;
     cout << "Idx of green is: " << int(x);
-
+    //
     enum Gender {
         Male,  Female 
     };
