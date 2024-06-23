@@ -18,6 +18,7 @@ int main()
         Other, NonBinary 
     };
     Gender2 gender2 = NonBinary;
+    // This prints the integer values of gender and gender2. Enumerations in C++ are internally represented as integers starting from 0 by default. So, gender (Male) is 0 and gender2 (NonBinary) is 1.
     cout << "\n" << gender << "\n" << gender2 << "\n";
     int otherVariable = 10;
 
