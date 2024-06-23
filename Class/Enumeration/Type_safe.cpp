@@ -29,5 +29,26 @@ int main(){
     //it will give error because type conversion */
     cout << x;
     cout << "Idx of green is: " << int(x);
-        
+
+    enum Gender {
+        Male,  Female 
+    };
+    enum Color { 
+        Red, Green 
+    };
+    Gender gender = Male;
+    Color color = Red;
+    if (gender == Gender::Male && color == Color::Red)
+    cout << "Equal\n";
+
+    enum Gender2 {
+        Other, NonBinary 
+    };
+    Gender2 gender2 = NonBinary;
+    // This prints the integer values of gender and gender2. 
+    //Enumerations are internally represented as integers starting from 0 by default.
+    //So, gender (Male) is 0 and gender2 (NonBinary) is 1.
+    cout << "\n" << gender << "\n" << gender2 << "\n";
+    int otherVariable = 10;
+    cout  <<gender << "\n";
 }
