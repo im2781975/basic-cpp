@@ -16,7 +16,30 @@ class Base{
         cout << "count: " << count << "\n";
     }
 };
+// operator overloading using dot operator
+class Complex{
+    int real, img;
+    public:
+    Complex(int real, int img){
+        this->real = real;
+        this->img = img;
+    }
+    void print(){
+        cout << real << " +i" << img << "\n";
+    }
+    Complex operator + (Complex b){
+        Complex c(0, 0);
+        c.real = this->real + b.real;
+        c.img = this->img + b.img;
+        return c;
+    }
+};
 int main(){
+    Complex a(8 , 9);
+    Complex b(6, 9);
+    Complex c = a + b;
+    c.print();
+    
     Base i(5);
     Base post(5);
     Base pre(5);
