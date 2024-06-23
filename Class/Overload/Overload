@@ -1,25 +1,19 @@
 // operators that can be overloaded
 #include <bits/stdc++.h>
 using namespace std;
-class Base
-{
+class base{
     public:
     int num;
-    Base(int i){num=i;}
-    Base* operator->(){return this;}
+    base(int i):num(i){}
+    base *operator->(){
+        return this;
+    }
 };
- 
-int main()
-{
-    Base T(5);
-    Base* Ptr = &T;
- 
-    cout << "\nT.num = " << T.num;
-
-    cout << "\nPtr->num = " << Ptr->num ;
- 
+int main(){
+    base b(5);
+    cout << "b.num: " << b.num << "\n";
+    base *ptr = &b;
+    cout << "ptr->num: " << ptr->num << "\n";
     // Accessing num using -> operator
-    cout << "\nT->num = "<< T->num;
- 
-    return 0;
+    cout << b->num;
 }
