@@ -9,22 +9,43 @@ class base{
         cout << "Base Class Print\n";
     }
 };
-class child:public base{
+class derived:public base{
     public:
     void display(){
-        cout << "Child Display Func\n";
+        cout << "Derived Display Func\n";
     }
     void print(){
-        cout << "Child Print Func\n";
+        cout << "Derived Print Func\n";
+    }
+};
+//access overridden function using pointer of Base type that 
+//points to an object of Derived class
+class parent{
+    public:
+    void print(){
+        cout << "Base Class\n";
+    }
+};
+class child:public parent{
+    public:
+    void print(){
+        cout << "child class\n";
     }
 };
 int main(){
     base *b;
-    child c;
+    derived c;
     c.display();
     c.print();
-    
     b = &c;
     b ->base::display();
     b->print();
+    
+    child c, d;
+    parent *ptr = &c;
+    ptr->print();
+    child::parent *p = &c;
+    p->print();
+    child *arr = &d;
+    arr->print();
 }
