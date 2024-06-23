@@ -33,6 +33,7 @@ int main(){
     
     enum roll a = A;
     cout << "Roll number: " << a << "\n";
+    //
     enum NxtBin {
         A = 0, B = 10, c
     };
