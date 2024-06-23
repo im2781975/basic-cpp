@@ -1,32 +1,21 @@
-#include <iostream> 
+#include <bits/stdc++.h>
 using namespace std;
- 
-class Box 
-{ 
-    private: 
-    static int length;
-    static int breadth; 
-    static int height; 
-     
+class box{
+    private:
+    static int length, breadth, height;
     public:
-    static void print() 
-    { 
-        cout << "length is: " << length <<"\n"<<"breadth is: " << breadth <<"\n"<<"height is: " << height <<"\n";
+    static void print(){
+        cout << "Length: " << length << "\nHeight: " << height << "\nbreadth: " << breadth << "\n";
     }
-}; 
-
-int Box :: length = 10; 
-int Box :: breadth = 20; 
-int Box :: height = 30; 
-int main() 
+};
+int box :: length = 10;
+int box :: breadth = 20;
+int box :: height = 30;
+int main()
 {
-    Box b; 
-     
+    box b;
     cout << "\nStatic member function is called through Object name: "<<"\n";
-    b.print(); 
-     
+    b.print();
     cout << "\nStatic member function is called through Class name: "<<"\n";
-    Box::print(); 
-     
-    return 0; 
+    box ::print();
 }
