@@ -1,47 +1,33 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
- 
-int main()
-{
- 
-    enum class Color { Red,
-                       Green,
-                       Blue };
-    enum class Color2 { Red,
-                        Black,
-                        White };
-    enum class People { Good,
-                        Bad };
- 
-    // An enum value can now be used
-    // to create variables
-    int Green = 10;
- 
-    // Instantiating the Enum Class
-    Color x = Color::Green;
- 
-    // Comparison now is completely type-safe
-    if (x == Color::Red)
-        cout << "It's Red\n";
+enum class color{
+    red, green, blue
+};
+enum class color2{
+    red, black, white
+};
+enum class people{
+    good, bad
+};
+int main(){
+    //An enum value can now be used to create variables
+    int green = 10;
+    
+    color x = color::green;
+    if(x == color::red)
+        cout << "it's red\n";
     else
-        cout << "It's not Red\n";
- 
-    People p = People::Good;
- 
-    if (p == People::Bad)
-        cout << "Bad people\n";
+        cout << "it's not red\n";
+    people p = people::good;
+    if(p == people::good)
+        cout << "He's good\n";
     else
-        cout << "Good people\n";
- 
-    // gives an error
-    // if(x == p)
-    // cout<<"red is equal to good";
- 
-    // won't work as there is no
-    // implicit conversion to int
-    // cout<< x;
- 
-    cout << int(x);
- 
-    return 0;
+        cout << "He's Bad\n";
+    /*if(x == p)
+        cout<<"red is equal to good"
+    // it's not type safe
+    //it will give error because type conversion */
+    cout << x;
+    cout << "Idx of green is: " << int(x);
+        
 }
