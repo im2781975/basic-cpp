@@ -1,34 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
- 
 int main()
 {
-    enum Gender { Male,
-                  Female };
- 
-    enum Color { Red,
-                 Green };
- 
-    // Creating Gender type variable
+    enum Gender {
+        Male,  Female 
+    };
+    enum Color { 
+        Red, Green 
+    };
     Gender gender = Male;
     Color color = Red;
- 
-    // Upon comparing gender and color
-    // it will return true as both have value 0
-    // which should not be the case actually
     if (gender == Gender::Male && color == Color::Red)
     cout << "Equal";
 
-    enum Gender2 { Other, NonBinary };
 
+    enum Gender2 {
+        Other, NonBinary 
+    };
     Gender2 gender2 = NonBinary;
-
-    cout << endl<< gender << endl << gender2;
-
-// Creating a variable named something else
+    cout << "\n" << gender << "\n" << gender2 << "\n";
     int otherVariable = 10;
 
-    cout << gender << endl;
-
+    cout  <<gender << "\n";
     return 0;
 }
