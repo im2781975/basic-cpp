@@ -1,25 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
-class Parent
-{  
+class parent{
     protected:
-    int id_protected;
+    int x;
 };
-class Child : public Parent
-{
+class child:public parent{
     public:
-    void setId(int id)
-    {//Child class is able to access the inherited protected data members of base class
-        id_protected = id;
+    //Child class is able to access the inherited protected
+    //data members of base class
+    void set(int y){
+        x = y;
     }
-    void displayId()
-    {
-        cout << "id_protected is: " << id_protected <<"\n";
+    void show(){
+        cout << x << " ";
     }
 };
-int main() {
-    Child c;
-    c.setId(81);
-    c.displayId();
-    return 0;
+int main(){
+    child c;
+    c.set(89);
+    c.show();
 }
