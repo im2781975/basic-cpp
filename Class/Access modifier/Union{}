@@ -1,25 +1,19 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class student {
+class student{
     public:
     string name;
-    union {
+    //union that can store either an integer (standard) or a character (section).
+    //unions are designed to save memory by sharing the same memory space for different member types.
+    union{
         int standard;
         char section;
     };
 };
-  
-int main()
-{
-    student s1;
-    s1.name = "geek";
-  
-    cout<<"Name : "<<s1.name<<"\n";
-  
-    s1.standard = 9;
-    cout << "Standard : "<< s1.standard <<"\n";
-    s1.section = 'D';
-    cout << "Section : " << s1.section <<"\n";
-  
-    return 0;
+int main(){
+    student a;
+    a.name = "ibrahim";
+    a.standard = 9;
+    a.section = 'C';
+    cout << a.name << "\n" << a.standard << "\n" << a.section;
 }
