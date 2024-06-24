@@ -1,22 +1,21 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
- 
-class Student {
+class student{
     public:
     static int total;
- 
-    Student() { total += 1; }
+    student(){
+        total += 1;
+        
+    }
 };
-int Student::total = 0;
-int main()
-{
-    Student s1;
-    cout << "Number of students:" << s1.total;
-    
-    Student s2;
-    cout << "\nNumber of students:" << s2.total ;
- 
-    Student s3;
-    cout << "\nNumber of students:" << s3.total ;
-    return 0;
+int student::total = 0;
+int main(){
+    //If we Declare all variable consecutively it will print same value.
+    //For that Have to declare separetly
+    student a;
+    cout << "Number of Student: " << a.total << "\n";
+    student b;
+    cout << "Number of Student: " << b.total << "\n";
+    student c;
+    cout << "Number of Student: " << c.total << "\n";
 }
