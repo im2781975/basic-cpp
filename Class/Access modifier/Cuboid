@@ -17,6 +17,12 @@ class cuboid{
     int GetSurfaceArea(){
         return 2 *(heigth*length + heigth*weidth + length*weidth);
     }
+    static bool compSur(cuboid a, cuboid b){
+       return a.GetSurfaceArea() > b.GetSurfaceArea();
+    }
+    static bool comvlm(cuboid a, cuboid b){
+        return a.GetVolume() < b.GetVolume();
+    }
 };
 bool compSur(cuboid a, cuboid b){
        return a.GetSurfaceArea() > b.GetSurfaceArea();
