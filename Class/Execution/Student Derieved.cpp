@@ -22,7 +22,7 @@ student::student(int roll, string name, double fee){
     this->roll = roll;
     this->name = name;
     this->fee = fee;
-}
+}/*
 student::student(){
     cout << "\nEnter Name: ";
     cin >> name;
@@ -30,7 +30,7 @@ student::student(){
     cin >> roll;
     cout << "\nEnter Fee: ";
     cin >> fee;
-}
+}*/
 void student::display(){
     cout << "Name: " << name << "\nroll: " << roll << "\nfee: " << fee << "\n";
 }
