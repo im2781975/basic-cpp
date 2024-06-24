@@ -20,17 +20,49 @@ class cuboid{
     static bool compSur(cuboid a, cuboid b){
        return a.GetSurfaceArea() > b.GetSurfaceArea();
     }
-    static bool compvlm(cuboid a, cuboid b){
+    static bool comvlm(cuboid a, cuboid b){
         return a.GetVolume() < b.GetVolume();
     }
 };
-/*
 bool compSur(cuboid a, cuboid b){
        return a.GetSurfaceArea() > b.GetSurfaceArea();
 }
 bool compvlm(cuboid a, cuboid b){
         return a.GetVolume() < b.GetVolume();
-}*/
+}
+class cube{
+    int length, *breadth, heigth;
+    public:
+    cube(){
+        breadth = new int;
+    }
+    void set(int length, int b, int heigth){
+        this->length = length;
+        *breadth = b;
+        this->heigth = heigth;
+    }
+    void display(){
+        cout << "Length: " << length << "\nbreadth: " << *breadth << "\nheigth: " << heigth;
+    }
+    cube(const cube &a){
+        length = a.length;
+        breadth = new int;
+        *breadth = *(a.breadth);
+        heigth = a.heigth;
+    }
+    cube operator + (cube &b){
+        cube newcube;
+        newcube.length = this->length + b.length;
+        newcube.breadth = new int;
+        *(newcube.breadth) = *(this->breadth) + *(b.breadth);
+        newcube.heigth = this->heigth + b.heigth;
+        return newcube;
+    }
+    ~cube(){
+        cout << "called";
+        //delete breadth;
+    }
+};
 int main(){
     cuboid cub[11];
     int n = 5;
@@ -39,14 +71,20 @@ int main(){
         cout << cub[i].GetVolume() << " " << cub[i].GetSurfaceArea() << "\n";
     }
     cout << "\nSurface:\n";
-    sort(cub, cub+n, cuboid::compvlm);
+    sort(cub, cub+n, compvlm);
     for(int i = 0; i < n; i++)
         cout << cub[i].GetVolume() << " " << cub[i].GetSurfaceArea() << "\n";
     
     cout << "\nVolume:\n";
-    sort(cub, cub + n, cuboid::compSur);
+    sort(cub, cub + n, compSur);
     for(int i = 0; i < n; i++)
         cout << cub[i].GetVolume() << " " << cub[i].GetSurfaceArea() << "\n";
+        
+    cube c, d, e;
+    c.set(23, 12, 11);
+    c.display();
+    d.set(11, 12, 23);
+    d.display();
+    e = c + d;
+    e.display();
 }
-
-
