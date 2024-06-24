@@ -15,11 +15,21 @@ class student{
     }
     student(int roll, string name, double fee);
     void display();
+    //student();
+    //void display();
 };
 student::student(int roll, string name, double fee){
     this->roll = roll;
     this->name = name;
     this->fee = fee;
+}
+student::student(){
+    cout << "\nEnter Name: ";
+    cin >> name;
+    cout << "\nEnter Roll: ";
+    cin >> roll;
+    cout << "\nEnter Fee: ";
+    cin >> fee;
 }
 void student::display(){
     cout << "Name: " << name << "\nroll: " << roll << "\nfee: " << fee << "\n";
@@ -30,4 +40,7 @@ int main(){
     
     student Molla(stud);
     Molla.show();
+    
+    student s;
+    s.display();
 }
