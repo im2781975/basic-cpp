@@ -20,16 +20,17 @@ class cuboid{
     static bool compSur(cuboid a, cuboid b){
        return a.GetSurfaceArea() > b.GetSurfaceArea();
     }
-    static bool comvlm(cuboid a, cuboid b){
+    static bool compvlm(cuboid a, cuboid b){
         return a.GetVolume() < b.GetVolume();
     }
 };
+/*
 bool compSur(cuboid a, cuboid b){
        return a.GetSurfaceArea() > b.GetSurfaceArea();
 }
 bool compvlm(cuboid a, cuboid b){
         return a.GetVolume() < b.GetVolume();
-}
+}*/
 int main(){
     cuboid cub[11];
     int n = 5;
@@ -38,13 +39,14 @@ int main(){
         cout << cub[i].GetVolume() << " " << cub[i].GetSurfaceArea() << "\n";
     }
     cout << "\nSurface:\n";
-    sort(cub, cub+n, compvlm);
+    sort(cub, cub+n, cuboid::compvlm);
     for(int i = 0; i < n; i++)
         cout << cub[i].GetVolume() << " " << cub[i].GetSurfaceArea() << "\n";
     
     cout << "\nVolume:\n";
-    sort(cub, cub + n, compSur);
+    sort(cub, cub + n, cuboid::compSur);
     for(int i = 0; i < n; i++)
         cout << cub[i].GetVolume() << " " << cub[i].GetSurfaceArea() << "\n";
 }
+
 
