@@ -1,29 +1,22 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class student
-{
-    int rno;
-    char name[50];
+class student{
+    int roll;
+    string name;
     double fee;
- 
     public:
-    student(int,char[],double);
+    student(int roll, string name, double fee);
     void display();
-     
 };
-student::student(int no,char n[],double f)
-{
-    rno=no;
-    strcpy(name,n);
-    fee=f;
-}   
-void student::display()
-{
-    cout<<"\n"<<rno<<" "<<name<<" "<<fee;
+student::student(int roll, string name, double fee){
+    this->roll = roll;
+    this->name = name;
+    this->fee = fee;
 }
-int main()
-{
-    student s(1001,"MOLLA",10000);
-    s.display();
-    return 0;
+void student::display(){
+    cout << "Name: " << name << "\nroll: " << roll << "\nfee: " << fee << "\n";
+}
+int main(){
+    student stud(1000, "ibrahim", 2340);
+    stud.display();
 }
