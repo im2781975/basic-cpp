@@ -1,57 +1,45 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class cube
-{
-    int length;
-    int *breadth;
-    int hight;
-    
+class cube{
+    int length, *breadth, heigth;
     public:
-    cube()
-    {
-        cout<<"construct called\n";
-        breadth=new int;
+    cube(){
+        breadth = new int;
     }
-    void set(int l,int b,int h)
-    {
-        length=l;
-        *breadth=b;
-        hight=h;
+    void set(int length, int b, int heigth){
+        this->length = length;
+        *breadth = b;
+        this->heigth = heigth;
     }
-    void display()
-    {
-        cout<<"length is: "<<length<<"\n"<<"breadth is: "<<*breadth<<"\n"<<"hight is: "<<hight<<"\n";
+    void display(){
+        cout << "Length: " << length << "\nbreadth: " << *breadth << "\nheigth: " << heigth;
     }
-    // Parameterized deep copy Constructors 
-    cube(cube &a)
-    {
-        length=a.length;
-        breadth=new int;
-        *breadth=*(a.breadth);
-        hight=a.hight;
+    cube(const cube &a){
+        length = a.length;
+        breadth = new int;
+        *breadth = *(a.breadth);
+        heigth = a.heigth;
     }
-    cube operator+(cube & cb)
-    {
-        cube newbox;
-        newbox.length=this->length+cb.length;
-        newbox.breadth=new int;
-        *(newbox.breadth)=*breadth+*(cb.breadth);
-        newbox.hight=this->hight+cb.hight;
-        return newbox;
+    cube operator + (cube &b){
+        cube newcube;
+        newcube.length = this->length + b.length;
+        newcube.breadth = new int;
+        *(newcube.breadth) = *(this->breadth) + *(b.breadth);
+        newcube.heigth = this->heigth + b.heigth;
+        return newcube;
     }
-    ~cube()
-    {
-        cout<<"destruct called\n";
-        delete breadth;
+    ~cube(){
+        cout << "called";
+        //delete breadth;
     }
 };
-int main()
-{
-    cube c;
-    c.set(12,13,14);
+int main(){
+    cube c, d, e;
+    c.set(23, 12, 11);
     c.display();
-    cube d=c;
+    d.set(11, 12, 23);
     d.display();
-    cube e=c+d;
+    e = c + d;
     e.display();
 }
+
