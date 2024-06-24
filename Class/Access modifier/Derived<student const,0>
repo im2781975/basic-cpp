@@ -5,6 +5,14 @@ class student{
     string name;
     double fee;
     public:
+    //copy constructor (member wise initialization)
+    student(student &t){
+        this->roll = t.roll;
+        this->name = t.name;
+    }
+    void show(){
+        cout << "\nName: " << name << "\nroll: " << roll << "\n";
+    }
     student(int roll, string name, double fee);
     void display();
 };
@@ -19,4 +27,7 @@ void student::display(){
 int main(){
     student stud(1000, "ibrahim", 2340);
     stud.display();
+    
+    student Molla(stud);
+    Molla.show();
 }
