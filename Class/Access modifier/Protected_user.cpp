@@ -18,8 +18,27 @@ class admin:user{
         cout << "Name: " << name << "\nage: " << age << "\ndesignation: " << designation << "\n";
     }
 };
+class parent{
+    protected:
+    int x;
+};
+class child:public parent{
+    public:
+    //Child class is able to access the inherited protected
+    //data members of base class
+    void set(int y){
+        x = y;
+    }
+    void show(){
+        cout << x << " ";
+    }
+};
 int main(){
     admin ad;
     ad.set("Molla", 25, "Advisor");
     ad.show();
+    
+    child c;
+    c.set(89);
+    c.show();
 }
