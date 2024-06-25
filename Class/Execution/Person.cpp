@@ -28,8 +28,35 @@ class person{
             delete mother;
     }
 };
+class student{
+    string name;
+    int age;
+    public:
+    student(string name, int age){
+        this->name = name;
+        this->age = age;
+    }
+    void setName(string name){
+        this->name = name;
+    }
+    string getName(){
+        return name;
+    }
+    void setAge(int age){
+        this->age = age;
+    }
+    int getAge(){
+        return age;
+    }
+};
 int main(){
     person pers("A", "B", "C");
     pers.print();
+    
+    student p("Molla", 23);
+    cout << "Name: " << p.getName() << "\nAge: " << p.getAge() << "\n";
+    p.setName("Hasan");
+    p.setAge(22);
+    cout << "Name: " << p.getName() << "\nAge: " << p.getAge() << "\n";
 }
 
