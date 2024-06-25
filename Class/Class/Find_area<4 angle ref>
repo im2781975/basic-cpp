@@ -1,77 +1,53 @@
 //area of shapes USING VIRTUAL FUNCTION
-#include <fstream>
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
- 
-class Shape {
-    
+class shape{
     public:
-    virtual void calculate()
-    {
-        cout << "Area of Shape ";
+    virtual void calculate(){
+        cout << "\nArea of the shape";
     }
     // usage of virtual Destuctor to avoid memory leak
-    // Declaring the destructor in the Shape class as virtual ensures that the destructors of derived classes (Rectangle and Square) are called correctly.
-     //When an object of a derived class is destroyed, the destructor of the derived class is called first, followed by the destructor of the base class.
-virtual ~Shape()
-    {
-        cout << "Shape Destuctor Call\n";
+    // Declaring the destructor in the Shape class as virtual ensures that 
+    //the destructors of derived classes (Rectangle and Square) are called correctly.
+     //When an object of a derived class is destroyed, the destructor of the derived class
+     //is called first, followed by the destructor of the base class.
+    virtual ~shape(){
+        cout << "\nshape Destructor Called";
     }
 };
-
-class Rectangle : public Shape {
-public:
-    int width, height, area;
- 
-    void calculate()
-    {
-        cout << "Enter Width of Rectangle: ";
-        cin >> width;
- 
-        cout << "Enter Height of Rectangle: ";
-        cin >> height;
- 
-        area = height * width;
-        cout << "Area of Rectangle: " << area << "\n";
+class rectangle:public shape{
+    public:
+    int weidth, height, area;
+    void calculate(){
+        cout << "\nEnter Values for Weidth & Height: ";
+        cin >> weidth >> height;
+        int area = weidth * height;
+        cout << "\nArea Of Rectangle is: " << area;
     }
- 
-    // Virtual Destuctor for every Derived class
-    virtual ~Rectangle()
-    {
-        cout << "Rectangle Destuctor Call\n";
+    ~rectangle(){
+        cout <<"\nRectangle Destructor called";
     }
 };
-
-class Square : public Shape {
-public:
-    int side, area;
- 
-    void calculate()
-    {
-        cout << "Enter one side your of Square: ";
+class Square:public shape{
+    public:
+    int side;
+    void calculate(){
+        cout << "\nEnter Values for side: ";
         cin >> side;
- 
-        area = side * side;
-        cout << "Area of Square: " << area << "\n";
+        int area = side * side;
+        cout << area;
     }
-  
-    virtual ~Square()
-    {
-        cout << "Square Destuctor Call\n";
+    ~Square(){
+        cout << "\nsquare Destruct called";
     }
 };
- 
-int main()
-{
-    Shape* S;
-    Rectangle r;
-
-    S = &r;
-    S->calculate();
+int main(){
+    shape *s;
+    rectangle r;
+    s = &r;
+    s->calculate();
     
     Square sq;
-    S = &sq;
-    S->calculate();
-
-    return 0;
+    s = &sq;
+    s->calculate();
 }
