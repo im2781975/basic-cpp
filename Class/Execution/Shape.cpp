@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 class shape{
-    public:
+    protected:
     int hight, width;
+    public:
     shape(int hight, int width){
         this->hight = hight;
         this->width = width;
