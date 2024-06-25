@@ -1,38 +1,32 @@
 // operator overloading using a Friend Function
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Distance
-{
-    private:
-    float inch;
-    float feet;
-    
+class Distance{
+    float inch, feet;
     public:
-    Distance(int i=0,int f=0)
-    {
-        this->feet=f;
-        this->inch=i;
+    Distance(){}
+    Distance(float inch, float feet){
+        this->inch = inch;
+        this->feet = feet;
     }
-    void print()
-    {
-        cout<<"Feet :"<<feet<<" Inch: "<<inch<<"\n";
+    void print(){
+        cout << "Feet: " << feet << "\nInch: " << inch << "\n";
     }
-    friend Distance operator+(Distance &,Distance &);
+    friend Distance operator + (Distance&, Distance &);
 };
-Distance operator+(Distance &d,Distance &e)
-{
-    Distance f;
-    f.feet=d.feet+e.feet;
-    f.inch=d.inch+e.inch;
-    return f;
+Distance operator+(Distance &d1, Distance &d2){
+    Distance d;
+    d.feet = d1.feet + d2.feet;
+    d.inch = d1.inch + d2.inch;
+    if (d.inch >= 12) {
+        d.feet += static_cast<int>(d.inch / 12);
+        d.inch = d.inch - static_cast<int>(d.inch/12) *12;
+    }
+    return d;
 }
-
-int main()
-{
-    Distance a(4,9);
-    Distance b(7,9);
-    Distance c=a+b;
-    c.print();
-    b.print();
-    a.print();
+int main(){
+    Distance d1(6.7f, 2.9f);
+    Distance d2(5.5f, 11.3f);
+    Distance d3 = d1 + d2;
+    d3.print();
 }
