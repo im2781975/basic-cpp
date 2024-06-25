@@ -24,6 +24,18 @@ class B:public A{
         add(x, y);
     }
 };
+class base{
+    int a, b;
+    public:
+    int solve(int x){
+        a = x;
+        b = a/2;
+        return b;
+    }
+    void print(){
+        cout << a << " " << b;
+    }
+};
 int main(){
     A a;
     a.add(6, 8, 9);
@@ -32,4 +44,9 @@ int main(){
     b.add(2, 7);
     b.sum(11, 19);
     b.print();
+    // 
+    int n; cin >> n;
+    base x;
+    x.solve(n);
+    x.print();
 }
