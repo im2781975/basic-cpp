@@ -29,6 +29,19 @@ class square{
         cout << "Square is: " << x*x << "\n";
     }
 };
+class Circle
+{
+    float area, radius;
+    public:
+    void getRadius(){
+        cout << "Enter radius\n";
+        cin >> radius;
+    }
+    void findArea(){
+        area = 3.14 * radius * radius;
+        cout << "Area of circle=" << area;
+    }
+};
 int main(){
     circle c;
     c.area(5);
@@ -36,5 +49,9 @@ int main(){
     t.compute_area(5, 5);
     square s(6);
     s.area();
+    ////
+    Circle cir;
+    cir.getRadius();
+    cir.findArea();
 }
 
