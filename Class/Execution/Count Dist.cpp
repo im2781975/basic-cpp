@@ -36,6 +36,15 @@ class Dist{
     void print(){
         cout << "\nFeet: " << feet << " Inch: " << inch;
     }
+    // Overloading(-) operator to perform decrement operation of Distance object
+    void operator -(){
+        feet--; inch--;
+        cout << "\nFeet: " << feet << " Inch: " << inch;
+    }
+    void operator +(){
+        feet++; inch++;
+        cout << "\nFeet: " << feet << " Inch: " << inch;
+    }
     Dist operator +(Dist &d){
         Dist c;
         c.feet = this->feet + d.feet;
@@ -59,4 +68,6 @@ int main(){
     d.print();
     e.print();
     f.print();
+    +f;
+    -f;
 }
