@@ -7,6 +7,9 @@ class shape{
         this->hight = hight;
         this->width = width;
     }
+    int area(){
+        return(hight * width);
+    }
 };
 class Rectangle:public shape{
     public:
@@ -26,6 +29,12 @@ class circle:public shape{
     }
 };
 int main(){
+    shape *s;
+    Rectangle r(2, 9);
+    circle c(3);
+    s = &r;
+    cout << "Area of Rectangle: " << s->area() << "\n";
+    
     Rectangle rect(67, 2);
     cout << "Area of Rectangle: " << rect.area() << "\n";
     circle cir(5);
