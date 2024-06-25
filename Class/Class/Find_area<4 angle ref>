@@ -11,7 +11,9 @@ class Shape {
         cout << "Area of Shape ";
     }
     // usage of virtual Destuctor to avoid memory leak
-    virtual ~Shape()
+    // Declaring the destructor in the Shape class as virtual ensures that the destructors of derived classes (Rectangle and Square) are called correctly.
+     //When an object of a derived class is destroyed, the destructor of the derived class is called first, followed by the destructor of the base class.
+virtual ~Shape()
     {
         cout << "Shape Destuctor Call\n";
     }
