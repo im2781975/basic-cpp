@@ -1,36 +1,32 @@
-//binary operator overloading
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Distance
-{
-    private:
-    int inch,feet;
+class Dist{
+    float feet, inch;
     public:
-    
-    Distance(int i=0,int f=0)
-    {
-        this->inch=i;
-        this->feet=f;
+    Dist(){}
+    Dist(float inch, float feet){
+        this->inch = inch;
+        this->feet = feet;
     }
-    void print()
-    {
-        cout<<"\nInch: "<<inch<<" Feet: "<<feet;
+    void print(){
+        cout << "\nFeet: " << feet << " Inch: " << inch;
     }
-    Distance operator +(const Distance &d2)
-    {
-        Distance d3;
-        d3.inch=this->inch+d2.inch;
-        d3.feet=this->feet+d2.feet;
-        return d3;
+    Dist operator +(Dist &d){
+        Dist c;
+        c.feet = this->feet + d.feet;
+        c.inch = this->inch + d.inch;
+        if(c.inch > 12){
+            c.feet += static_cast<int>(c.inch/12);
+            c.inch -= static_cast<int>(c.inch/12)*12;
+        }
+        return c;
     }
 };
-int main()
-{
-    Distance a(4,8);
-    Distance b(12,20);
-    Distance c=a+b;
-    
-    a.print();
-    b.print();
-    c.print();
+int main(){
+    Dist d(3.9, 4.7);
+    Dist e(8.9, 7.9);
+    Dist f = d + e;
+    d.print();
+    e.print();
+    f.print();
 }
