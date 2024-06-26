@@ -33,7 +33,11 @@ class Complex{
         c.img = this->img + b.img;
         return c;
     }
+    friend Complex operator +(Complex &, Complex &);
 };
+Complex operator+(Complex &a, Complex &b){
+    return Complex(a.real + b.real, a.img + b.img);
+}
 int main(){
     Complex a(8 , 9);
     Complex b(6, 9);
