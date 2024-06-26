@@ -8,7 +8,7 @@ public:
   A(int i) { x = i; }
   void print() { cout << x; }
 };
- 
+ //B is derived from A using virtual inheritance (virtual public A). This ensures that if A is inherited multiple times through different paths, only one instance of A is created.
 class B: virtual public A
 {
 public:
