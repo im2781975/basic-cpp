@@ -1,65 +1,50 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
-class A
-{
+class A{
+    protected: int a;
+    public:
+    void setA(){
+        cout << "\nValue Of A is: ";
+        cin >> a;
+    }
+    void GetA(){
+        cout << "\nValue Of A is: " << a;
+    }
+};
+class B:public A{
+    protected: int b;
+    public:
+    void setB(){
+        cout << "\nValue Of B is: ";
+        cin >> b;
+    }
+    void GetB(){
+        cout << "\nValue Of B is: " << b ;
+    }
+};
+class C:public B{
     protected:
-     int a;
-    
+    int c, product;
     public:
-    void set_A()
-        {
-            cout<<"Value of A: "; cin>>a;
-        }
-  
-    void disp_A()
-        {
-            cout<<"\nValue of A: "<<a;
-        }
+    void setC(){
+        cout << "\nValue Of C is: ";
+        cin >> c;
+    }
+    void GetC(){
+        cout << "\nValue Of C is: " << c << " ";
+    }
+    void pro(){
+        product = a * b * c;
+        cout << "\nproduct Of A, B, C is: " << product;
+    }
 };
-class B: public A
-{
-    protected:
-    int b;
-              
-    public:
-    void set_B()
-        {
-            cout<<"Value of B: ";cin>>b;
-                
-            }
-        void disp_B()
-            {
-                cout<<"\nValue of B :"<<b;
-            }
-};
-class C: public B
-{
-    int c,p;
-    public:
-    void set_C()
-        {
-            cout<<"Value of C :";
-                 cin>>c;
-        }
-    void disp_C()
-        {
-            cout<<"\nValue of C="<<c;
-        }
-    void cal_product()
-        {
-            p=a*b*c;
-            cout<<"\nProduct of "<<a<<" * "<<b<<" * "<<c<<" = "<<p;
-        }
-};
-int main()
-{
+int main(){
     C c;
-    c.set_A();
-    c.set_B();
-    c.set_C();
-    c.disp_A();
-    c.disp_B();
-    c.disp_C();
-    c.cal_product();
-    return 0;
+    c.setA();
+    c.setB();
+    c.setC();
+    c.GetA();
+    c.GetB();
+    c.GetC();
+    c.pro();
 }
