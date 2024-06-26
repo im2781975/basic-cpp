@@ -38,6 +38,18 @@ class Complex{
 Complex operator+(Complex &a, Complex &b){
     return Complex(a.real + b.real, a.img + b.img);
 }
+//working of conversion operator
+class fraction{
+    int num, digit;
+    public:
+    fraction(int num, int digit){
+        this->num = num;
+        this->digit = digit;
+    }
+    operator float(){
+        return float(num)/float(digit);
+    }
+};
 int main(){
     Complex a(8 , 9);
     Complex b(6, 9);
@@ -62,4 +74,7 @@ int main(){
     post.Display();
     cout << "\nAnd results of i , here we see difference: ";
     i.Display();
+
+    fraction f(9, 11);
+    cout << f;
 }
