@@ -1,52 +1,36 @@
 //Multilevel Inheritance
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
- 
-class A 
-{
+class A{
     public:
     int a;
-    void get_A()
-    {
-        cout << "value of a: ";
+    void GetA(){
+        cout << "Value Of A is: ";
         cin >> a;
     }
 };
-
-class B : public A {
+class B:public A{
     public:
     int b;
-    void get_B()
-    {
-        cout << "value of b: ";
+    void GetB(){
+        cout << "\nValue Of B is: ";
         cin >> b;
     }
 };
-
-class C : public B {
-    private:
+class C:public B{
     int c;
- 
     public:
-    void get_C()
-    {
-        cout << "value of c: ";
+    void GetC(){
+        cout << "\nValue Of C is: ";
         cin >> c;
     }
- 
-    void sum()
-    {
-        int ans = a + b + c;
-        cout << "sum: " << ans;
+    void sum(){
+        cout << "\nsum is: " << a + b + c;
     }
 };
-int main()
-{
+int main(){
     C c;
- 
-    c.get_A();
-    c.get_B();
-    c.get_C();
+    c.GetA(); c.GetB(); c.GetC();
     c.sum();
-    return 0;
 }
+
