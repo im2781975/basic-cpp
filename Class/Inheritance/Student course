@@ -1,54 +1,40 @@
-#include<iostream>
-#include<string.h>
+#include<bits/stdc++.h>
 using namespace std;
-  
-class Person
-{
+class person{
     int id;
-    char name[100];
-    
+    string name;
     public:
-        void set_p(int,char[]);
-        void display_p();
+    void setP(int id, string name);
+    void showP();
 };
-  
-void Person::set_p(int id,char n[])
-{
-    this->id=id;
-    strcpy(this->name,n);        
+void person::setP(int id, string name){
+    this->name = name;
+    this->id = id;
 }
-  
-void Person::display_p()
-{
-    cout<<"\n"<<id<<"\t"<<name;
+void person::showP(){
+    cout << "Id: " << id << "name: " << name << "\n";
 }
-// Inherits Person privately, meaning the public and protected members of Person become private members of Student
-class Student: private Person
-{
-    char course[50];
+// Inherits Person privately, meaning the public & protected 
+//members of Person become private members of Student
+class student:private person{
+    string course;
     int fee;
     public:
-    void set_s(int,char[],char[],int);
-    void display_s();
+    void setS(int id, string name, string course, int fee);
+    void showS();
 };
-  
-void Student::set_s(int id,char n[],char c[],int f)
-{
-    set_p(id,n);
-    strcpy(course,c);
-    fee=f;
+void student::setS(int id, string name, string course, int fee){
+    setP(id, name);
+    this->course = course;
+    this->fee = fee;
+}
+void student::showS(){
+    showP();
+    cout << "Course: " << course << "Fees: " << fee << "\n";
+}
+int main(){
+    student s;
+    s.setS(1001, "XYZ", "ABC", 6550);
+    s.showS();
 }
 
-void Student::display_s()
-{
-    display_p();
-    cout<<"t"<<course<<"\t"<<fee;
-}
-  
-main()
-{
-    Student s;
-    s.set_s(1001,"MOLLA","B.Tech",2000);
-    s.display_s();
-    return 0;
-}
