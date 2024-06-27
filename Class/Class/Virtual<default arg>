@@ -1,32 +1,22 @@
 //default arguments and virtual function are used together
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-
-class Base {
-    
+class Base{
     public:
-    virtual void fun(int x = 0)
-    {
-        cout << "Base::fun(), x = " << x << endl;
+    virtual void Func(int x = 1){
+        cout << "Base::Func(): " << x;
     }
 };
-
-class Derived : public Base {
-    
+class derieved:public Base{
     public:
-    virtual void fun(int x)
-    {
-        cout << "Derived::fun(), x = " << x << endl;
+    virtual void Func(int x){
+        cout << "\nDerieved::Func(): " << x;
     }
 };
-
-int main()
-{
-    Derived d1; 
-    Base* bp = &d1;
-   
-    bp->fun(); 
-   
-    return 0; 
+int main(){
+    Base *bp;
+    derieved d;
+    bp = &d;
+    bp->Func();
 }
 
