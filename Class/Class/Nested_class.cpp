@@ -1,5 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Local class
+void func(){
+    class test{
+        public:
+        static void method(){
+            cout << "\nclass method";
+        }
+    };
+    cout << "Yes\n";
+    test::method();
+    test t;
+    t.method();
+}
+//Nested Class
 class parent {
     int x;
     public:
@@ -15,11 +29,10 @@ class parent {
         cout << n->GetY();
     }
 };
-
-int main() {
+int main(){
+    func();
+    //
     parent::child c(20);
     parent b;
     b.fun(&c);
-    return 0;
 }
-
