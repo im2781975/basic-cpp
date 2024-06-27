@@ -22,7 +22,7 @@ void Person::display_p()
 {
     cout<<"\n"<<id<<"\t"<<name;
 }
-  
+// Inherits Person privately, meaning the public and protected members of Person become private members of Student
 class Student: private Person
 {
     char course[50];
