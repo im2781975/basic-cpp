@@ -32,6 +32,7 @@ void show(A a, int y)
 
 int main()
 {
+// The show function is called with b (an object of B, which is treated as an object of A due to inheritance) and the value returned by b.GetY()
     B b;
     show(b, b.getY());
     return 0;
