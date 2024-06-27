@@ -8,6 +8,10 @@ class person{
     void showP();
 };
 void person::setP(int id, string name){
+    /*cout << "Enter Id: ";
+    cin >> id;
+    cout << "Enter name: ";
+    cin >> name;*/
     this->name = name;
     this->id = id;
 }
@@ -25,6 +29,10 @@ class student:private person{
 };
 void student::setS(int id, string name, string course, int fee){
     setP(id, name);
+   /* cout << "Enter Course: ";
+    cin >> course;
+    cout << "Enter fee: ";
+    cin >> fee; */
     this->course = course;
     this->fee = fee;
 }
@@ -37,4 +45,3 @@ int main(){
     s.setS(1001, "XYZ", "ABC", 6550);
     s.showS();
 }
-
