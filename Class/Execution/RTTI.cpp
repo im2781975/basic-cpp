@@ -6,6 +6,19 @@ public:
     virtual void Func() {}
 };
 class D : public B {};
+//default arguments and virtual function are used together
+class Base{
+    public:
+    virtual void Func(int x = 1){
+        cout << "Base::Func(): " << x;
+    }
+};
+class derieved:public Base{
+    public:
+    virtual void Func(int x){
+        cout << "\nDerieved::Func(): " << x;
+    }
+};
 int main() {
     // creates a pointer b to an object of class B but initializes it 
     //with an instance of class D. This is possible because of polymorphism;
@@ -19,5 +32,10 @@ int main() {
     else
         cout << "cannot cast B*  D*";
     delete b; 
+    //
+    Base *bp;
+    derieved d;
+    bp = &d;
+    bp->Func();
     return 0;
 }
