@@ -16,6 +16,7 @@ public:
 };
 class Faculty : public Person {
 public:
+//The Faculty class inherits from Person and its constructor takes an integer parameter x, which it passes to the Person constructor. After calling the Person constructor, it prints "Faculty called".
     Faculty(int x):Person(x)  
     {
        cout <<"\nFaculty called" ;
