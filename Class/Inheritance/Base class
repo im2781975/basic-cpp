@@ -14,7 +14,7 @@ class A {
  
 class B : public A {
 };
- 
+// The constructor of A is implicitly called before the constructor of C
 class C : public A {
     public:
     C()
