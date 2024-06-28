@@ -28,10 +28,27 @@ class D:public A{
         cout << "\nD constructor";
     }
 };
+class test{
+    protected: int x;
+    public:
+    test(int i):x(i){}
+    void fun()const{
+        cout << "\nconst called";
+    }
+    void fun(){
+        cout <<"\nFun called";
+    }
+};
 int main(){
     A a;
     B b;
     C c;
     D d;
+
+    //
+    test a(20);
+    const test b= 30;
+    a.fun();
+    b.fun();
 }
 
