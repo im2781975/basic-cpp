@@ -15,6 +15,7 @@ class A {
 class B : public A {
 };
 // The constructor of A is implicitly called before the constructor of C
+// Constructor prints "\nC constructor" in addition to "\nUser defined Data Type" (due to A's constructor).
 class C : public A {
     public:
     C()
