@@ -24,6 +24,7 @@ public:
     }
 };
 // Definition of a
+//A B::a defines the static member a of class B. This tells the compiler to allocate storage for a.
 A B::a = A(); // Initializes 'a' with a default-constructed object of class 'A'
 int main()
 {
