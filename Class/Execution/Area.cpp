@@ -42,6 +42,18 @@ class Circle
         cout << "Area of circle=" << area;
     }
 };
+class construct{
+    public: float area;
+    construct(){
+        area = 0;
+    }
+    construct(int a, int b){
+        area =a*b;
+    }
+    void disp(){
+        cout << "\nArea is: " << area;
+    }
+};
 int main(){
     circle c;
     c.area(5);
@@ -53,5 +65,9 @@ int main(){
     Circle cir;
     cir.getRadius();
     cir.findArea();
+    ///
+    construct c, c2(10, 20);
+    c.disp();
+    c2.disp();
 }
 
