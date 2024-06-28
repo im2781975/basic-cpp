@@ -23,7 +23,7 @@ class C : public A {
         cout << "C Constructor" << endl;
     }
 };
- 
+ //Constructor prints "D constructor" in addition to "\nUser defined Data Type" (twice: once for the inherited part and once for the member object).
 class D :public C{
     private:
     A a;
