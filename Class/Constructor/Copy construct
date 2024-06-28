@@ -1,42 +1,32 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-
-class Sample {
+class base{
     int id;
-public:
-    void init(int x) {
+    public:
+    void set(int x){
         id = x;
     }
-
-    Sample() {}
-
-    Sample(Sample &t) {
-        id = t.id;
+    void show(){
+        cout << "Id is: " << id << "\n";
     }
-
-    void display() {
-        cout << "\n" << "ID=" << id;
+    base(){}
+    base(base &b){
+        id = b.id;
     }
 };
-class storeVal
-{
-public:
-    storeVal() {}
-    
-    storeVal(const storeVal& s)
-    {
-        cout << "\nCopy constructor has been called " << endl;
+class store{
+    public:
+    store(){}
+    store(store &s){
+        cout << "\nCopy Constructor Called";
     }
 };
-int main() {
-    Sample a;
-    a.init(10);
-    a.display();
-    Sample b(a);
-    b.display();
-    
-    storeVal c;
-    storeVal d = c;
-    return 0;
+int main(){
+    base b;
+    b.set(10);
+    b.show();
+    base c(b);
+    c.show();
+    store d;
+    store e(d);
 }
-
