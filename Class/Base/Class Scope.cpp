@@ -1,22 +1,19 @@
-#include <bits/stdc++.h>
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-string name1 = "GFG";
-string favlang = "python";
-string companyName = "GFG_2.0";
- 
-class Developer {
-public:
-    string name = "mollavai";
-    string favLang = "c++";
-    string company = "GFG";
- 
-    Developer(string favlang,string company): favLang(favlang)
-        , company(companyName){}
+string nome = "mlv";
+string lang = "python";
+string company = "PISQR";
+class Devo{
+    public:
+    string name = "Alv";
+    string Lang = "Cpp";
+    string comp = "PRO";
+    Devo(){}
+    Devo(string lang, string company):Lang(lang), comp(company){}
 };
-int main()
-{
-    Developer obj = Developer("python", "GFG");
-    cout << "favourite Language : " << obj.favLang << "\n" ;
-    cout << "company Name : " << obj.company << "\n";
+int main(){
+    Devo ob;
+    cout << ob.Lang << " " << ob.comp << "\n";
+    Devo dv = Devo("Java", "XYQR");
+    cout << dv.Lang << " " << dv.comp << " " << dv.name;
 }
