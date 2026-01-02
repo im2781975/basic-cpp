@@ -1,50 +1,25 @@
-#include <iostream>
-#include <memory>
+#include<bits/stdc++.h>
 using namespace std;
-
-class Rectangle {
-    int length;
-    int breadth;
- 
+class rect{
+    int len, bred;
     public:
-    Rectangle(int l, int b)
-    {
-        length = l;
-        breadth = b;
+    rect(int h, int w){
+        len = h;  bred = w;
     }
-    int area() { return length * breadth; }
+    int area(){
+        return len * bred;
+    }
 };
- 
-int main()
-{
-    unique_ptr<Rectangle> a(new Rectangle(10, 5));
-    cout << "\nBased unique ptr: " << a->area() ;
-    
-    unique_ptr<Rectangle> b;
-    b = move(a);
-    cout << "\nBased unique ptr: " << b->area() ;
-    
-    unique_ptr<Rectangle> f = make_unique<Rectangle>(10, 5);
-    cout << "\nBased unique ptr: " << f->area() << "\n";
-    
-    shared_ptr<Rectangle> c(new Rectangle(8, 9));
-    
-    shared_ptr<Rectangle> d;
-    d = c;
-    weak_ptr<Rectangle> e (c);
-   
-    cout << "\nBased share count: " << c->area() ;
-    cout << "\nBased share count: " << d->area() ;
-
-    shared_ptr<Rectangle> g = d;
-
-    cout << "\nAfter shared ptr: " << g->area() ;
-
-    // This'll also print 0 now, as P1 is now nullptr
-    cout << "\nIs ptr is null: " << (d.get() == nullptr) ;
-
-    // This'll print 2 as Reference Counter is 2
-    cout << "\nd.use_count(): " << d.use_count() ;
-    cout <<"\nReference count: " <<c.use_count() ;
-    return 0;
+int main(){
+    int m, n; cin >> m >> n;
+    unique_ptr <rect> x(new rect(m, n));  
+    cout << x->area() << "\n";
+    unique_ptr <rect> y = move(x); 
+    cout << y->area() << "\n";
+    unique_ptr <rect> z = make_unique <rect>(m, n);
+    cout << z->area() << "\n";
+    shared_ptr <rect> a(new rect(m, n)); cout << a->area() << "\n";
+    shared_ptr <rect> b = a; cout << b -> area() << "\n";
+    cout << (b.get() == nullptr) << "\n";
+    cout << a.use_count() << " " << b.use_count() << "\n";
 }
