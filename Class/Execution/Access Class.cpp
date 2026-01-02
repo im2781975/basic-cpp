@@ -1,37 +1,23 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-class Test{
+class test{
     public:
-    void main(int s){
-        cout << s << "\n";
-    }
-    void main(const char *s){
-        cout << s << "\n";
-    }
-    void main(int m, int s){
-        cout << s << " " << m << "\n";
-    }
+    void main(int d){ cout << d << " "; }
+    void main(const char *ch){ cout << ch << " ";}
+    void main(int d, int g){ cout << d << " " << g << endl; }
 };
-class Animal{
-    public:
-    string color = "Black";
+class Animal {
+    public:    string color = "Black";
 };
-class Dog:public Animal{
-    public:
-    string color = "shadow";
+class cat:public Animal {
+    public:    string color = "Brown";
 };
-class cat:public Animal{
-    public:
-    string color = "white";
+class dog:public Animal {
+    public:    string color = "Gray";
 };
 int main(){
-    Animal x = Dog();
-    cout << x.color << "\n";
-    Animal:Dog d;
-    cout << d.color << "\n";
+    Animal x = dog(); cout << x.color << "\n";
+    dog d; cout << d.color << "\n";
     
-    Test t;
-    t.main(56);
-    t.main("I love c++");
-    t.main(7, 9);
+    test t; t.main(56); t.main("I love c++"); t.main(7, 9);
 }
