@@ -1,32 +1,19 @@
-// multiple inheritance.
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
-class A
-{
-    protected:
-    int x;
-    public:
-    A() { x = 10; }
+class A{
+    protected: int x;
+    public: A() { x = 10;}
 };
-class B
-{
-    protected:
-    int x;
-    public:
-    B() { x = 20; }
+class B{
+    protected: int x;
+    public: B() { x = 10;}
 };
-class C: public A, public B
-{
+class C : public A, public B{
     public:
-    void fun()
-    {
-        cout << "A's x is " << A::x;
-        cout << "\nB's x is " << B::x;
+    void func(){
+        cout << A::x << " " << B::x << "\n";
     }
 };
-int main()
-{
-    C c;
-    c.fun();
-    return 0;
+int main(){
+    C c; c.func();
 }
