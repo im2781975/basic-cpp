@@ -10,6 +10,13 @@ class rect{
         return len * bred;
     }
 };
+class text{
+    int x;
+    public:
+    text(int x = 0) { this -> x = x; }
+    void change(text *t) { *this = *t; }
+    void print() { cout << x << "\n"; }
+};
 int main(){
     int m, n; cin >> m >> n;
     unique_ptr <rect> x(new rect(m, n));  
@@ -22,4 +29,8 @@ int main(){
     shared_ptr <rect> b = a; cout << b -> area() << "\n";
     cout << (b.get() == nullptr) << "\n";
     cout << a.use_count() << " " << b.use_count() << "\n";
+
+    text tx(30); tx.print();
+    text *ptr = new text(80);
+    tx.change(ptr); tx.print();
 }
