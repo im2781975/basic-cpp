@@ -38,3 +38,28 @@ int main(){
     child cd; cd.id = 8; cd.pid = 20;
     cout << "\n" << cd.id << " " << cd.pid << "\n";
 }
+using namespace std;
+void func(){
+    class test {
+        public:
+        static void method() { cout << "method\n"; }
+    };
+    cout << "Yes\n"; test::method();
+    test t; t.method();
+}
+class parent {
+    int x;
+    public:
+    class child {
+        int y;
+        public:
+        child(int val) : y(val){}
+        int getY() { return y; }
+    };
+    void fun(child *cld) { cout << cld->getY() << endl; }
+};
+int main(){
+    func();
+    parent :: child cld(20); cout << cld.getY() << endl;
+    parent pt; pt.fun(&cld);
+}
