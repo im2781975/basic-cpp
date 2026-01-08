@@ -70,6 +70,28 @@ int main(){
     derivedpriv y; cout << y.protget() << " " << y.pubget() << "\n";
     derivedpub z; cout << z.protget() << " " << z.privget() << "\n";
 }
-
+using namespace std;
+class person {
+    public:
+    person(int x) { cout << "person\n"; }
+    person() { cout << "person()\n";}
+};
+class Faculty : public person {
+    public:
+    Faculty(int x) : person(x) { cout << "Facult\n"; }
+};
+class student : public person {
+    public:
+    student(int x) : person(x) { cout << "student\n";}
+};
+class TA : public Faculty, public student {
+    public:
+    TA(int x) : Faculty(x), student(x){
+        cout << "TA\n";
+    }
+};
+int main(){
+    TA t(30);
+}
 
 
