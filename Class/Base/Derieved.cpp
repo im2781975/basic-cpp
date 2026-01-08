@@ -44,3 +44,25 @@ int main(){
     else    cout << "Failed To Cast\n";
     delete w; delete v; delete x;
 }
+using namespace std;
+class base {
+    public:
+    virtual void func(int x = 0) { cout << x << "\n"; }
+};
+class derived : public base {
+    public:
+    virtual void func(int x = 10) { cout << x << "\n"; }
+};
+class A {
+    public: 
+    int sum = 0;
+    A(){}
+    A(int a, int x = 0) { sum = a + x; }
+    void disp() { cout << sum << "\n"; }
+};
+int main(){
+    base b; b.func();
+    derived d; d.func();
+    base *bp = &d; bp->func();
+    A a(9); a.disp();
+}
