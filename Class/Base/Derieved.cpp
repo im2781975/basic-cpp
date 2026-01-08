@@ -66,3 +66,44 @@ int main(){
     base *bp = &d; bp->func();
     A a(9); a.disp();
 }
+using namespace std;
+class base{
+    public:
+    base(){ cout << "Base()\n";}
+    //virtual base destructor use when you know you will inherit this class
+    virtual ~base(){ cout << "~Base()\n";}
+    void show(){ cout << "base show()\n";}
+    virtual void print(){ cout << "Base print()\n";}
+};
+class derived : public base{
+    void print(){ cout << "Derived-print()\n";}
+    public:
+    derived():base(){ cout << "Derived\n";}
+    virtual ~derived(){ cout << "~Derived()\n";}
+};
+int main(){
+    base *b = new derived();
+    b->show();
+    b->print();
+    delete b;
+}
+using namespace std;
+class base {
+    protected : int x;
+    public:
+    virtual void func(){};
+    base(int i) { x = i;}
+    int getX(){ return x; }
+};
+class derived: public base {
+    int y;
+    public:
+    derived(int i, int j): base(i), y(j){}
+    void func() override{ cout << x << " " << y << "\n";}
+};
+int main(){
+    derived d(7, 9); d.func();
+    cout << d.getX() << "\n";
+    base *ptr = new derived(9, 7);
+    ptr->func();
+}
