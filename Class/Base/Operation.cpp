@@ -57,6 +57,15 @@ class base {
     }
     void print(){ cout << a << " " << b << "\n"; }
 };
+class line {
+    double len;
+    public:
+    line(double ln); void set(double ln);
+    double get(void);
+};
+line:: line(double len){ this -> len = len;}
+void line:: set(double l){ len = l; }
+double line:: get(void){ return len; }
 int main(){
     operation opt; opt.get(); opt.sum();
     opt.diff(); opt.mul(); opt.rem();
@@ -68,4 +77,5 @@ int main(){
     riga r(4, 6, 8); cout << r[1] << "\n";
     B b; b.print(); b.add(8, 5, 9);
     base bs; bs.ope(52); bs.print();
+    line ln(29.35); cout << ln.get() << "\n";
 }
