@@ -29,6 +29,19 @@ int main(){
     cout << sud.standard << " " << sud.section;
 }
 using namespace std;
+class student {
+    public:
+    static int total;
+    student(){ total += 1;}
+};
+int student:: total = 0;
+int main(){
+    student a; cout << a.total << " ";
+    student b; cout << b.total << " ";
+    student c; cout << c.total << " ";
+    student d; cout << d.total << " ";
+}
+using namespace std;
 class student{
     public:
     string name, pa, ma; int id, age;
