@@ -75,10 +75,10 @@ namespace second {
         public: void disp();
     };
 }
-void second :: base :: disp(){ cout << "abcd\n"};
+void second :: base :: disp(){ cout << "abcd\n";}
 void second :: disp(){ cout << "efgh\n";}
 int main(){
-    first::base b; b.display();
-    second::base c; c.display();
-    second::display();
+    first::base b; b.disp();
+    second::base c; c.disp();
+    second::disp();
 }
