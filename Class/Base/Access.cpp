@@ -63,3 +63,22 @@ int main(){
     parent :: child cld(20); cout << cld.getY() << endl;
     parent pt; pt.fun(&cld);
 }
+using namespace std;
+namespace first { class base; }
+class first:: base{
+    public:
+    void disp(){ cout << "first-disp\n"; }
+};
+namespace second {
+    void disp();
+    class base {
+        public: void disp();
+    };
+}
+void second :: base :: disp(){ cout << "abcd\n"};
+void second :: disp(){ cout << "efgh\n";}
+int main(){
+    first::base b; b.display();
+    second::base c; c.display();
+    second::display();
+}
