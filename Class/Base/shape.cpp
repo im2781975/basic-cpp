@@ -67,3 +67,49 @@ int main(){
     square sqr; sqr.area(8);
     rect rt(8, 9); rt.disp();
 }
+using namespace std;
+class shape{
+    protected: int l, b;
+    public:
+    shape(int l, int b) {
+        this -> l = l; this -> b = b;
+    }
+    int area(){ return l * b;}
+};
+class rect: public shape{
+    public:
+    rect(int l, int b): shape(l, b){}
+    int area(){ return l * b; }
+    int perimeter(){ return 2 * (l + b); }
+};
+class circle: public shape{
+    public:
+    circle(int r): shape(r, r){}
+    int area(){ return 3.1416 * l * l; }
+};//virtual void
+class shape{
+    public:
+    virtual void calculate(){ cout << "area\n";}
+    virtual ~shape(){ cout << "shape-Destruct\n";}
+};
+class rect : public shape {
+    public: int l, b;
+    void calculate() {
+        cin >> l >> b; cout << l * b << "\n";
+    }
+    ~rect(){ cout << "rect-destruct\n";}
+};
+class quad : public shape {
+    public: int l;
+    void calculate() {
+        cin >> l; cout << l * l << "\n";
+    }
+    ~quad(){ cout << "quad-destruct\n";}
+};
+int main(){
+    rect rc(8, 9); circle cr(9);
+    cout << rc.area() << " " << rc.perimeter() << " " << cr.area() << "\n";
+    shape *sp; rect rc; sp = &rc;
+    sp -> calculate();
+    quad qd; sp = &qd; sp -> calculate();
+}
