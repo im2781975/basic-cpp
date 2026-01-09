@@ -41,7 +41,14 @@ void fun(){
     };
     base b; b.method();
 }
-
+class check{
+    int a;
+    public:
+    check(){ a = 1; }
+    void func(int a) {
+        cout << this -> a << " " << a << " " << check:: a << "\n";
+    }
+};
 class cls{ int x; int y; double d; char ch[20]; };
 struct str{ int x; float y; double d; char ch[20]; } s;
 union uni{ int x; float y; double d; char ch[20]; }u;
@@ -55,4 +62,5 @@ int main(){
     cout << tx.x << " " << tx.y << "\n";
     fun();
     cls c;   cout << sizeof(c) << " " << sizeof(s) << " " << sizeof(u) << "\n";
+    check t; t.func(9);
 }
