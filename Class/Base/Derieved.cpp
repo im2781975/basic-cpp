@@ -107,3 +107,37 @@ int main(){
     base *ptr = new derived(9, 7);
     ptr->func();
 }
+#include<bits/stdc++.h>
+using namespace std;
+class B { 
+    public: virtual void func(){} 
+};
+class D: public B {};
+class base{
+    public:
+    virtual void func(int x = 1) { cout << x << endl; }
+};
+class derived: public base {
+    public:
+    virtual void func(int x){ cout << x << endl; }
+};
+class root{
+    public:
+    int func(int i){ return i + 3; }
+};
+class cover: public root{
+    public:
+    double func(double d){ return d + 3.6;}
+};
+int main() {
+    B *b = new D; 
+    D *d = dynamic_cast <D*> (b);
+    if(d!= nullptr)    cout << "works";
+    else cout << "doesn't work";
+    base *p = new derived();
+    p->func();
+    delete b; delete d; delete p;
+    cover *cv = new cover;
+    cout << cv->func(9);
+    delete cv;
+}
