@@ -84,3 +84,23 @@ int main(){
     for(int i = 0; i < 10; i++)
         vec[i].print();
 }
+using namespace std;
+class person {
+    public:
+    string name; person *pa, *ma;
+    person(): pa(NULL), ma(NULL){}
+    person(string name, string dad, string mom) {
+        this -> name = name;
+        pa = new person; pa -> name = dad;
+        ma = new person; ma -> name = mom;
+    }
+    void print(){ cout << name << " " << pa -> name << " " << ma -> name << endl;
+    ~person(){
+        if(pa != NULL) delete pa;
+        if(ma != NULL) delete ma;
+    }
+};
+int main(){
+    person pers("A", "B", "C");
+    pers.print();
+}
