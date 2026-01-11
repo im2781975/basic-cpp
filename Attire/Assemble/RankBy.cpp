@@ -23,3 +23,44 @@ int main(){
     for(int i = 0; i < vec.size(); i++)
         cout << vec[i] << " ";
 }
+using namespace std;
+int func(int *arr, int low, int high, int val, int n){
+    if(high >= low){
+        int mid = low + (high - low) / 2;
+        if((mid == 0 || val > arr[mid - 1]) && arr[mid] == val)   return mid;
+        if(val > arr[mid]) return func(arr, mid + 1, high, val, n);
+        return func(arr, low, mid - 1, val, n);
+    }
+    return -1;
+}
+void sortAccording(int *arr, int *ray, int m, int n){
+    int tmp[m], visited[m];
+    for(int i = 0; i < m; i++){
+        tmp[i] = arr[i]; visited[i] = 0;
+    }
+    sort(tmp, tmp + m);
+    int cnt = 0;
+    for(int i = 0; i < n; i++){
+        int x = func(tmp, 0, m - 1, ray[i], m);
+        if(x == -1)    continue;
+        for(int j = x; (j < m && tmp[j] == ray[i]); ++j) {
+            arr[cnt++] = tmp[j];
+            visited[j] = 1;
+        }
+    }
+    for(int i = 0; i < m; i++){
+        if(visited[i] == 0) arr[cnt++] = tmp[i];
+    }
+}
+void print(int *arr, int n){
+    for(int i = 0; i < n; i++)    cout << arr[i] << " ";
+    cout << endl;
+}
+int main(){
+    int arr[] = {2, 1, 2, 5, 7, 1, 9, 3, 6, 8, 8 };
+    int ray[] = {2, 1, 8, 3};
+    int m = sizeof(arr) / sizeof(arr[0]);
+    int n = sizeof(ray) / sizeof(ray[0]);
+    sortAccording(arr, ray, m, n);
+    print(arr, m);
+}
