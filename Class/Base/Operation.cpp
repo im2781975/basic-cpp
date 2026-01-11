@@ -79,3 +79,49 @@ int main(){
     base bs; bs.ope(52); bs.print();
     line ln(29.35); cout << ln.get() << "\n";
 }
+#include<bits/stdc++.h>
+using namespace std;
+class base {
+    int cnt;
+    public:
+    base(int n): cnt(n){}
+    base operator ++(int) { return (++cnt);}
+    base operator ++() { cnt += 1; return *this; }
+    void disp(){ cout << cnt << " "; }
+}; 
+class complx {
+    int real, img;
+    public:
+    complx(int real, int img) {
+        this -> real = real; 
+        this -> img = img;
+    }
+    void disp(){ cout << real << " + i" << img << endl; }
+    complx operator + (complx &b) {
+        return complx(real + b.real, img + b.img);
+    }
+    friend complx operator+(complx &, complx &);
+};
+complx operator+(complx &a, complx &b){
+    return complx(a.real + b.real, a.img + b.img);
+} 
+class fract{
+    int num, dig;
+    public:
+    fract(int num, int dig){
+        this->num = num; this->dig = dig; }
+    operator float(){
+        return float(num)/float(dig);
+    }
+};
+int main(){
+    base b(5), pref(5), postf(5);
+    pref = ++b; b.disp(); pref.disp();
+    b++; b++; (++b).disp(); b.disp();
+    
+    complx c1(3, 4); complx c2(5, 7);
+    complx c3; c3 = c1 + c2; c3.disp();
+    complx c4 = operator+(c1, c2);
+    c4.disp();
+    fract f(9, 11); cout << f;
+}
