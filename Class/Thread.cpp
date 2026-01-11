@@ -34,4 +34,6 @@ int main(){
     };
     thread th3(fu, 6); th3.join();
     base b; b.func1(); b.func();
+    int var = 10;
+    thread th5([](){ cout << (var += 15) << endl; }); th5.join();
 }
