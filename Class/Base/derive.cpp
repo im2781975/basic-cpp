@@ -17,3 +17,21 @@ int main(){
     Abstract ct = bt; ct.disp();
     at.set(9, 6); cout << at.getX() << " " << at.getY();
 }
+using namespace std;
+class base {
+    public:
+    void func(){ cout << "Base Func\n";}
+    virtual void func1(){ cout << "Base Func-1\n";}
+    virtual void func2(){ cout << "Base Func-2\n";}
+    virtual void func3(){ cout << "Base Func-3\n";}
+};
+class derived: public base {
+    public:
+    void func(){ cout << "Derived\n";}
+    void func1(){ cout << "Func-1\n";}
+    void func3(int x){ cout << "Func-3\n";}
+};
+int main(){
+    base *b; derived d;
+    b = &d; b->func(); b->func3();
+}
