@@ -52,6 +52,23 @@ void sortAccording(int *arr, int *ray, int m, int n){
         if(visited[i] == 0) arr[cnt++] = tmp[i];
     }
 }
+void sortby(int *arr, int n, int *ray, int m, int *res){
+    map <int, int> mp;
+    int cnt = 0;
+    for(int i = 0; i < n; i++)
+        mp[arr[i]] += 1;
+    for(int i = 0; i < m; i++){
+        if(mp[ray[i]] != 0) {
+            for(int j = 1; j <= mp[ray[i]]; j++)
+                res[cnt++] = ray[i];
+        }
+        mp.erase(ray[i]);
+    }
+    for(auto it : mp){
+        for(int j = 1; j <= it.second; j++)
+            res[cnt++] = it.first;
+    }
+}
 void print(int *arr, int n){
     for(int i = 0; i < n; i++)    cout << arr[i] << " ";
     cout << endl;
@@ -62,5 +79,6 @@ int main(){
     int m = sizeof(arr) / sizeof(arr[0]);
     int n = sizeof(ray) / sizeof(ray[0]);
     sortAccording(arr, ray, m, n);
+    // int res[n]; sortby(arr, n, ray, m, res);
     print(arr, m);
 }
