@@ -1,3 +1,4 @@
+// sort array containing 0, 1 and 2
 #include<bits/stdc++.h>
 using namespace std;
 void sort012(int *arr, int n){
