@@ -56,6 +56,7 @@ void bucket(int *arr, int n){
             arr[idx++] = pail[i][j];
     }
 }
+// Given an array of size n, where every element is k away from its target position, sorts the array 
 void sortK(int *arr, int n, int k){
     int sz;
     sz = (n == k) ? k : k + 1;
