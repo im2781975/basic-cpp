@@ -56,6 +56,29 @@ void bucket(int *arr, int n){
             arr[idx++] = pail[i][j];
     }
 }
+void sortK(int *arr, int n, int k){
+    int sz;
+    sz = (n == k) ? k : k + 1;
+    priority_queue <int, vector <int>, greater <int>> pq(arr, arr + sz);
+    int idx = 0;
+    for(int i = k + 1; i < n; i++){
+        arr[idx++] = pq.top(); pq.pop();
+        pq.push(arr[i]);
+    }
+    while(!pq.empty()){
+        arr[idx++] = pq.top(); pq.pop();
+    }
+}
+void nearlysorted(int *arr, int n, int k){
+    int key, j;
+    for(int i = 1; i < n; i++){
+        key = arr[i]; j = i - 1;
+        while (j >= max(0, i - k) && arr[j] > key) {
+            arr[j + 1] = arr[j]; j--;
+        }
+        arr[j + 1] = key;
+    }
+}
 void print(int *arr, int n){
     for(int i = 0; i < n; i++)    cout << arr[i] << " ";
     cout << endl;
@@ -67,4 +90,6 @@ int main(){
     bitonic(arr, n);
     bucket(arr, n);
     print(arr, n);
+    int k = 3;
+    sortK(arr, n, k); print(arr, n);
 }
