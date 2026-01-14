@@ -80,6 +80,16 @@ void nearlysorted(int *arr, int n, int k){
         arr[j + 1] = key;
     }
 }
+bool checksorting(int *arr, int n){
+    for(int i = 0; i < n - 1; i++){
+        if(arr[i] > arr[i + 1]){
+            if(arr[i] - arr[i + 1] == 1)
+                swap(arr[i], arr[i + 1]);
+            else    return false;
+        }
+    }
+    return true;
+}
 void print(int *arr, int n){
     for(int i = 0; i < n; i++)    cout << arr[i] << " ";
     cout << endl;
@@ -93,4 +103,6 @@ int main(){
     print(arr, n);
     int k = 3;
     sortK(arr, n, k); print(arr, n);
+    if (checksorting(arr, n)) cout << "Yes\n";
+    else cout << "No\n";
 }
