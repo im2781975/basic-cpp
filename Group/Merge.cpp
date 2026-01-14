@@ -1,5 +1,36 @@
 #include<bits/stdc++.h>
-using namespace std; /*
+using namespace std; 
+void merge(int *arr, int *ray, int n, int m){
+    for(int i = m - 1; i >= 0; i--){
+        int j, last = arr[n - 1];
+        for (j = n - 2; j >= 0 && arr[j] > ray[i]; j--)
+            arr[j + 1] = arr[j];
+        if (last > ray[i]) {
+            arr[j + 1] = ray[i];
+            ray[i] = last;
+        }
+    }
+}
+void swapIfgreater(int *arr, int *ray, int i, int j){
+    if(arr[i] > ray[j]) swap(arr[i], ray[j]);
+}
+void merge(int *arr, int *ray, int n, int m){
+    int len = m + n;
+    int gap = (len / 2) + (len % 2);
+    while(gap > 0){
+        int l = 0, r = l + gap;
+        while(r < len){
+            if(l < n && r >= n)
+                swapIfgreater(arr, ray, l, r - n);
+            else if(l >= n && r >= n)
+                swapIfgreater(ray, ray, l - n, r - n);
+            else swapIfgreater(arr, arr, l, r);
+            l++; r++;
+        }
+        if(gap == 1) break;
+        gap = (gap / 2) + (gap % 2);
+    }
+}
 void merge(int *arr, int *ray, int n, int m){
     int i = 0, j = 0, k = n - 1;
     while(i <= k && j < m){
@@ -8,7 +39,7 @@ void merge(int *arr, int *ray, int n, int m){
     }
     sort(arr, arr + n);
     sort(ray, ray + n);
-} */
+} 
 void merge(int *arr, int *ray, int n, int m){
     int i = 0;
     while(arr[n - 1] > ray[0]){
