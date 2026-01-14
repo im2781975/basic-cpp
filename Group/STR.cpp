@@ -39,3 +39,27 @@ int main(){
     strsort(arr, n);
     print(arr, n);
 }
+using namespace std;
+void printOrder(string *arr, int n){
+    int idx[n];
+    for(int i = 0; i < n; i++) idx[i] = i;
+    for(int i = 0; i < n - 1; i++){
+        int min = i;
+        for(int j = i + 1; j < n; j++){
+            if (arr[idx[min]].compare(arr[idx[j]]) > 0) min = j;
+        }
+        if (min != i){
+            int temp = idx[min];
+            idx[min] = idx[i];
+            idx[i] = temp;
+        }
+    }
+    for(int i = 0; i < n; i++)
+        cout << arr[idx[i]] << " ";
+    cout << endl;
+}
+int main(){
+    string arr[] = {"geeks", "quiz", "geeks", "for"};
+    int n = 4;
+    printOrder(arr, n);
+}
