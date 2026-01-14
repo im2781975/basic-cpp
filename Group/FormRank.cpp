@@ -73,6 +73,9 @@ void print(int *arr, int n){
     for(int i = 0; i < n; i++)    cout << arr[i] << " ";
     cout << endl;
 }
+bool bysec(const pair <int, int> &a, const pair <int, int> &b) {
+    return (a.second < b.second);
+}
 int main(){
     int arr[] = {2, 1, 2, 5, 7, 1, 9, 3, 6, 8, 8 };
     int ray[] = {2, 1, 8, 3};
@@ -81,4 +84,10 @@ int main(){
     sortAccording(arr, ray, m, n);
     // int res[n]; sortby(arr, n, ray, m, res);
     print(arr, m);
+    vector <pair <int, int>> vec;
+    for(int i = 0; i < m; i++)
+        vec.push_back(make_pair(arr[i], ray[i]));
+    sort(vec.begin(), vec.end(), bysec);
+    for(int i = 0; i < m; i++)
+        cout << vec[i].first << " " << vec[i].second << endl;
 }
