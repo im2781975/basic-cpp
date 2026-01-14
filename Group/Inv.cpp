@@ -17,7 +17,25 @@ int getInv(vector <int> &vec){
     }
     return res;
 }
+// Minimum length of subarray
+int minlen(vector <int> &vec){
+    vector <int> tmp = vec;
+    sort(tmp.begin(), tmp.end());
+    int l = 0, r = 0;
+    for(int i = 0; i < vec.size(); i++){
+        if(vec[i] != tmp[i]){
+            l = i; break;
+        }
+    }
+    for(int i = vec.size() - 1; i >= 0; i--){
+        if(vec[i] != tmp[i]){
+            r = i; break;
+        }
+    }
+    return (r - l + 1);
+}
 int main(){
     vector<int> vec{1, 20, 6, 4, 5};
     cout << getInv(vec);
+    cout << minlen(vec);
 }
