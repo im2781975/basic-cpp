@@ -1,21 +1,22 @@
 #include<bits/stdc++.h>
 using namespace std;
-void mergeTwohalf(int *arr, int n){
+int mergehalf(int *arr, int n){
     int half = 0, tmp[n];
     for(int i = 0; i < n - 1; i++){
-        if(arr[i] > arr[i + 1]) {
+        if(arr[i] > arr[i + 1]){
             half = i + 1; break;
         }
     }
-    if(half == 0) return;
-    int i = 0, j = half, k = 0; 
-    while (i < half && j < n) { 
-        if (arr[i] < arr[j]) temp[k++] = arr[i++]; 
-        else temp[k++] = arr[j++]; 
-    } 
-    while (i < half) temp[k++] = arr[i++]; 
-    while (j < n) temp[k++] = arr[j++]; 
-    for (int i = 0; i < n; i++) arr[i] = temp[i]; 
+    int i = 0, j = half, k = 0;
+    while(i < half && j < n){
+        if(arr[i] <= arr[j]) tmp[k++] = arr[i++];
+        else tmp[k++] = arr[j++];
+    }
+    while(i < half) tmp[k++] = arr[i++];
+    while(j < n) tmp[k++] = arr[j++];
+    for(int i = 0; i < n; i++)
+        arr[i] = tmp[i];
+    return {};
 }
 int cntBits(int num){
     int cnt = 0;
@@ -82,6 +83,6 @@ void print(int *arr, int n){
 int main(){
     int arr[]{1, 2, 3, 4, 5, 6};
     int n = sizeof(arr) / sizeof(arr[0]);
-    mergeTwohalf(arr, n);
+    mergehalf(arr, n);
     ByBitcnt(arr, n); print(arr, n);
 }
