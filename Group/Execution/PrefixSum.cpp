@@ -14,7 +14,42 @@ int nthsum(vector <int> &vec, int k){
     sort(res.begin(), res.end(), greater <int> ());
     return res[k - 1];
 }
+// find the K-th largest sum of subarray
+int nthsum(int *arr, int n, int k){
+    vector <int> res;
+    for(int i = 0; i < n; i++){
+        int sum = 0;
+        for(int j = i; j < n; j++){
+            sum += arr[j];
+            res.push_back(sum);
+        }
+    }
+    sort(res.begin(), res.end(), greater <int> ());
+    return res[k - 1];
+}
+int nthsum(int *arr, int n, int k){
+    int fix[n + 1];
+    fix[0] = 0; fix[1] = arr[0];
+    for(int i = 2; i <= n; i++)
+        fix[i] = fix[i - 1] + arr[i - 1];
+    priority_queue <int, vector <int>, greater <int>> Q;
+    for(int i = 1; i <= n; i++){
+        for(int j = i; j <= n; j++){
+            int x = fix[j] - fix[i - 1];
+            if(Q.size() < k) Q.push(x);
+            else{
+                if(Q.top() < x) {
+                    Q.pop(); Q.push(x);
+                }
+            }
+        }
+    }
+    return Q.top();
+}
 int main(){
     vector<int> arr{ 10, -10, 20, -40 };
     int k = 6; cout << nthsum(arr, k);
+    int arr[] = { 20, -5, -1 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int key = 2; cout << nthsum(arr, n, key);
 }
