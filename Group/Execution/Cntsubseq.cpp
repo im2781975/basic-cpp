@@ -1,3 +1,4 @@
+//count number of times S appears as a subsequence in T 
 #include<bits/stdc++.h>
 using namespace std;
 int func(int i, int j, string s, string t, vector <vector <int>> &dp){
