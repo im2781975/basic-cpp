@@ -94,3 +94,45 @@ void majority(int *arr, int n){
     if(maxcnt > n / 2) cout << maxcnt;
     else cout << -1;
 }
+#musing namespace std;
+//find the maximum number of guests present at any given time
+void maxguest(int *enter, int *out, int n){
+    // n -> sizeof enter
+    sort(enter, enter + n); sort(out, out + n);
+    int maxguest = 1, guestin = 1, time = enter[0];
+    int i = 1, j = 0;
+    while (i < n && j < n){
+        if(enter[i] <= exit[j]){
+            guestin++;
+            if(guestin > maxguest){
+                maxguest = guestin:
+                time = enter[i];
+            }
+            i++;
+        }
+        else {
+            guestin--; j++
+        }
+    }
+    cout << maxguest << " " << time << endl;
+}
+void maxoverlap(vector <int> &start, vector <int> &end){
+    int gianta = *max_element(start.begin(), start.end());
+    int giantb = *max_element(end.begin(), end.end());
+    int giantc = max(maxa, maxb);
+    int arr[giantc + 2];
+    memset(arr, 0, sizeof(arr));
+    int cur = 0, idx;
+    for(int i = 0; i < n; i++){
+        ++arr[start[i]];
+        --arr[end[i] + 1];
+    }
+    int maxy = INT_MIN;
+    for(int i = 0; i <= giantc; i++){
+        cur += arr[i];
+        if(maxi < cur){
+            maxi = cur; idx = i;
+        }
+    }
+    cout << maxi << " " << idx << endl;
+}
