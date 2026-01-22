@@ -73,6 +73,16 @@ bool ispairsum(int *arr, int n, int x){
     }
     return false;
 }
+// find if there is a pair in arr with a given sum.
+int ispairsum(vector <int> arr, int n, int x){
+    int i = 0, j = n - 1;
+    while(i < j){
+        if(arr[i] + arr[j] == x) return 1;
+        else if(arr[i] + arr[j] < x) i++;
+        else j--;
+    }
+    return 0;
+}
 // function for calculating min operations
 int minoperation(int *arr, int n, int k){
     int mx = *max_element(arr, arr + n);
@@ -86,6 +96,7 @@ int minoperation(int *arr, int n, int k){
 int main(){
     int ar[] = { 2, 3, 5, 8, 9, 10, 11 };
     int val = 17, n = *(&ar + 1) - ar;
+    // array should be sorted before using two-pointer technique
     sort(ar, ar + n);
     cout << isPairSum(ar, n, val);
 }
