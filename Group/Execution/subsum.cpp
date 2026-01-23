@@ -88,6 +88,28 @@ vector <int> subarraySum(const vector<int>& arr, int sum) {
     }
     return {};
 }
+void arrfreq(vector<int>& arr) {
+    unordered_map<int, int> freq;
+    for(int i = 0; i < arr.size(); ++i) 
+        freq[arr[i]]++;
+    auto cmp = [](pair<int,int> a, pair<int,int> b){
+        if(a.first == b.first) 
+            return a.second > b.second;  
+        return a.first < b.first;    
+    };
+    priority_queue<pair<int,int>, vector<pair<int,int>>, decltype(cmp)> pq(cmp);
+    // push (freq, value)
+    for(auto it = freq.begin(); it != freq.end(); ++it)
+        pq.push({it->second, it->first});
+
+    int i = 0;
+    while(!pq.empty()){
+        int f = pq.top().first;
+        int v = pq.top().second;
+        pq.pop();
+        while(f--) arr[i++] = v;
+    }
+}
 // Function to reorder elements of arr[] according to index[]
 bool comp(const pair<int, int>& x, const pair<int, int>& y) {
     return x.second < y.second;
