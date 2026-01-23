@@ -99,6 +99,21 @@ void convert(int *arr, int n){
 void print(int *arr, int n){
     for(int i = 0; i < n; i++) cout << arr[i] << " ";
 }
+int func(int x, int y) {
+    return x + y;
+}
+void soid sum(int *arr, int val, int n) {
+    cout << accumulate(arr, arr + n, val) << endl;
+    cout << accumulate(arr, arr + n, val, func) << endl;
+    cout << accumulate(arr, arr + n, val, minus <int> ()) << endl;
+    int ray[n];
+    adjacent_difference(arr, arr + n, ray);
+    print(ray, n);
+    adjacent_difference(arr, arr + n, ray, func); 
+    print(ray, n);
+    adjacent_difference(arr, arr + n, ray, multiplies <int> ());
+    print(ray, n);
+}
 int main(){
     int arr[] = { 5, 6, 7, 8, 9, 10, 11};
     int n = sizeof(arr) / sizeof(arr[0]);
