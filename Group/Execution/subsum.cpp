@@ -45,6 +45,49 @@ int subarrlen(int trg, vector <int> arr){
     }
     return (res != INT_MAX - 1? res : 0)
 }
+void subarrsum(int arr[], int n, int sum) {
+    for (int i = 0; i < n; i++) {
+        int curr = arr[i];
+        if (curr == sum) {
+            cout << i ; return;
+        }
+        else {
+            for (int j = i + 1; j < n; j++) {
+                curr  += arr[j];
+                if (curr == sum) {
+                    cout << "\nSum found between indexes "<< i << " and " << j ; return;
+                }
+            }
+        }
+    }
+    return;
+}
+int subarrsum(int arr[], int n, int sum){
+    int cur = arr[0], start = 0, i;
+    for (int i = 1; i <= n; i++) {
+        if (i < n) cur += arr[i];
+        if (cur == sum) {
+            cout << "\nSum found between indexes " << start << " & " << i - 1;
+            return 1;
+        }
+        while (cur > sum && start < i - 1) {
+            cur -= arr[start]; start++;
+        }
+    }
+    return 0;
+}
+vector <int> subarraySum(const vector<int>& arr, int sum) {
+    unordered_map<int, int> map;
+    int curr = 0;
+    for (int i = 0; i < arr.size(); i++) {
+        curr += arr[i];
+        if (map.count(curr - sum)) {
+            return vector<int>( arr.begin() + map[curr - sum] + 1, arr.begin() + i + 1);
+        }
+        map[curr] = i;
+    }
+    return {};
+}
 // Function to reorder elements of arr[] according to index[]
 bool comp(const pair<int, int>& x, const pair<int, int>& y) {
     return x.second < y.second;
