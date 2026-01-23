@@ -52,4 +52,18 @@ int main(){
     int arr[] = { 20, -5, -1 };
     int n = sizeof(arr) / sizeof(arr[0]);
     int key = 2; cout << nthsum(arr, n, key);
+    
+    vector <int> vec = {1, 2, 3};
+    vector <int> ::iterator it;
+    for(it = vec.begin(); it != vec.end(); ++it) {
+        if(it == vec.begin()) it = vec. insert(it, 5);
+        if(it == vec.begin() + 1) it = vec. erase(it);
+    }
+    for(auto it = vec.begin(); it != vec.end(); ++it) cout << *it << " ";
+    cout << endl;
+    for (int i = 0; i < 10; i++) vec.push_back(i);
+    vec.insert(vec.begin() + 1, 100);
+    vec.erase(vec.begin() + 2);
+    for (int i = 0; i < vec.size(); i++) cout << vec[i] << " ";
+    cout << endl;
 }
