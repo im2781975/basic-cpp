@@ -117,6 +117,7 @@ void sum(int *arr, int val, int n) {
     adjacent_difference(arr, arr + n, ray, multiplies <int> ());
     print(ray, n);
     cout << inner_product(arr, arr + n, ray, val) << endl;
+	//a[0]*b[0] +a[1]*b[1].. +var
     cout << inner_product(arr, arr + n, ray, val, minus <int> (), divides <int> ()) << endl;
     cout << inner_product(arr, arr + n, ray, val, func, fun) << endl;
 }
