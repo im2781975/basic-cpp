@@ -120,6 +120,10 @@ void sum(int *arr, int val, int n) {
 	//a[0]*b[0] +a[1]*b[1].. +var
     cout << inner_product(arr, arr + n, ray, val, minus <int> (), divides <int> ()) << endl;
     cout << inner_product(arr, arr + n, ray, val, func, fun) << endl;
+	partial_sum(arr, arr + n, ray);
+    print(ray, n);
+    partial_sum(arr, arr + n, ray, fun);
+    print(ray, n);
 }
 int main(){
     int arr[] = { 5, 6, 7, 8, 9, 10, 11};
