@@ -102,7 +102,10 @@ void print(int *arr, int n){
 int func(int x, int y) {
     return x + y;
 }
-void soid sum(int *arr, int val, int n) {
+void fun(int x, int y) {
+	return x * y;
+}
+void sum(int *arr, int val, int n) {
     cout << accumulate(arr, arr + n, val) << endl;
     cout << accumulate(arr, arr + n, val, func) << endl;
     cout << accumulate(arr, arr + n, val, minus <int> ()) << endl;
@@ -113,6 +116,9 @@ void soid sum(int *arr, int val, int n) {
     print(ray, n);
     adjacent_difference(arr, arr + n, ray, multiplies <int> ());
     print(ray, n);
+    cout << inner_product(arr, arr + n, ray, val) << endl;
+    cout << inner_product(arr, arr + n, ray, val, minus <int> (), divides <int> ()) << endl;
+    cout << inner_product(arr, arr + n, ray, val, func, fun) << endl;
 }
 int main(){
     int arr[] = { 5, 6, 7, 8, 9, 10, 11};
