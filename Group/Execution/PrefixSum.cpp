@@ -46,6 +46,14 @@ int nthsum(int *arr, int n, int k){
     }
     return Q.top();
 }
+bool Issorted(int *arr, int n) {
+    if(n == 0 || n == 1) return true;
+    //return arr[n - 1] >= arr[n - 2] && Issorted(arr, n - 1);
+    for (int i = 1; i < n; i++)
+        if (arr[i - 1] > arr[i])
+            return false;
+    return true;
+}
 int main(){
     vector<int> arr{ 10, -10, 20, -40 };
     int k = 6; cout << nthsum(arr, k);
