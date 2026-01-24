@@ -81,3 +81,11 @@ vector <int> segregateEvenOdd(vector <int> arr) {
     }
     swap(arr[i + 1], arr.back()); return arr;
 }
+vector<int> even_generator(vector <int> &arr) {
+    vector<int> even;
+    for (int i = 0; i < arr.size(); i++) {
+        if (arr[i] % 2 == 0)
+            even.push_back(arr[i]);
+    }
+    return even;
+}
