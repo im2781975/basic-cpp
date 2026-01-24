@@ -110,4 +110,16 @@ void shiftzeros(int *arr, int n) {
     }
     for(int i = 0; i < n; i++) cout << arr[i] << " ";
 }
-
+void slidewindow(vector <int> &vec, int n, int k) {
+    int l = 0, r = 0, sum = 0, res = -1;
+    while(r < n) {
+        sum += vec[r];
+        if(r - l + 1 < k) r++;
+        else if(r - l + 1 == k) {
+            res = max(res, sum);
+            sum -= vec[l];
+            l++; r++;
+        }
+    }
+    cout << res;
+}
