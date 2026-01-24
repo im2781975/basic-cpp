@@ -80,4 +80,11 @@ void smallrange(vector <int> &vec, int n){
     }
     else cout << 0;
 }
-
+void pattern(vector <int> vec, int n) {
+    int sum = 0;
+    while(n > 0) {
+        sum += n;
+        vec.push(sum); n /= 2;
+    }
+    for(int i = 0; i < vec.size(); i++) cout << vec[i] << " ";
+}
