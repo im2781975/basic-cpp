@@ -38,6 +38,10 @@ int main(){
     cout << grp << endl;
     delete []grp;
     
+    int num = 5; float *ft = new float[num];
+    for(int i = 0; i < num; ++i) *(ft + i) = i;
+    for(int i = 0; i < num; ++i) cout << *(ft + i) << " ";
+    cout << endl;
     int *p, *ter[5];
     int ray[5] = {10, 20, 30, 40, 50};
     p = ray;
