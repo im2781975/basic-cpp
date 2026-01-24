@@ -88,3 +88,14 @@ void pattern(vector <int> vec, int n) {
     }
     for(int i = 0; i < vec.size(); i++) cout << vec[i] << " ";
 }
+void cntcoin(vector <int> coin, int n, int x) {
+    vector <int> cnt(x + 1, INT_MAX);
+    cnt[0] = 0;
+    for(int i = 0; i <= x; ++i) {
+        for(int j = 0; j < coin.size(); j++) {
+            if(i - coin[j] >= 0)
+                cnt[i] = min(cnt[i], cnt[i - coin[j]] + 1);
+        }
+    }
+    cout << cnt[x];
+}
