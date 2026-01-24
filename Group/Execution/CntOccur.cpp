@@ -104,6 +104,33 @@ void occuronce(int *arr, int n){
         if(it -> second == 1) cout << it -> first << " ";
     }
 } 
+#include<bits/stdc++.h>
+using namespace std;
+int cntmatch(vector <int> vec, int l, int r, int trg) {
+    int cnt = 0;
+    int mid = l + (r - l) / 2;
+    if(r - l < 2) {
+        if(vec[l] == trg) cnt++;
+        if(vec[r] == trg && l != r) cnt++;
+        return cnt;
+    }
+    else if(vec[mid] == trg)
+        return cntmatch(vec, l, mid - 1, trg) + 1 + cntmatch(vec, mid + 1, r, trg);
+    else if(vec[mid] < trg) return cntmatch(vec, mid + 1, r, trg);
+    else return cntmatch(vec, l, mid - 1, trg);
+}
+int cntoccur(vector <int> &vec, int l, int r, int trg) {
+    if(l > r) return 0;
+    int mid = l + (r - l) / 2;
+    if (vec[mid] == trg) {
+        int cnt = 1;
+        cnt += cntoccur(vec, l, mid - 1, trg);
+        cnt += cntoccur(vec, mid + 1, r, trg);
+        return cnt;
+    } else if (vec[mid] > trg)
+        return cntoccur(vec, l, mid - 1, trg);
+    else return cntoccur(vec, mid + 1, r, trg);
+}
 int singleNumber(int nums[],int n) { 
     map <int, int> mp;
     long sum1 = 0, sum2 = 0;
