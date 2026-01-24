@@ -104,8 +104,6 @@ void occuronce(int *arr, int n){
         if(it -> second == 1) cout << it -> first << " ";
     }
 } 
-#include<bits/stdc++.h>
-using namespace std;
 int cntmatch(vector <int> vec, int l, int r, int trg) {
     int cnt = 0;
     int mid = l + (r - l) / 2;
