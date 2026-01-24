@@ -81,6 +81,12 @@ void smallrange(vector <int> &vec, int n){
     else cout << 0;
 }
 void pattern(vector <int> vec, int n) {
+    int s, f;
+    cin >> s >> f;
+    for(int i = 0 ;i < (f - s) + 1; i++)
+        arr.erase(arr.begin() + s-1);
+    for(int i = 0; i < arr.size(); i++)
+        cout << arr[i] << " ";
     int sum = 0;
     while(n > 0) {
         sum += n;
