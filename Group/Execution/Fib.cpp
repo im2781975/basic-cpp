@@ -36,26 +36,3 @@ int fibonacciSearch(int arr[], int n, int x) {
     if (fib2 == 1 && arr[offset + 1] == x) return offset + 1;
     else return -1;
 }
-using namespace std;
-void distinct(vector <int> vec) {
-    vector <int> unique, dup;
-    for(int i = 0; i < vec.size(); i++) {
-        if(find(unique.begin(), unique.end(), vec[i]) == unique.end())
-            unique.push_back(vec[i]);
-        else dup.push_back(vec[i]);
-    }
-    for(int i = 0; i < unique.size(); i++)
-        cout << unique[i] << " ";
-    cout << endl;
-}
-void printDup(int *arr, int n) {
-    unordered_set <int> intset, dup;
-    for (int i = 0; i < n; i++) {
-        if (intset.find(arr[i]) == intset.end())
-            intset.insert(arr[i]);
-        else dup.insert(arr[i]);
-    }
-    unordered_set <int> ::iterator it;
-    for(it = dup.begin(); it != dup.end(); it++) cout << *it << " ";
-    cout << endl;
-}
