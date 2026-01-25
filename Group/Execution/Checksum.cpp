@@ -89,16 +89,3 @@ void merg(vector <int> arr) {
     merg(vec); merg(tor);
     cnt += invcnt(vec, tor, arr);
 }
-int main(){
-    vector <int> vec{2, 3, 1, 5, 4};
-    int k; cin >> k;
-    vector <int> res = divide(vec);
-    if(twoPoint(res, k)) cout << "Yes";
-    else cout << "No"; 
-    vector <int> ans = merge(vec);
-    vector <int> re = twosum(ans, k);
-    for(int i = 0; i < re.size(); ++i)
-        cout << re[i] << " "; 
-    cout << endl;
-    merg(vec); cout << cnt;
-}
