@@ -113,6 +113,16 @@ int equilibrium(int *arr, int n) {
     }
     return -1;
 }
+int Equilibrium(int *arr, int n) {
+    int res = INT_MIN;
+    for(int i = 0; i < n; i++) {
+        int prefix = arr[i]; int suffix = arr[i];
+        for(int j = 0; j < i; j++) prefix += arr[j];
+        for(int j = n - 1; j > 0; j--) suffix += arr[j];
+        if(suffix == prefix) res = max(res, prefix);
+    }
+    return res;
+}
 int equilibrium(int *arr, int n) {
     int sum = 0, left = 0;
     for(int i = 0; i < n; i++) sum += arr[i];
