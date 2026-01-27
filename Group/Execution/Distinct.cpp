@@ -154,6 +154,29 @@ int equilibrium(vector <int> vec) {
     }
     return (left == right) ? pivot : -1;
 }
+// Function to find maximum equilibrium sum
+void maxsum(int *arr, int n) {
+	int prefix[n], suffix[n];
+    int res = INT_MIN; prefix[0] = arr[0];
+    for(int i = 1; i < n; i++) prefix[i] = prefix[i - 1] + arr[i];
+    suffix[n - 1] = arr[n - 1];
+    if(suffix[n - 1] == prefix[n - 1]) res = max(res, prefix[n - 1]);
+    for(int i = n - 2; i >= 0; i--) {
+        suffix[i] = suffix[i + 1] + arr[i];
+        if(suffix[i] == prefix[i]) res = max(res, prefix[i]);
+    }
+    return res;
+}
+int maxsum(int *arr, int n){
+    int sum = accumulate(arr, arr + n, 0);
+    int prefix = 0, res = INT_MIN;
+    for(int i = 0; i < n; i++){
+        prefix += arr[i];
+        if(prefix == sum) res = max(res, prefix);
+        sum -= arr[i];
+    }
+    return res;
+}
 //find maxdiff between freq of any two element such that element with greater freq is also greater in value.
 int maxdiff(int *arr, int n) {
     unordered_map <int, int> freq;
