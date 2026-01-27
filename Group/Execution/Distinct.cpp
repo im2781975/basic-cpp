@@ -8,6 +8,26 @@ vector <int> distinct(vector <int> vec) {
     }
     return unq;
 }
+void distinct(int *arr, int n) {
+    for(int i = 0; i < n; i++){
+        int j
+        for(j = 0; j < i; j++) {
+            if(arr[i] == arr[j]) break;
+        }
+        if(i == j) cout << arr[i] << " ;"
+    }/*
+    sort(arr, arr + n);
+    for(int i = 0; i < n; i++) {
+        while(i < n - 1 && arr[i] == arr[i + 1]) i++;
+        cout << arr[i] << " ";
+    } *//*
+    unordered_set <int> st;
+    for(int i = 0; i < n; i++) {
+        if(!st.count(arr[i])) {
+            st.insert(arr[i]); cout << arr[i] << " ";
+        }
+    } */
+}
 void printdup(int *arr, int n) {
     unordered_set <int> unq, dup;
     for(int i = 0; i < n; ++i) {
