@@ -114,6 +114,7 @@ void replacerev(int *arr, int n, int old, int val) {
     suffle(arr, n);
     vector <int> vec(arr, arr + n);
     random_shuffle(vec.begin(), vec.end(), randsuffle(2));
+    random_shuffle(vec.begin(), vec.end());
     replace(arr, arr + n, old, val);
     replace_if(arr, arr + n, IsOdd, val);
     
