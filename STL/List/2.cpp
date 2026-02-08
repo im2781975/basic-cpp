@@ -181,3 +181,102 @@ int main()
  
  return 0; 
 } 
+#include <iostream>
+#include <vector>
+#include <queue>
+ 
+using namespace std;
+ 
+struct ListNode {
+    int data;
+    ListNode* next;
+};
+ 
+struct CompareNode {
+    bool operator()(const ListNode* a, const ListNode* b) {
+        return a->data > b->data;
+    }
+};
+ 
+ListNode* createNode(int data) {
+    ListNode* newNode = new ListNode;
+    newNode->data = data;
+    newNode->next = nullptr;
+    return newNode;
+}
+ 
+void push(ListNode** head, int data) {
+    if (*head == nullptr) {
+        *head = createNode(data);
+    } else {
+        ListNode* newNode = createNode(data);
+        newNode->next = *head;
+        *head = newNode;
+    }
+}
+ 
+void printList(ListNode* head) {
+    while (head != nullptr) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+}
+ 
+ListNode* mergeLists(vector<ListNode*>& lists) {
+    ListNode* dummy = createNode(0);
+    ListNode* tail = dummy;
+ 
+    priority_queue<ListNode*, vector<ListNode*>, CompareNode> minHeap;
+ 
+    for (ListNode* list : lists) {
+        if (list != nullptr) {
+            minHeap.push(list);
+        }
+    }
+ 
+    while (!minHeap.empty()) {
+        ListNode* node = minHeap.top();
+        minHeap.pop();
+ 
+        tail->next = node;
+        tail = tail->next;
+ 
+        if (node->next != nullptr) {
+            minHeap.push(node->next);
+        }
+    }
+ 
+    return dummy->next;
+}
+ 
+void externalSort(ListNode* array[], int N) {
+    vector<ListNode*> lists(array, array + N);
+    ListNode* sortedList = mergeLists(lists);
+    printList(sortedList);
+}
+ 
+int main() {
+    int N = 3; // Number of machines
+ 
+    ListNode* array[N];
+ 
+    array[0] = nullptr;
+    push(&array[0], 50);
+    push(&array[0], 40);
+    push(&array[0], 30);
+ 
+    array[1] = nullptr;
+    push(&array[1], 45);
+    push(&array[1], 35);
+ 
+    array[2] = nullptr;
+    push(&array[2], 100);
+    push(&array[2], 80);
+    push(&array[2], 70);
+    push(&array[2], 60);
+    push(&array[2], 10);
+ 
+    externalSort(array, N);
+ 
+    return 0;
+}
