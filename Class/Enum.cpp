@@ -44,3 +44,47 @@ int main(){
     
     nextbin w; w = z; cout << w;
 }
+//Enums are user-defined types that consist of named integral constants.
+#include <iostream>
+using namespace std;
+enum Gender { male,female,Male, Female, Other };
+int main() {
+    string s;
+    cout<<"Enter gender: ";
+    cin >> s;
+    //creating a gender type variable.
+    Gender gender;
+    if (s == "Male" || s =="male") {
+        gender = Male;
+    } else if (s == "Female" || s=="female") {
+        gender = Female;
+    } else {
+        gender = Other;
+    }
+    switch (gender) {
+    case Male:
+        cout << "Gender is Male";
+        break;
+    case Female:
+        cout << "Gender is Female";
+        break;
+    case Other:
+        cout << "Gender is Other";
+        break;
+    default:
+        cout << "Value can be Male, Female, or Other";
+    }
+    return 0;
+}
+#include <bits/stdc++.h>
+using namespace std;
+// Defining enum Year
+enum year {Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
+};
+int main()
+{
+    int i;
+    for (i = Jan; i <= Dec; i++)
+        cout << i << " ";
+    return 0;
+}
