@@ -49,3 +49,25 @@ void decreasesize(stack <int> st) {
         }
     }
 }
+// conversion
+int func(char ch) {
+    if(ch == '+' || ch == '-') return 0;
+    return 1;
+}
+void conversion(string str, stack <char> st) {
+    string res = " ";
+    for(int i = 0; i < str.size(); i++) {
+        char ch = str[i];
+        if(ch >= 'a' && ch <= 'z') res += ch;
+        else {
+            while(st.size() && func(st.top()) >= func(ch)) {
+                res += st.top(); st.pop();
+            }
+            st.push(ch);
+        }
+    }
+    while(st.size()) {
+        res += st.top(); st.pop();
+    }
+    cout << res << endl;
+}
