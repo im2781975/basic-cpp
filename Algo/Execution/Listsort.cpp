@@ -115,30 +115,75 @@ int main() {
     push(&array[2], 80);
     externalSort(array, 3);
 }
-void pair(int n) {
-    vector <pair <pair <string, string>, int >> pr;
-    for(int i = 0; i < n; i++) {
-        string first, last; int age;
-        cin >> first >> last >> age;
-        pr.push_back({{first, last}, age});
+// reverse a string using stack
+using namespace std;
+string rev(string str) {
+    stack <char> st;
+    for(char c : str) st.push(c);
+    string result;
+    while (!st.empty()) {
+    result += st.top(); st.pop();
     }
-    for(int i = 0; i < n; i++) 
-        cout << pr[i].first.first << " " << pr[i].first.second << " " << pr[i].second << endl;
-    
-    pair <string, double> Q("abcdef", 1.23);
-    pair <string, double> R;
-    R = make_pair("Abcdefg", 4.56);
-    cout << Q.first + R.first << " " << Q.second + R.second << endl;
-    swap(Q, R);
-    
-    pair <int, int> qr = {1, 3};
-    int a, b; tie(a, b) = qr;
-    // int a, b; tie(a, ignore) = qr;
-    cout << a << " " << b << endl;
-    
-    pair <int, pair <int, char>> rs = {3, {4, 'a'}};
-    int x, y; char z;
-    tie(x, ignore) = rs
-    tie(y, z) = rs.second;
-    cout << x << " " << y << " " << z << endl;
+    return result;
+}
+void stacksort(stack <int> st) {
+    stack <int> tmp;
+    while(!st.empty()) {
+        int x = st.top(); st.pop();
+        while(!tmp.empty() && tmp.top() > x) {
+            st.push(tmp.top()); tmp.pop();
+        }
+        st.push(x);
+    }
+    while(!tmp.empty()) {
+        st.push(tmp.top()); tmp.pop();
+    }
+}
+void stackreverse(stack <int> st) {
+    stack <int> tmp;
+    while(!st.empty()) {
+        int x = st.top(); st.pop(); tmp.push(x);
+    }
+    while(!tmp.empty()) {
+        int x = tmp.top(); tmp.pop(); st.push(x);
+    }
+}
+void decreasesize(stack <int> st) {
+    int cap = st.size(), sz = 0;
+    stack <int> tmp;
+    while(!st.empty()) {
+        tmp.push(st.top()); st.pop(); sz++;
+    }
+    if(sz < cap / 2) {
+        int newcap = cap / 2;
+        stack <int> newst;
+        while(!tmp.empty() && newst.size() < newcap) {
+            newst.push(tmp.top()); tmp.pop();
+        }
+        while(!newst.empty()) {
+            st.push(newst.top()); newst.pop();
+        }
+    }
+}
+// conversion
+int func(char ch) {
+    if(ch == '+' || ch == '-') return 0;
+    return 1;
+}
+void conversion(string str, stack <char> st) {
+    string res = " ";
+    for(int i = 0; i < str.size(); i++) {
+        char ch = str[i];
+        if(ch >= 'a' && ch <= 'z') res += ch;
+        else {
+            while(st.size() && func(st.top()) >= func(ch)) {
+                res += st.top(); st.pop();
+            }
+            st.push(ch);
+        }
+    }
+    while(st.size()) {
+        res += st.top(); st.pop();
+    }
+    cout << res << endl;
 }
