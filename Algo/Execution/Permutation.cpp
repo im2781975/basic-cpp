@@ -77,3 +77,55 @@ int main() {
         cout << endl;
     }
 }
+#include<bits/stdc++.h>
+using namespace std;
+int digsum(int n) {
+    if(n < 10) return n;
+    else return (n % 10 + digsum(n / 10));
+}
+int power(int n, int m) {
+    if(m == 0) return 1;
+    return n * power(n, m - 1);
+}
+// Least Common Subsequence
+void LCS() {
+    string str, ing; cin >> str >> ing;
+    int n = str.size(), m = ing.size();
+    vector <vector <int>> dp(n + 1, vector <int>(n + 1, 0));
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= m; j++) {
+            if(str[i - 1] == ing[j - 1])
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            else {
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }/*
+    for(int i = n - 1; i >= 0; i--) {
+        for(int j = m - 1; j >= 0; j--) {
+            if(str[i] == ing[j]) 
+                dp[i][j] = 1 + dp[i + 1][j + 1];
+            else 
+                dp[i][j] = max(dp[i + 1][j], dp[i][j + 1]);
+        }
+    }
+    cout << dp[0][0]; */
+    cout << dp[n][m];
+}
+int LCS(int i, int j) {
+    if(i == n || j == m) return 0;
+    if(dp[i][j] != -1) return dp[i][j];
+    if(str[i] == ing[j]) {
+        int res = 1 + LCS(i + 1, j + 1);
+        dp[i][j] = res; return res;
+    }
+    int res = max(LCS(i + 1, j), LCS(i, j + 1));
+    dp[i][j] = res; return res;
+}
+// reverse string
+string rev(string str) {
+    if(str.empty()) return "";
+    char ch = str[0];
+    string res = str.substr(1);
+    return rev(res) + ch;
+}
