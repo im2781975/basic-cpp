@@ -36,6 +36,50 @@ void Dfs(int u, vector <bool> &vis) {
         if (!vis[v]) dfs(v, vis);
     }
 }
+vector <bool> isAp;
+vector <int> vis, low; int timer;
+//low -> smallest vis time reachable from the subtree rooted at each vertex.
+void util(vector <vector <int>>adj, int u, int parent) {
+    int child = 0;
+    vis[u] = low[u] = timer++;
+    for(auto v : adj[u]) {
+        if(vis[v] == -1) {
+            child++; util(adj, v, u);
+            low[u] = min(low[u], low[v]);
+            if(parent == -1 && child > 1) isAp[u] = true;
+            if(parent != -1 && low[v] >= vis[u]) isAp[u] = true;
+        }
+        else if(v != parent) low[u] = min(low[u], vis[v]);
+    }
+}
+void findAp(vector <vector <int>> adj, int node) {
+    vis.assign(node, -1); low.assign(node, -1);
+    isAp(node, false); timer = 0;
+    for(int i = 0; i < node; i++) {
+        if(vis[i] == -1) util(adj, i, -1);
+    }
+    for(int i = 0; i < node; i++) {
+        if(isAp[i]) cout << i << " ";
+        cout << endl;
+    }
+}
+void DFS(vector <int> adj[], vector <int> vis[], int cur) {
+    vis[cur] = 1;
+    for(int v : adj[cur]) {
+        if(!vis[v]) DFS(adj, vis, v);
+    }
+}
+void artpoint(vector <int> adj[], int n) {
+    for(int i = 1; i <= n; i++) {
+        int unit = 0; vector <int> vis(n + 1, 0);
+        for(int j = 1; j <= n; j++) {
+            if(j != i && !vis[j]) {
+                unit++; DFS(adj, vis, j);
+            }
+        }
+        if(unit > 1) cout << i << " ";
+    }
+}
 int main(){
     int n = 6;
     vector <vector <int>> adj(n, vector <int>(n, 0));
@@ -50,6 +94,7 @@ int main(){
     Dfs(1, vis);
     if(vis[2] && vis[6]) cout << "connected";
     else cout << "not connected";
+    artpoint(adj, n);
 }
 
 
