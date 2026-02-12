@@ -1,3 +1,80 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to find the height sizeof
+// the current component with vertex s
+int height(int s, vector<int> adj[],
+           int* visited)
+{
+    // Visit the current Node
+    visited[s] = 1;
+    int h = 0;
+
+    // Call DFS recursively to find the
+    // maximum height of current CC
+    for (auto& child : adj[s]) {
+
+        // If the node is not visited
+        // then the height recursively
+        // for next element
+        if (visited[child] == 0) {
+            h = max(h, 1 + height(child, adj,
+                                  visited));
+        }
+    }
+    return h;
+}
+
+// Function to find the minimum Groups
+int minimumGroups(vector<int> adj[], int N)
+{
+    // Initialise with visited array
+    int visited[N + 1] = { 0 };
+
+    // To find the minimum groups
+    int groups = INT_MIN;
+
+    // Traverse all the non visited Node
+    // and calculate the height of the
+    // tree with current node as a head
+    for (int i = 1; i <= N; i++) {
+
+        // If the current is not visited
+        // therefore, we get another CC
+        if (visited[i] == 0) {
+            int comHeight;
+            comHeight = height(i, adj, visited);
+            groups = max(groups, comHeight);
+        }
+    }
+
+    // Return the minimum bipartite matching
+    return groups;
+}
+
+// Function that adds the current edges
+// in the given graph
+void addEdge(vector<int> adj[], int u, int v)
+{
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+
+// Drivers Code
+int main()
+{
+    int N = 5;
+
+    // Adjacency List
+    vector<int> adj[N + 1];
+
+    // Adding edges to List
+    addEdge(adj, 1, 2);
+    addEdge(adj, 3, 2);
+    addEdge(adj, 4, 3);
+
+    cout << minimumGroups(adj, N);
+}
 //Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
