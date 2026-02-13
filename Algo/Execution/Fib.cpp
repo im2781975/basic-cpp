@@ -12,6 +12,14 @@ void fib(int n) {
     for(int i = 3; i <= n; i++) dp[i] = dp[i - 1] + dp[i - 2];
     cout << dp[n]; */
 }
+int fib(int n) {
+    if(n <= 1) return n;
+    vector <int> dp(n + 1);
+    dp[0] = 0; dp[1] = 1;
+    for(int i = 2; i <= n; i++)
+        dp[i] = dp[i - 1] + dp[i - 2];
+    return dp[n];
+}
 // frog can jump on stone i..i+2..i+k.here |hi-hj| will be incurred where j is 
 // the stone where landed.find min possible total cost reaching nth stone.
 int height[101];
