@@ -111,6 +111,11 @@ void LCS() {
     }
     cout << dp[0][0]; */
     cout << dp[n][m];
+    /*
+	// minimum number of steps required to make word1 and word2 the same
+	int lcs = dp[n][m];
+	int minsteps = n + m - 2 * lcs;
+	return minsteps; */
 }
 int LCS(int i, int j) {
     if(i == n || j == m) return 0;
@@ -142,6 +147,7 @@ string LCS() {
             }
         }
     }
+    
     string res;
     for(int i = n, j = m; i && j;) {
         if(str[--i] == ing[--j]) res.push_back(str[i]);
