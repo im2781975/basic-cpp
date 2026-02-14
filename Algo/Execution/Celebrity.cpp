@@ -131,6 +131,8 @@ int celebrity(vector <vector <int>> grid) {
     }
     return cand;
 }
+// Find celebrity in party: person known by everyone else 
+//but knows no one (given adjacency matrix M where M[i][j]=1 means i knows j).
 bool grid[8][8]{ {0, 0, 1, 0}, {0, 0, 1, 0}, {0, 0, 0, 0}, {0, 0, 1, 0}};
 bool knows(int a, int b) {return grid[a][b];}
 int celebrity(int n) {
