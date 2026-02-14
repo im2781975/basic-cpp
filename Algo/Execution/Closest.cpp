@@ -158,3 +158,80 @@ void findClosestTriplet(int A[], int B[], int C[], int p, int q, int r) {
     }
     cout << resA << " " << resB << " " << resC << endl;
 }
+#include<bits/stdc++.h>
+using namespace std;
+// count one's in a boolean array
+int cntOnes(bool arr[], int low, int high) {
+    if(high >= low) {
+        int mid = low + (high - low) >> 1;
+        if ((mid == high || arr[mid + 1] == 0) && (arr[mid] == 1))
+            return mid + 1;
+        if (arr[mid] == 1)
+            return cntOnes(arr, mid + 1, high);
+        return cntOnes(arr, low, mid - 1);
+    }
+    return 0;
+}
+int countOnes(bool arr[], int n) {
+    /* auto ptr = upper_bound(arr, arr + n, 1, greater <int> ());
+    cout << (ptr - arr); */
+    int low = 0, high = n - 1, res;
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (arr[mid] < 1) high = mid - 1;
+        else if (arr[mid] > 1) low = mid + 1;
+        else {
+            if (mid == n - 1 || arr[mid + 1] != 1) return mid + 1;
+            else low = mid + 1;
+        }
+    }
+}
+// count walks from u to v with exactly k edges
+#define nd 4
+int countwalks(int graph[][nd], int u, int v, int k) {
+    int count[nd][nd][k + 1];
+    for (int e = 0; e <= k; e++) {
+        for (int i = 0; i < nd; i++) {
+            for (int j = 0; j < nd; j++) {
+                count[i][j][e] = 0;
+                if (e == 0 && i == j) count[i][j][e] = 1;
+                if (e == 1 && graph[i][j])
+                    count[i][j][e] = 1;
+                if (e > 1) {
+                    for (int a = 0; a < nd; a++)
+                        if (graph[i][a])
+                            count[i][j][e] += count[a][j][e - 1];
+                }
+            }
+        }
+    }
+    return count[u][v][k];
+}
+int countwalks(int graph[][V], int u, int v, int k)
+{
+    // Base cases
+    if (k == 0 && u == v)
+        return 1;
+    if (k == 1 && graph[u][v])
+        return 1;
+    if (k <= 0)
+        return 0;
+    // Initialize result
+    int count = 0;
+    // Go to all adjacents of u and recur
+    for (int i = 0; i < V; i++)
+        if (graph[u][i] == 1) 
+        // Check if is adjacent of u
+            count += countwalks(graph, i, v, k - 1);
+    return count;
+}
+int cntwalks(int graph[][nd], int u, int v, int k) {
+    if(k == 0 && u == v) return 1;
+    if(k == 1 && graph[u][v]) return 1;
+    if(k <= 0) return 0;
+    int cnt = 0;
+    for(int i = 0; i < nd; i++) {
+        if(graph[u][i] == 1) cnt += cntwalks(graph, i, v, k - 1);
+    }
+    return cnt;
+}
