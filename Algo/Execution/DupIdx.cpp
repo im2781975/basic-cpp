@@ -136,6 +136,63 @@ void printMissing(int *arr, int n) {
     }
     cout << dup << " " << miss << endl;
 }
+void findMissing(int *arr, int n) {
+    for(int i = 0; i < n; i++) {
+        if(abs(arr[i]) - 1 == n) continue;
+        int idx = abs(arr[i]) - 1;
+        arr[idx] *= -1;
+    }
+    int res = n + 1;
+    for(int i = 0; i < n; i++) {
+        if(arr[i] > 0) res = i + 1;
+    }
+    cout << res;
+}
+int findMissing(int *arr, int n) {
+    int i = 0;
+    while(i < n) {
+        int idx = arr[i] - 1;
+        if(arr[i] < n && arr[i] != arr[idx])
+            swap(arr[i], arr[idx]);
+        else i++;
+    }
+    for(int i = 0; i < n; i++) {
+        if(i != arr[i] - 1) return i + 1;
+    }
+    return n;
+}
+void findMissing(int arr[], int n) {
+    int tmp[n + 1];
+    for(int i = 0; i <= n; i++) tmp[i] == 0;
+    for(int i = 0; i < n; i++) tmp[arr[i] - 1] = 1;
+    int res;
+    for(int i = 0; i <= n; i++) {
+        if(tmp[i] == 0) res = i + 1;
+    }
+    cout << res;
+}
+int getMissingNo(int a[], int n) {
+    int N = n + 1;
+    int total = (N) * (N + 1) / 2;
+    for (int i = 0; i < n; i++)
+        total -= a[i];
+    return total;
+}
+int Missing(int a[], int n){
+    int res = 1;
+    for(int i = 2; i < n + 1; i++) {
+        res += i; res -= a[i - 2];
+    }
+    return res;
+}
+int Missing(int a[], int n){
+    int x1 = a[0], x2 = 1;
+    for (int i = 1; i < n; i++)
+        x1 = x1 ^ a[i];
+    for (int i = 2; i <= n + 1; i++)
+        x2 = x2 ^ i;
+    return (x1 ^ x2);
+}
 // find duplicate parenthesis in a balanced expression
 bool dupparenthesis(string str) {
     // string str = "(((a+(b))+(c+d)))";
