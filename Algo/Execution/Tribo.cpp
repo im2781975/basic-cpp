@@ -112,3 +112,181 @@ void test(string expr, int idx){
     }
     cout << expr << " " << idx << endl;
 }
+#include <bits/stdc++.h>
+using namespace std;
+// find maximum of all minimums of windows of different sizes
+void printMaxOfMin(int arr[], int n) {
+    for (int k = 1; k <= n; k++) {
+        int maxOfMin = INT_MIN;
+        deque<int> dq; 
+    
+        for (int i = 0; i < k; i++) {
+            while (!dq.empty() && arr[dq.back()] >= arr[i])
+                dq.pop_back();
+            dq.push_back(i);
+        }
+        maxOfMin = arr[dq.front()];
+        for (int i = k; i < n; i++) {
+            if (!dq.empty() && dq.front() <= i - k)
+                dq.pop_front();
+            while (!dq.empty() && arr[dq.back()] >= arr[i])
+                dq.pop_back();
+            dq.push_back(i);
+            
+            maxOfMin = max(maxOfMin, arr[dq.front()]);
+        }
+        cout << maxOfMin << " ";
+    }
+    cout << endl;
+}
+void printMaxOfMin(int *arr, int n) {
+    vector <int> left(n), right(n);
+    stack <int> st;
+    for(int i = 0; i < n; i++) {
+        while(!st.empty() && arr[st.top()] >= arr[i]) st.pop();
+        left[i] = st.empty() ? -1 : st.top();
+        st.push(i);
+    }
+    while(!st.empty()) st.pop();
+    for(int i = n - 1; i >= 0; i--) {
+        while(!st.empty() && arr[st.top()] >= arr[i]) st.pop();
+        right[i] = st.empty() ? n : st.top();
+        st.push(i);
+    }
+    vector <int> res(n + 1, 0);
+    for(int i = 0; i < n; i++) {
+        int windwlen = right[i] - left[i] - 1;
+        res[windwlen] = max(res[windwlen], arr[i]);
+    }
+    for(int i = n - 1; i >= 1; i--)
+        res[i] = max(res[i], res[i + 1]);
+    for(int i = 1; i <= n; i++) cout << res[i] << " ";
+}
+// Function to get index of floor of x in arr[] 
+int searchfloor(int *arr, int low, int high, int val) {
+    if(low > high) return -1;
+    if (x >= arr[high]) return high;
+    int mid = (low + high) >> 1;
+    if(arr[mid] == val) return mid;
+    if (mid > 0 && arr[mid - 1] <= val && val < arr[mid])
+        return mid - 1;
+    if (val < arr[mid])
+        return searchfloor(arr, low, mid - 1, val);
+    return searchfloor(arr, mid + 1, high, val);
+} 
+int searchfloor(int arr[], int n, int val) {
+    if (val >= arr[n - 1]) return n - 1;
+    if (val < arr[0]) return -1;
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > val) return (i - 1);
+    }
+    return -1;
+}
+void generateBinary(int n) {
+    queue <string> q; q.push("1");
+    while(n--) {
+        string str = q.front(); q.pop();
+        cout << str << endl;
+        string ing = str;
+        q.push(str.append("0"));
+        q.push(ing.append("1"));
+    }
+}
+void generateBinary(int n) {
+    for(int i = 1; i <= n; i++) {
+        string str = ""; int tmp = i;
+        if(tmp == 0) {
+            cout << "0" << endl; continue;
+        }
+        while(tmp > 0) {
+            if(tmp & 1) str = "1" + str;
+            else str = "0" + str;
+            tmp = tmp >> 1;
+        }
+        cout << str << " ";
+        // cout << bitset<4>(i) << endl;
+    }
+}
+// Find Intersection of three pointer
+int findCommon(int *ar1, int *ar2, int *ar3, int n, int m, int l) {
+    int i = 0, j = 0, k = 0;
+    while(i < n && j < m && k < l) {
+        if (ar1[i] == ar2[j] && ar2[j] == ar3[k]) {
+            cout << ar1[i] << " ";
+            i++; j++; k++;
+        }
+        else if(ar1[i] < ar2[j]) i++;
+        else if(ar2[j] < ar3[k]) j++;
+        else k++;
+    }
+}
+void findCommon(vector<int>& ar1, vector<int>& ar2, vector<int>& ar3) {
+    unordered_set<int> s1(ar1.begin(), ar1.end());
+    unordered_set<int> s2(ar2.begin(), ar2.end());
+    for(int x : ar3) {
+        if(s1.count(x) && s2.count(x)) {
+            cout << x << " ";
+        }
+    }
+    cout << endl;
+}
+bool issortable(int *arr, int n) {
+    stack <int> st;
+    int expect = 1;
+    for(int i = 0; i < n; i++) {
+        st.push(arr[i]);
+        while(!st.empty() && st.top() == expect) {
+            st.pop(); except++;
+        }
+    }
+    return st.empty();
+}
+
+char rod[] = {'S', 'A', 'D'};
+vector <stack <int>> st(3);
+void moveDisk(int a, int b) {
+    if(st[b].empty() || (!st[a].empty() && st[a].top() < st[b].top())) {
+        cout << st[a].top() << " " << rod[a] << " " << rod[b] << endl;
+        st[b].push(st[a].top());
+        st[a].pop();
+    }
+    else moveDisk(b, a);
+}
+// HaNoi Tower
+void Hanoi(int n) {
+    int src = 0, mid = 1, dst = 2;
+    for(int i = n; i > 0; i++)
+        st[src].push(i);
+    int totalmov = (1 << n) - 1;
+    if (n % 2 == 0) swap(mid, dst);
+    for (int i = 1; i <= totalmov; i++) {
+        if (i % 3 == 0) moveDisk(mid, dst);
+        else if (i % 3 == 1) moveDisk(src, dst);
+        else moveDisk(src, mid);
+    }
+}
+stack<int> S, A, D;  // Source, Aux, Destination
+void move(stack<int>& from, stack<int>& to, char fromRod, char toRod) {
+    if (from.empty()) return;
+    int disk = from.top();
+    if (to.empty() || disk < to.top()) {
+        cout << "Move disk " << disk << " from " << fromRod << " to " << toRod << '
+';
+        to.push(disk);
+        from.pop();
+    }
+}
+void towerOfHanoi(int n) {
+    cout << n << " disks:
+";
+    for (int i = n; i >= 1; --i) S.push(i);
+    
+    int moves = (1 << n) - 1;
+    
+    for (int i = 1; i <= moves; ++i) {
+        if (i % 3 == 1)        move(S, D, 'S', 'D');
+        else if (i % 3 == 2)   move(S, A, 'S', 'A');
+        else                    move(A, D, 'A', 'D');
+    }
+}
+
