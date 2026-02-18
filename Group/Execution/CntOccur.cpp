@@ -206,3 +206,21 @@ int cntsubset(int *arr, int n) {
     }
     return cnt;
 }
+// demonstrate Difference Array
+vector <int> Diff(vectir <int> vec) {
+    int n = vec.size();
+    vector <int> res(n + 1);
+    res[0] = vec[0]; res[n] = vec[n];
+    for(int i = 1; i < n; i++) res[i] = vec[i] - vec[i - 1];
+    return res;
+}
+void update(vector <int> vec, int l, int r, int val) {
+    vec[l] += val; vec[r + 1] -= val;
+}
+void print(vector <int> vec, vector <int> res) {
+    for(int i = 0; i < vec.size(); i++) {
+        if(i == 0) vec[i] = res[i];
+        else vec[i] = res[i] + vec[i - 1];
+        cout << vec[i] << " ";
+    }
+}
