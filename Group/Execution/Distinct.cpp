@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-using namespace std; /*
+using namespace std; 
 vector <int> distinct(vector <int> vec) {
     vector <int> unq, dup;
     for(int i = 0; i < vec.size(); i++) {
@@ -7,7 +7,7 @@ vector <int> distinct(vector <int> vec) {
         else dup.push_back(vec[i]);
     }
     return unq;
-} */
+} 
 void distinct(int *arr, int n) {
     for(int i = 0; i < n; i++) {
         int j;
