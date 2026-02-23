@@ -15,3 +15,16 @@ void Build(int *arr, int n, int val) {
     partial_sum(arr, arr + n, ray); print(ray, n);
     partial_sum(arr, arr + n, ray, prd); print(ray, n);
 }
+void opr() {
+    vector <int> vec = {1, 2, 3};
+    vector <int> ::iterator it;
+    for(it = vec.begin(); it != vec.end(); ++it) {
+        if(it == vec.begin()) it = vec. insert(it, 5);
+        if(it == vec.begin() + 1) it = vec. erase(it);
+    }
+    for (int i = 0; i < 10; i++) vec.push_back(i);
+    vec.insert(vec.begin() + 1, 100);
+    vec.erase(vec.begin() + 2);
+    for (int i = 0; i < vec.size(); i++) cout << vec[i] << " ";
+    cout << endl;
+}
