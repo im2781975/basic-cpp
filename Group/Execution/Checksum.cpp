@@ -141,4 +141,31 @@ int invcnt(vector <int> arr, int l, int r) {
     inv += marged(arr, l, mid, r);
     return inv;
 } 
-
+void reorder(int *arr, int *idx, int n) {
+    vector <pair <int, int>> vec(n);
+    for(int i = 0; i < n; i++) {
+        vec[i].first = arr[i];
+        vec[i].second = idx[i];
+    }
+    sort(vec.begin(), vec.end(), cmp);
+    for(int i = 0; i < n; i++) arr[i] = vec[i].first;
+}
+void reorder(int *arr, int *idx, int n) {
+    for(int i = 0; i < n; i++) {
+        while(idx[i] != i) {
+            int dig = idx[idx[i]];
+            char ch = arr[idx[i]];
+            idx[idx[i]] = idx[i];
+            arr[idx[i]] = arr[i];
+            idx[i] = dig;
+            arr[i] = ch;
+        }
+    }
+}
+void reorder(int *arr, int *idx, int n) {
+    int tmp[n];
+    for(int i = 0; i < n; i++) tmp[idx[i]] = arr[i];
+    for(int i = 0; i < n; i++) {
+        arr[i] = tmp[i]; idx[i] = i;
+    }
+}
