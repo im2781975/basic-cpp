@@ -141,6 +141,10 @@ int invcnt(vector <int> arr, int l, int r) {
     inv += marged(arr, l, mid, r);
     return inv;
 } 
+bool cmp(pair <int, int> x, pair <int, int> y) {
+    if(x.first != y.first) return x.first > y.first;
+    return x.second < y.second;
+}
 void reorder(int *arr, int *idx, int n) {
     vector <pair <int, int>> vec(n);
     for(int i = 0; i < n; i++) {
