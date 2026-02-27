@@ -40,3 +40,13 @@ void cntzero(int *arr, int n, int q) {
     }
     cout << cnt;
 }
+void pair() {
+    vector <pair <int, int>> vpr;
+    int arr[]{10, 20, 5, 40};
+    int ray[]{30, 60, 20, 50};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    for(int i = 0; i < n; i++)
+        vec.push_back(make_pair(arr[i], ray[i]));
+    for(int i = 0; i < n; i++)
+        cout << vec[i].first << " " << vec[i].second << endl;
+}
