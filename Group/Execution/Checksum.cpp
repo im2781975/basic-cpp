@@ -173,8 +173,6 @@ void reorder(int *arr, int *idx, int n) {
         arr[i] = tmp[i]; idx[i] = i;
     }
 }
-#include <bits/stdc++.h>
-using namespace std;
 // redundant parentheses from algebraic expressions by tracking sign propagation through nested parentheses using a stack.
 string simplify(string str) {
     int len = str.length();
