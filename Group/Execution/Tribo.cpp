@@ -268,3 +268,33 @@ bool Ispartitionable(vector <int> nums) {
     }
     return dp[mid];
 }
+// working of Square Root Decomposition.
+#define x 10000
+#define size 100
+int arr[x], block[size], sz;
+void update(int idx, int val) {
+    int blknum = idx / sz;
+    block[blknum] += val - arr[idx];
+    arr[idx] = val;
+}
+int query(int l, int r) {
+    int sum = 0;
+    while(l < r && l % sz != 0 && l != 0) {
+        sum += arr[l]; l++;
+    }
+    while(l + sz - 1 <= r) {
+        sum += block[l / sz]; l += sz;
+    }
+    while(l <= r) {
+        sum += arr[l]; l++;
+    }
+    return sum;
+}
+void process(int *tmp, int n) {
+    int idx = -1; sz = sqrt(n);
+    for(int i = 0; i < n; i++) {
+        arr[i] = tmp[i];
+        if(i % sz == 0) idx++;
+        block[idx] += arr[i];
+    }
+}
