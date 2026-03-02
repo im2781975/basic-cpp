@@ -494,3 +494,19 @@ void Build(vector <int> vect, vector <int> vec) {
     //merge(vect.begin(),vect.end(),vec.begin(),vec.end(),great());
     merge(vect.rbegin(),vect.rend(),vec.rbegin(),vec.rend(),back_inserter(root),great());
 }
+void print(vector <int> vec) {
+    for_each(vec.begin(), vec.end(), [](int i){ cout << i << " ";});
+}
+void foreach(vector <int> vec, int *arr, int n) {
+    auto it = find_if(vec.begin(), vec.end(), [](int i){ return i > 5;});
+    int cnt = count_if(vec.begin(), vec.end(), [](int i){ return i >= 5;});
+    cout << *it << " " << cnt << endl;
+    sort(vec.begin(), vec.end(), [](const int &a, const int &b) ->bool { return a > b;});
+    print(vec);
+    it = unique(vec.begin(), vec.end(), [](int a, int b){ return a == b;});
+    print(vec);
+    int sum = accumulate(arr, arr + n, 1, [](int i, int j){ return i * j;});
+    cout << sum;
+    auto sqr = [](int i) {return i * i;};
+    cout << sqr(7);
+}
