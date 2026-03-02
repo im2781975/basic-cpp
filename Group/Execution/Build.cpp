@@ -223,10 +223,15 @@ void unq() {
     cout << s << " " << string(s.begin(), xt) << " " << s << endl;
 }
 bool pred(int i, int j){ return( i == j);}
+struct Odd {
+    bool operator()(const int i) const { return (i % 2 == 0); }
+};
 void valremove(vector <int> vec) {
     vector <char> charvec;
     for(int i = 0; i < 7; i++) charvec.push_back('A' + i);
     replace_copy(charvec.begin(), charvec.begin() + 1, charvec.begin(), 'A', 'Z');
+    auto end = remove_if(vec.begin(), vec.end(), Odd());
+    vec.resize(distance(vec.begin(), end));
     vector <int> tmp(10);
     vector <int> ::iterator it;
     it = remove(vec.begin(), vec.end(), 20);
