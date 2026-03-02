@@ -65,3 +65,14 @@ int main(){
     cout << **pr << " " << **(pr + 1) << **(pr + 2) << endl;
     cout << pr[0][0] << " " << pr[1][1] << " " << pr[2][2] << endl;
 }
+
+int x = 10;
+    int y = 20;
+    typedef int* iPtr;
+  
+    iPtr pointer_to_a = &x;
+    iPtr pointer_to_b = &y;
+  
+    cout << "x is: " << *pointer_to_a << "\n";
+    cout << "y is: " << *pointer_to_b << "\n";
+  
