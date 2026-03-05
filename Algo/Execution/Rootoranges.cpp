@@ -199,3 +199,29 @@ int maxlakesize(vector <vector <int> &grid) {
     }
     return maxsz;
 }
+// Given n nodes. directed edges times[i] = {u, v, w}, return min time for signal from k to reach ALL nodes, or -1 if impossible
+int delayTime(vector <vector <int>> &time, int n, int k) {
+    vector <int> dist(n + 1, INT_MAX);
+    dist[k] = 0;
+    // Relax all edges |V|-1 times
+    for(int it = 0; it < n - 1; it++) {
+        for(auto &edg : time) {
+            int u = edg[0], v = edg[1], w = edg[2];
+            if(dist[u] != INT_MAX && dist[u] + w < dist[v]) dist[v] = dist[u] + w;
+        }
+    } /*
+    vector <int> dist(n + 1, -1);
+    queue <int> q; dist[k] = 0;
+    q.push(k);
+    while(!q.empty()) {
+        int u = q.front(); q.pop();
+        for(auto &edg : time) {
+            if(edg[0] == u && dist[edg[1]] == -1) {
+                dist[edg[1]] = dist[u] + edg[2];
+                q.push(edg[1]);
+            }
+        }
+    } */
+    int res = *max_element(dist.begin() + 1, dist.end());
+    return res == INT_MAX ? -1 : ans;
+}
