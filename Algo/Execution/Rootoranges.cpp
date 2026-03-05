@@ -183,3 +183,19 @@ int maxlakesize(vector <vector <int>> grid) {
     }
     return maxsz;
 }
+int maxlakesize(vector <vector <int> &grid) {
+    int n = grid.size(), m = grid[0].size();
+    vector <vector <bool>> vis(n, vector <bool> (m, false));
+    int maxsz = 0;
+    function <int(int, int)> dfs = [&](int i, int j) -> int {
+        if (i < 0 || i >= n || j < 0 || j >= m || grid[i][j] == 0 || vis[i][j]) return 0;
+        vis[i][j] = true;
+        return grid[i][j] + dfs(i - 1,j) + dfs(i + 1,j) + dfs(i,j - 1) + dfs(i,j + 1);
+    };
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            if(!vis[i][j] && grid[i][j] > 0) maxsz = max(maxsz, dfs(i, j));
+        }
+    }
+    return maxsz;
+}
