@@ -158,3 +158,28 @@ int rotoranges(vector <vector <int>> &grid) {
     }
     return time;
 }
+//Find largest connected water volume (4- dir) in grid where > 0 cells form lakes
+void dfs(vector <vector <int>> &grid, vector <vector <bool>> &vis, int x, int y, int &curvlm) {
+    
+    vis[x][y] = true; curvlm += grid[x][y];
+    int dx[] = {1, -1, 0, 0}; int dy[] = {0, 0, 1, -1};
+    for(int i = 0; i < 4; i++) {
+        int newx = x + dx[i];
+        int newy = y + dy[i];
+        if(newx >= 0 && newx < grid.size() && newy >= 0 && newy < grid[0].size() && grid[newx][newy] > 0 && !vis[newx][newy])
+            dfs(grid, vis, newx, newy, curvlm);
+    }
+}
+int maxlakesize(vector <vector <int>> grid) {
+    int n = grid.size(), m = grid[0].size();
+    vector <vector <bool>> vis(n, vector <bool> (m, false));
+    int maxsz = 0;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            int curvlm = 0;
+            dfs(grid, vis, i, j, curvlm);
+            maxsz = max(maxsz, curvlm);
+        }
+    }
+    return maxsz;
+}
