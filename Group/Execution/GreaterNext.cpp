@@ -144,16 +144,6 @@ int postfix(string str) {
     if(st.size() != 1) return -1;
     return st.top();
 }
-// Function to find the cross over point (the point before which elements are 
-// smaller than or equal to x and after which greater than x)
-int findcross(int *arr, int low, int high, int x) {
-    if(arr[high] <= x) return high;
-    if(arr[low] > x) return low;
-    int mid = (low + high) / 2;
-    if(mid < high && arr[mid] <= x && arr[mid + 1] > x) return mid;
-    if(arr[mid] <= x) return findcross(arr, mid + 1, high, x);
-    else return findcross(arr, low, mid - 1, x);
-}
 // print next greater number of Q queries
 void nextGreater(int *arr, int *next, int n) { 
     // int nxt[4]; nextGreater(arr, nxt, n);
