@@ -163,6 +163,30 @@ void equilibrium(int *arr, int n) {
     }
     return res;
 }
+int findmax(int *arr, int low, int high) {
+    int maxi = arr[low];
+    for(int i = low + 1; i <= high; i++) {
+        if(arr[i] > maxi) maxi = arr[i];
+    } 
+    return maxi;
+}
+int findmin(int *arr, int n) {
+    int mini = arr[0];
+    for(int i = 1; i < n; i++) {
+        if(arr[i] < mini) mini = arr[i];
+    }
+    return mini;
+}
+int findmin(vector <int> arr, int low, int high) {
+    if(arr[low] <= arr[high]) return arr[low];
+    while(low <= high) {
+        int mid = low + (high - low) / 2;
+        if(mid - 1 >= 0 && arr[mid] < arr[mid - 1]) return mid;
+        if(arr[mid] > arr[high]) low = mid + 1;
+        else high = mid - 1;
+    }
+    return -1;
+}
 int maxsum(int *arr, int n) {
     int sum = accumulate(arr, arr + n, 0);
     int prefix = 0, res = INT_MIN;
