@@ -129,6 +129,43 @@ bool ispairsum(int *arr, int n, int trg) {
     }
     return false;
 }
+void findpair(int *arr, int n, int x) {
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            if(i == j) continue;
+            if((arr[j] - arr[i] == x)) cout << arr[i] << " " << arr[j] << endl;
+        }
+    }
+    cout << "No such pair found\n";
+}
+bool findpair(int *arr, int n, int x) {
+    unordered_map <int, int> mp;
+    for(int i = 0; i < n; i++) {
+        mp[arr[i]]++;
+        if(x == 0 && mp[arr[i]] > 1) return true;
+    }
+    if(x == 0) return false;
+    for(int i = 0; i < n; i++) {
+        if(mp.find(x + arr[i]) != mp.end()) {
+            cout << arr[i] << " " << x + arr[i] << endl;
+            return true;
+        }
+    }
+    return false;
+}
+bool findpair(int *arr, int n, int x) {
+    sort(arr, arr + n);
+    while(i < n && j < n) {
+        if(i != j && (arr[j] - arr[i] == x || arr[i] - arr[j] == x)) {
+            cout << arr[i] << " " << arr[j] << endl;
+            return true;
+        }
+        else if(arr[j] - arr[i] < x) j++;
+        else i++;
+    }
+    cout << "no such pair\n";
+    return false;
+}
 // find if there is a pair in arr with a given sum.
 int ispairsum(vector <int> arr, int n, int trg) {
     int i = 0, j = n - 1;
