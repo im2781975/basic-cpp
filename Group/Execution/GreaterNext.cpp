@@ -254,4 +254,40 @@ void nextGreater(int *arr, int n) {
         cout << arr[i] << " " << next << endl;
     }
 }
-
+void nextgreater(int *arr, int n) {
+    vector <int> res(n, -1); stack <int> st;
+    for(int i = n - 1; i >= 0; i--) {
+        while(!st.empty() && arr[st.top()] >= arr[i]) st.pop();
+        if(!st.empty()) res[i] = arr[st.top];
+        st.push(i);
+    }
+    for(int i = 0; i < n; i++) {
+        int idx = -1;
+        for(int j = i + 1; j < n; j++) {
+            if(arr[j] > arr[i]) {
+                idx = j; break;
+            }
+        }
+        if(idx != -1) res[i] = res[idx];
+    }
+    for(int x : res) cout << x << " ";
+}
+vector <int> nextlowerofnextupper(int *arr, int n) {
+    vector <int> res(n, -1), rightlower(n, -1);
+    for(int i = n - 2; i >= 0; i--) {
+        int j = i + 1;
+        while(j < n && arr[j] >= arr[i])
+            j = (rightlower[j] != -1 ? rightlower[j] : n);
+        if(j < n) rightlower[i] = j;
+    }
+    for(int i = 0; i < n; i++) {
+        for(int j = i + 1; j < n; j++) {
+            if(arr[j] > arr[i]) {
+                int idx = rightlower[j];
+                if(idx != -1) res[i] = arr[idx];
+                break;
+            }
+        }
+    }
+    return res;
+}
