@@ -1,5 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+int minKnightMoves(int knightPos[], int targetPos[], int N) {
+    vector<vector<bool>> vis(N+1, vector<bool>(N+1));
+    queue<tuple<int,int,int>> q;  // x,y,steps
+    q.push({knightPos[0], knightPos[1], 0});
+    vis[knightPos[0]][knightPos[1]] = true;
+    
+    int dx[8] = {-2,-1,1,2,2,1,-1,-2};
+    int dy[8] = {-1,-2,-2,-1,1,2,2,1};
+    
+    while (!q.empty()) {
+        auto [x, y, dist] = q.front(); q.pop();
+        if (x == targetPos[0] && y == targetPos[1]) return dist;
+        
+        for (int i = 0; i < 8; i++) {
+            int nx = x + dx[i], ny = y + dy[i];
+            if (nx >= 1 && nx <= N && ny >= 1 && ny <= N && !vis[nx][ny]) {
+                vis[nx][ny] = true;
+                q.push({nx, ny, dist + 1});
+            }
+        }
+    }
+    return -1;
+}
+#include <bits/stdc++.h>
+using namespace std;
 // find the longest distance from source to destination with at most K intermediate nodes
 int findShortestPath(
     int n, vector<vector<int> >& edges,
