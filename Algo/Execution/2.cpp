@@ -171,3 +171,30 @@ void findFirstNonRepeatingAlt() {
 ";
     }
 }
+pair<int, int> getMinMax(int arr[], int n) {
+    int mn = arr[0], mx = arr[0];
+    for (int i = 1; i < n; i += 2) {
+        if (i + 1 < n) {
+            mn = min({mn, mx, arr[i], arr[i + 1]});
+            mx = max({mx, mn, arr[i], arr[i + 1]});
+        } else mn = min(mn, arr[i]);
+    }
+    return {mn, mx};
+}
+#include <bits/stdc++.h>
+using namespace std;
+
+pair<int,int> getMinMax(int arr[], int low, int high) {
+    if (low == high) return {arr[low], arr[low]};
+    if (low + 1 == high) return {min(arr[low], arr[high]), max(arr[low], arr[high])};
+    
+    auto [lmin, lmax] = getMinMax(arr, low, mid = (low + high)/2);
+    auto [rmin, rmax] = getMinMax(arr, mid + 1, high);
+    return {min(lmin, rmin), max(lmax, rmax)};
+}
+
+int main() {
+    int arr[] = {1000, 11, 445, 1, 330, 3000};
+    auto [minv, maxv] = getMinMax(arr, 0, 5);
+    cout << "Min: " << minv << ", Max: " << maxv << endl;  // 1, 3000
+}
