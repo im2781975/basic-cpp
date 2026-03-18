@@ -187,6 +187,67 @@ class DBLL {
         }
         sz++;
     }
+	void push(int x) {
+        Node* n = new Node{x};
+        n->next = head;
+        if (head) head->prev = n;
+        head = n;
+        ++count;
+    }
+    
+    // Insert end (FIXED)
+    void append(int x) {
+        Node* n = new Node{x};
+        if (!head) {
+            head = n;
+            ++count;
+            return;
+        }
+        Node* t = head;
+        for (; t->next; t = t->next);
+        t->next = n;
+        n->prev = t;
+        ++count;
+    }
+    
+    // Insert after node
+    void insertAfter(Node* p, int x) {
+        if (!p) return;
+        Node* n = new Node{x};
+        n->next = p->next;
+        p->next = n;
+        n->prev = p;
+        if (n->next) n->next->prev = n;
+        ++count;
+    }
+    
+    // Insert before node
+    void insertBefore(Node* n, int x) {
+        if (!n) return;
+        Node* p = new Node{x};
+        p->prev = n->prev;
+        n->prev = p;
+        p->next = n;
+        if (p->prev) p->prev->next = p;
+        else head = p;
+        ++count;
+    }
+    
+    // Sorted insert (unchanged, perfect)
+    void sortedInsert(int val) {
+        Node* n = new Node{val};
+        Node *prevv = nullptr, *curr = head;
+        while (curr && curr->data < val) {
+            prevv = curr;
+            curr = curr->next;
+        }
+        n->prev = prevv;
+        n->next = curr;
+        if (prevv) prevv->next = n;
+        else head = n;
+        if (curr) curr->prev = n;
+        ++count;
+    }
     void insertmid(int val) {
         node *newnode = new node(val);
         if(sz == 0) head = tail = newnode;
