@@ -316,6 +316,20 @@ node *insertatend(node *head, int data) {
     newnode -> prv = tail; return head;
 }
 node *gethead() { return head; }
+void rotate(node *&head, int pos) {
+    if(!head || pos == 0) return;
+    node *curr = head;
+    for(int i = 0; i < pos && curr; i++) { curr = curr -> next;
+        if(!curr) return;
+    }
+    if(!curr) return;
+    node *tmp = head;
+    while(tmp -> next) tmp = tmp -> next;
+    tmp -> next = head; head -> prv = tmp;
+    if(curr -> prv) curr -> prv -> next = nullptr;
+    curr -> prv = nullptr;
+    head = curr;
+}
 // convert a given Binary tree to Doubly Linked List
 void BTtoDLL(node *root, node *&head) {
     if(root == NULL) return;
