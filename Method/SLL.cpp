@@ -275,3 +275,15 @@ class SLL {
         }
     }
 }
+node* push(node* head, int data) {
+    node* temp = new node(data);
+    
+    if (!head) {
+        temp->next = temp;  
+        return temp;
+    }
+    
+    temp->next = head->next;
+    head->next = temp;
+    return head;
+}
