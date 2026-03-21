@@ -110,7 +110,26 @@ void printlist(node *head) {
 class node {
     public:
     int data; node *next;
+	// node(int val) : data(val), next(nullptr){}
 };
+node *createlist(int *arr, int n) {
+    node *head = new node(arr[0]);
+    node *curr = head;
+    for(int i = 1; i < n; i++) {
+        curr -> next = new node(arr[i]);
+        curr = curr -> next;
+    }
+    return head;
+}
+node *deleteOnrightside(node *head) {
+    if(!head || !head -> next) return head;
+    head -> next = deleteOnrightside(head -> next);
+    if(head -> next && head -> data < head -> next -> data) {
+        node *tmp = head -> next;
+        delete head; return tmp;
+    }
+    return head;
+}
 void push(node **head, int val) {
     node *newnode = new node{val, *head};
     *head = newnode;
