@@ -4,6 +4,49 @@ struct node {
     public:
     int data; node *next;
 };
+void push(node *&head, int val) {
+    node *newnode = new node{data, head};
+    if(head) {
+        node *tmp = head;
+        while(tmp -> next != head) tmp = tmp -> next;
+        tmp -> next = newnode;
+    }
+    else newnode -> next = newnode;
+    head = newnode;
+}
+void deletenode(node *&head, int key) {
+    if(!head) return;
+    if(head -> data == key && head -> next == head) {
+        delete head; head = nullptr;
+        return;
+    }
+    node *tmp = head;
+    while(tmp -> next != head) tmp = tmp -> next;
+    if(head -> data == key) {
+        head = head -> next;
+        tmp -> next = head;
+        delete tmp -> next; return;
+    }
+    while(tmp -> next != head && tmp -> next -> data != key) tmp = tmp -> next;
+    if(tmp -> next -> data == key) {
+        node *del = tmp -> next;
+        tmp -> next = del -> next;
+        delete del;
+    }
+}
+void push(Node*& head, int data) {
+    Node* node = new Node{data, head};
+    head = node;
+}
+node *deletelessernodes(node *head) {
+    if(!head || !head -> next) return head;
+    head -> next = deletelessernodes(head -> next);
+    if(head -> next && head -> data < head -> next -> data) {
+        node *tmp = head; 
+        head = head -> next; delete tmp;
+    }
+    return head;
+}
 node *create(int val) {
     node *newnode = new node(val);
     newnode -> next = NULL;
