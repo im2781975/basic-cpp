@@ -548,3 +548,30 @@ Node* subtractLinkedList(Node* l1, Node* l2)
     }
     return res;
 }
+// To sort a linked list by actual values. The list is assumed to be sorted by absolute values.
+void sortList(Node** head)
+{
+    // Initialize previous and current nodes
+    Node* prev = (*head);
+    Node* curr = (*head)->next;
+    // Traverse list
+    while (curr != NULL)
+    {
+        // If curr is smaller than prev, then it must be moved to head
+        if (curr->data < prev->data)
+        {
+            // Detach curr from linked list
+            prev->next = curr->next;
+            // Move current node to beginning
+            curr->next = (*head);
+            (*head) = curr;
+            // Update current
+            curr = prev;
+        }
+        // Nothing to do if current element is at right place
+        else
+            prev = curr;
+        // Move current
+        curr = curr->next;
+    }
+}
