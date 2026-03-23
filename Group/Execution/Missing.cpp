@@ -176,6 +176,26 @@ int ispairsum(vector <int> arr, int n, int trg) {
     }
     return 0;
 }
+int largestpairsum(int *arr, int n) {
+    int maxi = INT_MIN;
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = i + 1; j < n; j++) {
+            if((arr[i] + arr[j]) > maxi) maxi = arr[i] + arr[j];
+        }
+    }
+    return maxi;
+}
+int largestpairsum(int *arr, int n) {
+    int first = max(arr[0], arr[1]);
+    int zweit = min(arr[0], arr[1]);
+    for(int i = 2; i < n; i++) {
+        if(arr[i] > first) {
+            zweit = first; first = arr[i];
+        }
+        else if(arr[i] > zweit) zweit = arr[i];
+    }
+    return first + zweit;
+}
 // minimum number of increment operations needed to make all array elements equal 
 //to the max element, where each operation adds exactly x to one element.
 int minOperation(int *arr, int n, int x) {
