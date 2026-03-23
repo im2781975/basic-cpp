@@ -274,6 +274,44 @@ void TripletDiff(int *a, int *b, int *c, int n) {
     }
     cout << mini << " " << mid << " " << maxi << endl;
 }
-
+// Find Closest Triplet by Max Pairwise Difference
+void printClosest(int *arr, int *ray, int *ect, int p, int q, int r) {
+    sort(arr, arr + p); sort(ray, ray + q); sort(ect, ect + r);
+    int minDiff = INT_MAX;
+    int resI = 0, resJ = 0, resK = 0;
+    int i = 0, j = 0, k = 0;
+    while (i < p && j < q && k < r) {
+        int mn = min({arr[i], ray[j], ect[k]});
+        int mx = max({arr[i], ray[j], ect[k]});
+        int diff = mx - mn;
+        if (diff < minDiff) {
+            minDiff = diff;
+            resI = i; resJ = j; resK = k;
+        }
+        if (arr[i] == mn) i++;
+        else if (ray[j] == mn) j++;
+        else k++;
+    }
+    cout << arr[resI] << " " << ray[resJ] << " " << ect[resK] << endl;
+}
+void findClosestTriplet(int A[], int B[], int C[], int p, int q, int r) {
+    int minDiff = INT_MAX;
+    int resA = 0, resB = 0, resC = 0;
+    for (int i = 0; i < p; i++) {
+        for (int j = 0; j < q; j++) {
+            for (int k = 0; k < r; k++) {
+                int diff1 = abs(A[i] - B[j]);
+                int diff2 = abs(B[j] - C[k]);
+                int diff3 = abs(C[k] - A[i]);
+                int maxDiff = max({diff1, diff2, diff3});
+                if (maxDiff < minDiff) {
+                    minDiff = maxDiff;
+                    resA = A[i]; resB = B[j]; resC = C[k];
+                }
+            }
+        }
+    }
+    cout << resA << " " << resB << " " << resC << endl;
+}
 
 
