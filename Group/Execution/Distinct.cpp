@@ -280,3 +280,19 @@ int fib(int n) {
     save[n] = x + y;
     return x + y;
 }
+pair<int, int> getMinMax(int arr[], int low, int high) {
+    if (low == high) return {arr[low], arr[low]};
+    if (low + 1 == high) return {min(arr[low], arr[high]), max(arr[low], arr[high])};
+    
+    auto [lmin, lmax] = getMinMax(arr, low, mid = (low + high)/2);
+    auto [rmin, rmax] = getMinMax(arr, mid + 1, high);
+    return {min(lmin, rmin), max(lmax, rmax)};
+}
+pair<int, int> getMinMax(int arr[], int low, int high) {
+    if (low == high) return {arr[low], arr[low]};
+    if (low + 1 == high) return {min(arr[low], arr[high]), max(arr[low], arr[high])};
+    
+    auto [lmin, lmax] = getMinMax(arr, low, mid = (low + high)/2);
+    auto [rmin, rmax] = getMinMax(arr, mid + 1, high);
+    return {min(lmin, rmin), max(lmax, rmax)};
+}
