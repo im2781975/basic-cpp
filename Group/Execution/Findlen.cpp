@@ -153,6 +153,24 @@ int minthrow(int n, vector <int> arr) {
         board[arr[i]] = arr[i + 1];
     return mincnt(1, board);
 }
+int mindicethrow(vector <int> moves, int n) {
+    vector <bool> vis(n, false);
+    queue <pair <int, int>> q; // {position, moves}
+    q.push({0, 0}); vis[0] = true;
+    while(!q.empty()) {
+        auto [pos, cnt] = q.front(); q.pop();
+        if(pos == n - 1) return cnt;
+        for(int dice = 1; dice <= 6 && pos + dice < n; dice++) {
+            int nextpos = dice + pos;
+            nextpos = (moves[nextpos] != -1) ? moves[nextpos] : nextpos;
+            if(!vis[nextpos]) {
+                vis[nextpos] = true;
+                q.push({nextpos, cnt + 1});
+            }
+        }
+    }
+    return -1;
+}
 // find the maximum rectangular area under given histogram with n bars 
 int maxarea(int *arr, int n) {
     stack <int> st; st.push(-1);
