@@ -262,3 +262,108 @@ int main() {
     }
     cout << (has_Cycle ? "Yes" : "No");
 }
+#include<bits/stdc++.h>
+using namespace std;
+#define row 12
+#define col 10
+int dx[] = { -1, 0, 0, 1 };
+int dy[] = { 0, -1, 1, 0 };
+bool issafe(int grid[row][col], int x, int y) {
+    return x >= 0 && x < row && y >= 0 && y < col && grid[x][y] = 1;
+}
+int sortestpath(int grid[row][col]) {
+    for(int i = 0; i < row; i++) {
+        for(int j = 0; j < col; j++) {
+            if(grid[i][j] == 0) {
+                for(int k = 0; k < 4; k++) {
+                    int ni = i + dx[k];
+                    int nj = j + dy[k];
+                    if(ni >= 0 && ni < row && nj >= 0 && nj < col ) grid[ni][nj] = 0;
+                }
+            }
+        }
+    }
+    queue <tuple <int, int, int>> q; // row, col, dist
+    bool vis[row][col] = {0};
+    for(int i = 0; i < row; i++) {
+        if(mat[i][col - 1] == 1) {
+            q.push({i, col - 1, 1});
+            vis[i][col - 1] = 1;
+        }
+    }
+    while(!q.empty()) {
+        auto[x, y, d] = q.front(); q.pop();
+        if(y == 0) return d;
+        for(int k = 0; k < 4; k++) {
+            int nx = x + dx[x];
+            int ny = y + dy[y];
+            if(issafe(grid, nx, ny) && !vis[nx][ny]) {
+                vis[nx][ny] = 1;
+                q.push({nx, ny, d + 1});
+            }
+        }
+    }
+    return -1;
+}
+#define ROW 9
+#define COL 10
+int row[] = {-1, 0, 0, 1};
+int col[] = {0, -1, 1, 0};
+
+bool valid(int r, int c) {
+    return r>=0 && r<ROW && c>=0 && c<COL;
+}
+
+int bfs(int mat[ROW][COL], int sx, int sy, int dx, int dy) {
+    if (!mat[sx][sy] || !mat[dx][dy]) return -1;
+    
+    bool vis[ROW][COL] = {0};
+    queue<tuple<int,int,int>> q;  // r, c, dist
+    
+    q.push({sx, sy, 0});
+    vis[sx][sy] = 1;
+    
+    while (!q.empty()) {
+        auto [r, c, d] = q.front(); q.pop();
+        
+        if (r == dx && c == dy) return d;
+        
+        for (int i = 0; i < 4; i++) {
+            int nr = r + row[i];
+            int nc = c + col[i];
+            
+            if (valid(nr, nc) && mat[nr][nc] && !vis[nr][nc]) {
+                vis[nr][nc] = 1;
+                q.push({nr, nc, d+1});
+            }
+        }
+    }
+    return -1;
+}
+bool safe(vector<vector<int>>& mat, vector<vector<bool>>& vis, int x, int y) {
+    int r = mat.size(), c = mat[0].size();
+    return x>=0 && x<r && y>=0 && y<c && mat[x][y] && !vis[x][y];
+}
+
+void dfs(vector<vector<int>>& mat, vector<vector<bool>>& vis, int x, int y, int dx, int dy, int& ans, int d) {
+    if (x == dx && y == dy) { ans = min(ans, d); return; }
+    vis[x][y] = 1;
+    
+    int dirs[4][2] = {{0,1},{1,0},{0,-1},{-1,0}};
+    for (auto& dir : dirs)
+        if (safe(mat, vis, x+dir[0], y+dir[1]))
+            dfs(mat, vis, x+dir[0], y+dir[1], dx, dy, ans, d+1);
+    
+    vis[x][y] = 0;  // backtrack
+}
+
+int shortest(vector<vector<int>>& mat, int sx, int sy, int dx, int dy) {
+    if (!mat[sx][sy] || !mat[dx][dy]) return -1;
+    
+    int r = mat.size(), c = mat[0].size();
+    vector<vector<bool>> vis(r, vector<bool>(c, 0));
+    int ans = INT_MAX;
+    
+    dfs(mat, vis, sx, sy, dx, dy, ans, 0);
+    return ans == INT_MAX ? -1 : ans;
+}
