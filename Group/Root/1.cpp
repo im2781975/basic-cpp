@@ -50,6 +50,53 @@ void BFS(int src) {
     }
     for(int i = 1; i <= nd; i++) cout << dist[i] << " ";
 }
+// traverse way
+const int x = 1e6;
+bool seen[x + 1]; vector <int> adj[x + 1];
+stack <int> st;
+void DFS(int src) {
+    cout << src << " ";
+    vis[src] = true;
+    for(int v : adj[src]) {
+        if(!vis[v]) DFS(v);
+    }
+    st.push(src);
+}
+void traverse(int nd, int edg) {
+    fill(seen, seen + nd, false);
+    for(int i = 0; i < edg; i++) {
+        int u, v; cin >> u >> v;
+        adj[u].push_back(v); adj[v].push_back(u);
+    } /*
+    for(int i = 1; i <= nd; i++) {
+        for(auto v : adj[i]) cout << v << " "; 
+    } */
+    DFS(0);
+}
+void traverse(int nd, int edg) {
+    for(int i = 0; i < edg; i++) {
+        int u, v; cin >> u >> v;
+        adj[u].push_back(v);
+    } 
+    for(int i = 1; i <= nd; i++) {
+        if(!seen[i]) DFS(i);
+    }
+    while(!st.empty()) {
+        cout << st.top(); st.pop();
+    }
+}
+void DFS(int src, vector <vector <int>> &adj, int nd) {
+    vector <bool> vis(nd, false);
+    stack <int> st; st.push(src);
+    while(!st.empty()) {
+        int u = st.top(); st.pop();
+        if(vis[u]) continue;
+        vis[u] = true; cout << u << " ";
+        for(int v = nd - 1; v >= 0; v--) {
+            if(adj[u][v] && !vis[v]) st.push(v);
+        }
+    }
+}
 void Isconnected(int nd, int edg) {
     vector <vector <int>> adj(nd + 1);
     for(int i = 0; i < edg; i++) {
@@ -109,6 +156,22 @@ void cntprocesse() {
         }
     }
     for(auto mp : viscnt) cout << mp.first << " " << mp.second << endl;
+}
+// calculate how many times a particular node gets checked
+void checkcount(vector <vector <int>> graph, int src) {
+    vector <int> cnt(graph.size(), 0);
+    vector <bool> vis(graph.size(), false);
+    stack <int> st; st.push(src);
+    while(!st.empty()) {
+        int u = st.top(); st.pop();
+        if(vis[u]) continue;
+        vis[u] = true;
+        for(int v : graph[u]) {
+            cnt[v]++; 
+            if(!vis[v]) st.push(v);
+        }
+        cout << u << " " << cnt[u] << endl;
+    }
 }
 // finds the shortest path between two nodes in an unweighted graph
 void printpath(int *parent, int end) {
@@ -208,6 +271,51 @@ void BellFord(int nd, int edg) {
     }
     for(int i = 1; i < nd; i++) 
         cout << (dist[i] == x ? -1 : dist[i]) << " ";
+}
+vector <bool> isAp;
+vector <int> vis, low; int timer;
+// vis -> dicovery time
+//low -> lowest reachable discovery time
+void DFS(vector <vector <int>> adj, int u, int parent) {
+    int child = 0;
+    vis[u] = low[u] = timer++;
+    for(auto v : adj[u]) {
+        if(vis[v] == -1) {
+            child++; DFS(adj, v, u);
+            low[u] = min(low[u], low[v]);
+            if(parent == -1 && child > 1) isAp = true;
+            if(parent != -1 && low[v] >= vis[u]) isAp = true;
+        }
+        else if(v != parent) low[u] = min(low[u], vis[v]);
+    }
+}
+void findAp(vector <vector <int>> adj, int nd) {
+    vis.assign(nd, -1), low.assign(nd, -1);
+    isAp(nd, false); timer = 0;
+    for(int i = 0; i < nd; i++) {
+        if(vis[i] == -1) DFS(adj, i, -1);
+    }
+    for(int i = 0; i < nd; i++) {
+        if(isAp[i]) cout << i << " ";
+    }
+    cout << endl;
+}
+void DFS(vector <int> adj[], vector <int> vis[], int u) {
+    vis[u] = 1;
+    for(int v : adj[u]) {
+        if(!vis[v]) DFS(adj, vis, v);
+    }
+}
+void findAp(vector <int> adj[], int nd) {
+    for(int i = 1; i <= nd; i++) {
+        int unit = 0; vector <int> vis(nd + 1, 0);
+        for(int j = 1; j <= nd; j++) {
+            if(int j != i && !vis[j]) {
+                unit++; DFS(adj, vis, j);
+            }
+        }
+        if(unit > 1) cout << i << " ";
+    }
 }
 int main() {
     int nd, src, edg; cin >> nd >> src >> edg;
