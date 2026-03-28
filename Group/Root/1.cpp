@@ -27,6 +27,35 @@ void levelOrder(int src, int nd, int edg) {
     cout << endl;
     for(int i = 0; i < nd; i++) cout << lev[i] << " ";
 }
+void BFSpath(int nd, int src, int dest) {
+    /* while(edg--) {
+        int u, v; cin >> u >> v;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u);
+    }
+    int src, dest; cin >> src >> dest;
+    BFSpath(nd, src, dest); */
+    vector <bool> vis(nd, false);
+    vector <int> parent(nd, -1);
+    queue <int> q; q.push(src);
+    vis[src] = true;
+    while(!q.empty()) {
+        int u = q.front(); q.pop();
+        if(u == dest) break;
+        for (int v : adj_list[u]) {
+            if (!visited[v]) {
+                visited[v] = true;
+                parent[v] = u; q.push(v);
+            }
+        }
+    }
+    if(!vis[dest]) return;
+    vector<int> path;
+    for (int it = dest; it != -1; it = parent[at])
+        path.push_back(it);
+    reverse(path.begin(), path.end());
+    for (int x : path) cout << x << " ";
+}
 // minimum distance
 int x = 1005;
 vector <int> adj[x]; int dist[x];
