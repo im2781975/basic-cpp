@@ -202,105 +202,6 @@ void checkcount(vector <vector <int>> graph, int src) {
         cout << u << " " << cnt[u] << endl;
     }
 }
-// finds the shortest path between two nodes in an unweighted graph
-void printpath(int *parent, int end) {
-    if(parent[end] == -1) return;
-    printpath(parent, parent[end]);
-    cout << end << " ";
-}
-void shortway(int src, int end, int nd, int edg) {
-    memset(graph, 0, sizeof(graph));
-    for(int i = 0; i < edg; i++) {
-        int u, v; cin >> u >> v;
-        graph[u][v] = graph[v][u] = 1;
-    }
-    queue <int> q; bool flag = false;
-    for(int i = 0; i < nd; i++) {
-        parent[i] = -1; vis[i] = false;
-    }
-    q.push(src); vis[src] = true;
-    while(!q.empty()) {
-        int curr = q.front(); q.pop();
-        cout << curr << " ";
-        for(int i = 0; i < nd; i++) {
-            if(graph[curr][i] && !vis[i]) {
-                parent[i] = curr; vis[i] = true; q.push(i);
-                if(i == end) {
-                    flag = true; break;
-                }
-            }
-        }
-    }
-    if(flag && parent[end] != -1) printpath(parent, end);
-    else cout << "No path exits";
-}
-// distance from every path
-vector <vector <pair <int, int>>> graph; // neighbour, weight
-vector <bool> seen; vector <int> dist;
-void addedge(int u, int v, int w ) {
-    graph[u].push_back({v, w});
-    graph[v].push_back({u, w});
-}
-// min path
-void dijkstra(int src, int nd) {
-    /* int nd, edg; cin >> nd >> edg;
-    for(int i = 0; i < edg; i++) {
-        int u, v, w; cin >> u >> v >> w;
-        addedge(u, v, w);
-    }
-    dijkstra(0, 3, nd); */
-    seen.assign(nd, false); dist.assign(nd, INT_MAX); graph.resize(nd);
-    priority_queue <pair <int, int>, vector <pair <int, int>>, greater <pair <int, int>>> pq;
-    dist[src] = 0; pq.push({0, src});
-    while(!pq.empty()) {
-        auto [cost, curr] = pq.top(); pq.pop();
-        if(seen[curr]) continue; seen[curr] = true;
-        cout << curr << " ";
-        for(auto [v, w] : graph[curr]) {
-            if(!seen[v] && dist[curr] != INT_MAX && dist[curr] + w < dist[v]) {
-                dist[v] = dist[curr] + w;
-                pq.push({dist[v], v});
-            }
-        }
-    }
-    for(int i = 0; i < nd; i++) cout << i << " " << dist[i] << endl;
-}
-// neg cycle detect
-const int x = 1e9;
-int dist[x / 2];
-vector <tuple <int, int, int>> adj;
-vector <pair <int, int>> edg;
-void BellFord(int nd, int edg) {
-    for(int i = 0; i < nd; i++) dist[i] = x;
-    for(int i = 0; i < edg; i++) {
-        int u, v, w; cin >> u >> v >> w;
-        adj.emplace_back(u, v, w);
-        // edg[u].push_back({v, w});
-    }
-    dist[1] = 0;
-    for(int i = 1; i < nd; i++) {
-        for(auto [u, v, w] : adj) {
-            if(dist[u] != x && dist[u] + w < dist[v])
-                dist[v] = dist[u] + w;
-        }
-    }/*
-    int src = 1; dist[src] = 0;
-    for(int iter = 1; iter < nd; ++iter) {
-        for(int u = 0; u < nd; ++u) {
-            for(auto [v, w] : adj[u]) {
-                if(dist[u] != x && dist[u] + w < dist[v])
-                    dist[v] = dist[u] + w;
-            }
-        }
-    } */
-    for(auto [u, v, w] : adj) {
-        if(dist[u] != x && dist[u] + w < dist[v]) {
-            cout << "Neg cycle exits"; return;
-        }
-    }
-    for(int i = 1; i < nd; i++) 
-        cout << (dist[i] == x ? -1 : dist[i]) << " ";
-}
 vector <bool> isAp;
 vector <int> vis, low; int timer;
 // vis -> dicovery time
@@ -346,11 +247,4 @@ void findAp(vector <int> adj[], int nd) {
         if(unit > 1) cout << i << " ";
     }
 }
-int main() {
-    int nd, src, edg; cin >> nd >> src >> edg;
-    levelOrder(src, nd, edg); 
-    // Isconnected(nd, edg);
-    //cntprocessed(nd);
-    /*nt end; cin >> end;
-    shortway(src, end, nd, edg);*/
-}
+
