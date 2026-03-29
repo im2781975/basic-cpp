@@ -1,0 +1,164 @@
+const int x = 1e5;
+int parent[x], pos[x];
+// implements the Disjoint‑Set (Union‑Find) with path compression and union by rank
+int find(int nd) {
+    if(nd == parent[nd]) return nd;
+    return parent[nd] = find(parent[nd]);
+}
+void unite(int a, int b) {
+    /* for(int i = 0; i <= nd; i++) parent[i] = i;
+    for(int i = 0; i < edg; i++) {
+        int u, v; cin >> u >> v;
+        unite(u, v);
+    }
+    for(int i = 1; i <= nd; i++) cout << pos[i] << " " << parent[i] << endl; */
+    a = find(a); b = find(b);
+    if(a == b) return;
+    if(pos[a] < pos[b]) parent[a] = b;
+    if(pos[b] < pos[a]) parent[b] = a;
+    else {
+        parent[b] = a; pos[a]++
+    }
+}
+#define nd 8
+bool BFS(vector <vector <int>> grid, int src, int trg, vector <int> parent) {
+    vector <bool> vis(nd, false);
+    queue <int> q; q.push(src); 
+    vis[src] = true; parent[src] = -1;
+    while(!q.empty()) {
+        int u = q.front(); q.pop();
+        for(int v = 0; v < nd; v++) {
+            if(!vis[v] && grid[u][v] > 0) {
+                q.push(v); parent[v] = u;
+                vis[v] = true;
+                // if(v == trg) return true;
+            }
+        }
+    }
+    // return false;
+    return vis[trg];
+}
+// Returns max number of edge‑disjoint paths from src to trg
+int finddisjoinpath(vector <vector <int>> graph, int src, int trg) {
+    /* int graph[nd][nd] = { 
+    {0, 16, 13, 0, 0, 0}, {0, 0, 10, 12, 0, 0},
+    {0, 4, 0, 0, 14, 0}, {0, 0, 9, 0, 0, 20},
+    {0, 0, 0, 7, 0, 4},{ 0, 0, 0, 0, 0, 0 } };
+    cout << findisdisjoint(graph, 0, 5); */
+    vector <vector <int>> grid(nd, vector <int>(nd));
+    for(int i = 0; i < nd; i++) {
+        for(int j = 0; j < nd; j++) grid[i][j] = graph[i][j];
+    }
+    vector <int> parent(nd); int maxflow = 0;
+    while(BFS(grid, src, trg, parent)) {
+        int pathflow = INT_MAX;
+        for(int v = trg; v != src; v = parent[v]) {
+            int u = parent[v];
+            pathflow = min(pathflow, grid[u][v]);
+        }
+        for(int v = trg; v != src; v = parent[v]) {
+            int u = parent[v];
+            grid[u][v] -= pathflow; 
+            grid[v][u] += pathflow;
+        }
+        maxflow += pathflow;
+    }
+    return maxflow;
+}
+// all‑pairs shortest paths
+int dist[x][x];
+void floydWarshall(int nd, int edg) {
+    for(int i = 1; i <= nd; i++) {
+        for(int j = 1; j <= nd; j++)
+            dist[i][j] = (i == j) ? 0 : x;
+    }
+    for(int i = 0; i < edg; i++) {
+        int u, v, w; cin >> u >> v >> w;
+        dist[u][v] = min(dist[u][v], w);
+        dist[v][u] = min(dist[v][u], w);
+    }
+    for(int k = 1; k <= nd; k++) {
+        for(int u = 1; u <= nd; u++) {
+            for(int v = 1; v <= nd; v++) {
+                if(dist[u][k] < x && dist[k][v] < x)
+                    dist[u][v] = min(dist[u][v], dist[u][k] + dist[k][v]);
+            }
+        }
+    } /*
+    for(int i = 1; i <= nd; i++) {
+        for(int j = 1; j <= nd; j++)
+            cout << (dist[i][j] == x ? -1 : dist[i][j]) << " ";
+    } */
+    int query; cin >> query;
+    for(int i = 0; i < query; i++) {
+        int u, v; cin >> u >> v;
+        cout << (dist[u][v] == x ? -1 : dist[u][v]) << " ";
+    }
+} 
+//check if there is a negative weight cycle & min dist using Floyd Warshall Algorithm
+#define nd 4
+bool negcycle(int grid[nd][nd]) {
+    /* int graph[nd][nd] = 
+    {{0, 1, x, x}, {x, 0, -1, x},
+    {x, x, 0, -1}, {-1, x, x, 0}};
+    (negcycle(graph)) ? cout << "Yes" : cout << "No"; */
+    int dist[nd][nd];
+    for(int i = 0; i < nd; i++) {
+        for(int j = 0; j < nd; j++) dist[i][j] = grid[i][j];
+    }
+    for(int k = 0; k < nd; k++) {
+        for(int i = 0; i < nd; i++) {
+            for(int j = 0; j < nd; j++) {
+                if(dist[i][k] != x && dist[k][j] != x)
+                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+            }
+        }
+    } /*
+    for(int i = 0; i < nd; i++) {
+        for(int j = 0; j < nd; j++) 
+            cout << (dist[i][j] == x ? -1 : dist[i][j]) << " ";
+    } */
+    // If any diagonal element is negative, there is a negative cycle
+    for(int i = 0; i < nd; i++) {
+        if(dist[i][i] < 0) return true;
+    }
+    return false;
+}
+// print Eulerian circuit in given directed graph using Hierholzer algorithm
+void printcircuit(vector <vector <int>> &adj) {
+    int n = adj.size(), src = 0;
+    if(n == 0) return;
+    stack <int> path; vector <int> circuit;
+    int curr = 0; path.push(curr);
+    while(!path.empty()) {
+        if(!adj[curr].empty()) {
+            int val = adj[curr].back();
+            adj[curr].pop_back();
+            path.push(curr); curr = val;
+        }
+        else {
+            circuit.push_back(curr);
+            curr = path.top(); path.pop();
+        }
+    }
+    reverse(circuit.begin(), circuit.end());
+    for(int i = 0; i < circuit.size(); i++) cout << circuit[i] << " ";
+}
+void printcircuit(vector <int> adj[], int n) {
+    if(n == 0) return;
+    vector <int> path; path.push_back(0);
+    vector <int> circuit;
+    while(path.size() > 0) {
+        int curr = path[path.size() - 1];
+        if(adj[curr].size() > 0) {
+            int next = adj[curr].back();
+            adj[curr].pop_back();
+            path.push_back(next);
+        }
+        else {
+            circuit.push_back(path.back());
+            path.pop_back();
+        }
+    }
+    for(int i = circuit.size() - 1; i >= 0; i--) cout << circuit[i] << " ";
+}
