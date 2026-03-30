@@ -247,4 +247,43 @@ void findAp(vector <int> adj[], int nd) {
         if(unit > 1) cout << i << " ";
     }
 }
-
+// DFS to check path from curr to des
+bool dfs(int curr, int des, const vector<vector<int>>& adj, vector<int>& vis) {
+    if (curr == des) return true;
+    vis[curr] = 1;
+    for (int x : adj[curr]) {
+        if (!vis[x] && dfs(x, des, adj, vis)) return true;
+    }
+    return false;
+}
+// Check if path exists from src to des
+bool ispath(int src, int des, const vector<vector<int>>& adj) {
+    vector<int> vis(adj.size(), 0);
+    return dfs(src, des, adj, vis);
+}
+// find all strongly connected components
+vector <vector <int>> joinparts(int n, vector <vector <int>>grid) {
+    /*;int nd = 5;
+    vector<vector<int>> edges = {{1,3}, {1,4}, {2,1}, {3,2}, {4,5}};
+    
+    auto ans = findSCC(nd, edges); */
+    vector <vector <int>> adj(n + 1);
+    for(auto edg : grid)
+        adj[edg[0]].push_back(edg[1]);
+    vector <int> res;
+    vector <int> islinked(n + 1, 0);
+    for(int i = 1; i <= n; i++) {
+        if(!islinked[i]) {
+            vector <int> tmp = {i};
+            islinked[i] = 1;
+            for(int j = i + 1; j <= n; ++j) {
+                if(!islinked[j] && ispath(i, j, adj) && ispath(j, i, adj)) {
+                    tmp.push_back(j);
+                    islinked[j] = 1;
+                }
+            }
+            res.push_back(tmp);
+        }
+    }
+    return res;
+}
