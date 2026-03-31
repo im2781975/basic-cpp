@@ -122,6 +122,12 @@ void DFS(int src) {
     }
     st.push(src);
 }
+void DFsearch(int src){
+     visited[src] = true;
+     for(int child : adj[src]){
+         if(!visited[child]) DFsearch(child);
+     }
+ }
 void traverse(int nd, int edg) {
     fill(seen, seen + nd, false);
     for(int i = 0; i < edg; i++) {
@@ -131,6 +137,13 @@ void traverse(int nd, int edg) {
     for(int i = 1; i <= nd; i++) {
         for(auto v : adj[i]) cout << v << " "; 
     } */
+    /* vector <int> res;
+    for(int i = 1; i <= nd; i++){
+        if(!seen[i]){ 
+           res.push_back(i); DFsearch(i);
+        }
+    }
+    for(int i = 0; i < res.size(); i++) cout << res[i] << " "; */
     DFS(0);
 }
 void traverse(int nd, int edg) {
