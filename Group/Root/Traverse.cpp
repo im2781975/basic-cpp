@@ -79,6 +79,37 @@ void BFS(int src) {
     }
     for(int i = 1; i <= nd; i++) cout << dist[i] << " ";
 }
+// BFS code on an adjacency matrix
+const int x = 1e3;
+int graph[x][x];
+void BFS(int nd) {
+    bool vis[nd] = {false};
+    for(int i = 0; i < nd; i++) {
+        if(vis[i]) continue;
+        queue <int> q; q.push(i);
+        vis[i] = true;
+        while(!q.empty()) {
+            int u = q.front(); q.pop();
+            cout << u << " ";
+            for(int v = 0; v < nd; v++) {
+                if(graph[u][v] == 1 && !vis[v]) {
+                    vis[v] = true; q.push(v);
+                }
+            }
+        }
+    }
+}
+void Helper(int nd, int edg) {
+    if(edg == 0) {
+        for(int i = 0; i < nd; i++) cout << i << " ";
+        return;
+    }
+    for(int i = 0; i < edg; i++) {
+        int u, v; cin >> u >> v;
+        graph[u][v] = 1;
+    }
+    BFS(nd);
+}
 // traverse way
 const int x = 1e6;
 bool seen[x + 1]; vector <int> adj[x + 1];
