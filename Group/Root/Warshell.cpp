@@ -95,6 +95,31 @@ void floydWarshall(int nd, int edg) {
         cout << (dist[u][v] == x ? -1 : dist[u][v]) << " ";
     }
 } 
+//Find the sortest route between cities
+void sortestroute(int nd, int edg) {
+    vector <vector <int>> dist(nd, vector <int> (nd + 1, INT_MAX));
+    for(int i = 0; i < nd; i++) dist[i][i] = 0;
+    for(int i = 0; i < edg; i++) {
+        int u, v, w; cin >> u >> v >> w;
+        // assume cities are connected 1th based idx
+        dist[u - 1][v - 1] = w;
+        dist[v - 1][u - 1] = w;
+    }
+    for(int k = 0; k < nd; k++) {
+        for(int u = 0; u < nd; u++) {
+            for(int v = 0; v < nd; v++) {
+                if(dist[u][k] != INT_MAX && dist[k][v] != INT_MAX && dist[u][k] + dist[k][v] < dist[u][v])
+                    dist[u][v] = dist[u][k] + dist[k][v];
+            }
+        }
+    }
+    int q; cin >> q;
+    while(q--) {
+        int src, dst; cin >> src >> dst;
+        if(dist[src - 1][dst - 1] != INT_MAX) cout << dist[src - 1][dst - 1] << endl;
+        else cout << "Not Connected";
+    }
+}
 //check if there is a negative weight cycle & min dist using Floyd Warshall Algorithm
 #define nd 4
 bool negcycle(int grid[nd][nd]) {
