@@ -110,6 +110,37 @@ void Helper(int nd, int edg) {
     }
     BFS(nd);
 }
+// solves a maze pathfinding problem from point 'A' (start) to 'B' (end).
+void traverse(int row, int col) {
+    vector <string> grid(row);
+    pair <int, int> src, dst;
+    for(int i = 0; i < row; i++) {
+        cin >> grid[i];
+        for(int j = 0; j < col; j++) {
+            if(grid[i][j] == 'A') src = {i, j};
+            if(grid[i][j] == 'B') dst = {i, j};
+        }
+    }
+    vector <vector <int>> dist(row, vector <int> (col, -1));
+    queue <pair <int, int>> q; q.push(src);
+    dist[src.first][src.second] = 0;
+    int dx[4] = {0, 0, 1, -1};
+    int dy[4] = {-1, 1, 0, 0};
+    while(!q.empty()) {
+        auto [x, y] = q.front(); q.pop();
+        for(int d = 0; d < 4; d++) {
+            int nx = x + dx[d];
+            int ny = y + dy[d];
+            if(nx >= 0 && nx < row && ny >= 0 && ny < col && 
+               grid[nx][ny] != '#' && dist[nx][ny] == -1) {
+                dist[nx][ny] = dist[x][y] + 1;
+                q.push({nx, ny});
+            }
+        }
+    }
+    int ans = dist[dst.first][dst.second];
+    cout << (ans == -1 ? "No" : "Yes " + to_string(ans));
+}
 // traverse way
 const int x = 1e6;
 bool seen[x + 1]; vector <int> adj[x + 1];
