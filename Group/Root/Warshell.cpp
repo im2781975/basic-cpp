@@ -20,6 +20,90 @@ void unite(int a, int b) {
         parent[b] = a; pos[a]++
     }
 }
+#include <bits/stdc++.h>
+using namespace std;
+// Union-Find (Disjoint Set Union - DSU) for incremental connectivity:
+int root(int arr[], int i) {
+    while (arr[i] != i) i = arr[arr[i]];  // Path compression
+    return i;
+}
+
+void union_sets(int arr[], int rank[], int a, int b) {
+    int ra = root(arr, a), rb = root(arr, b);
+    if (ra != rb) {
+        if (rank[ra] < rank[rb])
+            arr[ra] = rb;
+        else {
+            arr[rb] = ra;
+            if (rank[ra] == rank[rb]) rank[ra]++;
+        }
+    }
+}
+
+int main() {
+    int n = 7;
+    vector<int> parent(n), rank(n, 1);
+    iota(parent.begin(), parent.end(), 0);  // parent[i] = i
+    
+    // Operations: 1=query, 2=union
+    vector<pair<int, pair<int,int>>> ops = {
+        {1, {0,1}}, {2, {0,1}}, {2, {1,2}}, {1, {0,2}},
+        {2, {0,2}}, {2, {2,3}}, {2, {3,4}}, {1, {0,5}},
+        {2, {4,5}}, {2, {5,6}}, {1, {2,6}}
+    };
+    
+    for (auto& op : ops) {
+        int type = op.first, x = op.second.first, y = op.second.second;
+        if (type == 1)
+            cout << (root(parent.data(), x) == root(parent.data(), y) ? "Yes" : "No") << "
+";
+        else
+            union_sets(parent.data(), rank.data(), x, y);
+    }
+}
+// incremental connectivity
+using namespace std;
+int root(int arr[], int i){
+    while(arr[i] != i){
+        arr[i] = arr[arr[i]];
+        i = arr[i];
+    }
+    return i;
+}
+void weightUnion(int arr[], int Rank[], int a, int b){
+    int rootA = root(arr, a);
+    int rootB = root(arr, b);
+    if(Rank[rootA] < Rank[rootB]){
+        arr[rootA]  = arr[rootB];
+        Rank[rootB] += Rank[rootA];
+    }
+    else{
+        arr[rootB] = arr[rootA];
+        Rank[rootA] += Rank[rootB];
+    }
+}
+bool Equal(int arr[], int a, int b){
+    return (root(arr, a) == root(arr, b));
+}
+void query(int type, int x, int y, int arr[], int Rank[]){
+    if(type == 1){
+        (Equal(arr, x, y)) ? cout << "Yes\n" : cout << "No\n";
+    }
+    else if(type == 2){
+        if(!Equal(arr, x, y))
+            weightUnion(arr, Rank, x, y);
+    }
+}
+int main(){
+    int n = 7;
+    int arr[n], Rank[n];
+    for(int i = 0; i < n; i++){
+        arr[i] = i;
+        Rank[i] = 1;
+    }
+    int q = 11;
+    query(1, 0, 1, arr, Rank);
+}
 #define nd 8
 bool BFS(vector <vector <int>> grid, int src, int trg, vector <int> parent) {
     vector <bool> vis(nd, false);
