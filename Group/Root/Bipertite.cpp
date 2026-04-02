@@ -128,6 +128,36 @@ bool isbipartite(int graph[][nd]) {
     for(int i = 0; i < nd; i++) color[i] = -1;
     return colorgraph(graph, color, 0, 0);
 }
+//find out whether a given graph can be converted to two Cliques or not
+const int node = 5;
+bool IsBipartite(int graph[][node], int src, int color[]){
+    color[src] = 1;
+    queue <int> q; q.push(src);
+    while(!q.empty()){
+        int u = q.front(); q.pop();
+        for(int v = 0; v < node; v++){
+            if(graph[u][v] && color[v] == -1){
+                color[v] = 1 - color[u];
+                q.push(v);
+            }
+            else if(graph[u][v] && color[u] == color[v])
+                return false;
+        }
+    }
+    return true;
+}
+bool IsBicolorable(int graph[][node]){
+    int color[node];
+    for(int i = 0; i < node; i++)
+        color[i] = -1;
+    for(int i = 0; i < node; i++){
+        if(color[i] == -1){
+            if(!IsBipartite(graph, i, color))
+                return false;
+        }
+    }
+    return true;
+}
 bool isbipartite(vector <vector <int>> grid) {
     int n = grid.size(); vector <int> color(n, -1);
     for(int i = 0; i < n; i++) {
