@@ -476,4 +476,50 @@ int editDis(string s1, string s2, int m, int n)
         }
         return dp[m][n];
 }
+#include <bits/stdc++.h>
+using namespace std;
 
+bool isValid(int deg[], int n) {
+    int sum = 0;
+    for(int i = 0; i < n; i++) {
+        if(deg[i] < 0 || deg[i] >= n) return false;
+        sum += deg[i];
+    }
+    return sum % 2 == 0;
+}
+
+void printGraph(int deg[], int n) {
+    vector<vector<int>> mat(n, vector<int>(n, 0));
+    
+    // Havel-Hakimi: connect highest degrees first
+    for(int i = 0; i < n; i++) {
+        for(int j = i+1; j < n; j++) {
+            if(deg[i] > 0 && deg[j] > 0) {
+                mat[i][j] = mat[j][i] = 1;
+                deg[i]--; deg[j]--;
+            }
+        }
+    }
+    
+    // Print matrix
+    cout << "Adjacency Matrix:
+";
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) 
+            cout << mat[i][j] << " ";
+        cout << "
+";
+    }
+}
+
+int main() {
+    int deg[] = {2, 2, 1, 1, 1};
+    int n = 5;
+    
+    if(isValid(deg, n)) {
+        printGraph(deg, n);
+    } else {
+        cout << "Invalid degree sequence
+";
+    }
+}
