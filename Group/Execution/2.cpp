@@ -168,3 +168,118 @@ bool check(int *arr, int n, int idx) {
         j++;
     } return true;
 }
+void findval(int *arr, int n) {
+    int left[n], right[n]; left[0] = INT_MIN;
+    for(int i = 1; i < n; i++) left[i] = min(left[i - 1], arr[i - 1]);
+    right[n - 1] = INT_MAX;
+    for(int i = n - 2; i >= 0; i--)
+        right[i] = min(right[i + 1], arr[i + 1]);
+    for(int i = 0; i < n; i++) {
+        if(left[i] < arr[i] && arr[i] < right[i]) return i;
+    } /*
+    int leftmin = INT_MIN;
+    for(int i = 0; i < n; i++) {
+        if(arr[i] > leftmin) {
+            bool flag = true;
+            for(int j = i + 1; j < n; j++) {
+                if(arr[j] >= arr[i]) {
+                    flag = false; break;
+                }
+            }
+            if(flag) return i;
+        }
+        leftmin = max(leftmin, arr[i]);
+    } */
+    int maxleft = arr[0];
+    for(int i = 1; i < n - 1; i++) {
+        if(arr[i] > maxleft && arr[i] > *max_element(arr + i + 1, arr + n)) return i;
+        maxleft = max(maxleft, arr[i]);
+    }
+    return -1;
+}
+// Calculate stock span for each day: number of consecutive previous days  where price ≤ current day's price
+void calculatespan(int *price, int n, int *res) {
+    res[0] = 1; stack <int> st; st.push(0);
+    for(int i = 1; i < n; i++) {
+        while(!st.empty() && price[st.top()] <= price[i]) st.pop();
+        res[i] = i - st.empty() ? 0 : st.top();
+        st.push(i);
+    }
+}
+void calculatespan(int *price, int n, int *span) {
+    stack <int> st; st.push(0);
+    span[0] = 1;
+    for(int i = 1; i < n; i++) {
+        while(!st.empty() && price[st.top()] <= price[i]) st.pop();
+        span[i] = st.empty() ? i + 1 : i - st.top();
+        st.push(i);
+    }
+}
+vector <int> calculatespan(int *arr, int n) {
+    stack <int> st; vector <int> res;
+    for(int i = 0; i < n; i++) {
+        while (!st.empty() and arr[st.top()] <= arr[i]) st.pop();
+        if(st.empty()) res.push_back(i + 1);
+        else res.push_back(i - st.top());
+        st.push(i);
+    }
+    return res;
+}
+//Function to get index of ceiling of val in arr
+int ceilsearch(int *arr, int low, int high, int val) { /*
+    while(low <= high) {
+        int mid = low + (high - low) >> 1;
+        if(arr[mid] == val) return mid;
+        else if (val < arr[mid]) high = mid - 1;
+        else low = mid + 1;
+    }
+    return low; */
+    if(val <= arr[low]) return low;
+    if(val > arr[high]) return -1; /*
+    for(int i = low; i < high; i++) {
+        if(arr[i] == val) return i;
+        if(arr[i] < val && arr[i + 1] >= val) return i + 1;
+    } return -1; */
+    while(low < high) {
+        int mid = low + (high - low) >> 1;
+        if(arr[mid] >= val) high = mid;
+        else low = mid + 1;
+    }
+    return arr[low] >= val ? low : -1;
+}
+void ceilsearch(vector <int> arr, int val) {
+    auto it = lower_bound(arr.begin(), arr.end(), val);
+    if (it == arr.end()) cout << val << " ceil doesn't exist";
+    else cout << val << " " << *it << endl;
+}
+// Find celebrity in party: person known by everyone else but knows no one
+int celebrity(vector <vector <int>> grid) {
+    int n = grid.size(), idx = 0;
+    for(int i = 0; i < n; i++) { if(grid[idx][i] == 0) idx = i; }
+    for(int i = 0; i < n; i++) { if(grid[idx][i] == 1) return -1; }
+    for(int i = 0; i < n; i++) {
+        if(i != idx && grid[i][idx] == 0) return -1;
+    } return idx;
+}
+bool grid[8][8]{ {0, 0, 1, 0}, {0, 0, 1, 0}, {0, 0, 0, 0}, {0, 0, 1, 0}};
+bool knows(int a, int b){ grid[a][b] = 1;}
+int celebrity(int n) {
+    int cand = 0;
+    for(int i = 1; i < n; i++) {
+        if(knows(cand, i)) cand = i;
+    }
+    for(int i = 0; i < n; i++) {
+        if(i != cand && (knows(cand, i) || !knows(i, cand)))
+            return -1;
+    } return cand;
+}
+int celebrity(int grid[4][4], int n) {
+    int cand = 0;
+    for(int i = 1; i < n; i++) {
+        if(grid[cand][i] == 1) cand = i;
+    }
+    for (int i = 0; i < n; i++) {
+        if (i != cand && (grid[cand][i] == 1 || grid[i][cand] == 0)) return -1;
+    }
+    return cand;
+}
