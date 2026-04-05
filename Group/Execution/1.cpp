@@ -1,3 +1,27 @@
+int save[100];
+int fib(int n) {
+    if(n == 0) return 0; if(n == 1) return 1;
+    if(save[n] != 0) return save[n];
+    int x = fib(n - 1); int y = fib(n - 2);
+    save[n] = x + y;
+    return x + y;
+}
+pair<int, int> getMinMax(int arr[], int low, int high) {
+    if (low == high) return {arr[low], arr[low]};
+    if (low + 1 == high) return {min(arr[low], arr[high]), max(arr[low], arr[high])};
+    
+    auto [lmin, lmax] = getMinMax(arr, low, mid = (low + high)/2);
+    auto [rmin, rmax] = getMinMax(arr, mid + 1, high);
+    return {min(lmin, rmin), max(lmax, rmax)};
+}
+pair<int, int> getMinMax(int arr[], int low, int high) {
+    if (low == high) return {arr[low], arr[low]};
+    if (low + 1 == high) return {min(arr[low], arr[high]), max(arr[low], arr[high])};
+    
+    auto [lmin, lmax] = getMinMax(arr, low, mid = (low + high)/2);
+    auto [rmin, rmax] = getMinMax(arr, mid + 1, high);
+    return {min(lmin, rmin), max(lmax, rmax)};
+}
 // redundant parentheses from algebraic expressions by tracking sign propagation through nested parentheses using a stack.
 string simplify(string str) {
     int len = str.length();
