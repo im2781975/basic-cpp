@@ -179,6 +179,29 @@ void floydWarshall(int nd, int edg) {
         cout << (dist[u][v] == x ? -1 : dist[u][v]) << " ";
     }
 } 
+#define nd 4
+const int x = 1e9;
+void warshall(int grid[][nd]) {
+    // int graph[V][V] = {{0, 5, x, 10}, {x, 0, 3, x}, {x, x, 0, 1}, {x, x, x, 0}};
+    int dist[nd][nd];
+    for(int i = 0; i < nd; i++) {
+        for(int j = 0; j < nd; j++)
+            dist[i][j] = grid[i][j];
+    }
+    for(int k = 0; k < nd; i++) {
+        for(int i = 0; i < nd; i++) {
+            for(int j = 0; j < nd; j++) {
+                if(dist[i][k] + dist[k][j] < dist[i][j])
+                    dist[i][j] = dist[i][k] + dist[k][j];
+            }
+        }
+    }
+    for(int i = 0; i < nd; i++) {
+        for(int j = 0; j < nd; j++)
+            if(dist[i][j] == x) cout << "INF";
+            else cout << dist[i][j] << " ";
+    }
+}
 //Find the sortest route between cities
 void sortestroute(int nd, int edg) {
     vector <vector <int>> dist(nd, vector <int> (nd + 1, INT_MAX));
