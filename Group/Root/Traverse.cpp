@@ -667,3 +667,182 @@ int main() {
     vector<bool> vis(10, false);
     cout << dfs(7, 9, adj, vis) << endl;  
 }
+// count cycles of length n in a given graph.
+const int nd = 5
+void DFS(bool graph[][nd], bool vis[], int len, int cur, int start, int cnt) {
+    if(len == 0) {
+        if(graph[cur][start]) cnt++;
+    }
+    vis[cur] = true;
+    for (int next = 0; next < nd; next++) {
+        if (!vis[next] && graph[cur][next])
+            DFS(graph, vis, len - 1, next, start, count);
+    }
+    vis[cur] = false;
+}
+int cntcycle(bool graph[][nd], int n) {
+    // n -> cycle length
+    bool vis[nd] = {false}; int cnt = 0;
+    for(int start = 0; start < nd - (n - 1); ++start) {
+        DFS(graph, vis, n - 1, start, start, cnt);
+        vis[start] = true;
+    }
+    return cnt / 2;
+}
+// cycle detection in undirected graph
+bool IsCyclicJoined(vector <int> adj[], int x, vector <bool> vis, int nd) {
+    vector <int> parent(nd, -1);
+    queue <int> q; vis[x] = true;
+    q.push(x); parent[x] = -1;
+    while(!q.empty()) {
+        int u = q.front(); q.pop();
+        for(int child : adj[u]) {
+            if (!vis[child]) {
+                vis[child] = true;
+                q.push(child);
+                parent[child] = u;
+            }
+            else if (parent[u] != child) return true;
+        }
+    }
+    return false;
+}
+bool IsCyclicLeaved(vector <int> adj[], int nd) {
+    /*vector <int> adj[node];
+    for(int i = 0; i < edge; i++) {
+        int u, v; cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    (IsCyclicLeaved(adj, node)) ? cout << "Yes" << endl : cout << "No" << endl; */
+    vector <bool> vis(nd, false);
+    for(int i = 0; i < nd; i++) {
+        if(!vis[i] && IsCyclicJoined(adj, i, vis, nd)) return true;
+    }
+    return false;
+}
+bool IsCyclicConnected(const vector<vector<int>>& adj, int v, vector<bool>& visited, vector<int>& parent) {
+    queue<int> q;
+    visited[v] = true;
+    q.push(v);
+    parent[v] = -1;
+    
+    while (!q.empty()) {
+        int u = q.front(); q.pop();
+        for (int child : adj[u]) {
+            if (!visited[child]) {
+                visited[child] = true;
+                parent[child] = u;
+                q.push(child);
+            } else if (parent[u] != child) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+const int n = 1e5;
+int visited[n];
+vector <int> adj[n];
+bool DetectCycle(int node){
+    visited[node] = 1;
+    for(int child : adj[node]){
+        // visited[0] = unexplored
+        // visited[1] = paused | cycle detected
+        // visited[2] = done | continue
+        if(!visited[child]){
+            bool gotCycle = DetectCycle(child);
+            if(gotCycle)
+                return true;
+        }
+        else if(visited[child] == 1)
+            return true;
+    }
+    visited[node] = 2;
+    return false;
+}
+bool DetectCycle(int node, int parent = -1) {
+    visited[node] = 1;  
+    // 0 = unexplored, 1 = paused, 2 = done
+    for (int child : adj[node]) {
+        if (child == parent) continue;
+        if (visited[child] == 1) return true;  
+        if (visited[child] == 0) {
+            if (DetectCycle(child, node)) return true;
+        }
+    }
+    visited[node] = 2;
+    return false;
+}
+int main(){
+    int node, edge; cin >> node >> edge;
+    for(int i = 0; i < edge; i++){
+        int u, v; cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    bool CycleExits = false;
+    for(int i = 1; i <= node; i++){
+        if(!visited[i]){
+            bool gotCycle = DetectCycle(i);
+            if(gotCycle){
+                CycleExits = true;
+                break;
+            }
+        }
+    }
+    (CycleExits)?cout << "Cycle Exits" : cout << "Doesn't exits";
+    
+    bool CycleExists = false;
+    for (int i = 1; i <= node; i++) {
+        if (visited[i] == 0) {
+            if (DetectCycle(i)) {
+                CycleExists = true;
+                break;
+            }
+        }
+    }
+    cout << (CycleExists ? "Cycle Exists" : "No Cycle") << endl; 
+}
+// Detect Cycle
+const int N = 2e5;
+vector <int> adj[N];
+int parent[N], vis[N];
+bool findcycle(int u, int eltern) {
+    vis[u] = 1; parent[u] = eltern;
+    for(int v : adj[u]) {
+        if(v == eltern) continue;
+        if(vis[v] == 1) return true;
+        if(vis[v] == 0 && findcycle(v, u)) return true;
+    }
+    vis[u] = 2; return false;
+}
+int main() {
+    int n, m; cin >> n >> m;
+    while(m--) {
+        int u, v; cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    int cyclestart = -1;
+    for(int i = 1; i <= n; i++) {
+        if(vis[i] == 0) {
+            if(findcycle(i, -1)) {
+                cyclestart = i; break;
+            }
+        }
+    }
+    if(cyclestart == -1) {
+        cout << "IMPOSSIBLE"; return 0;
+    }
+    vector <int> path;
+    int curr = cyclestart;
+    while(true) {
+        path.push_back(curr);
+        curr = parent[curr];
+        if(curr == cyclestart) {
+            path.push_back(curr); break;
+        }
+    }
+    cout << path.size() << " ";
+}
