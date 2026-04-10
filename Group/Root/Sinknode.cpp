@@ -1,3 +1,310 @@
+// find the path in Peterson graph
+#include <bits/stdc++.h>
+using namespace std;
+// path to be checked 
+char S[100005]; 
+// adjacency matrix. 
+bool adj[10][10];
+// resulted path - way 
+char result[100005];
+// we are applying BFS here
+bool findthepath(char* S, int v)
+{
+    result[0] = v + '0';
+    for (int i = 1; S[i]; i++) {
+        // first traverse the outer graph
+        if (adj[v][S[i] - 'A'] || adj[S[i] -'A'][v]) {
+            v = S[i] - 'A';
+        }
+        // then traverse the inner graph
+        else if (adj[v][S[i] - 'A' + 5] || 
+         adj[S[i] - 'A' + 5][v]) {
+            v = S[i] - 'A' + 5;
+        }
+        // if the condition failed to satisfy return false
+        else
+            return false;
+        result[i] = v + '0';
+    }
+    return true;
+}
+int main()
+{
+    // here we have used adjacency matrix to make connections between the connected nodes
+    adj[0][1] = adj[1][2] = adj[2][3] = adj[3][4] = 
+    adj[4][0] = adj[0][5] = adj[1][6] = adj[2][7] =
+    adj[3][8] = adj[4][9] = adj[5][7] = adj[7][9] =
+    adj[9][6] = adj[6][8] = adj[8][5] = true;
+    // path to be checked
+    char S[] = "ABB";
+    if (findthepath(S, S[0] - 'A') || 
+        findthepath(S, S[0] - 'A' + 5)) {
+        cout << result;
+    } else
+        cout << "-1";
+    return 0;
+}
+#include<bits/stdc++.h>
+using namespace std;
+typedef pair<int,int> pii;
+// Function to find sum of weights of edges of the Minimum Spanning Tree.
+int spanningTree(int V, int E, int edges[][3])
+{   
+    // Create an adjacency list representation of the graph
+    vector<vector<int>> adj[V];
+    // Fill the adjacency list with edges and their weights
+    for (int i = 0; i < E; i++) {
+        int u = edges[i][0];
+        int v = edges[i][1];
+        int wt = edges[i][2];
+        adj[u].push_back({v, wt});
+        adj[v].push_back({u, wt});
+    }
+    // Create a priority queue to store edges with their weights
+    priority_queue<pii, vector<pii>, greater<pii>> pq;
+    // Create a visited array to keep track of visited vertices
+    vector<bool> visited(V, false);
+    // Variable to store the result (sum of edge weights)
+    int res = 0;
+    // Start with vertex 0
+    pq.push({0, 0});
+    // Perform Prim's algorithm to find the Minimum Spanning Tree
+    while(!pq.empty()){
+        auto p = pq.top();
+        pq.pop();
+        int wt = p.first; 
+        // Weight of the edge
+        int u = p.second;  
+        // Vertex connected to the edge
+        if(visited[u] == true){
+            continue;  // Skip if the vertex is already visited
+        }
+        res += wt; 
+        // Add the edge weight to the result
+        visited[u] = true;
+        for(auto v : adj[u]){
+            // v[0] represents the vertex and v[1] represents the edge weight
+            if(visited[v[0]] == false){
+                pq.push({v[1], v[0]});  // Add the adjacent edge to the priority queue
+            }
+        }
+    }
+    return res;
+    //Return the sum of edge weights of the Minimum Spanning Tree
+}
+int main()
+{
+    int graph[][3] = {{0, 1, 5},
+    {1, 2, 3}, {0, 2, 1}};
+    cout << spanningTree(3, 3, graph) << endl;
+    return 0;
+}
+// Prim's Minimum Spanning Tree (MST) algorithm. The program is
+// for adjacency matrix representation of the graph
+#include <bits/stdc++.h>
+using namespace std;
+#define V 5
+//  find the vertex with minimum key value, from the set of vertices not yet included in MST
+int minKey(int key[], bool mstSet[])
+{
+    int min = INT_MAX, min_index;
+    for (int v = 0; v < V; v++)
+        if (mstSet[v] == false && key[v] < min)
+            min = key[v], min_index = v;
+    return min_index;
+}
+// function to print the constructed MST stored in parent[]
+void printMST(int parent[], int graph[V][V])
+{
+    cout << "Edge \tWeight\n";
+    for (int i = 1; i < V; i++)
+        cout << parent[i] << " - " << i << " \t"
+             << graph[i][parent[i]] << " \n";
+}
+// Function to construct and print MST for a graph represented using adjacency matrix representation
+void primMST(int graph[V][V])
+{
+    // Array to store constructed MST
+    int parent[V];
+    // Key values used to pick minimum weight edge in cut
+    int key[V];
+    // To represent set of vertices included in MST
+    bool mstSet[V];
+    // Initialize all keys as INFINITE
+    for (int i = 0; i < V; i++)
+        key[i] = INT_MAX, mstSet[i] = false;
+ 
+    // Always include 1st vertex in MST. Make key 0 so that this vertex is picked as first vertex.
+    key[0] = 0;
+    // First node is always root of MST
+    parent[0] = -1;
+    // The MST will have V vertices
+    for (int count = 0; count < V - 1; count++) {
+        // Pick the minimum key vertex from the
+        // set of vertices not yet included in MST
+        int u = minKey(key, mstSet);
+        // Add the picked vertex to the MST Set
+        mstSet[u] = true;
+        // Update key value and parent index of the adjacent vertices of the picked vertex.
+        // Consider only those vertices which are not yet included in MST
+        for (int v = 0; v < V; v++)
+ 
+            // graph[u][v] is non zero only for adjacent
+            // vertices of m mstSet[v] is false for vertices
+            // not yet included in MST Update the key only
+            // if graph[u][v] is smaller than key[v]
+            if (graph[u][v] && mstSet[v] == false
+                && graph[u][v] < key[v])
+                parent[v] = u, key[v] = graph[u][v];
+    }
+    printMST(parent, graph);
+}
+int main()
+{
+    int graph[V][V] = { { 0, 2, 0, 6, 0 },{ 2, 0, 3, 8, 5 },
+    { 0, 3, 0, 0, 7 }, { 6, 8, 0, 0, 9 },
+     { 0, 5, 7, 9, 0 } };
+    primMST(graph);
+    return 0;
+}
+// Binary Search for Rational Numbers without using floating point arithmetic
+#include <iostream>
+using namespace std;
+struct Rational{
+    int p, q;
+};
+// Ucompare two  Rational numbers 'a' and 'b'. It returns
+// 0 --> When 'a' and 'b' are same
+// 1 --> When 'a' is greater
+//-1 --> When 'b' is greater
+int compare(struct Rational a, struct Rational b)
+{
+    // If a/b == c/d then a*d = b*c:
+    if (a.p * b.q == a.q * b.p)
+        return 0;
+    if (a.p * b.q > a.q * b.p)
+        return 1;
+    return -1;
+}
+// Returns index of x in arr[l..r] if it is present, else returns -1. It mainly uses Binary Search.
+int binarySearch(struct Rational arr[], int l, int r,
+                 struct Rational x){
+    if (r >= l){
+        int mid = l + (r - l) / 2;
+        // If the element is present at the middle itself
+        if (compare(arr[mid], x) == 0) 
+            return mid;
+        // If element is smaller than mid, then it can only be present in left subarray
+        if (compare(arr[mid], x) > 0)
+            return binarySearch(arr, l, mid - 1, x);
+        // Else the element can only be present in right subarray
+        return binarySearch(arr, mid + 1, r, x);
+    }
+    return -1;
+}
+int main(){
+    struct Rational arr[] = { { 1, 5 }, { 2, 3 }, 
+    { 3, 2 }, { 13, 2 } };
+    struct Rational x = { 3, 2 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+     
+    cout << "Element found at index "
+         << binarySearch(arr, 0, n - 1, x);
+}
+#include<bits/stdc++.h>
+using namespace std;
+// Min path sum from top-left to bottom-right (right/down moves only)
+int minpathsum(vector <vector <int>> &grid) {
+    int n = grid.size(), m = grid[0].size();
+    vector <vector <int>> dp(n, vector <int> (m, 0));
+    dp[0][0] = grid[0][0];
+    for(int i = 1; i < m; i++)
+        dp[0][i] = dp[0][i - 1] + grid[0][i];
+    for(int i = 1; i < n; i++) 
+        dp[i][0] = dp[i - 1][0] + grid[i][0];
+    for(int i = 1; i < n; i++) {
+        for(int j = 1; j < m; j++) 
+            dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+    }
+    return dp[n - 1][m - 1];
+}
+// Count right/down paths from (0,0) to (n - 1, n - 1) avoiding traps.
+int cntpath(int n, vector <vector <int>> &trap) {
+    vector <vector <int>> dp(n, vector <int>(n, 0));
+    for(int i = 1; i < n; i++) dp[i][j] = trap[i][0] ? 0 : dp[i - 1][0];
+    for(int j = 1; j < n; j++) dp[i][j] = trap[0][j] ? 0 : dp[0][j - 1];
+    for(int i = 1; i < n; i++) {
+        for(int j = 1; j < n; j++) {
+            if(!trap[i][j]) dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % 1000000;
+        }
+    } /*
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            if(trap[i][j]) dp[i][j] = 0;
+            else if(i || j) dp[i][j] = ((i ? dp[i - 1][j] : 0) + (j ? dp[i][j - 1] : 0)) % 10000;
+        }
+    } */
+    return dp[n - 1][n - 1];
+}
+// Given rival pairs (Lykan vs Vampire fights), find maximum number that can be all Vampires OR all Lykans
+bool dfs(int u, vector <vector <int>> &adj, vector <int> &match, vector <bool> &vis) {
+    for(int v : adj[u]) {
+        if(!vis[v]) {
+            vis[v] = true;
+            if (match[v] == -1 || dfs(match[v], adj, match, vis)) {
+                match[u] = v; match[v] = u;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+int maxfighterteam(int n, vector <pair <int, int>> &fight) { /*
+    int n; cin >> n;
+    vector <pair <int, int>> fight(n);
+    for(int i = 0; i < n; i++) cin >> fight[i].first >> fight[i].second;
+    cout << maxfighterteam(n, flight); */
+    int num = *max_element(fight.begin(), fight.end(), [](auto &a, auto &b) {
+        return max(a.first, a.second) < max(b.first, b.second); }) + 1;
+    vector <vector <int> adj(num);
+    for(auto [u, v] : fight) {
+        adj[u].push_back(v); adj[v].push_back(u);
+    }
+    vector <int> match(num, -1);
+    int matching = 0;
+    for(int i = 0; i < num; i++) {
+        if(match[i] == -1) {
+            vector <bool> vis(num, false);
+            if(dfs(i, adj, match, vis)) matching++;
+        }
+    }
+    return num - matching;
+}
+//return the len of the longest increasing path in matrix
+int dfs(vector <vector <int>> &grid, int x, int y, vector <vector <int>> &tmp) {
+    if(tmp[x][y] != -1) return tmp[x][y];
+    int maxpath = 1;
+    int direct[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    for(const auto &dir : direct) {
+        int nx = x + dir[0], ny = y + dir[1];
+        if(nx >= 0 && nx < grid.size() && ny >= 0 && ny < grid[0].size() 
+           && grid[nx][ny] > grid[x][y])
+            maxPath = max(maxPath, 1 + dfs(grid, nx, ny, tmp));
+    }
+    tmp[x][y] = maxpath;
+    return maxpath;
+}
+int pathIncreasing(vector <vector <int>> grid) {
+    int n = grid.size(), m = grid[0].size();
+    if(grid.empty() || grid[0].empty()) return 0;
+    vector <vector <int>> tmp(n, vector <int> (m, -1));
+    int maxpath = 1;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) 
+            maxpath = max(maxpath, dfs(grid, i, j, tmp));
+    }
+    return maxpath;
+}
 using namespace std;
 //find the shortest path using multistage graph
 using ump = pair <int, unordered_map<int, int> >;
