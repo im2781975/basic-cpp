@@ -1,3 +1,536 @@
+using namespace std;
+void dfs(int row, int col, vector<vector<int>>& image, int newColor, int oldColor, int n, int m) {
+    if (row < 0 || row >= n || col < 0 || col >= m || 
+        image[row][col] != oldColor || image[row][col] == newColor)
+        return;
+    
+    // Change color
+    image[row][col] = newColor;
+    
+    int dr[] = {-1, 0, 1, 0};
+    int dc[] = {0, 1, 0, -1};
+    
+    for (int i = 0; i < 4; i++) {
+        dfs(row + dr[i], col + dc[i], image, newColor, oldColor, n, m);
+    }
+}
+vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+    /* int x = 1, y = 1, newC = 3;
+    vector <vector <int>> res = floodFill(image, x, y, newC); */
+    int n = image.size(), m = image[0].size();
+    int oldColor = image[sr][sc];
+    
+    if (oldColor != newColor)
+        dfs(sr, sc, image, newColor, oldColor, n, m);
+    return image;
+}
+// Function that returns true if the given pixel is valid
+bool isValid(int screen[][8], int m, int n, int x, int y,
+             int prevC, int newC)
+{
+    if (x < 0 || x >= m || y < 0 || y >= n
+        || screen[x][y] != prevC || screen[x][y] == newC)
+        return false;
+    return true;
+}
+void floodFill(int screen[][8], int x, int y, int prevC, int newC) {
+   /* int m = screen.size(), n = screen[0].size();
+    int x = 4, y = 4;
+    int prevC = screen[x][y];
+    // New color that has to be filled
+    int newC = 3;
+    floodFill(screen, m, n, x, y, prevC, newC); */
+    queue<pair<int, int> > queue;
+    pair<int, int> p(x, y);
+    queue.push(p);
+    // Color the pixel with the new color
+    screen[x][y] = newC;
+    while (queue.size() > 0) {
+        pair<int, int> currPixel = queue.front();
+        queue.pop();
+ 
+        int posX = currPixel.first;
+        int posY = currPixel.second;
+        if (isValid(screen, m, n, posX + 1, posY, prevC,
+                    newC)) {
+            screen[posX + 1][posY] = newC;
+            p.first = posX + 1;
+            p.second = posY;
+            queue.push(p);
+        }
+        if (isValid(screen, m, n, posX - 1, posY, prevC,
+                    newC)) {
+            screen[posX - 1][posY] = newC;
+            p.first = posX - 1;
+            p.second = posY;
+            queue.push(p);
+        }
+        if (isValid(screen, m, n, posX, posY + 1, prevC,
+                    newC)) {
+            screen[posX][posY + 1] = newC;
+            p.first = posX;
+            p.second = posY + 1;
+            queue.push(p);
+        }
+ 
+        if (isValid(screen, m, n, posX, posY - 1, prevC,
+                    newC)) {
+            screen[posX][posY - 1] = newC;
+            p.first = posX;
+            p.second = posY - 1;
+            queue.push(p);
+        }
+    }
+}
+//find a path from start to end. You can walk left, right, up and down. First print "YES", if there is a path, and "NO" otherwise.
+//If there is a path, print the length of the shortest such path
+const int MAX_N = 100;  // Adjust this according to the size of your labyrinth
+const char WALL = '#';
+const int dx[] = {1, -1, 0, 0};
+const int dy[] = {0, 0, 1, -1};
+const char moves[] = "RULD";
+int n, m;
+char labyrinth[MAX_N][MAX_N];
+int dist[MAX_N][MAX_N];
+pair<int, int> parent[MAX_N][MAX_N];
+bool is_valid(int x, int y) {
+    return x >= 0 && x < n && y >= 0 && y < m && labyrinth[x][y] != WALL;
+}
+void bfs(pair<int, int> start, pair<int, int> end) {
+    queue<pair<int, int>> q;
+    q.push(start);
+    dist[start.first][start.second] = 0;
+    while (!q.empty()) {
+        pair<int, int> cur = q.front();
+        q.pop();
+        if (cur == end) {
+            return; 
+        }
+        for (int i = 0; i < 4; i++) {
+            int new_x = cur.first + dx[i];
+            int new_y = cur.second + dy[i];
+
+            if (is_valid(new_x, new_y) && dist[new_x][new_y] == -1) {
+                q.push({new_x, new_y});
+                dist[new_x][new_y] = dist[cur.first][cur.second] + 1;
+                parent[new_x][new_y] = cur;
+            }
+        }
+    }
+}
+
+string find_shortest_path(pair<int, int> start, pair<int, int> end) {
+    if (dist[end.first][end.second] == -1) {
+        return "NO";
+    }
+    string path;
+    while (end != start) {
+        pair<int, int> prev = parent[end.first][end.second];
+        for (int i = 0; i < 4; i++) {
+            int new_x = end.first + dx[i];
+            int new_y = end.second + dy[i];
+            if (new_x == prev.first && new_y == prev.second) {
+                path = moves[i] + path;
+                break;
+            }
+        }
+        end = prev;
+    }
+    return "YES\n" + to_string(dist[start.first][start.second]) + "\n" + path;
+}
+int main() {
+    cin >> n >> m;
+    pair<int, int> start, end;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> labyrinth[i][j];
+            dist[i][j] = -1;
+            if (labyrinth[i][j] == 'A') {
+                start = {i, j};
+            } else if (labyrinth[i][j] == 'B') {
+                end = {i, j};
+            }
+        }
+    }
+    bfs(start, end);
+    cout << find_shortest_path(start, end) << endl;
+    return 0;
+}
+//find the length of the largest region in boolean 2D-matrix
+#define ROW 4
+#define COL 5
+// A function to check if a given cell (row, col) can be included in DFS
+int isSafe(int M[][COL], int row, int col,bool visited[][COL])
+{
+    // row number is in range, column number is in range and value is 1 & not yet visited
+    return (row >= 0) && (row < ROW) && (col >= 0)
+           && (col < COL)
+           && (M[row][col] && !visited[row][col]);
+}
+// DFS for a 2D boolean matrix. It only considers the 8 neighbours as adjacent vertices
+void DFS(int M[][COL], int row, int col,bool visited[][COL], int& count)
+{
+    // These arrays are used to get row and column numbers of 8 neighbours of a given cell
+    static int rowNbr[] = { -1, -1, -1, 0, 0, 1, 1, 1 };
+    static int colNbr[] = { -1, 0, 1, -1, 1, -1, 0, 1 };
+    // Mark this cell as visited
+    visited[row][col] = true;
+    // Recur for all connected neighbours
+    for (int k = 0; k < 8; ++k) {
+        if (isSafe(M, row + rowNbr[k], col + colNbr[k],visited)) {
+            // Increment region length by one
+            count++;
+            DFS(M, row + rowNbr[k], col + colNbr[k],
+                visited, count);
+        }
+    }
+}
+//returns largest  length region of a given boolean 2D matrix
+int largestRegion(int M[][COL])
+{
+/*int M[][COL] = { { 0, 0, 1, 1, 0 },
+     { 1, 0, 1, 1, 0 },
+     { 0, 1, 0, 0, 0 },
+     { 0, 0, 0, 0, 1 } };
+    cout << largestRegion(M); */
+    // Make a bool array to mark visited cells. Initially all cells are unvisited
+    bool visited[ROW][COL];
+    memset(visited, 0, sizeof(visited));
+    // Initialize result as 0 and travesle through the all cells of given matrix
+    int result = INT_MIN;
+    for (int i = 0; i < ROW; ++i) {
+        for (int j = 0; j < COL; ++j) {
+            // If a cell with value 1 is not
+            if (M[i][j] && !visited[i][j]) {
+                // visited yet, then new region found
+                int count = 1;
+                DFS(M, i, j, visited, count);
+                // maximum region
+                result = max(result, count);
+            }
+        }
+    }
+    return result;
+}
+//find unit area of the largest region of 1s.
+int largestRegion(vector<vector<int> >& grid)
+{
+    /*vector<vector<int> > M = 
+    { { 0, 0, 1, 1, 0 },{ 1, 0, 1, 1, 0 },
+    { 0, 1, 0, 0, 0 },{ 0, 0, 0, 0, 1 } };
+    cout << largestRegion(M); */
+    int m = grid.size();
+    int n = grid[0].size();
+    // creating a queue that will help in bfs traversal
+    queue<pair<int, int> > q;
+    int area = 0;
+    int ans = 0;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            // if the value at any particular cell is 1 then
+            // from here we need to do the BFS traversal
+            if (grid[i][j] == 1) {
+                ans = 0;
+                // pushing the pair<i,j> in the queue
+                q.push(make_pair(i, j));
+                // marking the value 1 to -1 so that we
+                // don't again push this cell in the queue
+                grid[i][j] = -1;
+                while (!q.empty()) {
+ 
+                    pair<int, int> t = q.front();
+                    q.pop();
+                    ans++;
+                    int x = t.first;
+                    int y = t.second;
+                    // now we will check in all 8 directions
+                    if (x + 1 < m) {
+                        if (grid[x + 1][y] == 1) {
+                            q.push(make_pair(x + 1, y));
+                            grid[x + 1][y] = -1;
+                        }
+                    }
+                    if (x - 1 >= 0) {
+                        if (grid[x - 1][y] == 1) {
+                            q.push(make_pair(x - 1, y));
+                            grid[x - 1][y] = -1;
+                        }
+                    }
+                    if (y + 1 < n) {
+                        if (grid[x][y + 1] == 1) {
+                            q.push(make_pair(x, y + 1));
+                            grid[x][y + 1] = -1;
+                        }
+                    }
+                    if (y - 1 >= 0) {
+                        if (grid[x][y - 1] == 1) {
+                            q.push(make_pair(x, y - 1));
+                            grid[x][y - 1] = -1;
+                        }
+                    }
+                    if (x + 1 < m && y + 1 < n) {
+                        if (grid[x + 1][y + 1] == 1) {
+                            q.push(make_pair(x + 1, y + 1));
+                            grid[x + 1][y + 1] = -1;
+                        }
+                    }
+                    if (x - 1 >= 0 && y + 1 < n) {
+                        if (grid[x - 1][y + 1] == 1) {
+                            q.push(make_pair(x - 1, y + 1));
+                            grid[x - 1][y + 1] = -1;
+                        }
+                    }
+                    if (x - 1 >= 0 && y - 1 >= 0) {
+                        if (grid[x - 1][y - 1] == 1) {
+                            q.push(make_pair(x - 1, y - 1));
+                            grid[x - 1][y - 1] = -1;
+                        }
+                    }
+                    if (x + 1 < m && y - 1 >= 0) {
+                        if (grid[x + 1][y - 1] == 1) {
+                            q.push(make_pair(x + 1, y - 1));
+                            grid[x + 1][y - 1] = -1;
+                        }
+                    }
+                }
+ 
+                area = max(ans, area);
+                ans = 0;
+            }
+        }
+    }
+    return area;
+}
+
+using namespace std;
+int dfs(int x, int y, int M, int N, vector<vector<int>>& mat, vector<vector<int>>& dp) {
+    if (dp[x][y] != -1)
+        return dp[x][y];
+    
+    vector<vector<int>> dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    int ans = 1;
+    for (int i = 0; i < 4; i++) {
+        int X = x + dir[i][0];
+        int Y = y + dir[i][1];
+        
+        if (X < 0 || X >= N || Y < 0 || Y >= M)
+            continue;
+        if (mat[x][y] >= mat[X][Y])
+            continue;
+        ans = max(ans, 1 + dfs(X, Y, M, N, mat, dp));
+    }
+    return dp[x][y] = ans;
+}
+
+int LongestIncrPath(vector<vector<int>>& matrix) { /*
+vector<vector<int>> matrix = {
+        {9, 9, 4},
+        {6, 6, 8},
+        {2, 1, 1}
+    }; */
+    int n = matrix.size();
+    if (n == 0) return 0; 
+    int m = matrix[0].size();
+    vector<vector<int>> dp(n, vector<int>(m, -1));
+    int ans = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++)
+            ans = max(ans, dfs(i, j, m, n, matrix, dp));
+    }
+    return ans;
+}
+//Syrjälä's network has n computers and m connections. Your task is to find out if Uolevi can send a message to Maija, and if it is possible, what is the minimum number of computers on such a route.
+//If it is possible to send a message, first print k: the minimum number of computers on a valid route. After this, print an example of such a route and path.print all valid solution.
+//If there are no routes, print "IMPOSSIBLE".
+const int MAXN = 1005;  
+// Maximum number of computers
+vector<int> graph[MAXN];
+bool visited[MAXN];
+vector<int> path;
+bool found = false;
+void dfs(int u, int destination) {
+    if (found) return;
+    visited[u] = true;
+    path.push_back(u);
+
+    if (u == destination) {
+        found = true;
+        cout << path.size() << " ";
+        for (int i = 0; i < path.size(); i++) {
+            cout << path[i] << " ";
+        }
+        cout << endl;
+        return;
+    }
+    for (int v : graph[u]) {
+        if (!visited[v]) {
+            dfs(v, destination);
+        }
+    }
+    path.pop_back();
+}
+int main() {
+    int n, m, u, v;
+    cin >> n >> m;
+    // Build the graph
+    for (int i = 0; i < m; i++) {
+        cin >> u >> v;
+        graph[u].push_back(v);
+        graph[v].push_back(u);
+    }
+    int Uolevi, Maija;
+    cin >> Uolevi >> Maija;
+    dfs(Uolevi, Maija);
+    if (!found) {
+        cout << "IMPOSSIBLE" << endl;
+    }
+    return 0;
+}
+// finding minimum cut using Ford-Fulkerson
+#define V 6
+//Returns true if there is a path from source 's' to sink 't' in residual graph. Also fills parent[] to store the path
+int bfs(int rGraph[V][V], int s, int t, int parent[])
+{
+    // Create a visited array and mark all vertices as not visited
+    bool visited[V];
+    memset(visited, 0, sizeof(visited));
+ 
+    // Create a queue, enqueue source vertex and mark source vertex as visited
+    queue <int> q;
+    q.push(s);
+    visited[s] = true;
+    parent[s] = -1;
+    while (!q.empty())
+    {
+        int u = q.front();
+        q.pop();
+ 
+        for (int v=0; v<V; v++)
+        {
+            if (visited[v]==false && rGraph[u][v] > 0)
+            {
+                q.push(v);
+                parent[v] = u;
+                visited[v] = true;
+            }
+        }
+    }
+    // If we reached sink in BFS starting from source, then return true, else false
+    return (visited[t] == true);
+}
+ 
+// A DFS based function to find all reachable vertices from s.  The function
+// marks visited[i] as true if i is reachable from s.  The initial values in
+// visited[] must be false. We can also use BFS to find reachable vertices
+void dfs(int rGraph[V][V], int s, bool visited[])
+{
+    visited[s] = true;
+    for (int i = 0; i < V; i++)
+       if (rGraph[s][i] && !visited[i])
+           dfs(rGraph, i, visited);
+}
+// Prints the minimum s-t cut
+void minCut(int graph[V][V], int s, int t)
+{
+/* int graph[V][V] = { {0, 16, 13, 0, 0, 0},
+    {0, 0, 10, 12, 0, 0},
+    {0, 4, 0, 0, 14, 0},
+    {0, 0, 9, 0, 0, 20},
+    {0, 0, 0, 7, 0, 4},
+    {0, 0, 0, 0, 0, 0}};
+    minCut(graph, 0, 5); */
+    int u, v;
+ 
+    // Create a residual graph and fill the residual graph with
+    // given capacities in the original graph as residual capacities in residual graph
+    int rGraph[V][V];
+    // rGraph[i][j] indicates residual capacity of edge i-j
+    for (u = 0; u < V; u++)
+        for (v = 0; v < V; v++)
+             rGraph[u][v] = graph[u][v];
+ 
+    int parent[V]; 
+    // This array is filled by BFS and to store path
+ 
+    // Augment the flow while there is a path from source to sink
+    while (bfs(rGraph, s, t, parent))
+    {
+        // Find minimum residual capacity of the edges along the
+        // path filled by BFS. Or we can say find the maximum flow through the path found.
+        int path_flow = INT_MAX;
+        for (v=t; v!=s; v=parent[v])
+        {
+            u = parent[v];
+            path_flow = min(path_flow, rGraph[u][v]);
+        }
+        // update residual capacities of the edges and reverse edges along the path
+        for (v=t; v != s; v=parent[v])
+        {
+            u = parent[v];
+            rGraph[u][v] -= path_flow;
+            rGraph[v][u] += path_flow;
+        }
+    }
+    // Flow is maximum now, find vertices reachable from s
+    bool visited[V];
+    memset(visited, false, sizeof(visited));
+    dfs(rGraph, s, visited);
+ 
+    // Print all edges that are from a reachable vertex to
+    // non-reachable vertex in the original graph
+    for (int i = 0; i < V; i++)
+      for (int j = 0; j < V; j++)
+         if (visited[i] && !visited[j] && graph[i][j])
+              cout << i << " - " << j << endl;
+ 
+    return;
+}
+// M-Coloring problem solver using backtracking
+bool issafe(int src, vector <vector <int>> &grid, vector <int> &color, int m) {
+    for(int v = 0; v < graph.size(); ++v) {
+        if(graph[src][v] && color[v] == m) return false;
+    }
+    return true;
+}
+bool graphcolor(int src, vector <vector <int>> &grid, vector <int> &color, int m) {
+    // m = number of color
+    int n = grid.size(); if(src == n) return true;
+    for(int i = 1; i <= m; i++) {
+        if(issafe(src, grid, color, i)) {
+            color[src] = i;
+            if(graphcolor(src + 1, grid, color, m)) return true;
+            color[src] = 0;
+        }
+    }
+    return false;
+}
+// Finds maximum bipartite matching (maximum number of applicants who can get distinct jobs).
+bool dfs(int u, const vector<vector<int>>& graph, vector<int>& matchR, vector<bool>& seen) {
+    for(int v : graph[u]) {
+        if(!seen[v]) {
+            seen[v] = true;
+            // Free job or recurse through current assignee
+            if(matchR[v] == -1 || dfs(matchR[v], graph, matchR, seen)) {
+                matchR[v] = u;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+int maxBPM(vector <vector <int>> grid) {
+    // m applicants * n jobs
+    int m = grid.size(), n = grid[0].size();
+    vector <int> matchR(n, -1); // job applicants
+    int matching = 0;
+    for(int u = 0; u < m; u++) {
+        vector <bool> vis(n, false);
+        if(dfs(u, grid, matchR, vis)) matching++;
+    }
+    return matching;
+}
+
+
 #include<bits/stdc++.h>
 using namespace std;
 // traverse node
