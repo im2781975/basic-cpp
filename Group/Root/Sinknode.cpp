@@ -1,3 +1,70 @@
+//Find largest connected water volume (4- dir) in grid where > 0 cells form lakes
+void dfs(vector <vector <int>> &grid, vector <vector <bool>> &vis, int x, int y, int &curvlm) {
+    
+    vis[x][y] = true; curvlm += grid[x][y];
+    int dx[] = {1, -1, 0, 0}; int dy[] = {0, 0, 1, -1};
+    for(int i = 0; i < 4; i++) {
+        int newx = x + dx[i];
+        int newy = y + dy[i];
+        if(newx >= 0 && newx < grid.size() && newy >= 0 && newy < grid[0].size() && grid[newx][newy] > 0 && !vis[newx][newy])
+            dfs(grid, vis, newx, newy, curvlm);
+    }
+}
+int maxlakesize(vector <vector <int>> grid) {
+    int n = grid.size(), m = grid[0].size();
+    vector <vector <bool>> vis(n, vector <bool> (m, false));
+    int maxsz = 0;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            int curvlm = 0;
+            dfs(grid, vis, i, j, curvlm);
+            maxsz = max(maxsz, curvlm);
+        }
+    }
+    return maxsz;
+}
+int maxlakesize(vector <vector <int> &grid) {
+    int n = grid.size(), m = grid[0].size();
+    vector <vector <bool>> vis(n, vector <bool> (m, false));
+    int maxsz = 0;
+    function <int(int, int)> dfs = [&](int i, int j) -> int {
+        if (i < 0 || i >= n || j < 0 || j >= m || grid[i][j] == 0 || vis[i][j]) return 0;
+        vis[i][j] = true;
+        return grid[i][j] + dfs(i - 1,j) + dfs(i + 1,j) + dfs(i,j - 1) + dfs(i,j + 1);
+    };
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            if(!vis[i][j] && grid[i][j] > 0) maxsz = max(maxsz, dfs(i, j));
+        }
+    }
+    return maxsz;
+}
+// Given n nodes. directed edges times[i] = {u, v, w}, return min time for signal from k to reach ALL nodes, or -1 if impossible
+int delayTime(vector <vector <int>> &time, int n, int k) {
+    vector <int> dist(n + 1, INT_MAX);
+    dist[k] = 0;
+    // Relax all edges |V|-1 times
+    for(int it = 0; it < n - 1; it++) {
+        for(auto &edg : time) {
+            int u = edg[0], v = edg[1], w = edg[2];
+            if(dist[u] != INT_MAX && dist[u] + w < dist[v]) dist[v] = dist[u] + w;
+        }
+    } /*
+    vector <int> dist(n + 1, -1);
+    queue <int> q; dist[k] = 0;
+    q.push(k);
+    while(!q.empty()) {
+        int u = q.front(); q.pop();
+        for(auto &edg : time) {
+            if(edg[0] == u && dist[edg[1]] == -1) {
+                dist[edg[1]] = dist[u] + edg[2];
+                q.push(edg[1]);
+            }
+        }
+    } */
+    int res = *max_element(dist.begin() + 1, dist.end());
+    return res == INT_MAX ? -1 : ans;
+}
 // find the path in Peterson graph
 #include <bits/stdc++.h>
 using namespace std;
