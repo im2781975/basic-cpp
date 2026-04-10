@@ -1,3 +1,237 @@
+//find a path from start to end. You can walk left, right, up and down. First print "YES", if there is a path, and "NO" otherwise.
+//If there is a path, print the length of the shortest such path
+const int MAX_N = 100;  // Adjust this according to the size of your labyrinth
+const char WALL = '#';
+const int dx[] = {1, -1, 0, 0};
+const int dy[] = {0, 0, 1, -1};
+const char moves[] = "RULD";
+int n, m;
+char labyrinth[MAX_N][MAX_N];
+int dist[MAX_N][MAX_N];
+pair<int, int> parent[MAX_N][MAX_N];
+bool is_valid(int x, int y) {
+    return x >= 0 && x < n && y >= 0 && y < m && labyrinth[x][y] != WALL;
+}
+void bfs(pair<int, int> start, pair<int, int> end) {
+    queue<pair<int, int>> q;
+    q.push(start);
+    dist[start.first][start.second] = 0;
+    while (!q.empty()) {
+        pair<int, int> cur = q.front();
+        q.pop();
+        if (cur == end) {
+            return; 
+        }
+        for (int i = 0; i < 4; i++) {
+            int new_x = cur.first + dx[i];
+            int new_y = cur.second + dy[i];
+
+            if (is_valid(new_x, new_y) && dist[new_x][new_y] == -1) {
+                q.push({new_x, new_y});
+                dist[new_x][new_y] = dist[cur.first][cur.second] + 1;
+                parent[new_x][new_y] = cur;
+            }
+        }
+    }
+}
+
+string find_shortest_path(pair<int, int> start, pair<int, int> end) {
+    if (dist[end.first][end.second] == -1) {
+        return "NO";
+    }
+    string path;
+    while (end != start) {
+        pair<int, int> prev = parent[end.first][end.second];
+        for (int i = 0; i < 4; i++) {
+            int new_x = end.first + dx[i];
+            int new_y = end.second + dy[i];
+            if (new_x == prev.first && new_y == prev.second) {
+                path = moves[i] + path;
+                break;
+            }
+        }
+        end = prev;
+    }
+    return "YES\n" + to_string(dist[start.first][start.second]) + "\n" + path;
+}
+int main() {
+    cin >> n >> m;
+    pair<int, int> start, end;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> labyrinth[i][j];
+            dist[i][j] = -1;
+            if (labyrinth[i][j] == 'A') {
+                start = {i, j};
+            } else if (labyrinth[i][j] == 'B') {
+                end = {i, j};
+            }
+        }
+    }
+    bfs(start, end);
+    cout << find_shortest_path(start, end) << endl;
+    return 0;
+}
+#include <bits/stdc++.h>
+using namespace std;
+
+const int n = 1e5;
+int visited[n];
+int level[n];
+int parent[n];
+vector<int> adj_list[n];
+
+void bfs(int src) {
+    visited[src] = 1;
+    level[src] = 1;
+    
+    parent[src]=-1;
+    queue<int> q;
+    q.push(src);
+
+    while (!q.empty()) {
+        int head = q.front();
+        q.pop();
+        for (int adj_node : adj_list[head]) {
+            if (visited[adj_node] == 0) {
+                parent[adj_node]=head;
+                visited[adj_node] = 1;
+                level[adj_node] = level[head] + 1;
+                q.push(adj_node);
+            }
+        }
+    }
+}
+
+int main() {
+    int nodes, edges; // Changed variable name from "node" to "nodes" and "edge" to "edges".
+    cin >> nodes >> edges;
+
+    for (int i = 0; i < edges; i++) {
+        int u, v;
+        cin >> u >> v;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u);
+    }
+
+    int src = 1;
+    bfs(src);
+
+    vector<int>path;
+    int dst=node;
+    if(visited[dst]==0)
+    {
+        cout<<"Impossible";
+    }
+    cout<<level[dst]<<"\n";
+    int selected_node=dst;
+    while(true)
+    {
+        path.push_back(selected_node);
+        if(selected_node==src)
+        {
+            break;
+        }
+        selecte_node=parent[src];
+    }
+    reverse(path.begin(),path.end())
+    for(int node:path)
+    {
+        cout<<node<<" ";
+    }
+
+    return 0;
+}
+//printing shortest path between two vertices of unweighted graph
+using namespace std;
+const int n = 1e5;
+int parent[n], dist[n];
+bool visited[n];
+void addEdge(vector <int> adj[], int u, int v){
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+bool BFS(vector <int> adj[], int src, int dst, int parent[], int dist[], int node){
+    list <int> queue;
+    for(int i = 0; i < node; i++){
+        visited[i] = false;
+        parent[i] = -1;
+        dist[i] = INT_MAX;
+    }
+    visited[src] = true;
+    dist[src] = 0;
+    queue.push_back(src);
+    while (!queue.empty()) {
+        int u = queue.front();
+        queue.pop_front();
+
+        for (int v : adj[u]) {
+            if (!visited[v]) {
+                visited[v] = true;
+                dist[v] = dist[u] + 1;
+                parent[v] = u;
+                queue.push_back(v);
+
+                if (v == dst)
+                    return true;
+            }
+        }
+    }
+    return false;
+}
+void sortestDist(vector <int> adj[], int src, int dst, int node){
+    if(!BFS(adj, src, dst, parent, dist, node)){
+        clog << "Src & dest aren't connect";
+        return;
+    }
+    vector <int> path;
+    int val = dst;
+    path.push_back(val);
+    while(parent[val]!= -1){
+        path.push_back(parent[val]);
+        val = parent[val];
+    }
+    cout << "Sortest pth length is: " << dist[dst];
+    for(int i = path.size() - 1; i >= 0; i--)
+        cout << path[i] << " ";
+}
+int main(){
+    int node, edge; cin >> node >> edge;
+    vector <int> adj[node];
+    for(int i = 0; i < edge; i++){
+        int u, v; cin >> u >> v;
+        addEdge(adj, u, v);
+    }
+    int src, dst; cin >> src >> dst;
+    sortestDist(adj, src, dst, node);
+}
+using namespace std;
+#define node 4
+int Travelling(int graph[node][node], int src){
+    vector <int> vertix;
+    for(int i = 0; i < node; i++){
+        if(i != src)
+            vertix.push_back(i);
+    }
+    int minPath = INT_MAX;
+    do{
+        int curPathWeight = 0;
+        int k = src;
+        for(int i = 0; i < vertix.size(); i++){
+            curPathWeight += graph[k][vertix[i]];
+            k = vertix[i];
+        }
+        curPathweight += graph[k][src];
+        minPath = min(minpath, curPathWeight);
+    }while(next_permutation(vertix.begin(), vertix.end()));
+    return minPath;
+}
+int main(){
+    int graph[][node] { 
+        { 0, 10, 15, 20 }, { 10, 0, 35, 25 },
+    { 15, 35, 0, 30 }, { 20, 25, 30, 0 } };
+    cout << Travelling(graph, 0);
+}
 #include<bits/stdc++.h>
 using namespace std;
 // circle of 14 people labeled 0 to 13.each round, count 2 people and remove the 2nd one, continuing until only one is left.
