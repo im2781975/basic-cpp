@@ -20,6 +20,27 @@ void unite(int a, int b) {
         parent[b] = a; pos[a]++
     }
 }
+using namespace std;
+vector <int> parent;
+int find(int x) {
+    return parent[x] == -1 ? x : parent[x] = find(parent[x]); 
+}
+void union_set(int a, int b) {
+    parent[find(a)] = find(b);
+}
+int main() {
+    int n, m; cin >> n >> m;
+    parent.assign(n, -1);
+    bool hasCycle = false;
+    for(int i = 0; i < m; i++) {
+        int u, v; cin >> u >> v;
+        if(find(u) == find(v)) {
+            hasCycle = true; break;
+        }
+        union_set(u, v);
+    }
+    cout << (has_Cycle ? "Yes" : "No");
+}
 #include <bits/stdc++.h>
 using namespace std;
 // Union-Find (Disjoint Set Union - DSU) for incremental connectivity:
