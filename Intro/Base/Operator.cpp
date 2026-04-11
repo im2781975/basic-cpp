@@ -71,3 +71,14 @@ int main()
     else 
         cout << "\nWelcome !" ;
 }
+void check_X0r(ll a, ll b)
+{
+    cout<<"a = " << a <<","<< " b = " << b <<endl;
+    cout << "a & b = " << (a & b) << endl;
+    cout << "a | b = " << (a | b) << endl;
+    cout << "a ^ b = " << (a ^ b) << endl;
+    cout << "~a = " << (~a) << endl;
+    cout<<"b << 1" <<" = "<< (b << 1) <<endl;
+    cout<<"b >> 1 "<<"= " << (b >> 1 )<<endl;
+ 
+}
