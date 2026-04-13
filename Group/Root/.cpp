@@ -122,7 +122,7 @@ void iscyclic(int nd, int edg) {
 }
 // solves an incremental connectivity problem on an undirected graph, where edges 
 // are added one by one and you must efficiently answer “are x and y connected yet? also count components
-int parent[x], rank[x], components;
+int parent[x], rank[x], sz[x], components;
 int root(int x) {
     while(parent[x] != x) x = parent[x] = parent[parent[x]];
     return x;
@@ -135,7 +135,15 @@ void unite(int x, int y) {
     else if(rank[px] > rank[py]) parent[py] = px;
     else { parent[py] = px; rank[px]++; }
     components--; // two components become one
-    
+}
+void unionBysz(int x, int y) {
+    int px = root(x), py = root(y);
+    if(px == py) return;
+    if(sz[px] < sz[py]) {
+        parent[px] = py; sz[py] += px;
+    } else {
+        parent[py] = px; sz[px] += py;
+    }
 }
 void redundantedg(int n = 7) {
     vector <int> parent(n), rank(n, 1);
@@ -162,6 +170,11 @@ void redundantedg(int n = 7) {
     for(auto &p : op) {
         int type = p.first, x = op.second.first, y = op.second.second;
         if(type == 1) cout << (connected(x, y) ? "YES " : "NO ") << components << endl;
-        else unite(x, y);
+        else if(type == 2) unite(x, y);
+        else if(type == 3){
+            if(!connected(x, y)) unionBysz(x, y);
+        } else if(type == 4) {
+            cout << rank[root(x)];
+        }
     }
 }
