@@ -120,3 +120,48 @@ void iscyclic(int nd, int edg) {
     cout << (hascycle? "NO" : "YES"); */
     cout << (hascycle ? "Yes" : "NO");
 }
+// solves an incremental connectivity problem on an undirected graph, where edges 
+// are added one by one and you must efficiently answer “are x and y connected yet? also count components
+int parent[x], rank[x], components;
+int root(int x) {
+    while(parent[x] != x) x = parent[x] = parent[parent[x]];
+    return x;
+}
+bool connected(int x, int y) { return root(x) == root(y); }
+void unite(int x, int y) {
+    int px = root(x), py = root(y);
+    if(px == py) return;
+    if(rank[px] < rank[py]) parent[px] = py;
+    else if(rank[px] > rank[py]) parent[py] = px;
+    else { parent[py] = px; rank[px]++; }
+    components--; // two components become one
+    
+}
+void redundantedg(int n = 7) {
+    vector <int> parent(n), rank(n, 1);
+    iota(parent.begin(), parent.end(), 0);
+    /* 
+    // Return the first edge (u,v) that creates a cycle (this is the redundant edge).
+    vector <pair <int, int>> edg;
+    for(int i = 0; i < n; i++) cin >> edg[i].first >> edg[i].second;
+    vector <int> redundantedg;
+    for(int i = 0; i < n; i++) {
+        int u = edg[i].first, v = edg[i].second;
+        if(connected(u, v)) {
+            redundantedg = {u, v}; break;
+        } unite(u, v);
+    } 
+    cout << redundantedg[0] << " " << redundantedg[1] << endl; */
+    vector <pair <int, pair <int, int>>> op = {
+        {1, {0, 1}}, {2, {0, 1}}, {2, {1, 2}}, 
+        {1, {0, 2}}, {2, {0, 2}}, {2, {2, 3}}, 
+        {2, {3, 4}}, {1, {0, 5}}, {2, {4, 5}}, 
+        {2, {5, 6}}, {1, {2, 6}}
+    }; // 1 = query (are x,y connected), 2=union (x,y)
+    components = n; 
+    for(auto &p : op) {
+        int type = p.first, x = op.second.first, y = op.second.second;
+        if(type == 1) cout << (connected(x, y) ? "YES " : "NO ") << components << endl;
+        else unite(x, y);
+    }
+}
