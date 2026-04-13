@@ -29,7 +29,7 @@ void unite(int a, int b) {
 int parent[x];
 int find(int x) {
     if(parent[x] == x) return x;
-    return find
+    return find(parent[x]);
 }
 void grpmanage() {
     for(int i = 0; i < x; i++) parent[i] = i;
@@ -94,4 +94,29 @@ void cyclic(int nd, int edg) {
         }
     }
     cout << (hascycle) ? "contained cycle" : "no cycle";
+}
+// Is graph cyclic Or tree(forest)
+vector <int> parent;
+int find(int x) {
+    return parent[x] == -1 ? x : parent[x] = find(parent[x]);
+}
+void unite(int a, int b) {
+    parent[find(a)] = find(b);
+}
+void iscyclic(int nd, int edg) {
+    parent.assign(nd, -1);
+    bool hascycle = false;
+    for(int i = 0; i < edg; i++) {
+        int u, v; cin >> u >> v;
+        if(find(u) == find(v)) {
+            hascycle = true; break;
+        }
+        unite(u, v);
+    } /*
+    // is the graph is a tree
+    if(edg != nd - 1) {
+        cout << "NO"; return 0;
+    }
+    cout << (hascycle? "NO" : "YES"); */
+    cout << (hascycle ? "Yes" : "NO");
 }
