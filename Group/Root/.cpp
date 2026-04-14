@@ -220,3 +220,100 @@ int isdisjoint(int graph[][nd], int src, int dest) {
         } maxflow += pathflow;
     } return maxflow;
 }
+void warshell(int nd, int edg) {
+    const int x = 1e9;
+    vector <vector <int>> dist(nd + 1, vector <int> (nd + 1, x));
+    for(int i = 1; i <= nd; i++) {
+        for(int j = 1; j <= nd; j++) dist[i][j] = (i == j) ? 0 : x;
+    }
+    for(int i = 0; i < edg; i++) {
+        int u, v, w; cin >> u >> v >> w;
+        dist[u][v] = min(dist[u][v], w);
+        dist[v][u] = min(dist[v][u], w);
+    }
+    for(int k = 1; k <= nd; k++) {
+        for(int u = 1; u <= nd; u++) {
+            for(int v = 1; v <= nd; v++) {
+                if(dist[u][k] < x && dist[k][v] < x) 
+                    dist[u][v] = min(dist[u][v], dist[u][k] + dist[k][v]);
+            }
+        }
+    } /*
+    for(int i = 1; i <= nd; i++) {
+        for(int j = 1; j <= nd; j++)
+            cout << (dist[i][j] == x ? -1 : dist[i][j]) << " ";
+    } */
+    int query; cin >> query;
+    for(int i = 0; i < query; i++) {
+        int u, v; cin >> u >> v;
+        cout << (dist[u][v] == x ? -1 : dist[u][v]);
+    }
+}
+void minpath() {
+    const int x = 1e9, nd = 4;
+    int graph[nd][nd] = {
+        {0, 5, x, 10}, {x, 0, 3, x}, 
+        {x, x, 0, 1}, {x, x, x, 0}
+    }; int dist[nd][nd];
+    for(int i = 0; i < nd; i++) {
+        for(int j = 0; j < nd; j++) dist[i][j] = graph[i][j];
+    }
+    for(int k = 0; k < nd; k++) {
+        for(int i = 0; i < nd; i++) {
+            for(int j = 0; j < nd; j++) {
+                if(dist[i][k] < x && dist[k][j] < x)
+                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+            }
+        }
+    }
+    for(int i = 0; i < nd; i++) {
+        for(int j = 0; j < nd; j++) cout << (dist[i][j] == x ? -1 : dist[i][j]) << " ";
+        cout << endl;
+    }
+}
+//Find the sortest route between cities
+void minpath(int nd, int edg) {
+    const int x = 1e9;
+    vector <vector <int>> dist(nd, vector <int> (nd + 1, x));
+    for(int i = 0; i < nd; i++) dist[i][i] = 0;
+    for(int i = 0; i < edg; i++) {
+        int u, v, w; cin >> u >> v >> w;
+        // assume cities are connected 1th based idx
+        dist[u - 1][v - 1] = w;
+        dist[v - 1][u - 1] = w;
+    }
+    for(int k = 0; k < nd; k++) {
+        for(int u = 0; u < nd; u++) {
+            for(int v = 0; v < nd; v++) {
+                if(dist[u][k] != x && dist[k][v] != x && dist[u][k] + dist[k][v] < dist[u][v])
+                    dist[u][v] = dist[u][k] + dist[k][v];
+            }
+        }
+    } int q; cin >> q;
+    while(q--) {
+        int src, dest; cin >> src >> dest;
+        cout << (dist[src - 1][dest - 1] != x ? dist[src - 1][dest - 1] : "Not Connected") << endl;
+    }
+}
+//check if there is a negative weight cycle using Floyd Warshall Algorithm
+bool negcycle() {
+    const int x = 1e9, nd = 4;
+    int graph[nd][nd] = {
+        {0, 1, x, x}, {x, 0, -1, x},
+        {x, x, 0, -1}, {-1, x, x, 0}
+    }; int dist[nd][nd];
+    for(int i = 0; i < nd; i++) {
+        for(int j = 0; j < nd; j++) dist[i][j] = graph[i][j];
+    }
+    for(int k = 0; k < nd; k++) {
+        for(int i = 0; i < nd; i++) {
+            for(int j = 0; j < nd; j++) {
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+            }
+        }
+    }
+    // If any diag element is negative, there is a negative cycle
+    for(int i = 0; i < nd; i++) {
+        if(dist[i][i] < 0) return true;
+    } return false;
+}
