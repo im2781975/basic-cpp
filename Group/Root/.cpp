@@ -178,3 +178,45 @@ void redundantedg(int n = 7) {
         }
     }
 }
+// compute the maximum flow that can be sent from a source node to a sink node in a directed flow network,
+#define nd 6
+bool BFS(vector <vector <int>> &grid, int src, int dest, vector <int> &parent) {
+    vector <bool> vis(nd, false);
+    queue <int> q; q.push(src);
+    vis[src] = true; parent[src] = -1;
+    while(!q.empty()) {
+        int u = q.front(); q.pop();
+        for(int v = 0; v < nd; v++) {
+            if(!vis[v] && grid[u][v] > 0) {
+                q.push(v); vis[v] = true;
+                parent[v] = u;
+                if(v == dest) return true;
+            }
+        }
+    }
+    return false;
+}
+int isdisjoint(int graph[][nd], int src, int dest) {
+    /* int graph[nd][nd] = { 
+    {0, 16, 13, 0, 0, 0}, {0, 0, 10, 12, 0, 0},
+    {0, 4, 0, 0, 14, 0}, {0, 0, 9, 0, 0, 20},
+    {0, 0, 0, 7, 0, 4}, { 0, 0, 0, 0, 0, 0 }};
+    cout << isdisjoint(graph, 0, 5); */
+    vector <vector <int>> grid(nd, vector <int> (nd));
+    for(int i = 0; i < nd; i++) {
+        for(int j = 0; j < nd; j++) grid[i][j] = graph[i][j];
+    }
+    vector <int> parent(nd); int maxflow = 0;
+    while(BFS(grid, src, dest, parent)) {
+        int pathflow = INT_MAX;
+        for(int v = dest; v != src; v = parent[v]) {
+            int u = parent[v];
+            pathflow = min(pathflow, grid[u][v]);
+        }
+        for(int v = dest; v != src; v = parent[v]) {
+            int u = parent[v];
+            grid[u][v] -= pathflow;
+            grid[v][u] += pathflow;
+        } maxflow += pathflow;
+    } return maxflow;
+}
