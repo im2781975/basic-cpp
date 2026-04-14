@@ -220,6 +220,46 @@ int isdisjoint(int graph[][nd], int src, int dest) {
         } maxflow += pathflow;
     } return maxflow;
 }
+// finds an Eulerian Circuit in a directed graph - a path that visits every edge exactly once and returns to start.
+void euleriancircuit(int nd, int edg) {
+    vector <vector <int>> adj(nd);
+    for(int i = 0; i < edg; i++) {
+        int u, v; cin >> u >> v;
+        adj[u].push_back(v);
+    }
+    int n = adj.size(), src = 0;
+    if(n == 0) return;
+    stack <int> path; vector <int> circuit;
+    int curr = 0; path.push_back(curr);
+    while(!path.empty()) {
+        if(!adj[curr].empty()) {
+            int val = adj[curr].back();
+            adj[curr].pop_back();
+            path.push_back(val); curr = val;
+        } else {
+            circuit.push_back(curr);
+            curr = path.top(); path.pop();
+        }
+    } reverse(circuit.begin(), circuit.end());
+    for(int i = 0; i < circuit.size(); i++) cout << circuit[i] << " ";
+}
+void printcircuit(vector <int> adj[], int n) {
+    if(n == 0) return;
+    vector <int> path; path.push_back(0);
+    vector <int> circuit;
+    while(path.size() > 0) {
+        int curr = path[path.size() - 1];
+        if(adj[curr].size() > 0) {
+            int val = adj[curr].back();
+            adj[curr].pop_back();
+            path.push_back(val);
+        } else {
+            circuit.push_back(path.back());
+            path.pop_back();
+        }
+    }
+    for(int i = circuit.size() - 1; i >= 0; i--) cout << circuit[i] << " ";
+}
 void warshell(int nd, int edg) {
     const int x = 1e9;
     vector <vector <int>> dist(nd + 1, vector <int> (nd + 1, x));
