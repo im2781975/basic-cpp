@@ -1,4 +1,47 @@
 #include<bits/stdc++.h>
+using namespace std;
+// todo defines
+#define ll                  long long
+#define int                 long long
+#define double              long double
+#define ld                  long double
+#define f(i,n)              for(ll i=0;i<(n);i++)
+#define f1(i,n)             for(ll i=1;i<=(n);i++)
+#define el  	            '\n'
+#define sq(a)               (a)*(a)
+#define pb                  emplace_back
+#define sz(x)               (int)((x).size())
+#define all(x)              (x).begin(), (x).end()
+#define asort(a,n)          sort(a,a+n)
+#define dsort(a,n)          sort(a,a+n,greater<>())
+#define vasort(v)           sort(v.begin(), v.end());
+#define vdsort(v)           sort(v.begin(), v.end(),greater<>());
+#define cina(arr)           f(i,n) cin >> arr[i];
+#define YES                 cout << "YES\n"
+#define Yes                 cout << "Yes"<<el
+#define yes                 cout << "yes"<<el
+#define NO                  cout << "NO\n"
+#define No                  cout << "No"<<el
+#define no                  cout << "no"<<el
+#define covid19             ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define rep(i, begin, end)  for (__typeof(end) i = (begin) - ((begin) > (end)); i != (end) - ((begin) > (end)); i += 1 - 2 * ((begin) > (end)))
+#define TC                  int t; cin >> t; while(t--)
+
+
+// todo typedefs
+typedef pair<int,int> pii;
+typedef map<int,int>mii;
+typedef vector<int>vi;
+typedef vector<pii>vii;
+typedef set<int> si;
+typedef set<char> sc;
+
+
+bool as_second(const pair<ll,ll> &a, const pair<ll,ll> &b) {return (a.second < b.second); }//sort the vector pair in assending order according to second element
+bool ds_first(const pair<ll,ll> &a, const pair<ll,ll> &b){ return (a.first > b.first);}//sort the vector pair in decending order according to first element
+bool ds_second(const pair<ll,ll> &a, const pair<ll,ll> &b) {return a.second>b.second;}//sort the vector pair in decending order according to second element
+
+#include<bits/stdc++.h>
 #define abdo ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 #define ll long long int
 #define tc ll t ; cin>>t; while(t--)
