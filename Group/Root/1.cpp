@@ -1413,3 +1413,57 @@ int recur(int node,int visited[],vector<vector<int> > m,int color[]){
     // cout<<node<<" "<<counter<<endl;
     return counter;
 }
+vector<int>adjList[N];
+int dfs(int node,int parent) {
+    visited[node] = true;
+    for (auto adjNode : adjList[node]) {
+        if (!visited[adjNode]) {
+            group.pb(adjNode);
+            dfs(adjNode, node);
+        }
+        else if (visited[adjNode] && adjNode != parent)
+            return 1;
+    }
+    return 0;
+}
+ */
+/*
+void bfs(int node) {
+    queue<int> q;
+    q.push(node);
+    visited[node] = 1;
+    while (!q.empty()) {
+        group.pb(q.front());
+        for (auto adjNode : adjList[q.front()])
+            if (!visited[adjNode])
+                q.push(adjNode), visited[adjNode] = 1;
+        q.pop();
+    }
+}
+
+void dijkstra(int source, vector<vector<pair<int,int>>>&graph) {
+    int n = graph.size();
+    vector<int> dist(n, inf), pre(n, -1);
+    // cost , node
+    priority_queue<pair<int, int>> nextToVisit;
+
+    dist[source] = 0;
+    pre[source] = source;
+    nextToVisit.push({0, source});
+
+    while (!nextToVisit.empty()) {
+        int u = nextToVisit.top().second;
+        nextToVisit.pop();
+        if (visited[u])continue;
+        visited[u] = 1;
+        for (auto e : graph[u]) {
+            int v = e.first;
+            int c = e.second;
+            if (dist[u] + c < dist[v]) {
+                dist[v] = dist[u] + c;
+                pre[v] = u;
+                nextToVisit.push({-dist[v], v});
+            }
+        }
+    }
+}
