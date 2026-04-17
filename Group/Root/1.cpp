@@ -1467,3 +1467,10 @@ void dijkstra(int source, vector<vector<pair<int,int>>>&graph) {
         }
     }
 }
+void dfs(int node) {
+    group.pb(node);
+    visited[node] = true;
+    for (auto adjNode: adjList[node])
+        if (!visited[adjNode])
+            dfs(adjNode);
+}
