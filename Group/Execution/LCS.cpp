@@ -56,6 +56,17 @@ int main() {
     }
     return 0;
 }
+int LCS(string s, string x) {
+    int n = s.size(), m = x.size();
+    if(!n || !m) return 0;
+    vector <vector <int>> dp(n + 1, vector <int> (m + 1, 0));
+    for(int i = 1; i <= n; ++i) {
+        for(int j = 1; j <= m; ++j) {
+            if(s[i - 1] == x[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;
+            else dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+        }
+    } return dp[n][m];
+}
 #include<cstring>
 #include<iostream>
 using namespace std;
